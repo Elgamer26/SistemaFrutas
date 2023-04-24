@@ -1,0 +1,663 @@
+CRITICAL - 2023-04-23 18:57:02 --> Undefined variable $titulo
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:57:03 --> Undefined variable $titulo
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:57:27 --> Undefined variable $data
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:57:29 --> Undefined variable $data
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:57:29 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:58:59 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:59:00 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:59:00 --> Undefined variable $data
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:59:04 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:59:20 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:59:21 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 18:59:24 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:00:36 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(33): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:00:49 --> Undefined variable $data
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:00:49 --> Undefined variable $data
+in APPPATH\Views\admin\FormRol.php on line 5.
+ 1 APPPATH\Views\admin\FormRol.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(25): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:09:19 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(45): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:21:11 --> Undefined variable $ListadoRoles_item
+in APPPATH\Views\admin\ListaRol.php on line 61.
+ 1 APPPATH\Views\admin\ListaRol.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ListadoRoles_item', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php', 61)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/ListaRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(26): view('admin/ListaRol.php', [])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:21:12 --> Undefined variable $ListadoRoles_item
+in APPPATH\Views\admin\ListaRol.php on line 61.
+ 1 APPPATH\Views\admin\ListaRol.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ListadoRoles_item', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php', 61)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/ListaRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(26): view('admin/ListaRol.php', [])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:21:12 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(55): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:21:19 --> Undefined variable $ListadoRoles_item
+in APPPATH\Views\admin\ListaRol.php on line 61.
+ 1 APPPATH\Views\admin\ListaRol.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ListadoRoles_item', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php', 61)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/ListaRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(26): view('admin/ListaRol.php', [])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:21:21 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(55): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:21:21 --> Undefined variable $ListadoRoles_item
+in APPPATH\Views\admin\ListaRol.php on line 61.
+ 1 APPPATH\Views\admin\ListaRol.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ListadoRoles_item', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php', 61)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\ListaRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/ListaRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(26): view('admin/ListaRol.php', [])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:22:07 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(60): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:22:08 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(60): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:32:26 --> Too few arguments to function App\Controllers\Admin::rolesuser(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:32:27 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(58): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:32:27 --> Too few arguments to function App\Controllers\Admin::rolesuser(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 19:32:30 --> Too few arguments to function App\Controllers\Admin::rolesuser(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('list')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:07:37 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(64): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:07:39 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(64): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:07:51 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(63): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:08:12 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(64): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:08:17 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:08:18 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:08:48 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:09:15 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:09:15 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:10:39 --> Invalid file: "admin/crearrol.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/crearrol.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/crearrol.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(64): view('admin/crearrol.php')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->usuarios()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:10:40 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:10:43 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:10:43 --> Undefined variable $register
+in APPPATH\Controllers\Admin.php on line 43.
+ 1 APPPATH\Controllers\Admin.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $register', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Admin.php', 43)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:19:25 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 36.
+ 1 APPPATH\Views\admin\FormRol.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(56): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:19:31 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 36.
+ 1 APPPATH\Views\admin\FormRol.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(56): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:20:47 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 36.
+ 1 APPPATH\Views\admin\FormRol.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(56): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:28:09 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 36.
+ 1 APPPATH\Views\admin\FormRol.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(61): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:29:08 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 36.
+ 1 APPPATH\Views\admin\FormRol.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(61): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:30:04 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 35.
+ 1 APPPATH\Views\admin\FormRol.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 35)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(61): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 20:30:34 --> Array to string conversion
+in APPPATH\Views\admin\FormRol.php on line 35.
+ 1 APPPATH\Views\admin\FormRol.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 35)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(61): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:22:13 --> Undefined variable $estado
+in APPPATH\Views\admin\FormRol.php on line 29.
+ 1 APPPATH\Views\admin\FormRol.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $estado', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 29)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(41): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:22:15 --> Undefined variable $estado
+in APPPATH\Views\admin\FormRol.php on line 29.
+ 1 APPPATH\Views\admin\FormRol.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $estado', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 29)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(41): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:15 --> Undefined array key "id"
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:16 --> Undefined array key "id"
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:29 --> Undefined array key 0
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:30 --> Undefined array key 0
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('1')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:30 --> Undefined array key 0
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:32 --> Undefined array key 0
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:32 --> Uninitialized string offset 0
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Uninitialized string offset 0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:54:33 --> Undefined array key 0
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(60): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EditarRol('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:55:21 --> Undefined variable $editar
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $editar', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:55:24 --> Undefined variable $editar
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $editar', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:55:49 --> Uninitialized string offset 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Uninitialized string offset 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:55:51 --> Uninitialized string offset 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Uninitialized string offset 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:55:51 --> Uninitialized string offset 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Uninitialized string offset 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:55:52 --> Uninitialized string offset 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Uninitialized string offset 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:56:21 --> Undefined array key 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:56:24 --> Undefined array key 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:56:43 --> Undefined array key 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-04-23 23:56:47 --> Undefined array key 1
+in APPPATH\Views\admin\FormRol.php on line 31.
+ 1 APPPATH\Views\admin\FormRol.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\FormRol.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/FormRol.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(38): view('admin/FormRol.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->rolesuser('create')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
