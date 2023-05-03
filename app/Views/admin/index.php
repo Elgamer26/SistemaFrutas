@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Administrador | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,6 +27,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/summernote/summernote-bs4.min.css">
 
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>public/img/logos/load.png" type="image/x-icon">
+
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
@@ -45,12 +47,6 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
         </li>
       </ul>
 
@@ -115,6 +111,7 @@
             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>
+
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -142,16 +139,25 @@
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
+
+        <li class="nav-item dropdown" style="background-color: green; border-radius: 50px; color: white;">
+          <a onclick="ModalDatoUsuario();" class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-user" style="color: white;"></i>
           </a>
         </li>
+
+        <li style="background-color: red; border-radius: 50px;" class="nav-item dropdown">
+          <a class="nav-link" style="color: white;" href="#" onclick="CerraSesion();">
+            <i class="fa fa-times"></i>
+          </a>
+        </li>
+
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -165,10 +171,11 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?php echo base_url(); ?>public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img id="ImagenUserDash" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block" id="NombresUserPefill"></a>
+            <span style="color: white;" id="UserRol"></span>
           </div>
         </div>
 
@@ -198,41 +205,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/boxed.html" class="nav-link">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/EmpresaView');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Boxed</p>
+                    <p> Empresa</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Sidebar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Navbar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-footer.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Footer</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Collapsed Sidebar</p>
-                  </a>
-                </li>
+
               </ul>
             </li>
             <li class="nav-item">
@@ -1435,17 +1413,221 @@
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+  <script src="<?php echo base_url(); ?>public/js/usuario.js"></script>
+
 </body>
 
 </html>
 
+<div class="modal fade" id="ModalDataUsuario" tabindex="-1" role="dialog" aria-labelledby="ModalDataUsuarioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background: #007bff;">
+        <h5 class="modal-title" id="ModalDataUsuarioLabel" style="color: white;"><b>Datos del usuario</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+
+          <div class="col-12 col-sm-12">
+            <div class="card card-primary card-tabs">
+
+              <div class="card-header p-0 pt-1">
+                <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Datos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Foto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Password</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-one-tabContent">
+
+                  <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="nombresData">Nombres</label> <span id="nombresData_olbligg" style="color: red;"></span>
+                          <input onkeypress="return soloLetras(event)" autocomplete="off" value="" type="text" name="nombresData" class="form-control" id="nombresData" placeholder="Ingrese nombres" maxlength="80">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="apellidosData">Apellidos</label> <span id="apellidosData_olbligg" style="color: red;"></span>
+                          <input onkeypress="return soloLetras(event)" autocomplete="off" value="" type="text" name="apellidosData" class="form-control" id="apellidosData" placeholder="Ingrese apellidos" maxlength="80">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="correoData">Correo</label> <span id="correoData_olbligg" style="color: red;"></span>
+                          <input autocomplete="off" value="" type="text" name="correoData" class="form-control" id="correoData" placeholder="Ingrese correo" maxlength="80">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="usuarioData">Usuario</label> <span id="usuarioData_olbligg" style="color: red;"></span>
+                          <input autocomplete="off" value="" type="text" name="usuarioData" class="form-control" id="usuarioData" placeholder="Ingrese usuarioData" maxlength="50">
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <button class="btn btn-primary" onclick="GuardarDatoPerfilUser();"><i class="fa fa-save"></i> Guardar</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+
+                    <div class="row">
+                      <div class="col-md-12">
+
+                        <div class="card card-primary card-outline">
+                          <div class="card-body box-profile">
+                            <div class="text-center">
+                              <img style="width: 35%;" class="profile-user-img img-fluid img-circle" id="FotoPerfilUser" alt="User foto">
+                              <input onchange="mostrar_imagenData(this);" type="file" class="form-control" id="foto_new">
+                            </div>
+                            <br>
+                            <a href="#" class="btn btn-primary btn-block" onclick="UpdatePhotoUser();"><b><i class="fa fa-image"></i> Cambiar foto</b></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="password_actu">Password actual</label> <span id="password_actu_olbligg" style="color: red;"></span>
+                          <input autocomplete="off" value="" type="password" name="password" class="form-control" id="password_actu" placeholder="Ingrese password actual" maxlength="20">
+                        </div>
+                      </div>
+
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label for="nuevo_password">Nuevo Password</label> <span id="nuevo_password_olbligg" style="color: red;"></span>
+                          <input autocomplete="off" value="" type="password" name="nuevo_password" class="form-control" id="nuevo_password" placeholder="Nuevo Password" maxlength="20">
+                        </div>
+                      </div>
+
+                      <div class="col-md-1">
+                        <div class="form-group">
+                          <label>Ver</label>
+                          <button onclick="mostrar_usu_data();" class="btn btn-warning"><i class="fa fa-eye"></i> </button>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <button class="btn btn-primary" onclick="CambiarPasswordUser();"><i class="fa fa-key"></i> Cambiar</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <!-- <button type="button" class="btn btn-primary">Guardar</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  function cargar_contenido(contenedor, contenido) {
-    $("#" + contenedor).load(contenido);
-  }
+  var correo_usuData = true;
+  var fotoActual = "";
+  var PasswordUser = "";
 
   var BaseUrl;
   BaseUrl = "<?php echo base_url(); ?>";
+
+  TraerDatosUsuario();
+
+  function mostrar_imagenData(input) {
+    var filename = document.getElementById("foto_new").value;
+    var idxdot = filename.lastIndexOf(".") + 1;
+    var extfile = filename.substr(idxdot, filename.length).toLowerCase();
+    if (extfile == "jpg" || extfile == "jpeg" || extfile == "png") {
+      if (input.files) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $("#FotoPerfilUser").attr("src", e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    } else {
+      swal.fire(
+        "Mensaje de alerta",
+        "Solo se aceptan imagenes - USTED SUBIO UN ARCHIVO CON LA EXTENCIO ." + extfile,
+        "warning"
+      );
+    }
+
+  }
+
+  function mostrar_usu_data() {
+    var ver = document.getElementById("password_actu");
+    var newa = document.getElementById("nuevo_password");
+
+    if (ver.type == "password") {
+      ver.type = "text";
+      newa.type = "text";
+    } else {
+      ver.type = "password";
+      newa.type = "password";
+    }
+  }
+
+  function TraerDatosUsuario() {
+    $.ajax({
+      type: "Get",
+      url: BaseUrl + "usuario/TraerDatosUsuario",
+      success: function(response) {
+        let data = JSON.parse(response);
+        $("#nombresData").val(data[0][1]);
+        $("#apellidosData").val(data[0][2]);
+        $("#correoData").val(data[0][3]);
+        $("#usuarioData").val(data[0][6]);
+        $("#FotoPerfilUser").attr("src", BaseUrl + "public/img/usuario/" + data[0][8])
+        $("#ImagenUserDash").attr("src", BaseUrl + "public/img/usuario/" + data[0][8])
+        $("#NombresUserPefill").html(data[0][1]);
+        $("#UserRol").html(data[0][5]);
+        fotoActual = data[0][8];
+        PasswordUser = data[0][7];
+      }
+    });
+  }
+
+  function cargar_contenido(contenedor, contenido) {
+    $("#" + contenedor).load(contenido);
+  }
 
   /////////////////
   function soloLetras(e) {
@@ -1479,4 +1661,45 @@
       );
     }
   }
+
+  function CerraSesion() {
+    Swal.fire({
+      title: 'Cerrar Sesión?',
+      text: "Desea cerra sesión!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, cerrar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.href = BaseUrl + "Usuario/CerraSesion";
+      }
+    })
+  }
+
+  $("#correoData").keyup(function() {
+    if (this.value != "") {
+      document.getElementById('correoData').addEventListener('input', function() {
+        campo = event.target;
+        //este codigo me da formato email
+        email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        //esto es para validar si es un email valida
+        if (email.test(campo.value)) {
+          //estilos para cambiar de color y ocultar el boton
+          $(this).css("border", "1px solid green");
+          $("#correoData_olbligg").html("");
+          correo_usuData = true;
+        } else {
+          $(this).css("border", "1px solid red");
+          $("#correoData_olbligg").html("Email incorrecto");
+          correo_usuData = false;
+        }
+      });
+    } else {
+      $(this).css("border", "1px solid green");
+      $("#correoData_olbligg").html("");
+      correo_usuData = false;
+    }
+  });
 </script>

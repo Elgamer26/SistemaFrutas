@@ -15,8 +15,14 @@ class Admin extends BaseController
 
     public function index()
     {
-        return view('admin/index.php');
+        if (!isset($_SESSION["id_user"])) {
+            return redirect()->to(base_url() . 'login');
+        } else {
+            return view('admin/index.php');
+        }
     }
+
+    /////////// ROL
 
     public function rolesuser($valor)
     {
@@ -56,13 +62,16 @@ class Admin extends BaseController
         }
     }
 
+    ////////// USUARIO
+
     public function UsuariosAccion($valor)
     {
         if ($this->request->getMethod() == "get") {
             if ($valor == "list") {
-                $ListadoRoles = $this->usuario->ListadoRoles();
+
+                $ListaUsuario = $this->usuario->ListaUsuario();
                 $data = [
-                    'ListadoRoles' => $ListadoRoles
+                    'ListaUsuario' => $ListaUsuario
                 ];
                 return view('admin/usuario/lista.php', $data);
             } else if ($valor == "create") {
@@ -72,11 +81,71 @@ class Admin extends BaseController
                     'texto' => "Registro de usuario <i class='fa fa-user'></i>",
                     'accion' => "<button onclick='RegistraUsuario();' class='btn btn-success'>Guardar</button>",
                     'color' => "success",
-                    'editar' => ['0' => '', '1' => ''],
+                    'editar' => ['0' => '', '1' => '', '2' => '', '3' => '', '4' => '', '5' => '', '7' => '', '9' => ''],
+                    'plus' => true,
                     'rol' => $rol,
+                    'image' => true
                 ];
                 return view('admin/usuario/FormUsuario.php', $data);
             }
+        }
+    }
+
+    public function EditarUsuario($valor)
+    {
+        if ($this->request->getMethod() == "get") {
+            $rol = $this->usuario->SelectRol();
+            $DataEditar = $this->usuario->TraerUsuarioEditar($valor);
+
+            $data = [
+                'titulo' => "Editar usuario <i class='fa fa-edit'></i>",
+                'texto' => "Editar usuario <i class='fa fa-user'></i>",
+                'accion' => "<button onclick='EditarUsuario();' class='btn btn-primary'>Guardar</button>",
+                'color' => "primary",
+                'editar' => $DataEditar,
+                'plus' => false,
+                'rol' => $rol,
+                'image' => true
+            ];
+            return view('admin/usuario/FormUsuario.php', $data);
+        }
+    }
+
+    public function EditarUsuarioFoto($valor)
+    {
+        if ($this->request->getMethod() == "get") {
+            $rol = $this->usuario->SelectRol();
+            $DataEditar = $this->usuario->TraerUsuarioEditar($valor);
+
+            $data = [
+                'titulo' => "Editar Foto del usuario <i class='fa fa-image'></i>",
+                'texto' => "Editar Foto <i class='fa fa-user'></i>",
+                'accion' => "<button onclick='EditarFotoUsuario();' class='btn btn-warning'>Guardar</button>",
+                'color' => "warning",
+                'editar' => $DataEditar,
+                'plus' => true,
+                'rol' => $rol,
+                'image' => false
+            ];
+            return view('admin/usuario/FormUsuario.php', $data);
+        }
+    }
+
+    ////// EMPRESA
+
+    public function EmpresaView()
+    {
+        if ($this->request->getMethod() == "get") {
+
+            $ListEmpresa = $this->usuario->ListEmpresa();
+            $data = [
+                'titulo' => "Datos de la Hacienda <i class='fa fa-home'></i>",
+                'texto' => "Información de la Hacienda <i class='fa fa-home'></i>",
+                'accion' => "<button onclick='GuardarDatosHacienda();' class='btn btn-primary'>Guardar</button>",
+                'color' => "primary",
+                'ListEmpresa' => $ListEmpresa,
+            ];
+            return view('admin/usuario/FormEmpresa.php', $data);
         }
     }
 }
