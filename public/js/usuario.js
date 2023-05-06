@@ -991,7 +991,6 @@ function CambiarPasswordUser() {
       $(".modal-content").LoadingOverlay("hide");
       if (resp > 0) {
         if (resp == 1) {
-          
           $("#password_actu").val("");
           $("#nuevo_password").val("");
 
@@ -1024,4 +1023,227 @@ function VerificarPasswordNuevo(password_actu, nuevo_password) {
   } else {
     $("#nuevo_password_olbligg").html("");
   }
+}
+
+//////// FORMULARIO DE EMPRESA
+
+function GuardarDatosHacienda() {
+  var nombre = $("#nombre").val();
+  var direccion = $("#direccion").val();
+  var correo_e = $("#correo_e").val();
+  var ruc = $("#ruc").val();
+  var telefono = $("#telefono").val();
+  var actividad = $("#actividad").val(); 
+
+  if (
+    nombre.length == 0 ||
+    nombre.trim() == "" ||
+    direccion.length == 0 ||
+    direccion.trim() == "" ||
+    correo_e.length == 0 ||
+    correo_e.trim() == "" ||
+    ruc.length == 0 ||
+    ruc.trim() == "" ||
+    telefono.length == 0 ||
+    telefono == 0 ||
+    actividad.length == 0 ||
+    actividad.trim() == ""
+  ) {
+    ValidarRegistroEmpresa(
+      nombre,
+      direccion,
+      correo_e,
+      ruc,
+      telefono,
+      actividad
+    );
+
+    return swal.fire(
+      "Campo vacios",
+      "Los campos no deben quedar vacios, complete los datos",
+      "warning"
+    );
+  } else {
+    $("#nombre_olbligg").html("");
+    $("#direccion_olbligg").html("");
+    $("#correo_e_olbligg").html("");
+    $("#ruc_olbligg").html("");
+    $("#telefono_olbligg").html("");
+    $("#actividad_olbligg").html("");
+  }
+
+  if (!correo_empresa) {
+    return swal.fire(
+      "Correo incorrecto",
+      "Ingrese un correo correcto",
+      "warning"
+    );
+  }
+
+  var formdata = new FormData(); 
+  formdata.append("nombre", nombre);
+  formdata.append("direccion", direccion);
+  formdata.append("correo_e", correo_e);
+  formdata.append("ruc", ruc);
+  formdata.append("telefono", telefono);
+  formdata.append("actividad", actividad); 
+
+  $(".card").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "usuario/RegistrarEmpresa",
+    type: "POST",
+    //aqui envio toda la formdata
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".card").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          Swal.fire({
+            title: "",
+            text: "Datos de la empresa correctos",
+            icon: "success",
+            showCancelButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/EmpresaView"
+              );
+            }
+          });
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
+}
+
+function ValidarRegistroEmpresa(
+  nombres,
+  direccion,
+  correo_e,
+  ruc,
+  telefono,
+  actividad
+) {
+  if (nombres.length == 0 || nombres.trim() == "") {
+    $("#nombre_olbligg").html(" - Ingrese el nombre de la empresa");
+  } else {
+    $("#nombre_olbligg").html("");
+  }
+
+  if (direccion.length == 0 || direccion.trim() == "") {
+    $("#direccion_olbligg").html(" - Ingrese la direccion");
+  } else {
+    $("#direccion_olbligg").html("");
+  }
+
+  if (correo_e.length == 0 || correo_e.trim() == "") {
+    $("#correo_e_olbligg").html(" - Ingrese el correo");
+  } else {
+    $("#correo_e_olbligg").html("");
+  }
+
+  if (ruc.length == 0 || ruc.trim() == "") {
+    $("#ruc_olbligg").html(" - Ingrese el rúc");
+  } else {
+    $("#ruc_olbligg").html("");
+  }
+
+  if (telefono.length == 0 || telefono == 0) {
+    $("#telefono_olbligg").html(" - Ingrese el telefono");
+  } else {
+    $("#telefono_olbligg").html("");
+  }
+
+  if (actividad.length == 0 || actividad.trim() == "") {
+    $("#actividad_olbligg").html(" - Ingrese la actividad de la empresa");
+  } else {
+    $("#actividad_olbligg").html("");
+  }
+}
+
+function UpdateImageEmpresa() {
+  var foto = $("#fotoe").val();
+  var fotoActual = $("#foto_actual").val();
+
+  if (foto.trim() == "" || foto.length == 0) {
+    return swal.fire("Sin foto", "Ingrese una foto para continuar", "warning");
+  }
+
+  //para scar la fecha para la foto
+  var f = new Date();
+  //este codigo me captura la extenion del archivo
+  var extecion = foto.split(".").pop();
+  //renombramoso el archivo con las hora minutos y segundos
+  var nombrearchivo =
+    "IMG" +
+    f.getDate() +
+    "" +
+    (f.getMonth() + 1) +
+    "" +
+    f.getFullYear() +
+    "" +
+    f.getHours() +
+    "" +
+    f.getMinutes() +
+    "" +
+    f.getSeconds() +
+    "." +
+    extecion;
+
+  var formdata = new FormData();
+  var foto = $("#fotoe")[0].files[0];
+  //est valores son como los que van en la data del ajax
+
+  formdata.append("fotoActual", fotoActual);
+  formdata.append("foto", foto);
+  formdata.append("nombrearchivo", nombrearchivo);
+
+  $(".card").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "usuario/UpdateImageEmpresa",
+    type: "POST",
+    //aqui envio toda la formdata
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".card").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          
+          cargar_contenido(
+            "contenido_principal",
+            BaseUrl + "admin/EmpresaView");
+
+          return swal.fire(
+            "Imagen correcta",
+            "La foto se actualizo con exito",
+            "success"
+          );
+        } else {
+          return swal.fire("Error", "Error en la Matrix" + resp, "error");
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
 }

@@ -207,4 +207,41 @@ class Usuario extends BaseController
         echo $valorPass;
         exit();
     }
+
+    /// editra datos de la empresa
+
+    public function RegistrarEmpresa()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $id = 1;
+            $nombre = $this->request->getPost('nombre');
+            $direccion = $this->request->getPost('direccion');
+            $correo_e = $this->request->getPost('correo_e');
+            $ruc = $this->request->getPost('ruc');
+            $telefono = $this->request->getPost('telefono');
+            $actividad = $this->request->getPost('actividad');
+            $repuesta = $this->usuario->RegistrarEmpresa($id, $nombre, $direccion, $correo_e, $ruc, $telefono, $actividad);
+            echo $repuesta;
+            exit();
+        }
+    }
+
+    public function UpdateImageEmpresa()
+    {
+        $id =  1;
+        $ruta_actual = $this->request->getPost('fotoActual');
+        $nombrearchivo = $this->request->getPost('nombrearchivo');
+        $imageFile = $this->request->getFile('foto');
+
+        $valorFile = $this->usuario->UpdateImageEmpresa($id, $nombrearchivo);
+        if ($valorFile == 1) {
+            $imageFile->move(ROOTPATH . 'public/img/empresa/', $nombrearchivo);
+            unlink(ROOTPATH . 'public/img/empresa/' . $ruta_actual);
+            echo $valorFile;
+        } else {
+            echo $valorFile;
+        }
+        exit();
+    }
 }

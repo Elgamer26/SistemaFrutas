@@ -185,7 +185,7 @@
 
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
+                <i class="nav-icon fas fa-user"></i>
                 <p>
                   Usuarios
                   <i class="fas fa-angle-left right"></i>
@@ -213,6 +213,38 @@
 
               </ul>
             </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Clientes
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ListadoCliente/tienda');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Clientes Tienda</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ListadoCliente/empresa');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Clientes Empresa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/cliente/new/0/valor');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Nuevo cliente</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>

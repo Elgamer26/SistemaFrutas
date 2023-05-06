@@ -1,0 +1,639 @@
+CRITICAL - 2023-05-06 01:49:40 --> Call to undefined method App\Models\ModeloUsuario::ListEmpresa()
+in APPPATH\Controllers\Admin.php on line 140.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EmpresaView()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 01:50:40 --> Call to undefined method App\Models\ModeloUsuario::ListEmpresa()
+in APPPATH\Controllers\Admin.php on line 140.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->EmpresaView()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 14:12:59 --> Undefined variable $titulo
+in APPPATH\Views\admin\cliente\ListCliente.php on line 5.
+ 1 APPPATH\Views\admin\cliente\ListCliente.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\ListCliente.php', 5)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\ListCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/ListCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(167): view('admin/cliente/ListCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ListadoCliente('tienda')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 14:37:19 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 188.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 14:37:20 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 188.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 14:37:21 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 188.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 14:37:27 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 2 expected
+in APPPATH\Controllers\Admin.php on line 188.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:03 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:04 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:08 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:18 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:20 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:34 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:34 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:16:35 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:17:15 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:18:29 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:18:30 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:18:59 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:19:22 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 59.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 59)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:19:23 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 59.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 59)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:19:25 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 59.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 59)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:19:48 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:19:48 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:19:49 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:20:01 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 72.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 72)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:20:02 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 72.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 72)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:20:04 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 72.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 72)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:20:32 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:20:39 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:21:03 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:21:05 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:21:42 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:21:43 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(197): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:14 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:15 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:16 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:16 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:16 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:16 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:25:17 --> Too few arguments to function App\Controllers\Admin::cliente(), 1 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 3 expected
+in APPPATH\Controllers\Admin.php on line 185.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:26:51 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:12 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:16 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:16 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:16 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:17 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:19 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:27:21 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:40:47 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:41:13 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:41:14 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:41:17 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 15:41:17 --> Undefined array key 6
+in APPPATH\Views\admin\cliente\FormCliente.php on line 73.
+ 1 APPPATH\Views\admin\cliente\FormCliente.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 6', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\cliente\\FormCliente.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/cliente/FormCliente.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(198): view('admin/cliente/FormCliente.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->cliente('new', '0', 'valor')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:44:33 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 24.
+ 1 APPPATH\Controllers\Home.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:44:36 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 24.
+ 1 APPPATH\Controllers\Home.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:44:53 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 24.
+ 1 APPPATH\Controllers\Home.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:44:54 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 24.
+ 1 APPPATH\Controllers\Home.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:45:14 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 19.
+ 1 APPPATH\Controllers\Home.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:45:15 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 19.
+ 1 APPPATH\Controllers\Home.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:45:15 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 19.
+ 1 APPPATH\Controllers\Home.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:45:16 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 19.
+ 1 APPPATH\Controllers\Home.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:45:49 --> Undefined array key "TokenClie"
+in APPPATH\Controllers\Home.php on line 15.
+ 1 APPPATH\Controllers\Home.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TokenClie"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 17:49:13 --> Undefined variable $toke
+in APPPATH\Views\tienda\index.php on line 49.
+ 1 APPPATH\Views\tienda\index.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $toke', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\index.php', 49)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/index', [], true)
+ 5 APPPATH\Controllers\Home.php(23): view('tienda/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 18:35:46 --> Undefined array key "NombUser"
+in APPPATH\Controllers\Home.php on line 16.
+ 1 APPPATH\Controllers\Home.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "NombUser"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Home.php', 16)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 19:12:11 --> Undefined array key "id_user"
+in APPPATH\Controllers\Usuario.php on line 163.
+ 1 APPPATH\Controllers\Usuario.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_user"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Usuario.php', 163)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Usuario->TraerDatosUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 19:14:34 --> Undefined variable $titulo
+in APPPATH\Views\tienda\Registro.php on line 46.
+ 1 APPPATH\Views\tienda\Registro.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\Registro.php', 46)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\Registro.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/Registro', [], true)
+ 5 APPPATH\Controllers\Home.php(30): view('tienda/Registro')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Registro()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-06 19:14:44 --> Undefined variable $titulo
+in APPPATH\Views\tienda\Registro.php on line 46.
+ 1 APPPATH\Views\tienda\Registro.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $titulo', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\Registro.php', 46)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\Registro.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/Registro', [], true)
+ 5 APPPATH\Controllers\Home.php(30): view('tienda/Registro')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Registro()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

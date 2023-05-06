@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\ModeloUsuario;
+use App\Models\ModeloCliente;
 
 class Admin extends BaseController
 {
     protected $usuario;
+    protected $cliente;
     public function __construct()
     {
         session_start();
         $this->usuario = new ModeloUsuario();
+        $this->cliente = new ModeloCliente();
     }
 
     public function index()
@@ -141,11 +144,69 @@ class Admin extends BaseController
             $data = [
                 'titulo' => "Datos de la Hacienda <i class='fa fa-home'></i>",
                 'texto' => "Información de la Hacienda <i class='fa fa-home'></i>",
-                'accion' => "<button onclick='GuardarDatosHacienda();' class='btn btn-primary'>Guardar</button>",
+                'accion' => "<button onclick='GuardarDatosHacienda();' class='btn btn-primary'> Guardar</button>",
                 'color' => "primary",
                 'ListEmpresa' => $ListEmpresa,
             ];
             return view('admin/usuario/FormEmpresa.php', $data);
+        }
+    }
+
+    /// CLIENTE 
+
+    public function ListadoCliente($valor)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "tienda") {
+
+                $ListaCliente = $this->cliente->ListaCliente(0);
+                $data = [
+                    'titulo' => "Listado de clientes Tienda <i class='fa fa-shopping-cart'></i>",
+                    'texto' => "Listado de clientes <i class='fa fa-users'></i>",
+                    'ListaCliente' => $ListaCliente,
+                    'valorr' => "tienda"
+                ];
+
+                return view('admin/cliente/ListCliente.php', $data);
+            } else if ($valor == "empresa") {
+                $ListaCliente = $this->cliente->ListaCliente(1);
+                $data = [
+                    'titulo' => "Listado de clientes Empresa <i class='fa fa-home'></i>",
+                    'texto' => "Listado de clientes <i class='fa fa-users'></i>",
+                    'ListaCliente' => $ListaCliente,
+                    'valorr' => "empresa"
+                ];
+
+                return view('admin/cliente/ListCliente.php', $data);
+            }
+        }
+    }
+
+    public function cliente($valor, $id, $estado)
+    {
+        if ($this->request->getMethod() == "get") {
+
+            if ($valor == "new") {
+                $data = [
+                    'titulo' => "Crear Cliente <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de Cliente <i class='fa fa-users'></i>",
+                    'accion' => "<button onclick='RegistraCliente();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success"
+                ];
+                return view('admin/cliente/CreateCliente.php', $data);
+
+            } else if ($valor == "edit") {
+                $cliente = $this->cliente->TraerCliente($id);
+                $data = [
+                    'titulo' => "Editar Cliente <i class='fa fa-edit'></i>",
+                    'texto' => "Editar el Cliente <i class='fa fa-users'></i>",
+                    'accion' => "<button onclick='EditarCliente();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $cliente,
+                    'btn' => $estado,
+                ];
+                return view('admin/cliente/FormCliente.php', $data);
+            }
         }
     }
 }
