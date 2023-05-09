@@ -29,4 +29,9 @@ class Home extends BaseController
     {
         return view('tienda/Registro');
     }
+
+    public function Recuperar()
+    {
+        return view('tienda/Recuperar');
+    }
 }

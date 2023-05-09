@@ -41,15 +41,15 @@
 
 				<div class="col-md-6 top-header-left">
 					<div class="drop">
-
 						<?php if ($token == "NOTOKEN") { ?>
-							<a href="<?php echo base_url(); ?>home/login"><span style="color: white;">Iniciar sesión </span> <i style="color: white;" class="fa fa-user"></i></a>
+							<a href="<?php echo base_url(); ?>home/login"><span style="color: white;">Iniciar sesión </span> &nbsp; <i style="color: white;" class="fa fa-user"></i></a>
+							&nbsp; &nbsp; &nbsp; &nbsp; <a href="<?php echo base_url(); ?>admin">Admin</a> <i class="fa fa-home"></i>
 						<?php } else { ?>
 							<span style="color: white;"><i style="color: white;" class="fa fa-user"></i> <?php echo $token; ?> </span> <a href="<?php echo base_url(); ?>cliente/CerraSesionCliente" class="btn btn-danger">Cerra sesion</a>
 						<?php } ?>
-
 						<div class="clearfix"></div>
 					</div>
+
 				</div>
 
 				<div class="col-md-6 top-header-left">
@@ -397,103 +397,33 @@
 		<nav aria-label="...">
 			<ul class="pagination" style="position: relative; left: 15px;">
 				<li class="page-item disabled">
-					<span class="page-link">Previous</span>
+					<span class="page-link">Anterior</span>
 				</li>
+
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
+
 				<li class="page-item active">
 					<span class="page-link">
 						2
 						<span class="sr-only">(current)</span>
 					</span>
 				</li>
+				
 				<li class="page-item"><a class="page-link" href="#">3</a></li>
+
 				<li class="page-item">
-					<a class="page-link" href="#">Next</a>
+					<a class="page-link" href="#">Proximo</a>
 				</li>
 			</ul>
 		</nav>
-	</div>
-	<div class="information">
-		<div class="container">
-			<div class="infor-top">
-				<div class="col-md-3 infor-left">
-					<h3>Follow Us</h3>
-					<ul>
-						<li><a href="#"><span class="fb"></span>
-								<h6>Facebook</h6>
-							</a></li>
-						<li><a href="#"><span class="twit"></span>
-								<h6>Twitter</h6>
-							</a></li>
-						<li><a href="#"><span class="google"></span>
-								<h6>Google+</h6>
-							</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 infor-left">
-					<h3>Information</h3>
-					<ul>
-						<li><a href="#">
-								<p>Specials</p>
-							</a></li>
-						<li><a href="#">
-								<p>New Products</p>
-							</a></li>
-						<li><a href="#">
-								<p>Our Stores</p>
-							</a></li>
-						<li><a href="contact.html">
-								<p>Contact Us</p>
-							</a></li>
-						<li><a href="#">
-								<p>Top Sellers</p>
-							</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 infor-left">
-					<h3>My Account</h3>
-					<ul>
-						<li><a href="account.html">
-								<p>My Account</p>
-							</a></li>
-						<li><a href="#">
-								<p>My Credit slips</p>
-							</a></li>
-						<li><a href="#">
-								<p>My Merchandise returns</p>
-							</a></li>
-						<li><a href="#">
-								<p>My Personal info</p>
-							</a></li>
-						<li><a href="#">
-								<p>My Addresses</p>
-							</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 infor-left">
-					<h3>Store Information</h3>
-					<h4>The company name,
-						<span>Lorem ipsum dolor,</span>
-						Glasglow Dr 40 Fe 72.
-					</h4>
-					<h5>+955 123 4567</h5>
-					<p><a href="mailto:example@email.com">contact@example.com</a></p>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
+	</div> 
 	<div class="footer">
 		<div class="container">
 			<div class="footer-top">
 				<div class="col-md-6 footer-left">
-					<form>
-						<input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
-						<input type="submit" value="Subscribe">
-					</form>
 				</div>
 				<div class="col-md-6 footer-right">
-					<p>© 2015 Luxury Watches. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+					<p>© 2023 Sistema de fruta. Todos los derechos reservados | Diseño por JR </p>
 				</div>
 				<div class="clearfix"></div>
 			</div>

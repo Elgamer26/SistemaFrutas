@@ -107,45 +107,6 @@
     var cedula_cliente = true;
     var correo_cliente = true;
 
-    function mostrar_usu() {
-        var ver = document.getElementById("password");
-        var con = document.getElementById("confirm_password");
-
-        if (ver.type == "password") {
-            ver.type = "text";
-            con.type = "text";
-        } else {
-            ver.type = "password";
-            con.type = "password";
-        }
-    }
-
-    function mostrar_imagen(input) {
-        var filename = document.getElementById("foto").value;
-        var idxdot = filename.lastIndexOf(".") + 1;
-        var extfile = filename.substr(idxdot, filename.length).toLowerCase();
-        if (extfile == "jpg" || extfile == "jpeg" || extfile == "png") {
-
-            if (input.files) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $("#img_usuario").attr("src", e.target.result).height(250).width(300);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-
-        } else {
-            swal.fire(
-                "Mensaje de alerta",
-                "Solo se aceptan imagenes - USTED SUBIO UN ARCHIVO CON LA EXTENCIO ." + extfile,
-                "warning"
-            );
-            $("#img_usuario").attr("src", "<?php echo base_url(); ?>public/img/admin.jpg").height(200).width(250);
-            return document.getElementById("foto").value = "";
-        }
-
-    }
-
     $("#cedula").keyup(function() {
         if (this.value != "") {
             var cad = document.getElementById("cedula").value.trim();

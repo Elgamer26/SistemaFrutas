@@ -247,23 +247,23 @@
 
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
+                <i class="nav-icon fas fa-cubes"></i>
                 <p>
-                  Charts
+                  Productos
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/tipoProducto/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>ChartJS</p>
+                    <p>Tipo</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/charts/flot.html" class="nav-link">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Producto/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Flot</p>
+                    <p>Producto</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -280,6 +280,7 @@
                 </li>
               </ul>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tree"></i>
@@ -1691,6 +1692,44 @@
         "Solo se permiten numeros",
         "warning"
       );
+    }
+  }
+
+  function filterfloat(evt, input) {
+    var key = window.Event ? evt.which : evt.keyCode;
+    var chark = String.fromCharCode(key);
+    var tempvalue = input.value + chark;
+    if (key >= 48 && key <= 57) {
+      if (filter(tempvalue) === false) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (key == 8 || key == 13 || key == 0) {
+        return false;
+      } else if (key === 46) {
+        if (filter(tempvalue) === false) {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        return swal.fire(
+          "No se permiten letras!!",
+          "Solo se permiten numeros decimales",
+          "warning"
+        );
+      }
+    }
+  }
+
+  function filter(__val__) {
+    var preg = /^([0-9]+\.?[0-9]{0,2})$/;
+    if (preg.test(__val__) === true) {
+      return true;
+    } else {
+      return false;
     }
   }
 

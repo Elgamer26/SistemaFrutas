@@ -21,6 +21,7 @@
             <div class="row">
                 <div class="col-md-6 order-md-2">
                     <img src="<?php echo base_url(); ?>public/loginCli/images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+                    <a href="<?php echo base_url(); ?>admin">Admin</a>
                 </div>
                 <div class="col-md-6 contents">
                     <div class="row justify-content-center">
@@ -66,7 +67,7 @@
                                     <input type="checkbox" checked="checked" />
                                     <div class="control__indicator"></div>
                                 </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Has olvidado tu contraseña?</a></span>
+                                <span class="ml-auto"><a href="<?php echo base_url(); ?>home/Recuperar" class="forgot-pass">Has olvidado tu contraseña?</a></span>
                             </div>
 
                             <input type="button" id="btn_aceptar" value="Iniciar sesión" class="btn text-white btn-block btn-primary">

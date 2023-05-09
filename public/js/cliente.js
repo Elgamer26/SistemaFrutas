@@ -85,7 +85,53 @@ $(document).on("click", "#btn_registrase", function () {
   location.href = BaseUrl + "home/Registro";
 });
 
-////FORMULARIO CLIENTE
+$(document).on("click", "#btn_recuperarPass", function () {
+  var correo = $("#email_correo").val();
+
+  if (parseInt(correo.length) <= 0 || correo == "") {
+    $("#correo_enviado").hide();
+    $("#none_pass").hide();
+    $("#none_usu").show(2000);
+  } else {
+    $("#none_usu").hide();
+    $("#none_pass").hide();
+    $("#correo_enviado").hide();
+
+    $(".card").LoadingOverlay("show", {
+      text: "Enviando...",
+    });
+
+    $.ajax({
+      url: BaseUrl + "cliente/RecuperarPasswordCliente",
+      type: "POST",
+      data: { correo: correo },
+    }).done(function (responce) {
+      $(".card").LoadingOverlay("hide");
+      if (responce == 0) {
+        $("#none_usu").hide();
+        $("#correo_enviado").hide();
+        $("#none_pass").show(2000);
+        return false;
+      } else if (responce == 1) {
+        $("#none_usu").hide();
+        $("#none_pass").hide();
+        $("#correo_enviado").show(2000);
+        return false;
+      } else {
+        $("#none_usu").hide();
+        $("#none_pass").hide();
+        $("#correo_enviado").hide();
+        return swal.fire(
+          "Error",
+          "Error en la Matrix" + responce,
+          "Error de Matrix"
+        );
+      }
+    });
+  }
+});
+
+///// FORMULARIO CLIENTE
 
 function RegistraCliente() {
   var nombre = $("#nombres").val();
@@ -178,8 +224,8 @@ function RegistraCliente() {
       if (resp > 0) {
         if (resp == 1) {
           Swal.fire({
-            title: "",
-            text: "El cliente se registro con exito",
+            title: "El cliente se registro con exito",
+            text: "Se envio el password al correo ingresado",
             icon: "success",
             showCancelButton: true,
             showCancelButton: false,
@@ -191,8 +237,135 @@ function RegistraCliente() {
             if (result.isConfirmed) {
               cargar_contenido(
                 "contenido_principal",
-                BaseUrl + "admin/cliente/new"
+                BaseUrl + "admin/cliente/new/0/valor"
               );
+            }
+          });
+        } else if (resp == 2) {
+          return swal.fire(
+            "Cedula ya existe",
+            "La cedula ingresada " + cedula + " ya existe",
+            "warning"
+          );
+        } else if (resp == 3) {
+          return swal.fire(
+            "Correo ya existe",
+            "El correo ingresado " + correo + " ya existe",
+            "warning"
+          );
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
+}
+
+///// REGISTRO DEL CLIENTE DESDE LA TIENDA
+function RegistraClienteTienda() {
+  var nombre = $("#nombres").val();
+  var apellidos = $("#apellidos").val();
+  var correo = $("#correo").val();
+  var cedula = $("#cedula").val();
+  var sexo = $("#sexo").val();
+  var direccion = $("#direccion").val();
+  var telefono = $("#telefono").val();
+
+  if (
+    nombre.length == 0 ||
+    nombre.trim() == "" ||
+    apellidos.length == 0 ||
+    apellidos.trim() == "" ||
+    correo.length == 0 ||
+    correo.trim() == "" ||
+    cedula.length == 0 ||
+    cedula.trim() == "" ||
+    sexo.length == 0 ||
+    sexo == 0 ||
+    direccion.length == 0 ||
+    direccion.trim() == "" ||
+    telefono.length == 0 ||
+    telefono.trim() == ""
+  ) {
+    ValidarRegistroClientes(
+      nombre,
+      apellidos,
+      correo,
+      cedula,
+      sexo,
+      direccion,
+      telefono
+    );
+
+    return swal.fire(
+      "Campo vacios",
+      "Los campos no deben quedar vacios, complete los datos",
+      "warning"
+    );
+  } else {
+    $("#nombres_olbligg").html("");
+    $("#apellidos_olbligg").html("");
+    $("#correo_olbligg").html("");
+    $("#cedula_olbligg").html("");
+    $("#sexo_olbligg").html("");
+    $("#direccion_olbligg").html("");
+    $("#telefono_olbligg").html("");
+  }
+
+  if (!correo_cliente) {
+    return swal.fire(
+      "Correo incorrecto",
+      "Ingrese un correo correcto",
+      "warning"
+    );
+  }
+
+  if (!cedula_cliente) {
+    return swal.fire(
+      "Cedula incorrecto",
+      "Ingrese una cedula correcta",
+      "warning"
+    );
+  }
+
+  var formdata = new FormData();
+  formdata.append("nombre", nombre);
+  formdata.append("apellidos", apellidos);
+  formdata.append("correo", correo);
+  formdata.append("cedula", cedula);
+  formdata.append("sexo", sexo);
+  formdata.append("direccion", direccion);
+  formdata.append("telefono", telefono);
+
+  $(".card").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "cliente/RegistraClienteTienda",
+    type: "POST",
+    //aqui envio toda la formdata
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".card").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          Swal.fire({
+            title: "El cliente se registro con exito",
+            text: "Se envio el password a su correo ingresado",
+            icon: "success",
+            showCancelButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload();
             }
           });
         } else if (resp == 2) {

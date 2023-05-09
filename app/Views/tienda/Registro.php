@@ -10,25 +10,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/summernote/summernote-bs4.min.css">
-
     <link rel="shortcut icon" href="<?php echo base_url(); ?>public/img/logos/load.png" type="image/x-icon">
-
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
@@ -121,7 +104,7 @@
 
                             </div>
                             <div class="card-footer">
-                            <button onclick='RegistraCliente();' class='btn btn-success'>Registrar <i class="fa fa-edit"></i></button>   <a href="<?php echo base_url(); ?>home/login" class='btn btn-danger'>Volver </a>
+                                <button onclick='RegistraClienteTienda();' class='btn btn-success'>Registrar <i class="fa fa-edit"></i></button> <a href="<?php echo base_url(); ?>home/login" class='btn btn-danger'>Volver </a>
                             </div>
 
                         </div>
@@ -133,28 +116,136 @@
     </div>
 
     <script src="<?php echo base_url(); ?>public/plugins/jquery/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/jquery-ui/jquery-ui.min.js"></script>
-
-    <!-- Bootstrap 4 -->
-    <script src="<?php echo base_url(); ?>public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/sparklines/sparkline.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/moment/moment.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/summernote/summernote-bs4.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/dist/js/adminlte.js"></script>
-    <script src="<?php echo base_url(); ?>public/dist/js/pages/dashboard.js"></script>
 
     <!-- //// agregados por mi -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </body>
 
 </html>
+
+<script src="<?php echo base_url(); ?>public/js/cliente.js"></script>
+
+<script>
+    var cedula_cliente = true;
+    var correo_cliente = true;
+
+    var BaseUrl;
+    BaseUrl = "<?php echo base_url(); ?>";
+
+    /////////////////
+    function soloLetras(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+        especiales = "8-37-39-46";
+        tecla_especial = false;
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+            return swal.fire(
+                "No se permiten numeros!!",
+                "Solo se permiten letras",
+                "warning"
+            );
+        }
+    }
+
+    function soloNumeros(e) {
+        var key = window.event ? e.which : e.keyCode;
+        if (key < 48 || key > 57) {
+            return swal.fire(
+                "No se permiten letras!!",
+                "Solo se permiten numeros",
+                "warning"
+            );
+        }
+    }
+
+    $("#cedula").keyup(function() {
+        if (this.value != "") {
+            var cad = document.getElementById("cedula").value.trim();
+            var total = 0;
+            var longitud = cad.length;
+            var longcheck = longitud - 1;
+
+            if (cad != "") {
+                if (cad !== "" && longitud === 10) {
+                    for (i = 0; i < longcheck; i++) {
+                        if (i % 2 === 0) {
+                            var aux = cad.charAt(i) * 2;
+                            if (aux > 9) aux -= 9;
+                            total += aux;
+                        } else {
+                            total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar           
+                        }
+                    }
+                    total = total % 10 ? 10 - total % 10 : 0;
+                    if (cad.charAt(longitud - 1) == total) {
+
+                        var digitos = String(cad).split('').map(d => parseInt(d));
+                        var digito = digitos[0];
+                        var veri = digitos.every((d) => d == digito);
+
+                        if (!veri) {
+                            $(this).css("border", "1px solid green");
+                            $("#cedula_olbligg").html("");
+                            cedula_cliente = true;
+                        } else {
+                            document.getElementById("cedula_olbligg").innerHTML = ("cedula Inválida");
+                            $(this).css("border", "1px solid red");
+                            cedula_cliente = false;
+                        }
+
+                    } else {
+                        document.getElementById("cedula_olbligg").innerHTML = ("cedula Inválida");
+                        $(this).css("border", "1px solid red");
+                        cedula_cliente = false;
+                    }
+                } else {
+                    document.getElementById("cedula_olbligg").innerHTML = ("La cedula no tiene 10 digitos");
+                    $(this).css("border", "1px solid red");
+                    cedula_cliente = false;
+                }
+            } else {
+                document.getElementById("cedula_olbligg").innerHTML = ("Debe ingresra una cedula");
+                $(this).css("border", "1px solid red");
+                cedula_cliente = false;
+            }
+        } else {
+            $(this).css("border", "1px solid green");
+            $("#cedula_olbligg").html("");
+            cedula_cliente = false;
+        }
+    });
+
+    $("#correo").keyup(function() {
+        if (this.value != "") {
+            document.getElementById('correo').addEventListener('input', function() {
+                campo = event.target;
+                //este codigo me da formato email
+                email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                //esto es para validar si es un email valida
+                if (email.test(campo.value)) {
+                    //estilos para cambiar de color y ocultar el boton
+                    $(this).css("border", "1px solid green");
+                    $("#correo_olbligg").html("");
+                    correo_cliente = true;
+                } else {
+                    $(this).css("border", "1px solid red");
+                    $("#correo_olbligg").html("Email incorrecto");
+                    correo_cliente = false;
+                }
+            });
+        } else {
+            $(this).css("border", "1px solid green");
+            $("#correo_olbligg").html("");
+            correo_cliente = false;
+        }
+    });
+</script>

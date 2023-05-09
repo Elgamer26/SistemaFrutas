@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\ModeloUsuario;
 use App\Models\ModeloCliente;
+use App\Models\ModeloProducto;
 
 class Admin extends BaseController
 {
     protected $usuario;
     protected $cliente;
+    protected $producto;
     public function __construct()
     {
         session_start();
         $this->usuario = new ModeloUsuario();
         $this->cliente = new ModeloCliente();
+        $this->producto = new ModeloProducto();
     }
 
     public function index()
@@ -194,7 +197,6 @@ class Admin extends BaseController
                     'color' => "success"
                 ];
                 return view('admin/cliente/CreateCliente.php', $data);
-
             } else if ($valor == "edit") {
                 $cliente = $this->cliente->TraerCliente($id);
                 $data = [
@@ -206,6 +208,103 @@ class Admin extends BaseController
                     'btn' => $estado,
                 ];
                 return view('admin/cliente/FormCliente.php', $data);
+            }
+        }
+    }
+
+    /////////// TIPO DE PRODUCTOS
+
+    public function tipoProducto($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListadoTipo = $this->producto->ListadoTipoProducto();
+                $data = [
+                    'ListadoTipo' => $ListadoTipo
+                ];
+                return view('admin/producto/ListTipoProducto.php', $data);
+            } else if ($valor == "create") {
+                $data = [
+                    'titulo' => "Crear Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Registro Tipo de producto <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='RegistraTipoProducto();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => '', '2' => ''],
+                ];
+                return view('admin/producto/FormTipo.php', $data);
+            } else if ($valor == "edit") {
+                $DataEditar = $this->producto->TraerTipoProductoEdit($id);
+                $data = [
+                    'titulo' => "Editar Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Editar Tipo de producto <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='EditarTipoProducto();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar,
+                ];
+                return view('admin/producto/FormTipo.php', $data);
+            }
+        }
+    }
+
+    //////////PRODUCTO
+
+    public function Producto($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListarProducto = $this->producto->ListadoProductos();
+                $data = [
+                    'ListarProducto' => $ListarProducto
+                ];
+                return view('admin/producto/ListaProducto.php', $data);
+            } else if ($valor == "create") {
+
+                $tipo = $this->producto->SelecTipoProducto();
+                $data = [
+                    'titulo' => "Crear Producto <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de Producto <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='RegistraProducto();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                return view('admin/producto/FormProducto.php', $data);
+            } else if ($valor == "edit") {
+
+                $tipo = $this->producto->SelecTipoProducto();
+                $traerProducto = $this->producto->traerProducto($id);
+
+                $data = [
+                    'titulo' => "Editar Producto <i class='fa fa-edit'></i>",
+                    'texto' => "Editar Producto <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='EditarProducto();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $traerProducto,
+                    'plus' => false,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                
+                return view('admin/producto/FormProducto.php', $data);
+            }else if ($valor == "foto") {
+
+                $tipo = $this->producto->SelecTipoProducto();
+                $traerProducto = $this->producto->traerProducto($id);
+
+                $data = [
+                    'titulo' => "Editar Foto del producto <i class='fa fa-image'></i>",
+                    'texto' => "Editar Foto <i class='fa fa-image'></i>",
+                    'accion' => "<button onclick='EditarFotoProducto();' class='btn btn-warning'>Guardar</button>",
+                    'color' => "warning",
+                    'editar' => $traerProducto,
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => false
+                ];
+                
+                return view('admin/producto/FormProducto.php', $data);
             }
         }
     }

@@ -45,14 +45,13 @@
                             </div>
 
                             <p></p>
-
+                            <label for="username"><b>Usuario</b></label>
                             <div class="form-group first">
-                                <label for="username">Usuario</label>
                                 <input type="text" class="form-control" id="username">
                             </div>
 
+                            <label for="password"><b>Password</b></label>
                             <div class="form-group last mb-4">
-                                <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password">
                             </div>
 
@@ -61,17 +60,15 @@
                             </div>
 
                             <div class="d-flex mb-5 align-items-center">
-
                                 <label class="control control--checkbox mb-0"><span class="caption">Acuérdate de mí</span>
-                                    <input type="checkbox" checked="checked" />
+                                    <input type="checkbox" id="recordar" checked="checked" />
                                     <div class="control__indicator"></div>
                                 </label>
-
                                 <span class="ml-auto"><a href="#" class="forgot-pass">Has olvidado tu contraseña</a></span>
-
                             </div>
 
                             <input type="button" id="btn_aceptar" value="Acceso" class="btn btn-block btn-primary">
+                            <input type="button" id="btn_tienda" value="Tienda" class="btn btn-block btn-danger">
 
                         </div>
                     </div>
@@ -97,4 +94,44 @@
 <script>
     var BaseUrl;
     BaseUrl = "<?php echo base_url(); ?>";
+
+    function RecordaPasswordAdmin() {
+
+        const rmcheck = document.getElementById("recordar");
+        const password = document.getElementById("password");
+        const usuario = document.getElementById("username");
+
+        if (rmcheck.checked == true) {
+            if (rmcheck.checked || usuario.value != "" || password.value != "") {
+
+                localStorage.usuario = usuario.value;
+                localStorage.password = password.value;
+                localStorage.checkbox = rmcheck.checked;
+            } else {
+                localStorage.usuario = "";
+                localStorage.password = "";
+                localStorage.checkbox = "";
+            }
+        } else {
+            localStorage.clear();
+        }
+    }
+
+    $(document).ready(function() {
+
+        const rmcheck = document.getElementById("recordar");
+        const password = document.getElementById("password");
+        const usuario = document.getElementById("username");
+
+        if (localStorage.checkbox && localStorage.checkbox != "") {
+            rmcheck.setAttribute("checked", "checked");
+            password.value = localStorage.password;
+            usuario.value = localStorage.usuario;
+        } else {
+            rmcheck.removeAttribute("checked");
+            password.value = "";
+            usuario.value = "";
+        }
+
+    })
 </script>

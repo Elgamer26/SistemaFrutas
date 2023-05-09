@@ -42,6 +42,7 @@ $(document).on("click", "#btn_aceptar", function () {
               id_usu: data[0],
             },
           }).done(function (res) {
+            RecordaPasswordAdmin();
             if (res == 1) {
               let timerInterval;
               Swal.fire({
@@ -73,6 +74,10 @@ $(document).on("click", "#btn_aceptar", function () {
       }
     });
   }
+});
+
+$(document).on("click", "#btn_tienda", function () {
+  location.href = BaseUrl;
 });
 
 function ModalDatoUsuario() {
@@ -1033,7 +1038,7 @@ function GuardarDatosHacienda() {
   var correo_e = $("#correo_e").val();
   var ruc = $("#ruc").val();
   var telefono = $("#telefono").val();
-  var actividad = $("#actividad").val(); 
+  var actividad = $("#actividad").val();
 
   if (
     nombre.length == 0 ||
@@ -1080,13 +1085,13 @@ function GuardarDatosHacienda() {
     );
   }
 
-  var formdata = new FormData(); 
+  var formdata = new FormData();
   formdata.append("nombre", nombre);
   formdata.append("direccion", direccion);
   formdata.append("correo_e", correo_e);
   formdata.append("ruc", ruc);
   formdata.append("telefono", telefono);
-  formdata.append("actividad", actividad); 
+  formdata.append("actividad", actividad);
 
   $(".card").LoadingOverlay("show", {
     text: "Cargando...",
@@ -1227,10 +1232,10 @@ function UpdateImageEmpresa() {
       $(".card").LoadingOverlay("hide");
       if (resp > 0) {
         if (resp == 1) {
-          
           cargar_contenido(
             "contenido_principal",
-            BaseUrl + "admin/EmpresaView");
+            BaseUrl + "admin/EmpresaView"
+          );
 
           return swal.fire(
             "Imagen correcta",
