@@ -5,18 +5,21 @@ namespace App\Controllers;
 use App\Models\ModeloUsuario;
 use App\Models\ModeloCliente;
 use App\Models\ModeloProducto;
+use App\Models\ModeloInsumos;
 
 class Admin extends BaseController
 {
     protected $usuario;
     protected $cliente;
     protected $producto;
+    protected $insumo;
     public function __construct()
     {
         session_start();
         $this->usuario = new ModeloUsuario();
         $this->cliente = new ModeloCliente();
         $this->producto = new ModeloProducto();
+        $this->insumo = new ModeloInsumos();
     }
 
     public function index()
@@ -286,9 +289,9 @@ class Admin extends BaseController
                     'tipo' => $tipo,
                     'image' => true
                 ];
-                
+
                 return view('admin/producto/FormProducto.php', $data);
-            }else if ($valor == "foto") {
+            } else if ($valor == "foto") {
 
                 $tipo = $this->producto->SelecTipoProducto();
                 $traerProducto = $this->producto->traerProducto($id);
@@ -303,8 +306,139 @@ class Admin extends BaseController
                     'tipo' => $tipo,
                     'image' => false
                 ];
-                
+
                 return view('admin/producto/FormProducto.php', $data);
+            }
+        }
+    }
+
+    /////////// TIPO DE INSUMO
+
+    public function TipoInsumo($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListadoTipo = $this->insumo->ListadoTipoInsumo();
+                $data = [
+                    'ListadoTipo' => $ListadoTipo
+                ];
+                return view('admin/InsumoMaterial/ListTipoInsumo.php', $data);
+            } else if ($valor == "create") {
+                $data = [
+                    'titulo' => "Crear Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Registro Tipo de insumo <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='RegistraTipoInsumo();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => '', '2' => ''],
+                ];
+                return view('admin/InsumoMaterial/FormTipo.php', $data);
+            } else if ($valor == "edit") {
+                $DataEditar = $this->insumo->TraerTipoInsumoEdit($id);
+                $data = [
+                    'titulo' => "Editar Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Editar Tipo de insumo <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='EditarTipoInsumo();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar,
+                ];
+                return view('admin/InsumoMaterial/FormTipo.php', $data);
+            }
+        }
+    }
+
+    ///////////  INSUMOS
+
+    public function Insumos($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListaInsumo = $this->insumo->ListarInsumo();
+                $data = [
+                    'ListaInsumo' => $ListaInsumo
+                ];
+                return view('admin/InsumoMaterial/ListaInsumo.php', $data);
+            } else if ($valor == "create") {
+
+                $tipo = $this->insumo->SelectTipoInsumo();
+                $data = [
+                    'titulo' => "Crear Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de insumo <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='RegistrarInsumo();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                return view('admin/InsumoMaterial/FormInsumo.php', $data);
+            } else if ($valor == "edit") {
+
+                $DataEditar = $this->insumo->TraerInsumoEdit($id);
+                $tipo = $this->insumo->SelectTipoInsumo();
+
+
+                $data = [
+                    'titulo' => "Editar Insumo <i class='fa fa-plus'></i>",
+                    'texto' => "Editar Insumo <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='EditarInsumo();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar,
+                    'plus' => false,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                return view('admin/InsumoMaterial/FormInsumo.php', $data);
+            } else if ($valor == "foto") {
+
+                $DataEditar = $this->insumo->TraerInsumoEdit($id);
+                $tipo = $this->insumo->SelectTipoInsumo();
+
+                $data = [
+                    'titulo' => "Editar Foto del Insumo <i class='fa fa-image'></i>",
+                    'texto' => "Editar Foto <i class='fa fa-image'></i>",
+                    'accion' => "<button onclick='EditarFotoInsumo();' class='btn btn-warning'>Guardar</button>",
+                    'color' => "warning",
+                    'editar' => $DataEditar,
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => false
+                ];
+
+                return view('admin/InsumoMaterial/FormInsumo.php', $data);
+            }
+        }
+    }
+
+    ///////////  MATERIALES
+
+    public function TipoMaterial($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListadoTipo = $this->insumo->ListadoTipoMaterial();
+                $data = [
+                    'ListadoTipo' => $ListadoTipo
+                ];
+                return view('admin/InsumoMaterial/ListTipoMaterial.php', $data);
+            } else if ($valor == "create") {
+                $data = [
+                    'titulo' => "Crear Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Registro Tipo de material <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='RegistraTipoMaterial();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => '', '2' => ''],
+                ];
+                return view('admin/InsumoMaterial/FormTipoMaterial.php', $data);
+            } else if ($valor == "edit") {
+                $DataEditar = $this->insumo->TraerTipoMaterialEdit($id);
+                $data = [
+                    'titulo' => "Editar Tipo <i class='fa fa-plus'></i>",
+                    'texto' => "Editar Tipo de material <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='EditarTipoMaterial();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar,
+                ];
+                return view('admin/InsumoMaterial/FormTipoMaterial.php', $data);
             }
         }
     }

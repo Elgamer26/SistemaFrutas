@@ -11,7 +11,7 @@
  Target Server Version : 80031 (8.0.31)
  File Encoding         : 65001
 
- Date: 08/05/2023 21:52:27
+ Date: 11/05/2023 20:15:33
 */
 
 SET NAMES utf8mb4;
@@ -68,6 +68,30 @@ CREATE TABLE `empresa`  (
 INSERT INTO `empresa` VALUES (1, 'nombre editado', 'direccion editado', 'correo@hotmail.com', '1245', '09876', 'actividad esto es editado por el usuario wey', 'IMG55202321580.png');
 
 -- ----------------------------
+-- Table structure for insumo
+-- ----------------------------
+DROP TABLE IF EXISTS `insumo`;
+CREATE TABLE `insumo`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `tipo_id` int NULL DEFAULT NULL,
+  `precio` decimal(10, 2) NULL DEFAULT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
+  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `estado` int NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `tipo_id`(`tipo_id` ASC) USING BTREE,
+  CONSTRAINT `insumo_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tipoinsumo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of insumo
+-- ----------------------------
+INSERT INTO `insumo` VALUES (1, '388409556', 'TIERRA DE ARBOL', 1, 12.36, 'Descripción del insumo', 'IMG1152023194652.jpg', 1);
+INSERT INTO `insumo` VALUES (2, '350396439', 'ISNUMO EDITADO', 2, 787.45, 'ESTE INSUMO SE EDITO CON EXITO', 'IMG1152023194628.jpg', 1);
+
+-- ----------------------------
 -- Table structure for producto
 -- ----------------------------
 DROP TABLE IF EXISTS `producto`;
@@ -112,6 +136,23 @@ INSERT INTO `rol` VALUES (3, 'adminitrador uno', '2023-04-23 19:04:23', 1);
 INSERT INTO `rol` VALUES (4, 'NUEVO TIPO', '2023-05-07 20:21:37', 0);
 
 -- ----------------------------
+-- Table structure for tipo_material
+-- ----------------------------
+DROP TABLE IF EXISTS `tipo_material`;
+CREATE TABLE `tipo_material`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `estado` int NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tipo_material
+-- ----------------------------
+INSERT INTO `tipo_material` VALUES (1, 'TIPO MATERIAL', 1);
+INSERT INTO `tipo_material` VALUES (2, 'TIPO DE MATERIAL editado', 1);
+
+-- ----------------------------
 -- Table structure for tipo_producto
 -- ----------------------------
 DROP TABLE IF EXISTS `tipo_producto`;
@@ -128,6 +169,23 @@ CREATE TABLE `tipo_producto`  (
 INSERT INTO `tipo_producto` VALUES (1, 'CAPUS EDITADO', 1);
 INSERT INTO `tipo_producto` VALUES (2, 'NUEVO TIPO DE PRODUCTO edit', 1);
 INSERT INTO `tipo_producto` VALUES (3, 'NUEVO TIPO EDITADO', 1);
+
+-- ----------------------------
+-- Table structure for tipoinsumo
+-- ----------------------------
+DROP TABLE IF EXISTS `tipoinsumo`;
+CREATE TABLE `tipoinsumo`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `estado` int NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tipoinsumo
+-- ----------------------------
+INSERT INTO `tipoinsumo` VALUES (1, 'TIPO DE INSUMO', 1);
+INSERT INTO `tipoinsumo` VALUES (2, 'NUEVO TIPO DE INSUMO', 1);
 
 -- ----------------------------
 -- Table structure for usuario
@@ -190,6 +248,29 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for EditarInsumo
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `EditarInsumo`;
+delimiter ;;
+CREATE PROCEDURE `EditarInsumo`(in idd int, in codigov VARCHAR(15), in nombrev VARCHAR(100), in tipo_insumov int, in precio_ventav DECIMAL(10,2), in descripcionv TEXT)
+BEGIN
+
+	DECLARE coun_codigo INT; 
+	
+	set @coun_codigo = (select COUNT(*) from insumo WHERE codigo = codigov AND id != idd);
+  
+	if @coun_codigo = 0 THEN
+		UPDATE insumo SET codigo = codigov, nombre = nombrev, tipo_id = tipo_insumov, precio = precio_ventav, descripcion = descripcionv WHERE id = idd;
+		SELECT 1;
+	ELSE
+		SELECT 2;
+	end if;
+ 
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for EditarProducto
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `EditarProducto`;
@@ -208,6 +289,48 @@ BEGIN
 		SELECT 2;
 	end if;
  
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for EditarTipoInsumo
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `EditarTipoInsumo`;
+delimiter ;;
+CREATE PROCEDURE `EditarTipoInsumo`(in nombre VARCHAR(50), in idd int)
+BEGIN
+
+	DECLARE valor INT;
+	
+	set @valor = (select COUNT(*) from tipoinsumo WHERE BINARY tipo = nombre AND id != idd);
+		if @valor = 0 THEN
+				UPDATE tipoinsumo SET tipo = nombre WHERE id = idd;
+				SELECT 1;
+			ELSE
+				SELECT 2;
+		end if;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for EditarTipoMaterial
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `EditarTipoMaterial`;
+delimiter ;;
+CREATE PROCEDURE `EditarTipoMaterial`(in idd int, in nombre VARCHAR(50))
+BEGIN
+
+	DECLARE valor INT;
+	
+	set @valor = (select COUNT(*) from tipo_material WHERE BINARY tipo = nombre AND id != idd);
+		if @valor = 0 THEN
+				UPDATE tipo_material SET tipo = nombre WHERE id = idd;
+				SELECT 1;
+			ELSE
+				SELECT 2;
+		end if;
 END
 ;;
 delimiter ;
@@ -392,6 +515,29 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for RegistrarInsumo
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `RegistrarInsumo`;
+delimiter ;;
+CREATE PROCEDURE `RegistrarInsumo`(in codigov VARCHAR(15), in nombrev VARCHAR(100), in tipo_insumov int, in precio_ventav DECIMAL(10,2), in descripcionv TEXT, in imagenv VARCHAR(100))
+BEGIN
+
+	DECLARE coun_codigo INT; 
+	
+	set @coun_codigo = (select COUNT(*) from insumo WHERE codigo = codigov);
+  
+	if @coun_codigo = 0 THEN
+		INSERT into insumo (codigo,nombre,tipo_id,precio,descripcion,imagen) VALUES (codigov,nombrev,tipo_insumov,precio_ventav,descripcionv,imagenv);
+		SELECT 1;
+	ELSE
+		SELECT 2;
+	end if;
+ 
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for RegistrarRol
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `RegistrarRol`;
@@ -437,6 +583,48 @@ BEGIN
 		
 		ELSE
 				SELECT 3;
+		end if;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for RegistraTipoInsumo
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `RegistraTipoInsumo`;
+delimiter ;;
+CREATE PROCEDURE `RegistraTipoInsumo`(in nombre VARCHAR(50))
+BEGIN
+
+	DECLARE valor INT;
+	
+	set @valor = (select COUNT(*) from tipoinsumo WHERE BINARY tipo = nombre);
+		if @valor = 0 THEN
+				INSERT into tipoinsumo (tipo) VALUES (nombre);
+				SELECT 1;
+			ELSE
+				SELECT 2;
+		end if;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for RegistraTipoMaterial
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `RegistraTipoMaterial`;
+delimiter ;;
+CREATE PROCEDURE `RegistraTipoMaterial`(in nombre VARCHAR(50))
+BEGIN
+
+	DECLARE valor INT;
+	
+	set @valor = (select COUNT(*) from tipo_material WHERE BINARY tipo = nombre);
+		if @valor = 0 THEN
+				INSERT into tipo_material (tipo) VALUES (nombre);
+				SELECT 1;
+			ELSE
+				SELECT 2;
 		end if;
 END
 ;;

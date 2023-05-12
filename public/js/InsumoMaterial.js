@@ -1,18 +1,20 @@
-//////MODULOS DE PRODUCTOS
+//////MODULOS DE TIPO DE ISNSUMOS
 
-function RegistraTipoProducto() {
+function RegistraTipoInsumo() {
   var nombrerol = $("#nombreTipo").val().trim();
 
   if (nombrerol.trim() == "" || nombrerol.length == 0) {
     Swal.fire("Campo vacio", "Ingrese el nombre del tipo", "warning");
-    return $("#TipoProducto_olbligg").html(" - Ingrese nombre del tipo");
+    return $("#TipoInsumo_olbligg").html(
+      " - Ingrese nombre del tipo de insumo"
+    );
   } else {
-    $("#TipoProducto_olbligg").html("");
+    $("#TipoInsumo_olbligg").html("");
   }
 
   $.ajax({
     type: "POST",
-    url: BaseUrl + "producto/RegistraTipoProducto",
+    url: BaseUrl + "InsumoMaterial/RegistraTipoInsumo",
     data: { nombrerol: nombrerol },
     success: function (response) {
       $(".card").LoadingOverlay("hide");
@@ -66,14 +68,14 @@ function EstadoTipo(id, estado) {
     if (result.isConfirmed) {
       $.ajax({
         type: "POST",
-        url: BaseUrl + "producto/EstadoTipo",
+        url: BaseUrl + "InsumoMaterial/EstadoIsnumo",
         data: { id: id, estado: estado },
         success: function (response) {
           if (response > 0) {
             if (response == 1) {
               cargar_contenido(
                 "contenido_principal",
-                BaseUrl + "admin/tipoProducto/list/0"
+                BaseUrl + "admin/TipoInsumo/list/0"
               );
               return Swal.fire(
                 "Estado",
@@ -94,27 +96,27 @@ function EstadoTipo(id, estado) {
   });
 }
 
-function EditarTipoProducto() {
+function EditarTipoInsumo() {
   var id = $("#TipoId").val().trim();
   var nombrerol = $("#nombreTipo").val().trim();
 
   if (nombrerol.trim() == "" || nombrerol.length == 0) {
-    Swal.fire("Campo vacio", "Ingrese el nombre del tipo", "warning");
-    return $("#TipoProducto_olbligg").html(" - Ingrese nombre del tipo");
+    Swal.fire("Campo vacio", "Ingrese el nombre del tipo de insumo", "warning");
+    return $("#TipoInsumo_olbligg").html(" - Ingrese nombre del tipo");
   } else {
-    $("#TipoProducto_olbligg").html("");
+    $("#TipoInsumo_olbligg").html("");
   }
 
   $.ajax({
     type: "POST",
-    url: BaseUrl + "producto/EditarTipoProducto",
+    url: BaseUrl + "InsumoMaterial/EditarTipoInsumo",
     data: { nombrerol: nombrerol, id: id },
     success: function (response) {
       $(".card").LoadingOverlay("hide");
       if (response == 1) {
         cargar_contenido(
           "contenido_principal",
-          BaseUrl + "admin/tipoProducto/list/0"
+          BaseUrl + "admin/TipoInsumo/list/0"
         );
 
         return Swal.fire(
@@ -145,12 +147,12 @@ function EditarTipoProducto() {
   });
 }
 
-////////// registro de producto
+////////// registro de insumo
 
-function RegistraProducto() {
+function RegistrarInsumo() {
   var codigo = $("#codigo").val();
   var nombres = $("#nombres").val();
-  var tipo_producto = $("#tipo_producto").val();
+  var tipo_producto = $("#tipo_insumo").val();
   var precio_venta = $("#precio_venta").val();
   var descripcion = $("#descripcion").val();
   /// foto
@@ -168,7 +170,7 @@ function RegistraProducto() {
     descripcion.length == 0 ||
     descripcion.trim() == ""
   ) {
-    ValidarRegistroProducto(
+    ValidarRegistroInsumo(
       codigo,
       nombres,
       tipo_producto,
@@ -228,7 +230,7 @@ function RegistraProducto() {
   });
 
   $.ajax({
-    url: BaseUrl + "producto/RegistraProducto",
+    url: BaseUrl + "InsumoMaterial/RegistrarInsumo",
     type: "POST",
     //aqui envio toda la formdata
     data: formdata,
@@ -252,7 +254,7 @@ function RegistraProducto() {
             if (result.isConfirmed) {
               cargar_contenido(
                 "contenido_principal",
-                BaseUrl + "admin/Producto/list/0"
+                BaseUrl + "admin/Insumos/list/0"
               );
             }
           });
@@ -271,11 +273,11 @@ function RegistraProducto() {
   return false;
 }
 
-function EditarProducto() {
-  var productoID = $("#productoID").val();
+function EditarInsumo() {
+  var insumoID = $("#insumoID").val();
   var codigo = $("#codigo").val();
   var nombres = $("#nombres").val();
-  var tipo_producto = $("#tipo_producto").val();
+  var tipo_producto = $("#tipo_insumo").val();
   var precio_venta = $("#precio_venta").val();
   var descripcion = $("#descripcion").val();
 
@@ -291,7 +293,7 @@ function EditarProducto() {
     descripcion.length == 0 ||
     descripcion.trim() == ""
   ) {
-    ValidarRegistroProducto(
+    ValidarRegistroInsumo(
       codigo,
       nombres,
       tipo_producto,
@@ -314,7 +316,7 @@ function EditarProducto() {
 
   var formdata = new FormData();
 
-  formdata.append("productoID", productoID);
+  formdata.append("insumoID", insumoID);
   formdata.append("codigo", codigo);
   formdata.append("nombres", nombres);
   formdata.append("tipo_producto", tipo_producto);
@@ -326,7 +328,7 @@ function EditarProducto() {
   });
 
   $.ajax({
-    url: BaseUrl + "producto/EditarProducto",
+    url: BaseUrl + "InsumoMaterial/EditarInsumo",
     type: "POST",
     //aqui envio toda la formdata
     data: formdata,
@@ -350,7 +352,7 @@ function EditarProducto() {
             if (result.isConfirmed) {
               cargar_contenido(
                 "contenido_principal",
-                BaseUrl + "admin/Producto/list/0"
+                BaseUrl + "admin/Insumos/list/0"
               );
             }
           });
@@ -369,7 +371,7 @@ function EditarProducto() {
   return false;
 }
 
-function ValidarRegistroProducto(
+function ValidarRegistroInsumo(
   codigo,
   nombres,
   tipo_producto,
@@ -395,7 +397,7 @@ function ValidarRegistroProducto(
   }
 
   if (precio_venta.length == 0 || precio_venta.trim() == "") {
-    $("#precio_venta_olbligg").html(" - Ingrese el precio de venta");
+    $("#precio_venta_olbligg").html(" - Ingrese el precio de compra");
   } else {
     $("#precio_venta_olbligg").html("");
   }
@@ -407,7 +409,7 @@ function ValidarRegistroProducto(
   }
 }
 
-function EstadoProducto(id, estado) {
+function EstadoInsumo(id, estado) {
   var res = "";
   if (estado == 1) {
     res = "activo";
@@ -417,7 +419,7 @@ function EstadoProducto(id, estado) {
 
   Swal.fire({
     title: "Cambiar estado?",
-    text: "El estado del producto se cambiara!",
+    text: "El estado del tipo se cambiara!",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
@@ -427,14 +429,14 @@ function EstadoProducto(id, estado) {
     if (result.isConfirmed) {
       $.ajax({
         type: "POST",
-        url: BaseUrl + "producto/EstadoProducto",
+        url: BaseUrl + "InsumoMaterial/EstadoInsumoI",
         data: { id: id, estado: estado },
         success: function (response) {
           if (response > 0) {
             if (response == 1) {
               cargar_contenido(
                 "contenido_principal",
-                BaseUrl + "admin/Producto/list/0"
+                BaseUrl + "admin/Insumos/list/0"
               );
               return Swal.fire(
                 "Estado",
@@ -455,8 +457,8 @@ function EstadoProducto(id, estado) {
   });
 }
 
-function EditarFotoProducto() {
-  var id = document.getElementById("productoID").value;
+function EditarFotoInsumo() {
+  var id = document.getElementById("insumoID").value;
   var foto = document.getElementById("foto").value;
   var ruta_actual = document.getElementById("foto_actu").value;
 
@@ -501,7 +503,7 @@ function EditarFotoProducto() {
   });
 
   $.ajax({
-    url: BaseUrl + "producto/EditarFotoProducto",
+    url: BaseUrl + "InsumoMaterial/EditarFotoInsumo",
     type: "POST",
     //aqui envio toda la formdata
     data: formdata,
@@ -525,7 +527,7 @@ function EditarFotoProducto() {
             if (result.isConfirmed) {
               cargar_contenido(
                 "contenido_principal",
-                BaseUrl + "admin/Producto/list/0"
+                BaseUrl + "admin/Insumos/list/0"
               );
             }
           });
@@ -536,4 +538,153 @@ function EditarFotoProducto() {
     },
   });
   return false;
+}
+
+//// TIPO DE MATERIAL
+
+function RegistraTipoMaterial() {
+  var nombrerol = $("#nombreTipo").val().trim();
+
+  if (nombrerol.trim() == "" || nombrerol.length == 0) {
+    Swal.fire("Campo vacio", "Ingrese el nombre del tipo", "warning");
+    return $("#TipoInsumo_olbligg").html(
+      " - Ingrese nombre del tipo de insumo"
+    );
+  } else {
+    $("#TipoInsumo_olbligg").html("");
+  }
+
+  $.ajax({
+    type: "POST",
+    url: BaseUrl + "InsumoMaterial/RegistraTipoMaterial",
+    data: { nombrerol: nombrerol },
+    success: function (response) {
+      $(".card").LoadingOverlay("hide");
+      if (response == 1) {
+        $("#nombreTipo").val("");
+        return Swal.fire(
+          "Tipo exitoso",
+          "El tipo se creo con exito",
+          "success"
+        );
+      } else if (response == 2) {
+        return Swal.fire(
+          "Tipo ya existe",
+          "El tipo '" + nombrerol + "', ya esta creado",
+          "warning"
+        );
+      } else {
+        return Swal.fire(
+          "Error de registro",
+          "Error al crear el tipo, falla en la matrix",
+          "error"
+        );
+      }
+    },
+
+    beforeSend: function () {
+      $(".card").LoadingOverlay("show", {
+        text: "Cargando...",
+      });
+    },
+  });
+}
+
+function EstadoTipoMaterial(id, estado) {
+  var res = "";
+  if (estado == 1) {
+    res = "activo";
+  } else {
+    res = "inactivo";
+  }
+
+  Swal.fire({
+    title: "Cambiar estado?",
+    text: "El estado del tipo se cambiara!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, cambiar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: "POST",
+        url: BaseUrl + "InsumoMaterial/EstadoTipoMaterial",
+        data: { id: id, estado: estado },
+        success: function (response) {
+          if (response > 0) {
+            if (response == 1) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/TipoMaterial/list/0"
+              );
+              return Swal.fire(
+                "Estado",
+                "EL estado se " + res + " con extio",
+                "success"
+              );
+            }
+          } else {
+            return Swal.fire(
+              "Estado",
+              "No se pudo cambiar el estado, error en la matrix",
+              "error"
+            );
+          }
+        },
+      });
+    }
+  });
+}
+
+function EditarTipoMaterial() {
+  var id = $("#TipoId").val().trim();
+  var nombrerol = $("#nombreTipo").val().trim();
+
+  if (nombrerol.trim() == "" || nombrerol.length == 0) {
+    Swal.fire("Campo vacio", "Ingrese el nombre del tipo de insumo", "warning");
+    return $("#TipoInsumo_olbligg").html(" - Ingrese nombre del tipo");
+  } else {
+    $("#TipoInsumo_olbligg").html("");
+  }
+
+  $.ajax({
+    type: "POST",
+    url: BaseUrl + "InsumoMaterial/EditarTipoMaterial",
+    data: { nombrerol: nombrerol, id: id },
+    success: function (response) {
+      $(".card").LoadingOverlay("hide");
+      if (response == 1) {
+        cargar_contenido(
+          "contenido_principal",
+          BaseUrl + "admin/TipoMaterial/list/0"
+        );
+
+        return Swal.fire(
+          "Tipo exitoso",
+          "El tipo se edito con exito",
+          "success"
+        );
+      } else if (response == 2) {
+        return Swal.fire(
+          "Tipo ya existe",
+          "El tipo '" + nombrerol + "', ya esta creado",
+          "warning"
+        );
+      } else {
+        return Swal.fire(
+          "Error de dato",
+          "Error al editar el tipo, falla en la matrix" + response,
+          "error"
+        );
+      }
+    },
+
+    beforeSend: function () {
+      $(".card").LoadingOverlay("show", {
+        text: "Cargando...",
+      });
+    },
+  });
 }

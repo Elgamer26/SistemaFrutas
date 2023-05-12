@@ -266,16 +266,34 @@
                     <p>Producto</p>
                   </a>
                 </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cube"></i>
+                <p>
+                  Insumos y materiales
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/charts/inline.html" class="nav-link">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/TipoInsumo/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Inline</p>
+                    <p>Tipo insumo</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/charts/uplot.html" class="nav-link">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Insumos/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>uPlot</p>
+                    <p>Insumo</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/TipoMaterial/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tipo de material</p>
                   </a>
                 </li>
               </ul>
