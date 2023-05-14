@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-6 order-md-2">
                     <img src="<?php echo base_url(); ?>public/loginCli/images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
-                    <a href="<?php echo base_url(); ?>admin">Admin</a>
+                    <!-- <a href="<?php echo base_url(); ?>admin">Admin</a> -->
                 </div>
                 <div class="col-md-6 contents">
                     <div class="row justify-content-center">

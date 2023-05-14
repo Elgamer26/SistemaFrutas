@@ -1,0 +1,643 @@
+CRITICAL - 2023-05-13 02:49:20 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormInsumo.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormInsumo.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormInsumo.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormInsumo.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormInsumo.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormInsumo.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:49:21 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormInsumo.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormInsumo.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormInsumo.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormInsumo.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormInsumo.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormInsumo.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:49:40 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:49:41 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '1')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:49:41 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '1')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:49:42 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '1')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:50:50 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '1')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:50:51 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:50:51 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 02:50:51 --> Array to string conversion
+in APPPATH\Views\admin\InsumoMaterial\FormMaterial.php on line 28.
+ 1 APPPATH\Views\admin\InsumoMaterial\FormMaterial.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\InsumoMaterial\\FormMaterial.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/InsumoMaterial/FormMaterial.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(487): view('admin/InsumoMaterial/FormMaterial.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Material('edit', '2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:11:01 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 84.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:11:22 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 84.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:11:23 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 84.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:11:35 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 84.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:11:38 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 84.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 84)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:12:57 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 90.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 90)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:12:58 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 90.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 90)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:13:42 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 88.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 88)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:13:43 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 88.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 88)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 03:13:46 --> Undefined variable $btn
+in APPPATH\Views\admin\compra\FormProveedor.php on line 88.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $btn', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 88)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(526): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:16:24 --> Call to undefined method App\Models\ModeloInsumos::ListarProveedor()
+in APPPATH\Controllers\Admin.php on line 516.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('list', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:16:26 --> Call to undefined method App\Models\ModeloInsumos::ListarProveedor()
+in APPPATH\Controllers\Admin.php on line 516.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('list', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:16:39 --> Undefined array key "codigo"
+in APPPATH\Views\admin\compra\ListProveedor.php on line 65.
+ 1 APPPATH\Views\admin\compra\ListProveedor.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "codigo"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\ListProveedor.php', 65)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\ListProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/ListProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(520): view('admin/compra/ListProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('list', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:16:41 --> Undefined array key "codigo"
+in APPPATH\Views\admin\compra\ListProveedor.php on line 65.
+ 1 APPPATH\Views\admin\compra\ListProveedor.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "codigo"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\ListProveedor.php', 65)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\ListProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/ListProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(520): view('admin/compra/ListProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('list', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:59:56 --> Undefined variable $image
+in APPPATH\Views\admin\compra\FormCompraInsumo.php on line 31.
+ 1 APPPATH\Views\admin\compra\FormCompraInsumo.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormCompraInsumo.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormCompraInsumo.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormCompraInsumo.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(569): view('admin/compra/FormCompraInsumo.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:59:57 --> Undefined variable $image
+in APPPATH\Views\admin\compra\FormCompraInsumo.php on line 31.
+ 1 APPPATH\Views\admin\compra\FormCompraInsumo.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormCompraInsumo.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormCompraInsumo.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormCompraInsumo.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(569): view('admin/compra/FormCompraInsumo.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 13:59:57 --> Undefined variable $image
+in APPPATH\Views\admin\compra\FormCompraInsumo.php on line 31.
+ 1 APPPATH\Views\admin\compra\FormCompraInsumo.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormCompraInsumo.php', 31)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormCompraInsumo.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormCompraInsumo.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(569): view('admin/compra/FormCompraInsumo.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:25 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:27 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:30 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:30 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:30 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:30 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 12:11:50 --> Call to undefined method App\Models\ModeloInsumos::ListarInsumoComprar()
+in APPPATH\Controllers\Admin.php on line 563.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->CompraInsumos('create', '0')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 15:17:34 --> Trying to access array offset on value of type bool
+in APPPATH\Views\admin\compra\FormProveedor.php on line 28.
+ 1 APPPATH\Views\admin\compra\FormProveedor.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php', 28)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\compra\\FormProveedor.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/compra/FormProveedor.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(545): view('admin/compra/FormProveedor.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->proveedor('edit', '11')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 20:41:36 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 20:50:01 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:50:30 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:51:06 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:51:29 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:51:38 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:54:02 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:55:15 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 20:57:48 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 21:02:17 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 21:07:14 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 21:07:32 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\ThirdParty\mpdf\mpdf): Failed to open stream: Permission denied
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\mpdf\\mpdf): Failed to open stream: Permission denied', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:08:00 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\ThirdParty\mpdf\mpdf): Failed to open stream: Permission denied
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\mpdf\\mpdf): Failed to open stream: Permission denied', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:08:28 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\ThirdParty\mpdf\mpdf): Failed to open stream: Permission denied
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\mpdf\\mpdf): Failed to open stream: Permission denied', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:12:37 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:15:46 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2023-05-13 21:16:55 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty/mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(11): CodeIgniter\Autoloader\Autoloader->loadClassmap('Mpdf')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:16:55 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-13 21:17:55 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty/mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(11): CodeIgniter\Autoloader\Autoloader->loadClassmap('Mpdf')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:17:55 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-13 21:18:25 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty/mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(11): CodeIgniter\Autoloader\Autoloader->loadClassmap('Mpdf')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:18:25 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-13 21:21:07 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty/mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(11): CodeIgniter\Autoloader\Autoloader->loadClassmap('Mpdf')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:21:07 --> Array and string offset access syntax with curly braces is no longer supported
+in APPPATH\ThirdParty\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 21:21:42 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:22:09 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:23:24 --> Trait "setasign\Fpdi\FpdiTrait" not found
+in APPPATH\ThirdParty\mpdf\src\FpdiTrait.php on line 25.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-13 21:23:45 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:24:46 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:27:15 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:27:31 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:27:53 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:28:15 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:30:27 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\Controllers/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:30:55 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\Controllers\vendor\autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\vendor\\autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:31:52 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\Controllers/../vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers/../vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:32:11 --> require_once(/../vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(/../vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:32:39 --> require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:34:20 --> require_once(&quot;http://localhost:8080/SistemaFrutal//../vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(&quot;http://localhost:8080/SistemaFrutal//../vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:34:44 --> require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:34:59 --> require_once(&quot;http://localhost:8080/SistemaFrutal//vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(&quot;http://localhost:8080/SistemaFrutal//vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:35:07 --> require_once(&quot;http://localhost:8080/SistemaFrutal/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(&quot;http://localhost:8080/SistemaFrutal/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:35:59 --> require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:56:54 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:57:40 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:58:43 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:58:59 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:59:10 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 21:59:40 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 22:18:07 --> Class "Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 22:28:47 --> Unsupported operand types: array + string
+in APPPATH\Models\ModeloProveedor.php on line 251.
+ 1 APPPATH\Controllers\Compra.php(100): App\Models\ModeloProveedor->DetalleCompraInsumo('22', '4', '12.00', '5', '0', '60.00')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Compra->DetalleCompraInsumo()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Compra))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-13 22:30:06 --> Unsupported operand types: array + string
+in APPPATH\Models\ModeloProveedor.php on line 251.
+ 1 APPPATH\Controllers\Compra.php(100): App\Models\ModeloProveedor->DetalleCompraInsumo('23', '4', '12.00', '1', '0', '12.00')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Compra->DetalleCompraInsumo()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Compra))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

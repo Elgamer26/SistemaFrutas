@@ -385,7 +385,7 @@ function ValidarRegistroInsumo(
   }
 
   if (nombres.length == 0 || nombres.trim() == "") {
-    $("#nombres_olbligg").html(" - Ingrese el nombre del producto");
+    $("#nombres_olbligg").html(" - Ingrese el nombre del insumo");
   } else {
     $("#nombres_olbligg").html("");
   }
@@ -403,7 +403,7 @@ function ValidarRegistroInsumo(
   }
 
   if (descripcion.length == 0 || descripcion.trim() == "") {
-    $("#descripcion_olbligg").html(" - Ingrese la descripcion del producto");
+    $("#descripcion_olbligg").html(" - Ingrese la descripcion del insumo");
   } else {
     $("#descripcion_olbligg").html("");
   }
@@ -687,4 +687,397 @@ function EditarTipoMaterial() {
       });
     },
   });
+}
+
+////////// registro de material
+
+function RegistrarMaterial() {
+  var codigo = $("#codigo").val();
+  var nombres = $("#nombres").val();
+  var tipo_producto = $("#tipo_material").val();
+  var precio_venta = $("#precio_venta").val();
+  var descripcion = $("#descripcion").val();
+  /// foto
+  var foto = $("#foto").val();
+
+  if (
+    codigo.length == 0 ||
+    codigo.trim() == "" ||
+    nombres.length == 0 ||
+    nombres.trim() == "" ||
+    tipo_producto.length == 0 ||
+    tipo_producto.trim() == "" ||
+    precio_venta.length == 0 ||
+    precio_venta.trim() == "" ||
+    descripcion.length == 0 ||
+    descripcion.trim() == ""
+  ) {
+    ValidarRegistroMaterial(
+      codigo,
+      nombres,
+      tipo_producto,
+      precio_venta,
+      descripcion
+    );
+
+    return swal.fire(
+      "Campo vacios",
+      "Los campos no deben quedar vacios, complete los datos",
+      "warning"
+    );
+  } else {
+    $("#codigo_olbligg").html("");
+    $("#nombres_olbligg").html("");
+    $("#tipo_material_olbligg").html("");
+    $("#precio_venta_olbligg").html("");
+    $("#descripcion_olbligg").html("");
+  }
+
+  //para scar la fecha para la foto
+  var f = new Date();
+  //este codigo me captura la extenion del archivo
+  var extecion = foto.split(".").pop();
+  //renombramoso el archivo con las hora minutos y segundos
+  var nombrearchivo =
+    "IMG" +
+    f.getDate() +
+    "" +
+    (f.getMonth() + 1) +
+    "" +
+    f.getFullYear() +
+    "" +
+    f.getHours() +
+    "" +
+    f.getMinutes() +
+    "" +
+    f.getSeconds() +
+    "." +
+    extecion;
+
+  var formdata = new FormData();
+  var foto = $("#foto")[0].files[0];
+  //est valores son como los que van en la data del ajax
+
+  formdata.append("codigo", codigo);
+  formdata.append("nombres", nombres);
+  formdata.append("tipo_producto", tipo_producto);
+  formdata.append("precio_venta", precio_venta);
+  formdata.append("descripcion", descripcion);
+
+  formdata.append("foto", foto);
+  formdata.append("nombrearchivo", nombrearchivo);
+
+  $(".card").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "InsumoMaterial/RegistrarMaterial",
+    type: "POST",
+    //aqui envio toda la formdata
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".card").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          Swal.fire({
+            title: "",
+            text: "El producto se registro con exito",
+            icon: "success",
+            showCancelButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/Material/list/0"
+              );
+            }
+          });
+        } else if (resp == 2) {
+          return swal.fire(
+            "Código ya existe",
+            "La código ingresado " + codigo + " ya existe",
+            "warning"
+          );
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
+}
+
+function EditarMaterial() {
+  var insumoID = $("#materialID").val();
+  var codigo = $("#codigo").val();
+  var nombres = $("#nombres").val();
+  var tipo_producto = $("#tipo_material").val();
+  var precio_venta = $("#precio_venta").val();
+  var descripcion = $("#descripcion").val();
+
+  if (
+    codigo.length == 0 ||
+    codigo.trim() == "" ||
+    nombres.length == 0 ||
+    nombres.trim() == "" ||
+    tipo_producto.length == 0 ||
+    tipo_producto.trim() == "" ||
+    precio_venta.length == 0 ||
+    precio_venta.trim() == "" ||
+    descripcion.length == 0 ||
+    descripcion.trim() == ""
+  ) {
+    ValidarRegistroMaterial(
+      codigo,
+      nombres,
+      tipo_producto,
+      precio_venta,
+      descripcion
+    );
+
+    return swal.fire(
+      "Campo vacios",
+      "Los campos no deben quedar vacios, complete los datos",
+      "warning"
+    );
+  } else {
+    $("#codigo_olbligg").html("");
+    $("#nombres_olbligg").html("");
+    $("#tipo_material_olbligg").html("");
+    $("#precio_venta_olbligg").html("");
+    $("#descripcion_olbligg").html("");
+  }
+
+  var formdata = new FormData();
+
+  formdata.append("insumoID", insumoID);
+  formdata.append("codigo", codigo);
+  formdata.append("nombres", nombres);
+  formdata.append("tipo_producto", tipo_producto);
+  formdata.append("precio_venta", precio_venta);
+  formdata.append("descripcion", descripcion);
+
+  $(".card").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "InsumoMaterial/EditarMaterial",
+    type: "POST",
+    //aqui envio toda la formdata
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".card").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          Swal.fire({
+            title: "",
+            text: "El producto se edito con exito",
+            icon: "success",
+            showCancelButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/Material/list/0"
+              );
+            }
+          });
+        } else if (resp == 2) {
+          return swal.fire(
+            "Código ya existe",
+            "La código ingresado " + codigo + " ya existe",
+            "warning"
+          );
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
+}
+
+function ValidarRegistroMaterial(
+  codigo,
+  nombres,
+  tipo_producto,
+  precio_venta,
+  descripcion
+) {
+  if (codigo.length == 0 || codigo.trim() == "") {
+    $("#codigo_olbligg").html(" - Ingrese el código");
+  } else {
+    $("#codigo_olbligg").html("");
+  }
+
+  if (nombres.length == 0 || nombres.trim() == "") {
+    $("#nombres_olbligg").html(" - Ingrese el nombre del material");
+  } else {
+    $("#nombres_olbligg").html("");
+  }
+
+  if (tipo_producto.length == 0 || tipo_producto.trim() == "") {
+    $("#tipo_material_olbligg").html(" - Ingrese el tipo");
+  } else {
+    $("#tipo_material_olbligg").html("");
+  }
+
+  if (precio_venta.length == 0 || precio_venta.trim() == "") {
+    $("#precio_venta_olbligg").html(" - Ingrese el precio de compra");
+  } else {
+    $("#precio_venta_olbligg").html("");
+  }
+
+  if (descripcion.length == 0 || descripcion.trim() == "") {
+    $("#descripcion_olbligg").html(" - Ingrese la descripcion del material");
+  } else {
+    $("#descripcion_olbligg").html("");
+  }
+}
+
+function EstadoMaterial(id, estado) {
+  var res = "";
+  if (estado == 1) {
+    res = "activo";
+  } else {
+    res = "inactivo";
+  }
+
+  Swal.fire({
+    title: "Cambiar estado?",
+    text: "El estado del tipo se cambiara!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, cambiar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: "POST",
+        url: BaseUrl + "InsumoMaterial/EstadoMaterial",
+        data: { id: id, estado: estado },
+        success: function (response) {
+          if (response > 0) {
+            if (response == 1) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/Material/list/0"
+              );
+              return Swal.fire(
+                "Estado",
+                "EL estado se " + res + " con extio",
+                "success"
+              );
+            }
+          } else {
+            return Swal.fire(
+              "Estado",
+              "No se pudo cambiar el estado, error en la matrix",
+              "error"
+            );
+          }
+        },
+      });
+    }
+  });
+}
+
+function EditarFotoMaterial() {
+  var id = document.getElementById("materialID").value;
+  var foto = document.getElementById("foto").value;
+  var ruta_actual = document.getElementById("foto_actu").value;
+
+  if (foto == "" || ruta_actual.length == 0 || ruta_actual == "") {
+    return swal.fire(
+      "Mensaje de advertencia",
+      "Ingrese una imagen para actualizar",
+      "warning"
+    );
+  }
+
+  var f = new Date();
+  //este codigo me captura la extenion del archivo
+  var extecion = foto.split(".").pop();
+  //renombramoso el archivo con las hora minutos y segundos
+  var nombrearchivo =
+    "IMG" +
+    f.getDate() +
+    "" +
+    (f.getMonth() + 1) +
+    "" +
+    f.getFullYear() +
+    "" +
+    f.getHours() +
+    "" +
+    f.getMinutes() +
+    "" +
+    f.getSeconds() +
+    "." +
+    extecion;
+
+  var formdata = new FormData();
+  var foto = $("#foto")[0].files[0];
+
+  formdata.append("id", id);
+  formdata.append("foto", foto);
+  formdata.append("ruta_actual", ruta_actual);
+  formdata.append("nombrearchivo", nombrearchivo);
+
+  $(".card").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "InsumoMaterial/EditarFotoMaterial",
+    type: "POST",
+    //aqui envio toda la formdata
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".card").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          Swal.fire({
+            title: "",
+            text: "Foto del producto se edito con exito",
+            icon: "success",
+            showCancelButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/Material/list/0"
+              );
+            }
+          });
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
 }

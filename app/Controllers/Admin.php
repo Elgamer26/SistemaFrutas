@@ -6,6 +6,7 @@ use App\Models\ModeloUsuario;
 use App\Models\ModeloCliente;
 use App\Models\ModeloProducto;
 use App\Models\ModeloInsumos;
+use App\Models\ModeloProveedor;
 
 class Admin extends BaseController
 {
@@ -13,13 +14,17 @@ class Admin extends BaseController
     protected $cliente;
     protected $producto;
     protected $insumo;
+    protected $proveedor;
+
     public function __construct()
     {
+        date_default_timezone_set('America/Guayaquil');
         session_start();
         $this->usuario = new ModeloUsuario();
         $this->cliente = new ModeloCliente();
         $this->producto = new ModeloProducto();
         $this->insumo = new ModeloInsumos();
+        $this->proveedor = new ModeloProveedor();
     }
 
     public function index()
@@ -439,6 +444,223 @@ class Admin extends BaseController
                     'editar' => $DataEditar,
                 ];
                 return view('admin/InsumoMaterial/FormTipoMaterial.php', $data);
+            }
+        }
+    }
+
+    ///////////  MATERIAL
+
+    public function Material($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListaMaterial = $this->insumo->ListarMaterial();
+                $data = [
+                    'ListaMaterial' => $ListaMaterial
+                ];
+                return view('admin/InsumoMaterial/ListaMaterial.php', $data);
+            } else if ($valor == "create") {
+
+                $tipo = $this->insumo->SelectTipoMaterial();
+                $data = [
+                    'titulo' => "Crear Material <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de Material <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='RegistrarMaterial();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                return view('admin/InsumoMaterial/FormMaterial.php', $data);
+            } else if ($valor == "edit") {
+
+                $DataEditar = $this->insumo->TraerMaterialEdit($id);
+                $tipo =  $this->insumo->SelectTipoMaterial();
+
+                $data = [
+                    'titulo' => "Editar Material <i class='fa fa-plus'></i>",
+                    'texto' => "Editar Material <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='EditarMaterial();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar,
+                    'plus' => false,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                return view('admin/InsumoMaterial/FormMaterial.php', $data);
+            } else if ($valor == "foto") {
+
+                $DataEditar = $this->insumo->TraerMaterialEdit($id);
+                $tipo =  $this->insumo->SelectTipoMaterial();
+
+                $data = [
+                    'titulo' => "Editar Foto del Material <i class='fa fa-image'></i>",
+                    'texto' => "Editar Foto <i class='fa fa-image'></i>",
+                    'accion' => "<button onclick='EditarFotoMaterial();' class='btn btn-warning'>Guardar</button>",
+                    'color' => "warning",
+                    'editar' => $DataEditar,
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => false
+                ];
+
+                return view('admin/InsumoMaterial/FormMaterial.php', $data);
+            }
+        }
+    }
+
+    ///////// PROVEEDOR
+
+    public function proveedor($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                $ListaProveddor = $this->proveedor->ListarProveedor();
+                $data = [
+                    'ListaProveddor' => $ListaProveddor
+                ];
+                return view('admin/compra/ListProveedor.php', $data);
+            } else if ($valor == "create") {
+
+                $data = [
+                    'titulo' => "Crear Proveedor <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de Proveedor <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='RegistrarProveedor();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => '', '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '']
+                ];
+                return view('admin/compra/FormProveedor.php', $data);
+            } else if ($valor == "edit") {
+
+                $DataEditar = $this->proveedor->TraerProveedorEdit($id);
+
+                $data = [
+                    'titulo' => "Editar Proveedor <i class='fa fa-edit'></i>",
+                    'texto' => "Editar el Proveedor <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='EditarProveedor();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar
+                ];
+                return view('admin/compra/FormProveedor.php', $data);
+            }
+        }
+    }
+
+    public function CompraInsumos($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+
+                $ListaCompra = $this->proveedor->ListarCompraInsumo();
+                $data = [
+                    'ListaCompra' => $ListaCompra
+                ];
+                return view('admin/compra/ListCompraInsumo.php', $data);
+            } else if ($valor == "create") {
+
+                $proveedor = $this->proveedor->SelectProveedor();
+                $insumo = $this->insumo->ListarInsumoComprar();
+                $data = [
+                    'titulo' => "Compra de insumo <i class='fa fa-shopping-cart'></i>",
+                    'texto' => "Registro de compra <i class='fa fa-edit'></i>",
+                    'accion' => "<button onclick='RegistrarCompraInsumos();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => date("YmdHms"), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'comprobante' => ['0' => 'Nota de venta', '1' => 'Factura'],
+                    'proveedor' => $proveedor,
+                    'insumo' => $insumo
+                ];
+                return view('admin/compra/FormCompraInsumo.php', $data);
+            }
+        }
+    }
+
+    public function CompraMaterial($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+
+                $ListaCompra = $this->proveedor->ListarCompraMaterial();
+                $data = [
+                    'ListaCompra' => $ListaCompra
+                ];
+                return view('admin/compra/ListCompraMaterial.php', $data);
+            } else if ($valor == "create") {
+
+                $proveedor = $this->proveedor->SelectProveedor();
+                $material = $this->insumo->ListarMaterialComprar();
+
+                $data = [
+                    'titulo' => "Compra de material <i class='fa fa-shopping-cart'></i>",
+                    'texto' => "Registro de compra <i class='fa fa-edit'></i>",
+                    'accion' => "<button onclick='RegistrarCompraMaterial();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => date("YmdHms"), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'comprobante' => ['0' => 'Nota de venta', '1' => 'Factura'],
+                    'proveedor' => $proveedor,
+                    'material' => $material
+                ];
+                return view('admin/compra/FormCompraMaterial.php', $data);
+            }
+        }
+    }
+
+    public function produccion($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                return view('admin/produccion/ListProduccion');
+            } else if ($valor == "create") {
+
+                $proveedor = $this->proveedor->SelectProveedor();
+                $material = $this->insumo->ListarMaterialComprar();
+
+                $data = [
+                    'titulo' => "Crear producción <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de producción <i class='fa fa-edit'></i>",
+                    'accion' => "<button onclick='RegistrarCompraMaterial();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => date("YmdHms"), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'comprobante' => ['0' => 'Nota de venta', '1' => 'Factura'],
+                    'proveedor' => $proveedor,
+                    'material' => $material
+                ];
+
+                return view('admin/produccion/ForProduccion', $data);
+            } else if ($valor == "edit") {
+
+                $DataEditar = $this->insumo->TraerMaterialEdit($id);
+                $tipo =  $this->insumo->SelectTipoMaterial();
+
+                $data = [
+                    'titulo' => "Editar Material <i class='fa fa-plus'></i>",
+                    'texto' => "Editar Material <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='EditarMaterial();' class='btn btn-primary'>Guardar</button>",
+                    'color' => "primary",
+                    'editar' => $DataEditar,
+                    'plus' => false,
+                    'tipo' => $tipo,
+                    'image' => true
+                ];
+                return view('admin/InsumoMaterial/FormMaterial.php', $data);
+            } else if ($valor == "foto") {
+
+                $DataEditar = $this->insumo->TraerMaterialEdit($id);
+                $tipo =  $this->insumo->SelectTipoMaterial();
+
+                $data = [
+                    'titulo' => "Editar Foto del Material <i class='fa fa-image'></i>",
+                    'texto' => "Editar Foto <i class='fa fa-image'></i>",
+                    'accion' => "<button onclick='EditarFotoMaterial();' class='btn btn-warning'>Guardar</button>",
+                    'color' => "warning",
+                    'editar' => $DataEditar,
+                    'plus' => true,
+                    'tipo' => $tipo,
+                    'image' => false
+                ];
+
+                return view('admin/InsumoMaterial/FormMaterial.php', $data);
             }
         }
     }

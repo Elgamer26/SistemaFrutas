@@ -40,6 +40,7 @@
                                                 <th>Nombre</th>
                                                 <th>Tipo Insumo</th>
                                                 <th>Precio Compra</th>
+                                                <th>Cantidad</th>
                                                 <th>Foto</th>
                                                 <th>Descripción</th>
                                                 <th>Estado</th>
@@ -65,6 +66,7 @@
                                                         <td><?= esc($ListaInsumo_item["nombre"]); ?></td>
                                                         <td> <span class="badge badge-warning"><?= esc($ListaInsumo_item["tipo"]); ?></span> </td>
                                                         <td>$ <?= esc($ListaInsumo_item["precio"]); ?></td>
+                                                        <td> <?= esc($ListaInsumo_item["cantidad"]); ?></td>
                                                         <td><a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Insumos/foto/<?php echo $ListaInsumo_item['id']; ?>');" style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/insumo/<?= esc($ListaInsumo_item["imagen"]); ?>' width='45px' /></a></td>
                                                         <td><?= esc($ListaInsumo_item["descripcion"]); ?></td>
 
@@ -94,6 +96,7 @@
                                                 <th>Nombre</th>
                                                 <th>Tipo Insumo</th>
                                                 <th>Precio Compra</th>
+                                                <th>Cantidad</th>
                                                 <th>Foto</th>
                                                 <th>Descripción</th>
                                                 <th>Estado</th>

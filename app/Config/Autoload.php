@@ -61,7 +61,9 @@ class Autoload extends AutoloadConfig
      *
      * @var array<string, string>
      */
-    public $classmap = [];
+    public $classmap = [
+        'Mpdf' => APPPATH . 'ThirdParty/mpdf/mpdf/mpdf.php',
+    ];
 
     /**
      * -------------------------------------------------------------------
