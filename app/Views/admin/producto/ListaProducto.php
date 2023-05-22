@@ -42,6 +42,7 @@
                                                 <th>Tipo producto</th>
                                                 <th>Precio venta</th>
                                                 <th>Foto</th>
+                                                <th>Cantidad</th>
                                                 <th>Descripción</th>
                                                 <th>Estado</th>
                                             </tr>
@@ -67,6 +68,7 @@
                                                         <td> <span class="badge badge-warning"><?= esc($ListarProducto_item["tipo"]); ?></span> </td>
                                                         <td>$ <?= esc($ListarProducto_item["precio"]); ?></td>
                                                         <td><a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Producto/foto/<?php echo $ListarProducto_item['id']; ?>');" style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/producto/<?= esc($ListarProducto_item["imagen"]); ?>' width='45px' /></a></td>
+                                                        <td><?= esc($ListarProducto_item["cantidad"]); ?></td>
                                                         <td><?= esc($ListarProducto_item["descripcion"]); ?></td>
 
                                                         <td>
@@ -96,6 +98,7 @@
                                                 <th>Tipo producto</th>
                                                 <th>Precio venta</th>
                                                 <th>Foto</th>
+                                                <th>Cantidad</th>
                                                 <th>Descripción</th>
                                                 <th>Estado</th>
                                             </tr>

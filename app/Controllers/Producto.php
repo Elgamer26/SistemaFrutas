@@ -1,11 +1,18 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\ModeloProducto;
+use App\SmsWhatsapp\Whatsapp;
+
 class Producto extends BaseController
 {
     protected $producto;
+    protected $sms;
+
     public function __construct()
     {
+        $this->sms = new Whatsapp();
         $this->producto = new ModeloProducto();
     }
 
@@ -112,5 +119,69 @@ class Producto extends BaseController
             echo $valorFile;
         }
         exit();
+    }
+
+    public function RegistroOferta()
+    {
+        $producto = $this->request->getPost('producto');
+        $fechainicio = $this->request->getPost('fechainicio');
+        $fechafin = $this->request->getPost('fechafin');
+        $tipooferta = $this->request->getPost('tipooferta');
+        $valordescuento = $this->request->getPost('valordescuento');
+
+        $valor = $this->producto->RegistroOferta($producto, $fechainicio, $fechafin, $tipooferta, $valordescuento);
+        echo $valor;
+        exit();
+    }
+
+    public function EditarOferta()
+    {
+        $idoferta = $this->request->getPost('idoferta');
+        $fechainicio = $this->request->getPost('fechainicio');
+        $fechafin = $this->request->getPost('fechafin');
+        $tipooferta = $this->request->getPost('tipooferta');
+        $valordescuento = $this->request->getPost('valordescuento');
+        $valor = $this->producto->EditarOferta($idoferta, $fechainicio, $fechafin, $tipooferta, $valordescuento);
+        echo $valor;
+        exit();
+    }
+
+    ///PAGINADOR DE OFERTAS
+
+    public function Pagination_oferta()
+    {
+        if ($this->request->getMethod() == "post") {
+            $partida = $this->request->getPost('partida');
+            $valor = $this->request->getPost('valor');
+            $repuesta = $this->producto->Pagination_oferta($partida, $valor);
+            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+        }
+        exit();
+    }
+
+    // ELIMINAR LA OFERTA
+    public function EliminarOferta()
+    {
+        $idoferta = $this->request->getPost('idoferta');
+        $idproducto = $this->request->getPost('idproducto');
+        $valor = $this->producto->EliminarOferta($idoferta, $idproducto);
+        echo $valor;
+        exit();
+    }
+
+    /// ENVIAR OFERTA POR SMS whatsapp 
+    public function EnviarOfertasSMS()
+    {
+        $id = $this->request->getPost('id');
+        $sms = $this->producto->GeneraOfertaSms($id);
+
+        if ($sms == 0) {
+            echo $sms;
+            exit();
+        } else {
+            $mensaje = $this->sms->enviar_mensaje($sms);
+            echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
     }
 }

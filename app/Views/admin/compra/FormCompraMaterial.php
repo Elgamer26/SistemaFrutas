@@ -89,7 +89,7 @@
                                 <div class="card card-warning">
                                     <div class="card-header">
                                         <h3 class="card-title"><b>Detalle del material <i class="fa fa-cubes"></i></h3>
-                                        <button onclick="BuscarMaterial();" class="btn btn-danger btn-sm float-right"> <b>Buscar Material <i class="fa fa-search"></i></b> </button>
+                                        <button onclick="BuscarMaterial();" class="btn btn-danger btn-sm float-right"> <b>Buscar Material </b> <i class="fa fa-search"></i></b> </button>
                                     </div>
 
                                     <div class="card-body">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -271,6 +271,33 @@
 
             <li class="nav-item">
               <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-gift"></i>
+                <p>
+                  Ofertas de productos
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/oferta/registro/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Registro de ofertas</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/oferta/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lista de ofertas</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-cube"></i>
                 <p>
                   Insumos y materiales
@@ -344,12 +371,42 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/fases/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Fases de producción</p>
+                  </a>
+                </li>
+
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Lista de producción</p>
                   </a>
                 </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/finalizado/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Producción finalizadas</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/registerFase/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Registrar fase producción</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/perdida/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Perdidas</p>
+                  </a>
+                </li>
+
               </ul>
             </li>
 
@@ -1252,7 +1309,7 @@
     }
     if (letras.indexOf(tecla) == -1 && !tecla_especial) {
       return swal.fire(
-        "No se permiten numeros!!",
+        "No se permiten números!!",
         "Solo se permiten letras",
         "warning"
       );
@@ -1264,7 +1321,7 @@
     if (key < 48 || key > 57) {
       return swal.fire(
         "No se permiten letras!!",
-        "Solo se permiten numeros",
+        "Solo se permiten números",
         "warning"
       );
     }
@@ -1292,7 +1349,7 @@
       } else {
         return swal.fire(
           "No se permiten letras!!",
-          "Solo se permiten numeros decimales",
+          "Solo se permiten números decimales",
           "warning"
         );
       }

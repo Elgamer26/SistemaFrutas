@@ -88,7 +88,7 @@
                             <div class="col-md-12 text-center">
                                 <div class="card card-warning">
                                     <div class="card-header">
-                                        <h3 class="card-title"><b>Detalle del insumo <i class="fa fa-cubes"></i></h3>
+                                        <h3 class="card-title"><b>Detalle del insumo </b> <i class="fa fa-cubes"></i></h3>
                                         <button onclick="BuscarInsumo();" class="btn btn-danger btn-sm float-right"> <b>Buscar Insumo <i class="fa fa-search"></i></b> </button>
                                     </div>
 

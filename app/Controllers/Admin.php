@@ -7,6 +7,7 @@ use App\Models\ModeloCliente;
 use App\Models\ModeloProducto;
 use App\Models\ModeloInsumos;
 use App\Models\ModeloProveedor;
+use App\Models\ModeloProduccion;
 
 class Admin extends BaseController
 {
@@ -15,6 +16,7 @@ class Admin extends BaseController
     protected $producto;
     protected $insumo;
     protected $proveedor;
+    protected $produccion;
 
     public function __construct()
     {
@@ -25,6 +27,7 @@ class Admin extends BaseController
         $this->producto = new ModeloProducto();
         $this->insumo = new ModeloInsumos();
         $this->proveedor = new ModeloProveedor();
+        $this->produccion = new ModeloProduccion();
     }
 
     public function index()
@@ -612,55 +615,96 @@ class Admin extends BaseController
             if ($valor == "list") {
                 return view('admin/produccion/ListProduccion');
             } else if ($valor == "create") {
-
-                $proveedor = $this->proveedor->SelectProveedor();
+                $producto = $this->producto->ListProductoProduccion();
+                $insumo = $this->insumo->ListarInsumoComprar();
                 $material = $this->insumo->ListarMaterialComprar();
-
                 $data = [
                     'titulo' => "Crear producción <i class='fa fa-plus'></i>",
                     'texto' => "Registro de producción <i class='fa fa-edit'></i>",
-                    'accion' => "<button onclick='RegistrarCompraMaterial();' class='btn btn-success'>Guardar</button>",
+                    'accion' => "<button onclick='RegistrarProduccionPlantas();' class='btn btn-success'>Guardar</button>",
                     'color' => "success",
-                    'editar' => ['0' => '', '1' => date("YmdHms"), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
-                    'comprobante' => ['0' => 'Nota de venta', '1' => 'Factura'],
-                    'proveedor' => $proveedor,
-                    'material' => $material
+                    'producto' => $producto,
+                    'material' => $material,
+                    'insumo' => $insumo
                 ];
-
                 return view('admin/produccion/ForProduccion', $data);
-            } else if ($valor == "edit") {
+            } else if ($valor == "perdida") {
+                $perdida = $this->produccion->ListarPerdida();
+                $data = [
+                    'perdida' => $perdida
+                ];
+                return view('admin/produccion/ListPerdidad', $data);
+            } else if ($valor == "newperdida") {
+                $produccion = $this->produccion->ListProduccionActivas();
+                $data = [
+                    'titulo' => "Registro de perdida <i class='fa fa-plus'></i>",
+                    'texto' => "Registro perdida de producción <i class='fa fa-cube'></i>",
+                    'accion' => "<button onclick='RegistroPerdidaProduccion();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'produccion' => $produccion
+                ];
+                return view('admin/produccion/FormPerdida.php', $data);
+            } else if ($valor == "fases") {
+                $fase = $this->produccion->ListFases();
+                $data = [
+                    'fase' => $fase
+                ];
+                return view('admin/produccion/ListFases.php',  $data);
+            } else if ($valor == "registerFase") {
+                $produccion = $this->produccion->ListProduccionActivas();
+                $data = [
+                    'titulo' => "Registrar fase <i class='fa fa-plus'></i>",
+                    'texto' => "Registro fase de producción <i class='fa fa-edit'></i>",
+                    'accion' => "<button onclick='RegistrarProduccionPlantas();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'produccion' => $produccion
+                ];
+                return view('admin/produccion/RegisterFase.php',  $data);
+            } else if ($valor == "finalizado") {
+                return view('admin/produccion/ProduccionFinalizado.php');
+            }
+        }
+    }
 
-                $DataEditar = $this->insumo->TraerMaterialEdit($id);
-                $tipo =  $this->insumo->SelectTipoMaterial();
+    ///////////  MATERIAL
+
+    public function oferta($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+                return view('admin/oferta/ListOfertas.php');
+            } else if ($valor == "registro") {
+                $producto = $this->producto->SelectProductoOferta();
+                $data = [
+                    'titulo' => "Crear oferta <i class='fa fa-plus'></i>",
+                    'texto' => "Registro de oferta <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='RegistroOferta();' class='btn btn-success'>Guardar</button>",
+                    'volver' => '<a onclick="cargar_contenido(`contenido_principal`,`' .  base_url() . 'admin/oferta/registro/0`);" class="btn btn-danger">Recargar</a>',
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => '', '2' => date("Y-m-d"), '3' => date("Y-m-d"), '4' => '', '5' => '0'],
+                    'producto' => $producto,
+                    'tipo' => ['0' => '2x1', '1' => '3x1', '2' => 'Descuento %'],
+                    'ocultar'  => true,
+                ];
+                return view('admin/oferta/FormOferta.php', $data);
+            } else if ($valor == "editar") {
+
+                $producto = $this->producto->SelectProductoOferta();
+                $oferta = $this->producto->TraerOfertaEditar($id);
 
                 $data = [
-                    'titulo' => "Editar Material <i class='fa fa-plus'></i>",
-                    'texto' => "Editar Material <i class='fa fa-cube'></i>",
-                    'accion' => "<button onclick='EditarMaterial();' class='btn btn-primary'>Guardar</button>",
+                    'titulo' => "Editar oferta <i class='fa fa-edit'></i>",
+                    'texto' => "Editar la oferta <i class='fa fa-cubes'></i>",
+                    'accion' => "<button onclick='EditarOferta();' class='btn btn-primary'>Guardar</button>",
+                    'volver' => '<a onclick="cargar_contenido(`contenido_principal`,`' .  base_url() . 'admin/oferta/list/0`);" class="btn btn-danger">Volver</a>',
                     'color' => "primary",
-                    'editar' => $DataEditar,
-                    'plus' => false,
-                    'tipo' => $tipo,
-                    'image' => true
-                ];
-                return view('admin/InsumoMaterial/FormMaterial.php', $data);
-            } else if ($valor == "foto") {
-
-                $DataEditar = $this->insumo->TraerMaterialEdit($id);
-                $tipo =  $this->insumo->SelectTipoMaterial();
-
-                $data = [
-                    'titulo' => "Editar Foto del Material <i class='fa fa-image'></i>",
-                    'texto' => "Editar Foto <i class='fa fa-image'></i>",
-                    'accion' => "<button onclick='EditarFotoMaterial();' class='btn btn-warning'>Guardar</button>",
-                    'color' => "warning",
-                    'editar' => $DataEditar,
-                    'plus' => true,
-                    'tipo' => $tipo,
-                    'image' => false
+                    'editar' => $oferta,
+                    'producto' => $producto,
+                    'tipo' => ['0' => '2x1', '1' => '3x1', '2' => 'Descuento %'],
+                    'ocultar'  => false,
                 ];
 
-                return view('admin/InsumoMaterial/FormMaterial.php', $data);
+                return view('admin/oferta/FormOferta.php', $data);
             }
         }
     }

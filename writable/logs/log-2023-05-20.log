@@ -1,0 +1,116 @@
+CRITICAL - 2023-05-20 22:53:53 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:53:56 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:54:26 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:54:46 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:54:48 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:54:49 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:55:19 --> Class "Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:59:39 --> mb_strlen(): Argument #1 ($string) must be of type string, array given
+in APPPATH\Models\ModeloProducto.php on line 721.
+ 1 APPPATH\Models\ModeloProducto.php(721): mb_strlen([...])
+ 2 APPPATH\Controllers\Producto.php(176): App\Models\ModeloProducto->generaOfertaSms('3')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 22:59:45 --> mb_strlen(): Argument #1 ($string) must be of type string, array given
+in APPPATH\Models\ModeloProducto.php on line 721.
+ 1 APPPATH\Models\ModeloProducto.php(721): mb_strlen([...])
+ 2 APPPATH\Controllers\Producto.php(176): App\Models\ModeloProducto->generaOfertaSms('3')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:00:20 --> mb_strlen(): Argument #1 ($string) must be of type string, array given
+in APPPATH\Models\ModeloProducto.php on line 721.
+ 1 APPPATH\Models\ModeloProducto.php(721): mb_strlen([...])
+ 2 APPPATH\Controllers\Producto.php(176): App\Models\ModeloProducto->generaOfertaSms('3')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:01:51 --> mb_strlen(): Argument #1 ($string) must be of type string, array given
+in APPPATH\Models\ModeloProducto.php on line 721.
+ 1 APPPATH\Models\ModeloProducto.php(721): mb_strlen([...])
+ 2 APPPATH\Controllers\Producto.php(176): App\Models\ModeloProducto->GeneraOfertaSms('3')
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:02:02 --> mb_strlen(): Argument #1 ($string) must be of type string, array given
+in APPPATH\Models\ModeloProducto.php on line 721.
+ 1 APPPATH\Models\ModeloProducto.php(721): mb_strlen([...])
+ 2 APPPATH\Controllers\Producto.php(176): App\Models\ModeloProducto->GeneraOfertaSms(null)
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:40:37 --> Class "App\SmsWhatsapp\Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:41:22 --> Class "App\SmsWhatsapp\Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:41:23 --> Class "App\SmsWhatsapp\Whatsapp" not found
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:50:02 --> require_once(../SmsWhatsapp/Whatsapp.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 APPPATH\Controllers\Producto.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(../SmsWhatsapp/Whatsapp.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Producto.php', 15)
+ 2 APPPATH\Controllers\Producto.php(15): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 4 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-20 23:50:22 --> require_once(../SmsWhatsapp/Whatsapp.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Producto.php on line 15.
+ 1 APPPATH\Controllers\Producto.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(../SmsWhatsapp/Whatsapp.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Producto.php', 15)
+ 2 APPPATH\Controllers\Producto.php(15): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Producto->__construct()
+ 4 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

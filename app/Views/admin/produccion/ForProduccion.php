@@ -19,18 +19,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-<?php echo $color; ?> carro">
+                <div class="Formulario card card-<?php echo $color; ?> carro">
                     <div class="card-header">
                         <h3 class="card-title"><b><?php echo $texto; ?></b></h3>
                     </div>
 
                     <div class="card-body">
-                        <input type="hidden" id="CompraInsumoID" value="<?php echo $editar[0]; ?>">
+
                         <div class="row">
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nombreproduccion">Nombre de la producción</label>
+                                    <label for="nombreproduccion">Nombre de la producción</label> <span id="nombree_olbligg" style="color: red;"></span>
                                     <input type="text" class="form-control" id="nombreproduccion" maxlength="80" placeholder="Ingrese nombre de la producción">
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
 
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="diasproduccion">Dias producción</label>
+                                    <label for="diasproduccion">Dias producción</label> <span id="dias_olbligg" style="color: red;"></span>
                                     <input readonly value="0" type="text" name="diasproduccion" class="form-control" id="diasproduccion">
                                 </div>
                             </div>
@@ -60,24 +60,31 @@
                                 <div class="form-group">
                                     <label for="producto">Producto disponible</label> <span id="producto_olbligg" style="color: red;"></span>
                                     <select name="producto" id="producto" class="form-control" style="width: 100%;">
-                                        <?php if (!empty($proveedor) && is_array($proveedor)) {
-                                            foreach ($proveedor as $proveedor_item) { ?>
-                                                <option value="<?= esc($proveedor_item["id"]); ?>" <?php if ($proveedor_item['id'] == $editar[3]) {
-                                                                                                        echo 'selected';
-                                                                                                    } ?>><?= esc($proveedor_item["razon_social"]); ?></option>
+                                        <?php if (!empty($producto) && is_array($producto)) {  ?>
+                                            <option value="0"> --Seleccione el producto--</option>
+                                            <?php
+                                            foreach ($producto as $producto_item) { ?>
+                                                <option value="<?= esc($producto_item["id"]); ?>"><?= esc($producto_item["nombre"]); ?> - <?= esc($producto_item["tipo"]); ?></option>
                                             <?php }
                                         } else { ?>
-                                            <option value="">No hay proveedor</option>
+                                            <option value="0">No hay producto</option>
                                         <?php }
                                         ?>
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="cantidadprod">Cantidad a producir</label> <span id="cantidadprod_olbligg" style="color: red;"></span>
+                                    <input onkeypress="return soloNumeros(event);" value="0" type="text" name="cantidadprod" class="form-control" id="cantidadprod">
+                                </div>
+                            </div>
+
                             <div class="col-md-12 text-center">
                                 <div class="card card-warning">
                                     <div class="card-header">
-                                        <h3 class="card-title"><b>Detalle de producción <i class="fa fa-cubes"></i></h3>
+                                        <h3 class="card-title"><b>Detalle de producción <i class="fa fa-cubes"></i> </b></h3>
                                     </div>
 
                                     <div class="card-body">
@@ -107,11 +114,11 @@
                                                                         <div class="form-group">
                                                                             <label for="insumo">Insumo</label> <span id="insumo_olbligg" style="color: red;"></span>
                                                                             <select name="insumo" id="insumo" class="form-control" style="width: 100%;">
-                                                                                <?php if (!empty($proveedor) && is_array($proveedor)) {
-                                                                                    foreach ($proveedor as $proveedor_item) { ?>
-                                                                                        <option value="<?= esc($proveedor_item["id"]); ?>" <?php if ($proveedor_item['id'] == $editar[3]) {
-                                                                                                                                                echo 'selected';
-                                                                                                                                            } ?>><?= esc($proveedor_item["razon_social"]); ?></option>
+                                                                                <?php if (!empty($insumo) && is_array($insumo)) { ?>
+                                                                                    <option value="0"> --Seleccione el insumo--</option>
+                                                                                    <?php
+                                                                                    foreach ($insumo as $insumo_item) { ?>
+                                                                                        <option value="<?= esc($insumo_item["id"]); ?>"><?= esc($insumo_item["nombre"]); ?> - <?= esc($insumo_item["tipo"]); ?></option>
                                                                                     <?php }
                                                                                 } else { ?>
                                                                                     <option value="">No hay insumo</option>
@@ -138,7 +145,7 @@
                                                                     <div class="col-md-1">
                                                                         <div class="form-group">
                                                                             <label>Agregar</label>
-                                                                            <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                                                                            <button class="btn btn-success" onclick="AggInsumoDetalle();"><i class="fa fa-plus"></i></button>
                                                                         </div>
                                                                     </div>
 
@@ -171,11 +178,11 @@
                                                                         <div class="form-group">
                                                                             <label for="material">Material</label> <span id="material_olbligg" style="color: red;"></span>
                                                                             <select name="material" id="material" class="form-control" style="width: 100%;">
-                                                                                <?php if (!empty($proveedor) && is_array($proveedor)) {
-                                                                                    foreach ($proveedor as $proveedor_item) { ?>
-                                                                                        <option value="<?= esc($proveedor_item["id"]); ?>" <?php if ($proveedor_item['id'] == $editar[3]) {
-                                                                                                                                                echo 'selected';
-                                                                                                                                            } ?>><?= esc($proveedor_item["razon_social"]); ?></option>
+                                                                                <?php if (!empty($material) && is_array($material)) { ?>
+                                                                                    <option value="0"> --Seleccione el material--</option>
+                                                                                    <?php
+                                                                                    foreach ($material as $material_item) { ?>
+                                                                                        <option value="<?= esc($material_item["id"]); ?>"><?= esc($material_item["nombre"]); ?> - <?= esc($material_item["tipo"]); ?></option>
                                                                                     <?php }
                                                                                 } else { ?>
                                                                                     <option value="">No hay material</option>
@@ -202,7 +209,7 @@
                                                                     <div class="col-md-1">
                                                                         <div class="form-group">
                                                                             <label>Agregar</label>
-                                                                            <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                                                                            <button class="btn btn-success" onclick="AggMaterialDetalle();"><i class="fa fa-plus"></i></button>
                                                                         </div>
                                                                     </div>
 
@@ -241,7 +248,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <?php echo $accion; ?> - <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/CompraInsumos/list/0');" class='btn btn-danger'>Volver</a>
+                        <?php echo $accion; ?> - <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/list/0');" class='btn btn-danger'>Volver</a>
                     </div>
 
                 </div>
@@ -250,226 +257,92 @@
     </div>
 </section>
 
-<div class="modal fade" id="ModalBuscarInsumo" tabindex="-1" role="dialog" aria-labelledby="ModalBuscarInsumoLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="background: #007bff;">
-                <h5 class="modal-title" id="ModalBuscarInsumoLabel" style="color: white;"><b>Insumos Disponibles</b></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 col-sm-12 text-center">
-                        <div class="card card-primary">
-                            <table id="TablaInsumo" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th hidden>Id</th>
-                                        <th>Código</th>
-                                        <th>Insumo</th>
-                                        <th>Tipo</th>
-                                        <th>Precio</th>
-                                        <th>Imagen</th>
-                                        <th>Cantidad</th>
-                                        <th>Enviar</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody id="DetalleTablaInsumo">
-
-                                    <?php if (!empty($insumo) && is_array($insumo)) {
-                                        foreach ($insumo as $insumo_item) { ?>
-
-                                            <tr class="odd">
-
-                                                <td hidden><?= esc($insumo_item["id"]); ?></td>
-                                                <td><?= esc($insumo_item["codigo"]); ?></td>
-                                                <td><?= esc($insumo_item["nombre"]); ?></td>
-                                                <td> <span class="badge badge-warning"><?= esc($insumo_item["tipo"]); ?></span> </td>
-                                                <td><?= esc($insumo_item["precio"]); ?></td>
-                                                <td><a style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/insumo/<?= esc($insumo_item["imagen"]); ?>' width='45px' /></a></td>
-                                                <td><?= esc($insumo_item["cantidad"]); ?></td>
-
-                                                <td>
-                                                    <a class='Enviar btn btn-success btn-sm' title='Enviar el insumo'><i class='fa fa-plus'></i></a>
-                                                </td>
-                                            </tr>
-
-                                        <?php }
-                                    } else { ?>
-                                        <tr class="odd">
-                                            No hay insumo disponibles
-                                        </tr>
-
-                                    <?php }
-                                    ?>
-                                </tbody>
-
-                                <tfoot>
-                                    <tr>
-                                        <th hidden>Id</th>
-                                        <th>Código</th>
-                                        <th>Insumo</th>
-                                        <th>Tipo</th>
-                                        <th>Precio</th>
-                                        <th>Imagen</th>
-                                        <th>Cantidad</th>
-                                        <th>Enviar</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script src="<?php echo base_url(); ?>public/js/produccion.js"></script>
 
 <script>
     $("#producto").select2();
     $("#insumo").select2();
     $("#material").select2();
-    
 
-    $("#tipo_comprobante").change(function() {
-        let data = $(this).val();
-
-        if (data == "Factura") {
-            $("#iva").removeAttr("readonly", "readonly");
-            $("#iva").val("12");
-        } else {
-            $("#iva").attr("readonly", "readonly");
-            $("#iva").val("0");
-        }
-
-    });
-
-    function BuscarInsumo() {
-        $("#ModalBuscarInsumo").modal("show");
+    var n = new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    var d = n.getDate();
+    if (d < 10) {
+        d = '0' + d;
+    }
+    if (m < 10) {
+        m = '0' + m;
     }
 
-    $(".Enviar").on("click", function() {
-        var iva = $("#iva").val();
-        var id = $(this).parents("tr").find("td")[0].innerHTML;
-        var alimento = $(this).parents("tr").find("td")[2].innerHTML + " - " + $(this).parents("tr").find("td")[3].innerHTML;
-        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+    fecha_date = y + "-" + m + "-" + d;
 
-        if (iva.trim() == "" || iva.length == 0) {
-            $("#iva_olbligg").html("Ingrese iva");
-            $("#modal_insumo_compra").modal("hide");
-            return Swal.fire(
-                "Campo vacío",
-                "Ingrese un valor en el campos iva",
-                "warning"
-            );
-        } else {
-            $("#iva_olbligg").html("");
-        }
+    $("#fechainicio").change(function() {
+        var fechainicio = $("#fechainicio").val();
+        var fechaFin = $("#fechaFin").val();
 
-        if (validar_insumos_id(id)) {
+        if (fechainicio < fecha_date) {
+            $("#fechainicio").val(fecha_date);
             return Swal.fire(
                 "Mensaje de advertencia",
-                "El insumo: '" +
-                alimento +
-                "' , ya fue agregado al detalle",
+                "La fecha inicio '" +
+                fechainicio +
+                "', es mejor a la fecha actual '" + fecha_date + "'",
                 "warning"
             );
         }
 
-        var datos_agg = "<tr>";
-        datos_agg += "<td hidden for='id'>" + id + "</td>";
-        datos_agg += "<td>" + alimento + "</td>";
-        datos_agg += "<td><input id='cantida_a' style='width: 100px;' type='number' min='1' class='form-control' value='1' placeholder='cantidad' /></td>";
-        datos_agg += "<td>" + precio + "</td>";
-        datos_agg += "<td><input id='descuento_a' style='width: 100px;' type='text' class='form-control' value='0' placeholder='descuento' onkeypress='return soloNumeros(event);' /></td>";
-        datos_agg += "<td>" + precio + "</td>";
-        datos_agg +=
-            "<td> <button class='remover btn btn-danger'><i class='fa fa-trash'></i></button></td>";
-        datos_agg += "</tr>";
-
-        //esto me ayuda a enviar los datos a la tabla
-        $("#tbody_detalle_compra_insumo").append(datos_agg);
-        $("#ModalBuscarInsumo").modal("hide");
-        sumartotalneto();
-    });
-
-    function validar_insumos_id(id) {
-        let idverificar = document.querySelectorAll(
-            "#tbody_detalle_compra_insumo td[for='id']"
-        );
-        return [].filter.call(idverificar, (td) => td.textContent == id).length == 1;
-    }
-
-    $("#tbody_detalle_compra_insumo").on("click", ".remover", function() {
-        var td = this.parentNode;
-        var tr = td.parentNode;
-        var table = tr.parentNode;
-        table.removeChild(tr);
-        sumartotalneto();
-    });
-
-    // para la cantidad del producto
-    $("#tbody_detalle_compra_insumo").on("keyup", "#cantida_a", function() {
-        var cantidad = $(this).parents("tr").find('input[type="number"]').val();
-        var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
-        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
-        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
-        sumartotalneto();
-    });
-
-    $("#tbody_detalle_compra_insumo").on("change", "#cantida_a", function() {
-        var cantidad = $(this).parents("tr").find('input[type="number"]').val();
-        var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
-        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
-        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
-        sumartotalneto();
-    });
-
-    //para el descuento del producto
-    $("#tbody_detalle_compra_insumo").on("keyup", "#descuento_a", function() {
-        var cantidad = $(this).parents("tr").find('#cantida_a').val();
-        var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
-        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
-        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
-        sumartotalneto();
-    });
-
-    function sumartotalneto() {
-        let arreglo_total = new Array();
-        let count = 0;
-        let total = 0;
-        let impuestototal = 0;
-        let subtotal = 0;
-        let impuesto = document.getElementById("iva").value;
-
-        $("#detalle_compra_insumo tbody#tbody_detalle_compra_insumo tr").each(
-            function() {
-                arreglo_total.push($(this).find("td").eq(5).text());
-                count++;
-            }
-        );
-
-        for (var i = 0; i < count; i++) {
-            var suma = arreglo_total[i];
-            subtotal = (parseFloat(subtotal) + parseFloat(suma)).toFixed(2);
-            impuestototal = parseFloat(subtotal * impuesto / 100).toFixed(2);
+        if (fechainicio > fechaFin) {
+            $("#diasproduccion").val("0");
+            return Swal.fire(
+                "Mensaje de advertencia",
+                "La fecha inicio '" +
+                fechainicio +
+                "' es mayor a la fecha final '" +
+                fechaFin +
+                "'",
+                "warning"
+            );
         }
-        total = (parseFloat(subtotal) + parseFloat(impuestototal)).toFixed(2);
 
-        $("#subtotal").val(subtotal);
-        $("#impuesto_sub").val(impuestototal);
-        $("#total_pagar").val(total);
+        monent(fechainicio, fechaFin);
+    });
 
+    $("#fechaFin").change(function() {
+        var fechainicio = $("#fechainicio").val();
+        var fechaFin = $("#fechaFin").val();
+
+        if (fechainicio > fechaFin) {
+            $("#diasproduccion").val("0");
+            return Swal.fire(
+                "Mensaje de advertencia",
+                "La fecha inicio '" +
+                fechainicio +
+                "' es mayor a la fecha final '" +
+                fechaFin +
+                "'",
+                "warning"
+            );
+        }
+
+        monent(fechainicio, fechaFin);
+    });
+
+    // Función para calcular los días transcurridos entre dos fechas
+    function monent(fechainicio, fechaFin) {
+        var fecha1 = moment(fechainicio);
+        var fecha2 = moment(fechaFin);
+        $("#diasproduccion").val(fecha2.diff(fecha1, 'days'));
+
+        var dia = $("#diasproduccion").val();
+
+        if (dia > 180) {
+            $("#diasproduccion").val("0");
+            return Swal.fire(
+                "Mensaje de advertencia",
+                "Los dias ingresados superan la produccion de 180 dias, una produccion tiene aproximadamente 180 dias",
+                "warning"
+            );
+        }
     }
 </script>

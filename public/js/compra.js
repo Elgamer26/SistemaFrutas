@@ -492,11 +492,9 @@ function guardar_detalle_compra_insumo(id) {
         }).then((result) => {
           if (result.value) {
             window.open(
-              BaseUrl +
-                "reporte/compra_alimento/" +
-                parseInt(id) +
-                "#zoom=100%",
-              "Reporte de compra",
+              BaseUrl + "Reporte/ReporteCompraInsumo/" + id,
+              "#zoom=100%",
+              "Reporte de compra insumo",
               "scrollbards=No"
             );
 
@@ -556,7 +554,7 @@ function VerFacturaCompraInsumo(id) {
   }).then((result) => {
     if (result.value) {
       window.open(
-        BaseUrl + "Reporte/ReporteCompraInsumo",
+        BaseUrl + "Reporte/ReporteCompraInsumo/" + id,
         "#zoom=100%",
         "Reporte de compra insumo",
         "scrollbards=No"
@@ -768,11 +766,9 @@ function guardar_detalle_compra_material(id) {
         }).then((result) => {
           if (result.value) {
             window.open(
-              BaseUrl +
-                "reporte/compra_alimento/" +
-                parseInt(id) +
-                "#zoom=100%",
-              "Reporte de compra",
+              BaseUrl + "Reporte/ReporteCompraMaterial/" + id,
+              "#zoom=100%",
+              "Reporte de compra material",
               "scrollbards=No"
             );
 
@@ -857,6 +853,29 @@ function AnularFacturaMaterial(id) {
           }
         },
       });
+    }
+  });
+}
+
+function VerFacturaCompraMaterial(id) {
+  Swal.fire({
+    title: "Imprimir compra de material",
+    text: "Desea imprimir la compra??",
+    icon: "warning",
+    showCancelButton: true,
+    showConfirmButton: true,
+    allowOutsideClick: false,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, Imprimir!!",
+  }).then((result) => {
+    if (result.value) {
+      window.open(
+        BaseUrl + "Reporte/ReporteCompraMaterial/" + id,
+        "#zoom=100%",
+        "Reporte de compra material",
+        "scrollbards=No"
+      );
     }
   });
 }

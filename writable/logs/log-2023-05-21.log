@@ -1,0 +1,578 @@
+CRITICAL - 2023-05-21 01:31:43 --> Invalid file: "tienda/oferta/single.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('tienda/oferta/single.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/oferta/single', [], true)
+ 3 APPPATH\Controllers\Tienda.php(33): view('tienda/oferta/single')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Tienda->Detalle('2')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Tienda))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 01:31:57 --> Invalid file: "tienda/oferta/single.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('tienda/oferta/single.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/oferta/single', [], true)
+ 3 APPPATH\Controllers\Tienda.php(33): view('tienda/oferta/single')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Tienda->Detalle('2')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Tienda))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 01:31:59 --> Invalid file: "tienda/oferta/single.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('tienda/oferta/single.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/oferta/single', [], true)
+ 3 APPPATH\Controllers\Tienda.php(33): view('tienda/oferta/single')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Tienda->Detalle('2')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Tienda))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 01:32:01 --> Invalid file: "tienda/oferta/single.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('tienda/oferta/single.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/oferta/single', [], true)
+ 3 APPPATH\Controllers\Tienda.php(33): view('tienda/oferta/single')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Tienda->Detalle('2')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Tienda))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 01:43:01 --> Undefined variable $token
+in APPPATH\Views\tienda\header.php on line 44.
+ 1 APPPATH\Views\tienda\header.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $token', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\header.php', 44)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\header.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/header', [], true)
+ 5 APPPATH\Controllers\Home.php(22): view('tienda/header')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:13:48 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:14:33 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 13.
+ 1 APPPATH\Views\tienda\single.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 13)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:14:59 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:16:04 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:19:55 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 43.
+ 1 APPPATH\Views\tienda\single.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(48): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:22:44 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 43.
+ 1 APPPATH\Views\tienda\single.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:22:45 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 43.
+ 1 APPPATH\Views\tienda\single.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('index.html')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:22:50 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 43.
+ 1 APPPATH\Views\tienda\single.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('js', 'imagezoom.js')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:22:50 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 43.
+ 1 APPPATH\Views\tienda\single.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('css', 'flexslider.css')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:22:50 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 43.
+ 1 APPPATH\Views\tienda\single.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 43)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(50): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('js', 'jquery.flexslider.js')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:24:04 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(48): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('js', 'imagezoom.js')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:24:04 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(48): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('css', 'flexslider.css')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:24:04 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(48): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('js', 'jquery.flexslider.js')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:24:40 --> Trying to access array offset on value of type bool
+in APPPATH\Views\tienda\single.php on line 10.
+ 1 APPPATH\Views\tienda\single.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 10)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(48): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('css', 'flexslider.css')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 02:51:36 --> Undefined variable $color_bg
+in APPPATH\Views\tienda\single.php on line 61.
+ 1 APPPATH\Views\tienda\single.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $color_bg', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php', 61)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\tienda\\single.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('tienda/single', [], true)
+ 5 APPPATH\Controllers\Home.php(45): view('tienda/single', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Detalle('2')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 13:09:22 --> Array to string conversion
+in APPPATH\Controllers\Producto.php on line 177.
+ 1 APPPATH\Controllers\Producto.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Producto.php', 177)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 13:16:46 --> Class "App\SmsWhatsapp\GuzzleHttp\Client" not found
+in APPPATH\SmsWhatsapp\Whatsapp.php on line 12.
+ 1 APPPATH\Controllers\Producto.php(182): App\SmsWhatsapp\Whatsapp->enviar_mensaje([...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarOfertasSMS()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 13:55:11 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:06:04 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:07:13 --> require_once(../../vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(../../vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:07:36 --> require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:08:10 --> require(): http:// wrapper is disabled in the server configuration by allow_url_include=0
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(): http:// wrapper is disabled in the server configuration by allow_url_include=0', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:09:36 --> require_once(C:\xampp\htdocs\SistemaFrutal\app\Controllers/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 10)
+ 2 APPPATH\Controllers\Reporte.php(10): require_once()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:19:33 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:23:59 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:25:48 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:28:50 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:30:43 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:42:07 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2023-05-21 14:42:47 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:42:47 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 14:43:13 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:43:13 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 14:44:07 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:44:07 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 14:46:51 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 14:48:46 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 14:49:46 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\Reporte.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 14:53:55 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 14:54:30 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 14:55:23 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 14:58:43 --> fopen(http://localhost:8080/SistemaFrutal//img/logotipo.png): Failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 1257.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(http://localhost:8080/SistemaFrutal//img/logotipo.png): Failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\fpdf\\fpdf.php', 1257)
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(1257): fopen('http://localhost:8080/SistemaFrutal//img/logotipo.png', 'rb')
+ 3 APPPATH\ThirdParty\fpdf\fpdf.php(885): FPDF->_parsepng('http://localhost:8080/SistemaFrutal//img/logotipo.png')
+ 4 APPPATH\Controllers\Reporte.php(18): FPDF->Image('http://localhost:8080/SistemaFrutal//img/logotipo.png', 10, 5, 10, 10, 'png')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:00:33 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:02:55 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:02:55 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:07:42 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:07:42 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:07:44 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:07:44 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:07:46 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:07:46 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:07:48 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:07:48 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:07:49 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:07:49 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+WARNING - 2023-05-21 15:07:51 --> [DEPRECATED] Optional parameter $resize declared before required parameter $repy is implicitly treated as a required parameter in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2147.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(248): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\SistemaFrutal\\vendor\\composer/../mpdf/mpdf/mpdf.php')
+ 3 APPPATH\Controllers\Reporte.php(10): CodeIgniter\Autoloader\Autoloader->loadClassmap('mPDF')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:07:51 --> Array and string offset access syntax with curly braces is no longer supported
+in FCPATH\vendor\mpdf\mpdf\mpdf.php on line 2349.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 15:10:59 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdfmio\src\Mpdf.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 15:19:40 --> Trait "Mpdf\Strict" not found
+in APPPATH\ThirdParty\mpdf\src\Mpdf.php on line 28.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-05-21 15:27:30 --> Class "PDF" not found
+in APPPATH\Controllers\Reporte.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:43:16 --> fopen(img/shinheky.png): Failed to open stream: No such file or directory
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 1257.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(img/shinheky.png): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\fpdf\\fpdf.php', 1257)
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(1257): fopen('img/shinheky.png', 'rb')
+ 3 APPPATH\ThirdParty\fpdf\fpdf.php(885): FPDF->_parsepng('img/shinheky.png')
+ 4 APPPATH\Controllers\Reporte.php(118): FPDF->Image('img/shinheky.png', 25, 5, 33)
+ 5 APPPATH\ThirdParty\fpdf\fpdf.php(334): PDF->Header()
+ 6 APPPATH\Controllers\Reporte.php(171): FPDF->AddPage()
+ 7 SYSTEMPATH\Router\AutoRouter.php(147): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php')
+ 8 SYSTEMPATH\Router\Router.php(507): CodeIgniter\Router\AutoRouter->getRoute('Reporte/ReporteCompraInsumo')
+ 9 SYSTEMPATH\Router\Router.php(206): CodeIgniter\Router\Router->autoRoute('Reporte/ReporteCompraInsumo')
+10 SYSTEMPATH\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('Reporte/ReporteCompraInsumo')
+11 SYSTEMPATH\CodeIgniter.php(449): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:43:31 --> fopen(img/shinheky.png): Failed to open stream: No such file or directory
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 1257.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(img/shinheky.png): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\fpdf\\fpdf.php', 1257)
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(1257): fopen('img/shinheky.png', 'rb')
+ 3 APPPATH\ThirdParty\fpdf\fpdf.php(885): FPDF->_parsepng('img/shinheky.png')
+ 4 APPPATH\Controllers\Reporte.php(128): FPDF->Image('img/shinheky.png', 160, 5, 33)
+ 5 APPPATH\ThirdParty\fpdf\fpdf.php(334): PDF->Header()
+ 6 APPPATH\Controllers\Reporte.php(171): FPDF->AddPage()
+ 7 SYSTEMPATH\Router\AutoRouter.php(147): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php')
+ 8 SYSTEMPATH\Router\Router.php(507): CodeIgniter\Router\AutoRouter->getRoute('Reporte/ReporteCompraInsumo')
+ 9 SYSTEMPATH\Router\Router.php(206): CodeIgniter\Router\Router->autoRoute('Reporte/ReporteCompraInsumo')
+10 SYSTEMPATH\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('Reporte/ReporteCompraInsumo')
+11 SYSTEMPATH\CodeIgniter.php(449): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:45:11 --> Undefined property: CodeIgniter\Router\AutoRouter::$response
+in APPPATH\Controllers\Reporte.php on line 221.
+ 1 APPPATH\Controllers\Reporte.php(221): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\Router\\AutoRouter::$response', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 221)
+ 2 SYSTEMPATH\Router\AutoRouter.php(147): include_once('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php')
+ 3 SYSTEMPATH\Router\Router.php(507): CodeIgniter\Router\AutoRouter->getRoute('Reporte/ReporteCompraInsumo')
+ 4 SYSTEMPATH\Router\Router.php(206): CodeIgniter\Router\Router->autoRoute('Reporte/ReporteCompraInsumo')
+ 5 SYSTEMPATH\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('Reporte/ReporteCompraInsumo')
+ 6 SYSTEMPATH\CodeIgniter.php(449): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:50:04 --> fopen(img/shinheky.png): Failed to open stream: No such file or directory
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 1257.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(img/shinheky.png): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\fpdf\\fpdf.php', 1257)
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(1257): fopen('img/shinheky.png', 'rb')
+ 3 APPPATH\ThirdParty\fpdf\fpdf.php(885): FPDF->_parsepng('img/shinheky.png')
+ 4 APPPATH\Controllers\Reporte.php(69): FPDF->Image('img/shinheky.png', 25, 5, 33)
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 15:51:10 --> FPDF error: No page has been added yet
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 271.
+ 1 APPPATH\ThirdParty\fpdf\fpdf.php(1448): FPDF->Error('No page has been added yet')
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(567): FPDF->_out('BT 212.60 799.37 Td (NOMBRE EMPRESA KODO) Tj ET')
+ 3 APPPATH\Controllers\Reporte.php(73): FPDF->Text(75, 15, 'NOMBRE EMPRESA KODO')
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 16:29:29 --> getimagesize(http://localhost:8080/SistemaFrutal/public/img/empresa/IMG1252023223341.jpg): Failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 1238.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'getimagesize(http://localhost:8080/SistemaFrutal/public/img/empresa/IMG1252023223341.jpg): Failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\ThirdParty\\fpdf\\fpdf.php', 1238)
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(1238): getimagesize('http://localhost:8080/SistemaFrutal/public/img/empresa/IMG1252023223341.jpg')
+ 3 APPPATH\ThirdParty\fpdf\fpdf.php(885): FPDF->_parsejpg('http://localhost:8080/SistemaFrutal/public/img/empresa/IMG1252023223341.jpg')
+ 4 APPPATH\Controllers\Reporte.php(39): FPDF->Image('http://localhost:8080/SistemaFrutal/public/img/empresa/IMG1252023223341.jpg', 25, 5, 33)
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 16:37:42 --> Too few arguments to function App\Controllers\Reporte::ReporteCompraInsumo(), 0 passed in C:\xampp\htdocs\SistemaFrutal\system\CodeIgniter.php on line 934 and exactly 1 expected
+in APPPATH\Controllers\Reporte.php on line 22.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 16:51:45 --> utf8_decode(): Argument #1 ($string) must be of type string, array given
+in APPPATH\Controllers\Reporte.php on line 96.
+ 1 APPPATH\Controllers\Reporte.php(96): utf8_decode([...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('25')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 16:51:57 --> Undefined array key 1
+in APPPATH\Controllers\Reporte.php on line 96.
+ 1 APPPATH\Controllers\Reporte.php(96): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 96)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('25')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 16:52:13 --> Undefined array key 1
+in APPPATH\Controllers\Reporte.php on line 96.
+ 1 APPPATH\Controllers\Reporte.php(96): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 96)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('25')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 16:57:31 --> FPDF error: The document is closed
+in APPPATH\ThirdParty\fpdf\fpdf.php on line 271.
+ 1 APPPATH\ThirdParty\fpdf\fpdf.php(1450): FPDF->Error('The document is closed')
+ 2 APPPATH\ThirdParty\fpdf\fpdf.php(519): FPDF->_out('BT /F2 8.00 Tf ET')
+ 3 APPPATH\Controllers\Reporte.php(122): FPDF->SetFont('helvetica', 'B', 8)
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('11')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-21 19:19:32 --> Trying to access array offset on value of type bool
+in APPPATH\Controllers\Reporte.php on line 262.
+ 1 APPPATH\Controllers\Reporte.php(262): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 262)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteProduccionActivas('9')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
