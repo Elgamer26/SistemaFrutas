@@ -10,7 +10,13 @@
         </div>
     </div>
 </div>
-
 </body>
-
 </html>
+
+<script src="<?php echo base_url(); ?>public/js/tienda.js"></script>
+
+<script>
+    var BaseUrl;
+    BaseUrl = "<?php echo base_url(); ?>";
+    ContarCantidadCarrito();
+</script>

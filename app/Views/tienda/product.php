@@ -31,11 +31,11 @@
 	</nav>
 </div>
 
-<script src="<?php echo base_url(); ?>public/js/tienda.js"></script>
+<!-- <script src="<?php echo base_url(); ?>public/js/tienda.js"></script> -->
 
 <script>
-	var BaseUrl;
-	BaseUrl = "<?php echo base_url(); ?>";
+	// var BaseUrl;
+	// BaseUrl = "<?php echo base_url(); ?>";
 
 	$(document).ready(function() {
 		paginartiendaofertas(1);

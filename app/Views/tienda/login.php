@@ -49,13 +49,13 @@
                             <p></p>
 
                             <div class="form-group first">
-                                <label for="cedula">Correo</label>
-                                <input type="text" class="form-control" id="cedula" autocomplete="off">
+                                <label for="cedula"></label>
+                                <input type="text" class="form-control" id="cedula" autocomplete="off" placeholder="Ingrese correo">
                             </div>
 
                             <div class="form-group last mb-4">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" autocomplete="off">
+                                <label for="password"></label>
+                                <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Ingrese usuario">
                             </div>
 
                             <div class="alert alert-danger text-center" id="error_logeo" style="color: white; display:none; text-align: center; background: red; border-radius: 15px; padding: 10px;  text-align: center;">
@@ -64,7 +64,7 @@
 
                             <div class="d-flex mb-5 align-items-center">
                                 <label class="control control--checkbox mb-0"><span class="caption">Acuérdate de mí</span>
-                                    <input type="checkbox" checked="checked" />
+                                    <input type="checkbox" id="recordarclie" checked="checked" />
                                     <div class="control__indicator"></div>
                                 </label>
                                 <span class="ml-auto"><a href="<?php echo base_url(); ?>home/Recuperar" class="forgot-pass">Has olvidado tu contraseña?</a></span>
@@ -97,4 +97,45 @@
 <script>
     var BaseUrl;
     BaseUrl = "<?php echo base_url(); ?>";
+
+    function RecordaPasswordUser() {
+        const rmcheck = document.getElementById("recordarclie");
+        const password = document.getElementById("password");
+        const usuario = document.getElementById("cedula");
+
+        if (rmcheck.checked == true) {
+            if (rmcheck.checkedc || usuario.value != "" || password.value != "") {
+
+                localStorage.usuarioc = usuario.value;
+                localStorage.passwordc = password.value;
+                localStorage.checkboxc = rmcheck.checked;
+            } else {
+                localStorage.usuarioc = "";
+                localStorage.passwordc = "";
+                localStorage.checkboxc = "";
+            }
+        } else {
+            localStorage.usuarioc = "";
+            localStorage.passwordc = "";
+            localStorage.checkboxc = "";
+        }
+    }
+
+    $(document).ready(function() {
+
+        const rmcheck = document.getElementById("recordarclie");
+        const password = document.getElementById("password");
+        const usuario = document.getElementById("cedula");
+
+        if (localStorage.checkboxc && localStorage.checkboxc != "") {
+            rmcheck.setAttribute("checked", "checked");
+            password.value = localStorage.passwordc;
+            usuario.value = localStorage.usuarioc;
+        } else {
+            rmcheck.removeAttribute("checked");
+            password.value = "";
+            usuario.value = "";
+        }
+
+    })
 </script>

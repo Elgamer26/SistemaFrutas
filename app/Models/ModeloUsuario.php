@@ -42,6 +42,26 @@ class ModeloUsuario
         exit();
     }
 
+    //////LLAMAR DATOS DEL DASHBOARD 
+
+    function LlamarDatosDashboard()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "call llamer_etiquetas()";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     //////////// ROLES
 
     function ListadoRoles()

@@ -28,6 +28,9 @@
         });
     </script>
     <script src="<?php echo base_url(); ?>public/tienda/js/jquery.easydropdown.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 </head>
 
 <body>
@@ -48,19 +51,23 @@
 
                 </div>
 
+                <?php if ($token != "NOTOKEN") { ?>
+
                 <div class="col-md-6 top-header-left">
                     <div class="cart box_1">
-                        <a href="checkout.html">
+                        <a href="<?php echo base_url(); ?>home/detallecarrito">
                             <div class="total">
-                                <span class="simpleCart_total"></span>
+                                <span id="totalproducto"> </span>
                             </div>
-                            <i class="fa fa-shopping-cart"></i>
+                            <i style="font-size: 20px;" class="fa fa-shopping-cart"></i>
                         </a>
                         <!-- <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
                         <div class="clearfix"> </div>
                     </div>
                 </div>
 
+                <?php } ?>
+                
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -77,9 +84,11 @@
                     <div class="top-nav">
                         <ul class="memenu skyblue">
                             <li class="active"><a href="<?php echo base_url(); ?>">Inicio</a></li>
-                            <li class="grid"><a href="<?php echo base_url(); ?>home/ofertas" >Ofertas</a>
+                            <li class="grid"><a href="<?php echo base_url(); ?>home/ofertas">Ofertas</a>
                             </li>
-                            <li class="grid"><a href="#">Women</a>
+                            <?php if ($token != "NOTOKEN") { ?>
+                                <li class="grid"><a href="<?php echo base_url(); ?>home/detallecarrito">Detalle carrito</a>
+                            <?php } ?>
                             </li>
                             <li class="grid"><a href="#">Kids</a>
                             </li>

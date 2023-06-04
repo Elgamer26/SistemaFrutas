@@ -319,4 +319,76 @@ class ModeloReporte
         }
         exit();
     }
+
+    //////////// REPORTE DE VENTA WEB
+
+    function DatosVentaWeb($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            ventaweb.id,
+            CONCAT_WS( ' ', cliente.nombre) AS cliente,
+            cliente.cedula,
+            ventaweb.direccion,
+            ventaweb.subtotal,
+            ventaweb.impuesto,
+            ventaweb.total,
+            ventaweb.fecha,
+            ventaweb.n_venta,
+            ventaweb.comprobante,
+            ventaweb.iva,
+            ventaweb.estado,
+            ventaweb.fecharegistro,
+            ventaweb.ciudad,
+            ventaweb.referencia,
+            cliente.apellidos 
+            FROM
+                ventaweb
+                INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
+            WHERE ventaweb.id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatoDetalleVentaWeb($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            ventawebdetalle.cantidad,
+            ventawebdetalle.sale,
+            ventawebdetalle.precio,
+            ventawebdetalle.oferta,
+            ventawebdetalle.descuento,
+            ventawebdetalle.total 
+            FROM
+                ventawebdetalle
+                INNER JOIN producto ON ventawebdetalle.productoid = producto.id 
+            WHERE
+            ventawebdetalle.ventaid = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

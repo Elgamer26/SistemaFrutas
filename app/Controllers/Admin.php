@@ -8,6 +8,7 @@ use App\Models\ModeloProducto;
 use App\Models\ModeloInsumos;
 use App\Models\ModeloProveedor;
 use App\Models\ModeloProduccion;
+use App\Models\ModeloVenta;
 
 class Admin extends BaseController
 {
@@ -17,6 +18,7 @@ class Admin extends BaseController
     protected $insumo;
     protected $proveedor;
     protected $produccion;
+    protected $venta;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class Admin extends BaseController
         $this->insumo = new ModeloInsumos();
         $this->proveedor = new ModeloProveedor();
         $this->produccion = new ModeloProduccion();
+        $this->venta = new ModeloVenta();
     }
 
     public function index()
@@ -35,7 +38,11 @@ class Admin extends BaseController
         if (!isset($_SESSION["id_user"])) {
             return redirect()->to(base_url() . 'login');
         } else {
-            return view('admin/index.php');
+            $data = $this->usuario->LlamarDatosDashboard();
+            $dato = [
+                'data' =>  $data,
+            ];
+            return view('admin/index.php', $dato);
         }
     }
 
@@ -705,6 +712,69 @@ class Admin extends BaseController
                 ];
 
                 return view('admin/oferta/FormOferta.php', $data);
+            }
+        }
+    }
+
+    /// COMENTARIOS DE CLIENTES PRODUCTOS
+    public function comentatios($accion, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($accion == "list") {
+                $producto = $this->producto->SelecProductoComentado();
+                $data = [
+                    'producto' => $producto,
+                    'detalle' => [],
+                    'id' => ['0' => 0],
+                ];
+                return view('admin/cliente/ListComentario.php', $data);
+            } else  if ($accion == "listDetalle") {
+                $detalle = $this->producto->TraerComentarioProductoCliente($id);
+                echo json_encode($detalle, JSON_UNESCAPED_UNICODE);
+                exit();
+            }
+        }
+    }
+
+    /////////// NUEVA VENTA
+    public function ventas($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "list") {
+
+                $ListaCompra = $this->proveedor->ListarCompraInsumo();
+                $data = [
+                    'ListaCompra' => $ListaCompra
+                ];
+                return view('admin/venta/ListVentaProducto.php', $data);
+
+            } else if ($valor == "web") {
+
+                $ListVenta = $this->venta->ListarVentasTiendaWeb();
+                $data = [
+                    'ListVenta' => $ListVenta
+                ];
+                return view('admin/venta/ListVentasTiendaWeb', $data);
+            
+            } else if ($valor == "new") {
+
+                $cliente = $this->venta->SelectCliente();
+                $producto = $this->venta->ListProdcutosDisponibles();
+                $ofertas = $this->venta->ListOfertaDisponibles();
+
+                $data = [
+                    'titulo' => "Venta de producto <i class='fa fa-shopping-cart'></i>",
+                    'texto' => "Registro de venta <i class='fa fa-plus'></i>",
+                    'accion' => "<button onclick='RegistraVenta();' class='btn btn-success'>Guardar</button>",
+                    'color' => "success",
+                    'editar' => ['0' => '', '1' => date("YmdHms"), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'comprobante' => ['0' => 'Nota de venta', '1' => 'Factura'],
+                    'cliente' => $cliente,
+                    'producto' => $producto,
+                    'ofertas' => $ofertas
+                ];
+                return view('admin/venta/FormVentaProducto.php', $data);
+
             }
         }
     }

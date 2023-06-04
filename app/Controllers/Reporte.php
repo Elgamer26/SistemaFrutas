@@ -692,4 +692,129 @@ class Reporte extends BaseController
         $this->response->setHeader('Content-Type', 'application/pdf');
         $pdf->Output("compra_pdf.pdf", "I");
     }
+
+    ////////// FACTURA DE VENTA PRODUCTO
+    public function ReporteVentaWeb($id)
+    {
+        $pdf = new \FPDF('P', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetTopMargin(15);
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+
+        ///llamo a los datos de la empresa
+        $empresa = new Reporte();
+        $datoempresa = $empresa->DatosEmpresaLLamer();
+
+        $venta = $this->reporte->DatosVentaWeb($id);
+        $detalle = $this->reporte->DatoDetalleVentaWeb($id);
+        /////////
+
+        $pdf->SetTitle("Venta Web");
+        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
+        $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
+        $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
+        $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
+        $pdf->Text(90, 39, "Venta Web", 1, '', 'C', 1);
+
+        //información de # de factura
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Text(140, 48, utf8_decode('FACTURA N°:'));
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Text(166, 48, utf8_decode($venta[8]));
+
+        // Agregamos los datos del cliente
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Text(15, 48, utf8_decode('Fecha:'));
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Text(30, 48,  utf8_decode($venta[12]));
+
+        // Agregamos los datos de la factura
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Text(15, 54, utf8_decode('Cliente:'));
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Text(30, 54, utf8_decode($venta[1]));
+
+        $pdf->Ln(50);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(25, 132, 151);
+
+        $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
+
+        $pdf->Ln(1);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(25, 132, 151);
+        $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
+
+        $pdf->Ln(1);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(25, 132, 151);
+
+        $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
+
+        $pdf->Ln(6);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(25, 132, 151);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
+        $pdf->Cell(80, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+
+        $pdf->SetFont('Arial', '', 10);
+
+        for ($i = 0; $i < count($detalle); $i++) {
+
+            $pdf->SetX(15); //posicionamos en x
+
+            if ($i % 2 == 0) {
+                $pdf->SetFillColor(232, 232, 232);
+                $pdf->SetDrawColor(65, 61, 61);
+            } else {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetDrawColor(65, 61, 61);
+            }
+
+            $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
+            $pdf->Cell(80, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Ln(0.5);
+        }
+
+        $pdf->Ln(10);
+        $pdf->setX(95);
+        $pdf->Cell(40, 6, 'Subtotal', 1, 0);
+        $pdf->Cell(60, 6, "$ " . $venta[4], '1', 1, 'R');
+        $pdf->setX(95);
+        $pdf->Cell(40, 6, 'Impuesto', 1, 0);
+        $pdf->Cell(60, 6, "$ " . $venta[5], '1', 1, 'R');
+        $pdf->setX(95);
+        $pdf->Cell(40, 6, 'Total', 1, 0);
+        $pdf->Cell(60, 6, "$ " . $venta[6], '1', 1, 'R');
+
+        if ($venta[11] != 1) {
+            $pdf->Image(base_url() . 'public/img/anulado.png', 80, 250, 60);
+        }
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output("venta_pdf.pdf", "I");
+    }
 }

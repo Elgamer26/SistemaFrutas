@@ -51,28 +51,28 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nombres">Nombres</label> <span id="nombres_olbligg" style="color: red;"></span>
-                                            <input onkeypress="return soloLetras(event)" autocomplete="off" type="text" name="nombres" class="form-control" id="nombres" placeholder="Ingrese nombres" maxlength="80">
+                                            <input oncopy="return false" onpaste="return false" onkeypress="return soloLetras(event)" autocomplete="off" type="text" name="nombres" class="form-control" id="nombres" placeholder="Ingrese nombres" maxlength="80">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="apellidos">Apellidos</label> <span id="apellidos_olbligg" style="color: red;"></span>
-                                            <input onkeypress="return soloLetras(event)" autocomplete="off" type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Ingrese apellidos" maxlength="80">
+                                            <input oncopy="return false" onpaste="return false" onkeypress="return soloLetras(event)" autocomplete="off" type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Ingrese apellidos" maxlength="80">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="correo">Correo</label> <span id="correo_olbligg" style="color: red;"></span>
-                                            <input autocomplete="off" type="text" name="correo" class="form-control" id="correo" placeholder="Ingrese correo" maxlength="80">
+                                            <input oncopy="return false" onpaste="return false" autocomplete="off" type="text" name="correo" class="form-control" id="correo" placeholder="Ingrese correo" maxlength="80">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="cedula">Cedula</label> <span id="cedula_olbligg" style="color: red;"></span>
-                                            <input onkeypress="return soloNumeros(event)" autocomplete="off" type="text" name="cedula" class="form-control" id="cedula" placeholder="Ingrese cedula" maxlength="10">
+                                            <input oncopy="return false" onpaste="return false" onkeypress="return soloNumeros(event)" autocomplete="off" type="text" name="cedula" class="form-control" id="cedula" placeholder="Ingrese cedula" maxlength="10">
                                         </div>
                                     </div>
 
@@ -89,14 +89,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="direccion">Direccion</label> <span id="direccion_olbligg" style="color: red;"></span>
-                                            <input autocomplete="off" type="text" name="direccion" class="form-control" id="direccion" placeholder="Ingrese direccion" maxlength="100">
+                                            <input oncopy="return false" onpaste="return false" autocomplete="off" type="text" name="direccion" class="form-control" id="direccion" placeholder="Ingrese direccion" maxlength="100">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="telefono">Telefono</label> <span id="telefono_olbligg" style="color: red;"></span>
-                                            <input onkeypress="return soloNumeros(event)" autocomplete="off" type="text" name="telefono" class="form-control" id="telefono" placeholder="Ingrese telefono" maxlength="10">
+                                            <input oncopy="return false" onpaste="return false" onkeypress="return soloNumeros(event)" autocomplete="off" type="text" name="telefono" class="form-control" id="telefono" placeholder="Ingrese telefono" maxlength="10">
                                         </div>
                                     </div>
 

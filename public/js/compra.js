@@ -315,7 +315,7 @@ function EstadoProveedor(id, estado) {
               );
               return Swal.fire(
                 "Estado",
-                "EL estado se " + res + " con extio",
+                "EL estado se " + res + " con exito",
                 "success"
               );
             }
@@ -589,7 +589,7 @@ function AnularFactura(id) {
               );
               return Swal.fire(
                 "Estado",
-                "La compra fue anulada con extio",
+                "La compra fue anulada con exito",
                 "success"
               );
             }
@@ -840,7 +840,7 @@ function AnularFacturaMaterial(id) {
               );
               return Swal.fire(
                 "Estado",
-                "La compra fue anulada con extio",
+                "La compra fue anulada con exito",
                 "success"
               );
             }

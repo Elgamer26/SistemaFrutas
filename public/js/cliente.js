@@ -44,6 +44,7 @@ $(document).on("click", "#btn_aceptar", function () {
               user: data[2],
             },
           }).done(function (res) {
+            RecordaPasswordUser();
             if (res == 1) {
               let timerInterval;
               Swal.fire({

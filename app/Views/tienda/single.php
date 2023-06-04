@@ -14,6 +14,8 @@
  						</div>
  					</div>
 
+ 					<input type="hidden" id="idproducto" value="<?php echo $producto[0]; ?>">
+
  					<div class="col-md-7 single-top-right">
  						<div class="single-para simpleCart_shelfItem">
  							<h2><?php echo $producto[1]; ?> </h2>
@@ -44,7 +46,7 @@
  									<div class="clearfix"> </div>
  								</ul>
  							</div> -->
- 							<a class="add-cart item_add">Agregar a carrito</a>
+ 							<a class="add-cart item_add" onclick="AgregarCarritoNormal('<?php echo $producto[0]; ?>', '<?php echo $producto[3]; ?>');">Agregar a carrito</a>
 
  						</div>
  					</div>
@@ -67,7 +69,7 @@
 
  						.chatbox {
  							width: 100%;
- 							height: 400px;
+ 							height: 350px;
  							max-height: 400px;
  							display: flex;
  							flex-direction: column;
@@ -217,30 +219,63 @@
  					<body>
 
  						<section class="chatbox">
-
  							<section class="chat-window">
 
- 								<article class="msg-container msg-self" id="msg-0">
- 									<div class="msg-box" style="width: 100%;  background: #1d1d1d;">
- 										<div class="flr">
- 											<div class="messages">
- 												<p class="msg" style="padding: 0; margin: 0; text-align: center; color: green;" id="msg-1">
- 													<b>sssss</b>
- 												</p>
- 												<br>
- 												<span style="color: white">
- 													ssss
- 												</span>
+ 								<?php foreach ($comentario as $row) { ?>
+
+ 									<article class="msg-container msg-self" id="msg-0">
+ 										<div class="msg-box" style="width: 100%;  background: #1d1d1d;">
+ 											<div class="flr">
+ 												<div class="messages">
+ 													<p class="msg" style="padding: 0; margin: 0; text-align: center; color: green; font-size: 10px;" id="msg-1">
+ 														<b><?php echo $row["nombre"]; ?> </b>
+ 													</p>
+ 													<br>
+ 													<span style="color: white">
+ 														<?php echo $row["detalle"]; ?>
+ 													</span>
+ 												</div>
+ 												<span style="color: white;" class="timestamp"><span class="username"><b> <?php echo $row["fecha"]; ?></b></span></span>
  											</div>
- 											<span style="color: white;" class="timestamp"><span class="username"><b>sssss</span>&bull;<span class="posttime">sss</b></span></span>
  										</div>
- 									</div>
- 								</article>
+ 									</article>
+
+ 								<?php } ?>
 
  							</section>
  						</section>
 
+ 						<?php if ($token != "NOTOKEN") { ?>
+
+ 							<article class="msg-container msg-self" id="msg-0">
+ 								<div class="msg-box" style="width: 100%;  background: #1d1d1d; border-radius: 10px;">
+ 									<div class="flr">
+ 										<div class="messages">
+ 											<span style="color: white">
+ 												<div class="row">
+ 													<div class="col-md-10">
+ 														<label for="comentario">Ingrese un comentario</label>
+ 														<input type="text" class="form-control" id="comentario" maxlength="100">
+ 													</div>
+
+ 													<div class="col-md-2">
+ 														<label></label> <br>
+ 														<button class="btn btn-success" onclick="RegistraCalificacion();"><i class="fa fa-send"></i> Enviar</button>
+ 													</div>
+ 												</div>
+ 											</span>
+
+ 										</div>
+ 										<span style="color: white;" class="timestamp"><span class="username"> </span></span>
+ 									</div>
+ 								</div>
+
+ 							</article>
+
+ 						<?php } ?>
+
  					</body>
+					
  				</div>
  			</div>
 
@@ -263,11 +298,14 @@
  			</div>
 
  			<div class="clearfix"> </div>
-			
+
  		</div>
  	</div>
  </div>
 
- </body>
+ <!-- <script>
+ 	var BaseUrl;
+ 	BaseUrl = "<?php echo base_url(); ?>";
+ </script>
 
- </html>
+ <script src="<?php echo base_url(); ?>public/js/tienda.js"></script> -->

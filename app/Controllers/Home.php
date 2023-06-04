@@ -46,15 +46,20 @@ class Home extends BaseController
     public function Detalle($id)
     {
         if ($this->request->getMethod() == "get") {
+
             if (empty($_SESSION["TokenClie"])) {
                 $token = "NOTOKEN";
             } else {
                 $token = $_SESSION["NombUser"];
             }
+
             $producto = $this->tienda->TraerProductoTienda($id);
+            $comentario = $this->tienda->TraerComentarioProductoNormal($id);
+
             $data = [
                 "token" => $token,
                 "producto" => $producto,
+                "comentario" => $comentario,
             ];
             echo view('tienda/header', $data);
             echo view('tienda/single', $data);
@@ -79,7 +84,7 @@ class Home extends BaseController
                 "producto" => $oferta,
                 "comentario" => $comentario,
             ];
-            
+
             echo view('tienda/header', $data);
             echo view('tienda/oferta', $data);
             echo view('tienda/footer');
@@ -99,5 +104,24 @@ class Home extends BaseController
     public function Recuperar()
     {
         return view('tienda/Recuperar');
+    }
+
+    public function detallecarrito()
+    {
+        if (empty($_SESSION["TokenClie"])) {
+            $token = "NOTOKEN";
+            $detallecompra = [];
+        } else {
+            $token = $_SESSION["NombUser"];
+            $detallecompra = $this->tienda->TraerProductosDelCliente($_SESSION["TokenClie"]);
+        }
+
+        $data = [
+            "token" => $token,
+            "detallecompra" => $detallecompra
+        ];
+        echo view('tienda/header', $data);
+        echo view('tienda/detallecarrito');
+        echo view('tienda/footer');
     }
 }

@@ -1,0 +1,28 @@
+CRITICAL - 2023-06-04 00:18:36 --> Trying to access array offset on value of type bool
+in APPPATH\Controllers\Reporte.php on line 54.
+ 1 APPPATH\Controllers\Reporte.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo('1')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-04 01:28:50 --> Trying to access array offset on value of type bool
+in APPPATH\Controllers\Reporte.php on line 729.
+ 1 APPPATH\Controllers\Reporte.php(729): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type bool', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 729)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteVentaWeb('20')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-04 01:42:31 --> Trying to access array offset on value of type int
+in APPPATH\Controllers\Reporte.php on line 772.
+ 1 APPPATH\Controllers\Reporte.php(772): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 772)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteVentaWeb('22')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-04 01:42:48 --> Undefined array key "nombre"
+in APPPATH\Controllers\Reporte.php on line 772.
+ 1 APPPATH\Controllers\Reporte.php(772): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 772)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteVentaWeb('22')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

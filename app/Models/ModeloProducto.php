@@ -85,6 +85,36 @@ class ModeloProducto
         exit();
     }
 
+    function SelecProductoComentado()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            calificarproducto.idproducto,
+            producto.codigo,
+            producto.nombre,
+            tipo_producto.tipo 
+            FROM
+            calificarproducto
+            INNER JOIN producto ON calificarproducto.idproducto = producto.id
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            GROUP BY
+            calificarproducto.idproducto 
+            ORDER BY
+            calificarproducto.idproducto DESC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function ListadoTipoProducto()
     {
         try {
@@ -735,6 +765,43 @@ class ModeloProducto
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $sms;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerComentarioProductoCliente($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            calificarproducto.id,
+            calificarproducto.calificacion,
+            calificarproducto.detalle,
+            calificarproducto.fecha,
+            calificarproducto.idproducto,
+            calificarproducto.oferta,
+            calificarproducto.idcliente,
+            CONCAT_WS( ' ', cliente.nombre, cliente.apellidos ) AS cliente,
+            CONCAT_WS( ' ', producto.codigo, '-', producto.nombre, '-', tipo_producto.tipo ) AS producto 
+            FROM
+            calificarproducto
+            INNER JOIN cliente ON calificarproducto.idcliente = cliente.id
+            INNER JOIN producto ON calificarproducto.idproducto = producto.id
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
+            calificarproducto.idproducto = ?
+            ORDER BY
+            calificarproducto.id DESC";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
         } catch (\Exception $e) {
             $this->conexion->cerrar_conexion();
             echo "Error: " . $e->getMessage();

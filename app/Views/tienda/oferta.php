@@ -39,7 +39,7 @@
                                 <a> <b>Descuento: </b> <?php echo $producto[11]; ?> %</a>
                                 <div class="clearfix"> </div>
                             </div>
-                            <a class="add-cart item_add">Agregar a carrito</a>
+                            <a class="add-cart item_add" onclick="AgregarCarritoOferta('<?php echo $producto[0]; ?>','<?php echo $producto[3]; ?>');">Agregar a carrito</a>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
@@ -239,6 +239,8 @@
 
                         </section>
 
+                        <?php if ($token != "NOTOKEN") { ?>
+
                         <article class="msg-container msg-self" id="msg-0">
                             <div class="msg-box" style="width: 100%;  background: #1d1d1d; border-radius: 10px;">
                                 <div class="flr">
@@ -263,6 +265,8 @@
                             </div>
 
                         </article>
+
+                        <?php } ?>
 
                     </body>
                 </div>
@@ -292,9 +296,9 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
     var BaseUrl;
     BaseUrl = "<?php echo base_url(); ?>";
 </script>
 
-<script src="<?php echo base_url(); ?>public/js/tienda.js"></script>
+<script src="<?php echo base_url(); ?>public/js/tienda.js"></script> -->

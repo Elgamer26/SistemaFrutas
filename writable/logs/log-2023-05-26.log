@@ -1,0 +1,70 @@
+CRITICAL - 2023-05-26 02:24:19 --> Call to a member function prepare() on null
+in APPPATH\Models\ModeloTienda.php on line 49.
+ 1 APPPATH\Controllers\Tienda.php(25): App\Models\ModeloTienda->paginartienda('1', null)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Tienda->paginartienda()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Tienda))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:26:47 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:26:48 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:31:39 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:31:40 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:31:42 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:32:05 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-05-26 09:32:06 --> Invalid file: "admin/venta/ListCompraInsumo.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/venta/ListCompraInsumo.php')
+ 2 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/venta/ListCompraInsumo.php', [], true)
+ 3 APPPATH\Controllers\Admin.php(746): view('admin/venta/ListCompraInsumo.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->ventas('list', '0')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
