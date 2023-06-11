@@ -6,30 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administrador | Dashboard</title>
 
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/summernote/summernote-bs4.min.css">
-
+ 
   <link rel="shortcut icon" href="<?php echo base_url(); ?>public/img/logos/load.png" type="image/x-icon">
-
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>public/DataTables/datatables.min.css">
 
 </head>
 
@@ -146,14 +131,20 @@
           </a>
         </li>
 
+        <li class="nav-item dropdown" style="background-color: #007bff; border-radius: 50px; color: white;">
+          <a href="<?php echo base_url(); ?>" target="_blank" class="nav-link">
+            <i class="fa fa-shopping-cart" style="color: white;"></i>
+          </a>
+        </li>
+
         <li class="nav-item dropdown" style="background-color: green; border-radius: 50px; color: white;">
-          <a onclick="ModalDatoUsuario();" class="nav-link" data-toggle="dropdown" href="#">
+          <a onclick="ModalDatoUsuario();" class="nav-link" data-toggle="dropdown">
             <i class="far fa-user" style="color: white;"></i>
           </a>
         </li>
 
         <li style="background-color: red; border-radius: 50px;" class="nav-item dropdown">
-          <a class="nav-link" style="color: white;" href="#" onclick="CerraSesion();">
+          <a class="nav-link" style="color: white;" onclick="CerraSesion();">
             <i class="fa fa-times"></i>
           </a>
         </li>
@@ -255,6 +246,13 @@
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/comentatios/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Comentarios de clientes</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/comentatios/califica/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Calificación de clientes</p>
                   </a>
                 </li>
 
@@ -459,6 +457,26 @@
               </ul>
             </li>
 
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-file"></i>
+                <p>
+                  Reportes
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/new/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Nueva venta</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -472,7 +490,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Principal</h1>
+              <h1 class="m-0"><b>Principal</b></h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -485,6 +503,7 @@
 
       <section class="content">
         <div class="container-fluid">
+
           <div class="row">
             <div class="col-lg-3 col-6">
               <div class="small-box bg-info">
@@ -531,10 +550,45 @@
               </div>
             </div>
           </div>
+
           <div class="row">
 
+            <div class="col-lg-6">
+              <div class="ibox">
+                <div class="ibox-body">
+                  <div class="flexbox mb-4">
+                    <div>
+                      <h4 style="text-align: center;"><b>10 productos mas vendidos</b></h4>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="chart_p">
+                      <canvas id="char_producto"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="ibox">
+                <div class="ibox-body">
+                  <div class="flexbox mb-4">
+                    <div>
+                      <h4 style="text-align: center;"><b>10 productos mas vendidos en la tienda web</b></h4>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="chart_o">
+                      <canvas id="char_oferta"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
+
         </div>
       </section>
     </div>
@@ -552,38 +606,11 @@
 
   <!-- jQuery -->
   <script src="<?php echo base_url(); ?>public/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
   <script src="<?php echo base_url(); ?>public/plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
-  <!-- Bootstrap 4 -->
   <script src="<?php echo base_url(); ?>public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="<?php echo base_url(); ?>public/plugins/chart.js/Chart.min.js"></script>
-  <!-- Sparkline -->
-  <script src="<?php echo base_url(); ?>public/plugins/sparklines/sparkline.js"></script>
-  <!-- JQVMap -->
-  <script src="<?php echo base_url(); ?>public/plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="<?php echo base_url(); ?>public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="<?php echo base_url(); ?>public/plugins/jquery-knob/jquery.knob.min.js"></script>
-  <!-- daterangepicker -->
-  <script src="<?php echo base_url(); ?>public/plugins/moment/moment.min.js"></script>
-  <script src="<?php echo base_url(); ?>public/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="<?php echo base_url(); ?>public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- Summernote -->
-  <script src="<?php echo base_url(); ?>public/plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- overlayScrollbars -->
   <script src="<?php echo base_url(); ?>public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <!-- AdminLTE App -->
   <script src="<?php echo base_url(); ?>public/dist/js/adminlte.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?php echo base_url(); ?>public/dist/js/demo.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="<?php echo base_url(); ?>public/dist/js/pages/dashboard.js"></script>
+ 
 
   <!-- //// agregados por mi -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -591,7 +618,10 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <script src="<?php echo base_url(); ?>public/js/usuario.js"></script>
+  <script src="<?php echo base_url(); ?>public/js/graficos.js"></script>
   <script src="<?php echo base_url(); ?>public/js/numero.min.js"></script>
+  <script src="<?php echo base_url(); ?>public/DataTables/datatables.min.js"></script>
+  <script src="<?php echo base_url(); ?>public/Chart/chart.min.js"></script>
 
 </body>
 
@@ -747,6 +777,8 @@
   BaseUrl = "<?php echo base_url(); ?>";
 
   TraerDatosUsuario();
+  TraerGraficoProductosMasVendidos();
+  TraerGraficoProductosMasVendidosOferta();
 
   function mostrar_imagenData(input) {
     var filename = document.getElementById("foto_new").value;

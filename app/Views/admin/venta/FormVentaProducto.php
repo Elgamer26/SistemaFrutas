@@ -100,68 +100,12 @@
                                     <div class="card-body">
                                         <div class="row">
 
-                                            <!-- <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="productotxt">Producto</label>
-                                                    <input type="text" name="productotxt" class="form-control" id="productotxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="disponibletxt">Disponible</label>
-                                                    <input readonly value="0" type="number" min="1" max="50" name="disponibletxt" class="form-control" id="disponibletxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="cantidadtxt">Cantidad</label>
-                                                    <input value="1" type="number" min="1" max="50" name="cantidadtxt" class="form-control" id="cantidadtxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="preciotxt">Precio $</label>
-                                                    <input readonly value="0" type="number" min="1" max="50" name="preciotxt" class="form-control" id="preciotxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="descuentotxt">Descuento $</label>
-                                                    <input readonly value="0" type="number" min="1" max="50" name="descuentotxt" class="form-control" id="descuentotxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="ofertatxt">Oferta</label>
-                                                    <input type="text" name="ofertatxt" class="form-control" id="ofertatxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="descuentoofertatxt">Descuento oferta</label>
-                                                    <input type="text" name="descuentoofertatxt" class="form-control" id="descuentoofertatxt">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-1">
-                                                <div class="form-group">
-                                                    <label>Ingresar</label>
-                                                    <button class="btn btn-success"><i class="fa fa-plus"></i></button>
-                                                </div>
-                                            </div> -->
-
                                             <div class="col-md-12">
                                                 <div class="form-group">
 
                                                     <div class="col-lg-12 table-responsive">
                                                         &nbsp;&nbsp; <label style="color:red; text-align: center;" id="detalle_obligg"></label>
-                                                        <table id="detalle_compra_insumo" class="table table-striped table-bordered">
+                                                        <table id="detalle_venta_producto" class="table table-striped table-bordered">
                                                             <thead bgcolor="black" style="color:#fff;">
                                                                 <tr>
                                                                     <th hidden>Id</th>
@@ -177,7 +121,7 @@
                                                                 </tr>
                                                             </thead>
 
-                                                            <tbody id="tbody_detalle_compra_insumo">
+                                                            <tbody id="tbody_detalle_venta_producto">
 
                                                             </tbody>
 
@@ -356,13 +300,13 @@
                                                 <td><a style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/producto/<?= esc($ofertas_item["imagen"]); ?>' width='45px' /></a></td>
 
                                                 <td><span class="badge badge-primary"><?= esc($ofertas_item["fecha_fin"]); ?></span> </td>
-                                                <td><span class="badge badge-primary"><?= esc($ofertas_item["tipo_oferta"]); ?></span> </td>
-                                                <td><span class="badge badge-primary"><?= esc($ofertas_item["valor_descuento"]); ?></span> </td>
+                                                <td><?= esc($ofertas_item["tipo_oferta"]); ?></td>
+                                                <td><?= esc($ofertas_item["valor_descuento"]); ?></td>
 
                                                 <td><?= esc($ofertas_item["cantidad"]); ?></td>
 
                                                 <td>
-                                                    <a class='Enviar btn btn-success btn-sm' title='Enviar el ofertas'><i class='fa fa-plus'></i></a>
+                                                    <a class='Enviar_oferta btn btn-success btn-sm' title='Enviar el ofertas'><i class='fa fa-plus'></i></a>
                                                 </td>
                                             </tr>
 
@@ -404,7 +348,7 @@
     </div>
 </div>
 
-<script src="<?php echo base_url(); ?>public/js/compra.js"></script>
+<script src="<?php echo base_url(); ?>public/js/venta.js"></script>
 
 <script>
     $("#cliente").select2();
@@ -431,8 +375,6 @@
     }
 
 
-
-
     $(".Enviar").on("click", function() {
         var iva = $("#iva").val();
         var id = $(this).parents("tr").find("td")[0].innerHTML;
@@ -441,7 +383,7 @@
 
         if (iva.trim() == "" || iva.length == 0) {
             $("#iva_olbligg").html("Ingrese iva");
-            $("#modal_insumo_compra").modal("hide");
+            $("#ModalBuscarProducto").modal("hide");
             return Swal.fire(
                 "Campo vacío",
                 "Ingrese un valor en el campos iva",
@@ -451,10 +393,10 @@
             $("#iva_olbligg").html("");
         }
 
-        if (validar_insumos_id(id)) {
+        if (validarproducto(id)) {
             return Swal.fire(
                 "Mensaje de advertencia",
-                "El insumo: '" +
+                "El producto: '" +
                 alimento +
                 "' , ya fue agregado al detalle",
                 "warning"
@@ -476,19 +418,80 @@
         datos_agg += "</tr>";
 
         //esto me ayuda a enviar los datos a la tabla
-        $("#tbody_detalle_compra_insumo").append(datos_agg);
+        $("#tbody_detalle_venta_producto").append(datos_agg);
         $("#ModalBuscarProducto").modal("hide");
         sumartotalneto();
     });
 
-    function validar_insumos_id(id) {
+    $(".Enviar_oferta").on("click", function() {
+        var iva = $("#iva").val();
+        var id = $(this).parents("tr").find("td")[0].innerHTML;
+        var alimento = $(this).parents("tr").find("td")[2].innerHTML;
+        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+
+        var oferta = $(this).parents("tr").find("td")[7].innerHTML;
+        var descuento_oferta = $(this).parents("tr").find("td")[8].innerHTML;
+
+        if (iva.trim() == "" || iva.length == 0) {
+            $("#iva_olbligg").html("Ingrese iva");
+            $("#ModalBuscarOferta").modal("hide");
+            return Swal.fire(
+                "Campo vacío",
+                "Ingrese un valor en el campos iva",
+                "warning"
+            );
+        } else {
+            $("#iva_olbligg").html("");
+        }
+
+        if (validarproducto(id)) {
+            return Swal.fire(
+                "Mensaje de advertencia",
+                "El producto: '" +
+                alimento +
+                "' , ya fue agregado al detalle",
+                "warning"
+            );
+        }
+
+        let sale = 0;
+        let descoferta = 0;
+        if (oferta == "3x1") {
+            sale = 3;
+        } else if (oferta == "2x1") {
+            sale = 2;
+        } else if (oferta == "Descuento %") {
+            sale = 1;
+            descoferta = parseFloat(precio * descuento_oferta / 100).toFixed(2);
+        }
+
+        var datos_agg = "<tr>";
+        datos_agg += "<td hidden for='id'>" + id + "</td>";
+        datos_agg += "<td>" + alimento + "</td>";
+        datos_agg += "<td><input id='cantida_a' style='width: 100px;' type='number' min='1' class='form-control' value='1' placeholder='cantidad' /></td>";
+        datos_agg += "<td>" + sale + "</td>";
+        datos_agg += "<td>" + precio + "</td>";
+        datos_agg += "<td><input id='descuento_a' style='width: 100px;' type='text' class='form-control' value='0' placeholder='descuento' onkeypress='return soloNumeros(event);' /></td>";
+        datos_agg += "<td>" + oferta.toString() + "</td>";
+        datos_agg += "<td>" + descuento_oferta + "</td>";
+        datos_agg += "<td>" + parseFloat(precio - descoferta).toFixed(2) + "</td>";
+        datos_agg += "<td> <button class='remover btn btn-danger'><i class='fa fa-trash'></i></button></td>";
+        datos_agg += "</tr>";
+
+        //esto me ayuda a enviar los datos a la tabla
+        $("#tbody_detalle_venta_producto").append(datos_agg);
+        $("#ModalBuscarOferta").modal("hide");
+        sumartotalneto();
+    });
+
+    function validarproducto(id) {
         let idverificar = document.querySelectorAll(
-            "#tbody_detalle_compra_insumo td[for='id']"
+            "#tbody_detalle_venta_producto td[for='id']"
         );
         return [].filter.call(idverificar, (td) => td.textContent == id).length == 1;
     }
 
-    $("#tbody_detalle_compra_insumo").on("click", ".remover", function() {
+    $("#tbody_detalle_venta_producto").on("click", ".remover", function() {
         var td = this.parentNode;
         var tr = td.parentNode;
         var table = tr.parentNode;
@@ -497,32 +500,128 @@
     });
 
     // para la cantidad del producto
-    $("#tbody_detalle_compra_insumo").on("keyup", "#cantida_a", function() {
+    $("#tbody_detalle_venta_producto").on("keyup", "#cantida_a", function() {
         var cantidad = $(this).parents("tr").find('input[type="number"]').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
-        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
-        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
-        sumartotalneto();
+        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+
+        var oferta = $(this).parents("tr").find("td")[6].innerHTML;
+        var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;
+
+        if (oferta == "3x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(3);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "2x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(2);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "Descuento %") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total - descuento_oferta).toFixed(2);
+            return sumartotalneto();
+
+        } else {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        }
+
+        // var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+        // $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+        // sumartotalneto();
     });
 
-    $("#tbody_detalle_compra_insumo").on("change", "#cantida_a", function() {
+    $("#tbody_detalle_venta_producto").on("change", "#cantida_a", function() {
         var cantidad = $(this).parents("tr").find('input[type="number"]').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
-        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
-        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
-        sumartotalneto();
+        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+
+        var oferta = $(this).parents("tr").find("td")[6].innerHTML;
+        var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;
+
+        if (oferta == "3x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(3);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "2x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(2);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "Descuento %") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total - descuento_oferta).toFixed(2);
+            return sumartotalneto();
+
+        } else {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        }
+
     });
 
     //para el descuento del producto
-    $("#tbody_detalle_compra_insumo").on("keyup", "#descuento_a", function() {
+    $("#tbody_detalle_venta_producto").on("keyup", "#descuento_a", function() {
         var cantidad = $(this).parents("tr").find('#cantida_a').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
-        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
-        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
-        sumartotalneto();
+        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+
+        var oferta = $(this).parents("tr").find("td")[6].innerHTML;
+        var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;
+
+        if (oferta == "3x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(3);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "2x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(2);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "Descuento %") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total - descuento_oferta).toFixed(2);
+            return sumartotalneto();
+
+        } else {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        }
+
     });
 
     function sumartotalneto() {
@@ -533,9 +632,9 @@
         let subtotal = 0;
         let impuesto = document.getElementById("iva").value;
 
-        $("#detalle_compra_insumo tbody#tbody_detalle_compra_insumo tr").each(
+        $("#detalle_venta_producto tbody#tbody_detalle_venta_producto tr").each(
             function() {
-                arreglo_total.push($(this).find("td").eq(5).text());
+                arreglo_total.push($(this).find("td").eq(8).text());
                 count++;
             }
         );

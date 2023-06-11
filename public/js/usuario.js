@@ -80,6 +80,52 @@ $(document).on("click", "#btn_tienda", function () {
   location.href = BaseUrl;
 });
 
+$(document).on("click", "#btn_recuperarPassAdmin", function () {
+  var correo = $("#email_correo").val();
+
+  if (parseInt(correo.length) <= 0 || correo == "") {
+    $("#correo_enviado").hide();
+    $("#none_pass").hide();
+    $("#none_usu").show(2000);
+  } else {
+    $("#none_usu").hide();
+    $("#none_pass").hide();
+    $("#correo_enviado").hide();
+
+    $(".card").LoadingOverlay("show", {
+      text: "Enviando...",
+    });
+
+    $.ajax({
+      url: BaseUrl + "Usuario/RecuperarPasswordCliente",
+      type: "POST",
+      data: { correo: correo },
+    }).done(function (responce) {
+      $(".card").LoadingOverlay("hide");
+      if (responce == 0) {
+        $("#none_usu").hide();
+        $("#correo_enviado").hide();
+        $("#none_pass").show(2000);
+        return false;
+      } else if (responce == 1) {
+        $("#none_usu").hide();
+        $("#none_pass").hide();
+        $("#correo_enviado").show(2000);
+        return false;
+      } else {
+        $("#none_usu").hide();
+        $("#none_pass").hide();
+        $("#correo_enviado").hide();
+        return swal.fire(
+          "Error",
+          "Error en la Matrix" + responce,
+          "Error de Matrix"
+        );
+      }
+    });
+  }
+});
+
 function ModalDatoUsuario() {
   TraerDatosUsuario();
   $("#ModalDataUsuario").modal("show");

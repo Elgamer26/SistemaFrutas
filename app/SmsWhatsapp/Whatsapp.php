@@ -8,7 +8,7 @@ class Whatsapp
 {
   function enviar_mensaje($sms)
   {
-    $token =  "TOKEN DEL QR";
+    $token =  "GA230610194602";
     $client = new \GuzzleHttp\Client(['verify' => false]);
 
     $payload = array(

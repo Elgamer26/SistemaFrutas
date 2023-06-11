@@ -64,7 +64,7 @@
                                     <input type="checkbox" id="recordar" checked="checked" />
                                     <div class="control__indicator"></div>
                                 </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Has olvidado tu contraseña</a></span>
+                                <span class="ml-auto"><a href="<?php echo base_url(); ?>admin/Recuperar" class="forgot-pass">Has olvidado tu contraseña</a></span>
                             </div>
 
                             <input type="button" id="btn_aceptar" value="Acceso" class="btn btn-block btn-primary">

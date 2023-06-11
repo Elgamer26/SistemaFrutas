@@ -199,15 +199,21 @@ class Tienda extends BaseController
                 }
 
                 if ($repuesta_create > 0) {
+
                     echo $repuesta;
                     exit();
+
                 } else {
+
                     echo $repuesta_create;
                     exit();
+
                 }
             } else {
+
                 echo $repuesta;
                 exit();
+                
             }
 
             exit();
@@ -220,6 +226,89 @@ class Tienda extends BaseController
             $id = $this->request->getPost('id');
             $repuesta_create = $this->tienda->AnularFacturaVentaWeb($id);
             return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function CalificarProducto()
+    {
+        if ($this->request->getMethod() == "post") {
+            if (!empty($_SESSION["TokenClie"])) {
+
+                $iduser = $_SESSION["TokenClie"];
+                $estado = $this->request->getPost('estado');
+                $idproducto = $this->request->getPost('idproducto');
+
+                $repuesta = $this->tienda->CalificarProducto($iduser, $estado, $idproducto);
+                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+                exit();
+            } else {
+
+                echo 0;
+                exit();
+            }
+        }
+    }
+
+    public function TraerCalificaionCliente()
+    {
+        if ($this->request->getMethod() == "post") {
+            if (!empty($_SESSION["TokenClie"])) {
+                $iduser = $_SESSION["TokenClie"];
+                $idproducto = $this->request->getPost('idproducto');
+                $repuesta = $this->tienda->TraerCalificaionCliente($iduser, $idproducto);
+                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+                exit();
+            } else {
+                echo 0;
+                exit();
+            }
+        }
+    }
+
+    public function CalificarProductoOferta()
+    {
+        if ($this->request->getMethod() == "post") {
+            if (!empty($_SESSION["TokenClie"])) {
+
+                $iduser = $_SESSION["TokenClie"];
+                $estado = $this->request->getPost('estado');
+                $idproducto = $this->request->getPost('idproducto');
+
+                $repuesta = $this->tienda->CalificarProductoOferta($iduser, $estado, $idproducto);
+                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+                exit();
+            } else {
+                echo 0;
+                exit();
+            }
+        }
+    }
+
+    public function TraerCalificaionClienteOferta()
+    {
+        if ($this->request->getMethod() == "post") {
+            if (!empty($_SESSION["TokenClie"])) {
+                $iduser = $_SESSION["TokenClie"];
+                $idproducto = $this->request->getPost('idproducto');
+                $repuesta = $this->tienda->TraerCalificaionClienteOferta($iduser, $idproducto);
+                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+                exit();
+            } else {
+                echo 0;
+                exit();
+            }
+        }
+    }
+
+    public function EditarPasswordCliente()
+    {
+        if ($this->request->getMethod() == "post") {
+            $iduser = $_SESSION["TokenClie"];
+            $passnew = $this->request->getPost('passnew');
+
+            $repuesta = $this->tienda->EditarPasswordCliente($iduser, $passnew);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
         }
     }
 }

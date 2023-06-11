@@ -3,13 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\ModeloUsuario;
+use App\MailPhp\envio_correo;
 
 class Usuario extends BaseController
 {
     protected $usuario;
+    protected $send_email;
+
     public function __construct()
     {
         session_start();
+        $this->send_email = new envio_correo();
         $this->usuario = new ModeloUsuario();
     }
 
@@ -243,5 +247,68 @@ class Usuario extends BaseController
             echo $valorFile;
         }
         exit();
+    }
+
+    //// RECUPERAR PASSWORD DEL ADMIN
+
+    public function RecuperarPasswordCliente()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $correo = $this->request->getPost('correo');
+
+            $repuesta_create = $this->usuario->RecuperarPasswordCliente($correo);
+            if ($repuesta_create) {
+
+                ///////
+                $length = 10;
+                $key = "";
+                $pattern = "*.1234567890abcdefghijklmnopqrstuvwxyz";
+                $max = strlen($pattern) - 1;
+                for ($i = 0; $i < $length; $i++) {
+                    $key .= substr($pattern, mt_rand(0, $max), 1);
+                }
+                $location = base_url();
+                $html = "";
+                $html = '<!DOCTYPE html>
+                        <html lang="es">
+                        <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        </head>
+                        <body>
+                        <table style="border: 1px solid black; width: 100%; height: 258px;">
+                        <thead>
+                        <tr style="height: 73px;">
+                        <td style="text-align: center; background: orange; color: white; height: 73px;" colspan="2">
+                        <h1><strong>.:Password de Usuario tienda:.</strong></h1>
+                        </td>
+                        </tr>
+                        <tr style="height: 188px;">
+                        <td style="height: 134px; text-align: center;" width="20%">Su password fue cambiado con exito, use este password: <b>"' . $key . '"</b> para ingresar al sistema :)</td>
+                        </tr>
+                        <tr style="height: 188px;">
+                        <td style="height: 51px; text-align: center;" width="20%"><a href=' . $location . '>Link de nuestro sistema.</a></td>
+                        </tr>
+                        </thead>
+                        </table>
+                        </body>
+                        </html>';
+                $sms = "Password de Usuario tienda";
+                $respuesta = $this->send_email->enviar_correo($correo, $html, $sms);
+                if ($respuesta == 1) {
+                    $resp = $this->usuario->UpdatePasswordAdmin($repuesta_create[0], $key);
+                    echo $resp;
+                    die();
+                } else {
+                    echo $respuesta;
+                    die();
+                }
+            } else {
+                return json_encode(0, JSON_UNESCAPED_UNICODE);
+            }
+            exit();
+        }
     }
 }

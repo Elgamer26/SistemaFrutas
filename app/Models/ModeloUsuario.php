@@ -464,7 +464,7 @@ class ModeloUsuario
             $query->bindParam(3, $correo_e);
             $query->bindParam(4, $ruc);
             $query->bindParam(5, $telefono);
-            $query->bindParam(6, $actividad); 
+            $query->bindParam(6, $actividad);
             $query->bindParam(7, $id);
             if ($query->execute()) {
                 $res = 1;
@@ -504,4 +504,48 @@ class ModeloUsuario
         }
         exit();
     }
+
+    /// RECUPERAR PASSWORD DEL ADMIN
+
+    function RecuperarPasswordCliente($correo)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT id FROM usuario where correo = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $correo);
+            $query->execute();
+            $result = $query->fetch();
+            return $result;
+            //cerramos la conexion
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function UpdatePasswordAdmin($id, $pass)
+    {
+        try {
+            $res = "";
+            $c = $this->conexion->conexionPDO();
+            $sql_a = "UPDATE usuario SET passwordd = ? WHERE id = ?";
+            $querya = $c->prepare($sql_a);
+            $querya->bindParam(1, $pass);
+            $querya->bindParam(2, $id);
+            if ($querya->execute()) {
+                $res = 1;
+            } else {
+                $res = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $res;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
 }

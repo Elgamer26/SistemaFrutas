@@ -636,7 +636,7 @@ class ModeloProducto
                                         </div>
                                         <div class="card-footer">
                                             <div class="text-right">
-                                                <a title="Enviar correo masivos" class="btn btn-sm bg-primary" onclick="VerPerdidaProduccion(' . $respuesta[0] . ');">
+                                                <a title="Enviar correo masivos" class="btn btn-sm bg-primary" onclick="EnviarCorreoMasivosOfertas(' . $respuesta[0] . ');">
                                                     <i class="fa fa-envelope"></i>
                                                 </a>
 
@@ -799,6 +799,106 @@ class ModeloProducto
             $query->bindParam(1, $id);
             $query->execute();
             $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function ListCalificaionProducto()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            calificarestado.id,
+            cliente.nombre,
+            cliente.apellidos,
+            producto.nombre AS producto,
+            calificarestado.estado,
+            calificarestado.fecha,
+            'Sin oferta' AS oferta 
+            FROM
+            calificarestado
+            INNER JOIN producto ON calificarestado.productoid = producto.id
+            INNER JOIN cliente ON calificarestado.clienteid = cliente.id UNION ALL
+            SELECT
+            calificarestadooferta.id,
+            cliente.nombre,
+            cliente.apellidos,
+            producto.nombre AS producto,
+            calificarestadooferta.estado,
+            calificarestadooferta.fecha,
+            oferta.tipo_oferta AS oferta 
+            FROM
+            calificarestadooferta
+            INNER JOIN cliente ON calificarestadooferta.clienteid = cliente.id
+            INNER JOIN producto ON calificarestadooferta.productoid = producto.id
+            INNER JOIN oferta ON producto.id = oferta.producto_id 
+            ORDER BY id DESC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function ObtenerCorreoClientes()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            cliente.correo,
+            cliente.nombre,
+            cliente.apellidos,
+            cliente.telefono 
+            FROM
+                cliente 
+            WHERE
+            estado = 1";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function ObtenerProductEnvio($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            oferta.id,
+            producto.nombre,
+            tipo_producto.tipo,
+            producto.imagen,
+            oferta.fecha_fin,
+            oferta.tipo_oferta 
+            FROM
+            oferta
+            INNER JOIN producto ON oferta.producto_id = producto.id
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
+            oferta.id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $result;

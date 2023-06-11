@@ -303,6 +303,9 @@
 					}).done(function(resp) {
 						$.LoadingOverlay("hide");
 						if (resp > 0) {
+
+							EnviarCorreoWeb(parseInt(resp));
+
 							Swal.fire({
 								title: "Campra realizada con exito",
 								text: "Desea imprimir la compra??",
@@ -326,6 +329,7 @@
 									location.reload();
 								}
 							});
+
 						} else {
 							return swal.fire(
 								"Error al procesar la compra de producto",
@@ -343,4 +347,15 @@
 			return alert("La compra se canceló, no se compró el o los productos");
 		}
 	}).render('#paypal-button-container_ser');
+
+	async function EnviarCorreoWeb(id) {
+		let result = await $.ajax({
+			url: BaseUrl + "Reporte/ReporteVentaWebEnvioCorreo",
+			type: "POST",
+			data: {
+				id: id
+			}
+		});
+		console.log(result);
+	}
 </script>

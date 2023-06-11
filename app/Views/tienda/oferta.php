@@ -1,3 +1,81 @@
+<style>
+    .boton {
+        border: 1px solid #2e518b;
+        /*anchura, estilo y color borde*/
+        padding: 10px;
+        /*espacio alrededor texto*/
+        background-color: #ffffff;
+        /*color botón*/
+        color: #2e518b;
+        /*color texto*/
+        text-decoration: none;
+        /*decoración texto*/
+        text-transform: uppercase;
+        /*capitalización texto*/
+        font-family: 'Helvetica', sans-serif;
+        /*tipografía texto*/
+        border-radius: 50px;
+        /*bordes redondos*/
+    }
+
+    .boton:hover {
+        border: 1px solid #2e518b;
+        /*anchura, estilo y color borde*/
+        padding: 10px;
+        /*espacio alrededor texto*/
+        background-color: #2e518b;
+        /*color botón*/
+        color: #ffffff;
+        /*color texto*/
+        text-decoration: none;
+        /*decoración texto*/
+        text-transform: uppercase;
+        /*capitalización texto*/
+        font-family: 'Helvetica', sans-serif;
+        /*tipografía texto*/
+        border-radius: 50px;
+        /*bordes redondos*/
+    }
+
+    .nogusta {
+        border: 1px solid #2e518b;
+        /*anchura, estilo y color borde*/
+        padding: 10px;
+        /*espacio alrededor texto*/
+        background-color: #2e518b;
+        /*color botón*/
+        color: #ffffff;
+        /*color texto*/
+        text-decoration: none;
+        /*decoración texto*/
+        text-transform: uppercase;
+        /*capitalización texto*/
+        font-family: 'Helvetica', sans-serif;
+        /*tipografía texto*/
+        border-radius: 50px;
+        /*bordes redondos*/
+    }
+
+    .nogusta:hover {
+        border: 1px solid #2e518b;
+        /*anchura, estilo y color borde*/
+        padding: 10px;
+        /*espacio alrededor texto*/
+        background-color: #ffffff;
+        /*color botón*/
+        color: #2e518b;
+        /*color texto*/
+        text-decoration: none;
+        /*decoración texto*/
+        text-transform: uppercase;
+        /*capitalización texto*/
+        font-family: 'Helvetica', sans-serif;
+        /*tipografía texto*/
+        border-radius: 50px;
+        /*bordes redondos*/
+    }
+</style>
+
 <div class="single contact">
     <div class="container">
         <div class="single-main">
@@ -241,30 +319,30 @@
 
                         <?php if ($token != "NOTOKEN") { ?>
 
-                        <article class="msg-container msg-self" id="msg-0">
-                            <div class="msg-box" style="width: 100%;  background: #1d1d1d; border-radius: 10px;">
-                                <div class="flr">
-                                    <div class="messages">
-                                        <span style="color: white">
-                                            <div class="row">
-                                                <div class="col-md-10">
-                                                    <label for="comentario_oferta">Ingrese un comentario</label>
-                                                    <input type="text" class="form-control" id="comentario_oferta" maxlength="100">
-                                                </div>
+                            <article class="msg-container msg-self" id="msg-0">
+                                <div class="msg-box" style="width: 100%;  background: #1d1d1d; border-radius: 10px;">
+                                    <div class="flr">
+                                        <div class="messages">
+                                            <span style="color: white">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <label for="comentario_oferta">Ingrese un comentario</label>
+                                                        <input type="text" class="form-control" id="comentario_oferta" maxlength="100">
+                                                    </div>
 
-                                                <div class="col-md-2">
-                                                    <label for="comentario_oferta"></label> <br>
-                                                    <button class="btn btn-success" onclick="RegistraCalificacionOferta();"><i class="fa fa-send"></i> Enviar</button>
+                                                    <div class="col-md-2">
+                                                        <label for="comentario_oferta"></label> <br>
+                                                        <button class="btn btn-success" onclick="RegistraCalificacionOferta();"><i class="fa fa-send"></i> Enviar</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
+                                            </span>
 
+                                        </div>
+                                        <span style="color: white;" class="timestamp"><span class="username"> </span></span>
                                     </div>
-                                    <span style="color: white;" class="timestamp"><span class="username"> </span></span>
                                 </div>
-                            </div>
 
-                        </article>
+                            </article>
 
                         <?php } ?>
 
@@ -272,29 +350,48 @@
                 </div>
             </div>
 
-            <div class="col-md-3 single-right">
+            <div class="col-md-3 single-right text-center">
                 <div class="w_sidebar">
                     <section class="sky-form">
                         <h4 style="text-align: center;"><b>Calificación</b></h4>
-                        <div class="row1 scroll-pane" style="height: 250px;">
+                        <div class="row1 scroll-pane" style="height: 120px;">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
+
+                                <a class="boton" id="megusta" onclick="CalificarProductoOferta('Megusta', <?php echo $producto[0]; ?>);"> <label> <i class="far fa-thumbs-up"></i> Me gusta</label> </a>
+                                <br>
+                                <br>
+                                <a class="boton" id="nogusta" onclick="CalificarProductoOferta('Nomegusta', <?php echo $producto[0]; ?>);"> <label> <i class="far fa-thumbs-down"></i> No me gusta</label> </a>
+
                             </div>
                         </div>
                     </section>
                 </div>
             </div>
 
+            <div class="col-md-3 single-right text-center">
+				<div class="w_sidebar">
+					<div class="row1" style="height: 50px; overflow: hidden;">
+						<div class="col col-4">
+
+							<div class="progress" style="padding: 0px; margin: 0px;">
+								<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $countcalificar[0]; ?></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
             <div class="clearfix"> </div>
 
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        TraerCalificaionClienteOferta();
+    });
+</script>
 
 <!-- <script>
     var BaseUrl;

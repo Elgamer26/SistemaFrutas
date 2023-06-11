@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Models\ModeloProducto;
 use App\SmsWhatsapp\Whatsapp;
+use App\MailPhp\envio_correo;
 
 class Producto extends BaseController
 {
     protected $producto;
     protected $sms;
+    protected $send_email;
 
     public function __construct()
     {
+        $this->send_email = new envio_correo();
         $this->sms = new Whatsapp();
         $this->producto = new ModeloProducto();
     }
@@ -169,19 +172,53 @@ class Producto extends BaseController
         exit();
     }
 
-    /// ENVIAR OFERTA POR SMS whatsapp 
-    public function EnviarOfertasSMS()
+    /// ENVIAR OFERTA POR CORREO 
+    public function EnviarCorreoOfertas()
     {
         $id = $this->request->getPost('id');
-        $sms = $this->producto->GeneraOfertaSms($id);
 
-        if ($sms == 0) {
-            echo $sms;
-            exit();
-        } else {
-            $mensaje = $this->sms->enviar_mensaje($sms);
-            echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
-            exit();
+        $cliente = $this->producto->ObtenerCorreoClientes();
+        $producto = $this->producto->ObtenerProductEnvio($id);
+        //echo json_encode($cliente[0], JSON_UNESCAPED_UNICODE);
+
+        $dato = array();
+        $html = "";
+        $url = base_url();
+
+        for ($i = 0; $i < count($cliente[0]); $i++) {
+            $dato[] = $cliente[$i]["correo"];
         }
+
+        $html = "ESTIMADO(A) CLIENTE(A), TENEMOS UNA NUEVA OFERTA ESPECIALMENTE PARA USTED HASTA <strong>'" . $producto["fecha_fin"] . "' </strong>, TIPO DE LA OFERTA <b>'" . $producto["tipo_oferta"] . "'</b>, EL PRODUCTO EN OFERTA ES: <b>'" . $producto["nombre"] . ' - ' . $producto["tipo"] . "'</b>, INGRESA A NUESTRA PAGINA WEB <a href='" . $url . "'> Link de nuestra tienda</a> <br><br><img alt='Promocion' src='" . $url . "public/img/producto/" . $producto["imagen"] . "' style='width: 400px;height: 250px'>";
+        $sms = "Ofertas disponibles";
+        $respuesta = $this->send_email->enviar_correo_oferta($dato, $html, $sms);
+
+        echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+
+    /// ENVIAR OFERTA POR SMS whatsapp 
+    public function EnviarCorreoOfertasWhatsapp()
+    {
+
+        $id = $this->request->getPost('id');
+
+        $cliente = $this->producto->ObtenerCorreoClientes();
+        $producto = $this->producto->ObtenerProductEnvio($id);
+
+        $sms = [];
+        $url = base_url();
+
+        for ($i = 0; $i < count($cliente[0]); $i++) {
+            $telefono = substr($cliente[$i]["telefono"], 1);
+            $postal = "593" . $telefono;
+
+            $sms[] = ["numero" => $postal, "mensaje" => "VIVERO DANIELITO LE RECUERDA: ESTIMADO(A) CLIENTE(A): " . $cliente[$i]["nombre"] . " " . $cliente[$i]["apellidos"] . ", TENEMOS UNA OFERTA ESPECIALMENTE PARA TI, HASTA EL: " . $producto["fecha_fin"] . ", NOMBRE DEL PRODUCTO: " . $producto["nombre"] . " - " . $producto["tipo"] . ", EL TIPO DE OFERTA ES: " . $producto["tipo_oferta"] . ", INGRESA A NUESTRA PAGINA WEB " . $url . ", PARA VER MAS DETALLE DE LA OFERTA, GRACIAS POR CONFIAR EN NOSOTROS"];
+            $sms[] = ["numero" => $postal, "url" => "" . $url . "public/img/producto/" . $producto["imagen"] . ""];
+        }
+
+        $mensaje = $this->sms->enviar_mensaje($sms);
+        echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
+        exit();
     }
 }

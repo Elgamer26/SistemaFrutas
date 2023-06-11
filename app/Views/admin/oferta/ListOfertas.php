@@ -125,7 +125,6 @@
     </div>
 </div>
 
-
 <script>
     $(document).ready(function() {
         pagination_oferta(1);

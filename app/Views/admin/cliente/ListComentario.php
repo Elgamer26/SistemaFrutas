@@ -49,9 +49,9 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-12 text-center">
+                                <div class="col-sm-12 text-center table-responsive">
 
-                                    <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                    <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" style="width: 100%;">
                                         <thead>
                                             <tr>
                                                 <th>Cliente</th>
@@ -123,6 +123,43 @@
 
                 $("#DetalleComentario").html(hmtl);
 
+                try {
+
+                    // var tabla = $('#example2').DataTable();
+                    // tabla.destroy();
+
+                    // $('#example2').DataTable({
+                    //     language: {
+                    //         rows: "%d fila seleccionada",
+                    //         processing: "Tratamiento en curso...",
+                    //         search: "Buscar&nbsp;:",
+                    //         lengthMenu: "Agrupar en _MENU_ items",
+                    //         info: "Mostrando los item (_START_ al _END_) de un total _TOTAL_ items",
+                    //         infoEmpty: "No existe datos.",
+                    //         infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    //         infoPostFix: "",
+                    //         loadingRecords: "Cargando...",
+                    //         zeroRecords: "No se encontro resultados en tu busqueda",
+                    //         emptyTable: "No hay datos disponibles en la tabla",
+                    //         paginate: {
+                    //             first: "Primero",
+                    //             previous: "Anterior",
+                    //             next: "Siguiente",
+                    //             last: "Ultimo",
+                    //         },
+                    //         select: {
+                    //             rows: "%d fila seleccionada",
+                    //         },
+                    //         aria: {
+                    //             sortAscending: ": active para ordenar la columa en orden ascendente",
+                    //             sortDescending: ": active para ordenar la columna en orden descendente",
+                    //         },
+                    //     },
+                    // });
+
+                } catch (error) {
+
+                }
             }
         });
     });

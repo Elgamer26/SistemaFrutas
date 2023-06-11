@@ -26,14 +26,9 @@
                     </div>
                     <div class="card-body">
                         <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6"></div>
-                                <div class="col-sm-12 col-md-6"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-
-                                    <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                        <div class="row">
+                                <div class="col-sm-12 text-center table-responsive ">
+                                    <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" style="width: 100%;">
                                         <thead>
                                             <tr>
                                                 <th>Opción</th>
@@ -43,7 +38,7 @@
                                                 <th>Cedula</th>
                                                 <th>Rol</th>
                                                 <th>Usuario</th>
-                                                <th>Foto</th> 
+                                                <th>Foto</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </thead>
@@ -69,7 +64,7 @@
                                                         <td><?= esc($ListaUsuario_item["cedula"]); ?></td>
                                                         <td><span class="badge badge-warning"><?= esc($ListaUsuario_item["rol"]); ?></span> </td>
                                                         <td><?= esc($ListaUsuario_item["usuario"]); ?></td>
-                                                        <td><a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/EditarUsuarioFoto/<?php echo $ListaUsuario_item['id']; ?>');" style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/usuario/<?= esc($ListaUsuario_item["foto"]); ?>' width='45px' /></a></td> 
+                                                        <td><a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/EditarUsuarioFoto/<?php echo $ListaUsuario_item['id']; ?>');" style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/usuario/<?= esc($ListaUsuario_item["foto"]); ?>' width='45px' /></a></td>
                                                         <td>
                                                             <?php if ($ListaUsuario_item["estado"] == "1") {     ?>
                                                                 <span class="badge badge-success">Activo</span>
@@ -98,7 +93,7 @@
                                                 <th>Cedula</th>
                                                 <th>Rol</th>
                                                 <th>Usuario</th>
-                                                <th>Foto</th> 
+                                                <th>Foto</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </tfoot>
@@ -149,8 +144,8 @@
     </div>
 </div>
 
- <script>
-        function mostrar_imagenEdit(input) {
+<script>
+    function mostrar_imagenEdit(input) {
         var filename = document.getElementById("foto_new").value;
         var idxdot = filename.lastIndexOf(".") + 1;
         var extfile = filename.substr(idxdot, filename.length).toLowerCase();
@@ -169,8 +164,39 @@
                 "Mensaje de alerta",
                 "Solo se aceptan imagenes - USTED SUBIO UN ARCHIVO CON LA EXTENCIO ." + extfile,
                 "warning"
-            ); 
+            );
         }
 
     }
- </script>
+
+    $(document).ready(function() {
+        $('#example2').DataTable({
+            language: {
+                rows: "%d fila seleccionada",
+                processing: "Tratamiento en curso...",
+                search: "Buscar&nbsp;:",
+                lengthMenu: "Agrupar en _MENU_ items",
+                info: "Mostrando los item (_START_ al _END_) de un total _TOTAL_ items",
+                infoEmpty: "No existe datos.",
+                infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                infoPostFix: "",
+                loadingRecords: "Cargando...",
+                zeroRecords: "No se encontro resultados en tu busqueda",
+                emptyTable: "No hay datos disponibles en la tabla",
+                paginate: {
+                    first: "Primero",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Ultimo",
+                },
+                select: {
+                    rows: "%d fila seleccionada",
+                },
+                aria: {
+                    sortAscending: ": active para ordenar la columa en orden ascendente",
+                    sortDescending: ": active para ordenar la columna en orden descendente",
+                },
+            },
+        });
+    });
+</script>

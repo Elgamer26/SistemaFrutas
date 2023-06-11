@@ -1,0 +1,47 @@
+CRITICAL - 2023-06-10 22:47:50 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 536870920 bytes)
+in APPPATH\Controllers\Producto.php on line 185.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-06-10 22:49:37 --> Undefined array key "correo"
+in APPPATH\Controllers\Producto.php on line 190.
+ 1 APPPATH\Controllers\Producto.php(190): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "correo"', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Producto.php', 190)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarCorreoOfertas()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-10 23:11:42 --> trim(): Argument #1 ($string) must be of type string, array given
+in APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php on line 1065.
+ 1 APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php(1065): trim([...])
+ 2 APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php(1001): PHPMailer\PHPMailer\PHPMailer->addOrEnqueueAnAddress('to', [...], 'Usted')
+ 3 APPPATH\MailPhp\envio_correo.php(37): PHPMailer\PHPMailer\PHPMailer->addAddress([...], 'Usted')
+ 4 APPPATH\Controllers\Producto.php(194): App\MailPhp\envio_correo->enviar_correo([...], 'ESTIMADO(A) CLIENTE(A), TENEMOS UNA NUEVA OFERTA ESPECIALMENTE PARA USTED HASTA <strong>\'2023-07-09\' </strong>, TIPO DE LA OFERTA <b>\'Descuento %\'</b>, EL PRODUCTO EN OFERTA ES: <b>\'PLANTA EDITADA - CAPUS EDITADO\'</b>, INGRESA A NUESTRA PAGINA WEB <a href=\'http://localhost:8080/SistemaFrutal/\'> Link de nuestra tienda</a> <br><br><img alt=\'Promocion\' src=\'http://localhost:8080/SistemaFrutal/public/img/producto/IMG85202321507.jpg\' style=\'width: 400px;height: 250px\'>', 'Ofertas disponibles')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarCorreoOfertas()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-10 23:11:46 --> trim(): Argument #1 ($string) must be of type string, array given
+in APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php on line 1065.
+ 1 APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php(1065): trim([...])
+ 2 APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php(1001): PHPMailer\PHPMailer\PHPMailer->addOrEnqueueAnAddress('to', [...], 'Usted')
+ 3 APPPATH\MailPhp\envio_correo.php(37): PHPMailer\PHPMailer\PHPMailer->addAddress([...], 'Usted')
+ 4 APPPATH\Controllers\Producto.php(194): App\MailPhp\envio_correo->enviar_correo([...], 'ESTIMADO(A) CLIENTE(A), TENEMOS UNA NUEVA OFERTA ESPECIALMENTE PARA USTED HASTA <strong>\'2023-07-09\' </strong>, TIPO DE LA OFERTA <b>\'Descuento %\'</b>, EL PRODUCTO EN OFERTA ES: <b>\'PLANTA EDITADA - CAPUS EDITADO\'</b>, INGRESA A NUESTRA PAGINA WEB <a href=\'http://localhost:8080/SistemaFrutal/\'> Link de nuestra tienda</a> <br><br><img alt=\'Promocion\' src=\'http://localhost:8080/SistemaFrutal/public/img/producto/IMG85202321507.jpg\' style=\'width: 400px;height: 250px\'>', 'Ofertas disponibles')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarCorreoOfertas()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-10 23:12:22 --> Undefined variable $mensaje
+in APPPATH\Controllers\Producto.php on line 199.
+ 1 APPPATH\Controllers\Producto.php(199): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $mensaje', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Producto.php', 199)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarCorreoOfertas()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-10 23:12:47 --> trim(): Argument #1 ($string) must be of type string, array given
+in APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php on line 1065.
+ 1 APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php(1065): trim([...])
+ 2 APPPATH\MailPhp\Enviarcorreo\PHPMailer\PHPMailer.php(1001): PHPMailer\PHPMailer\PHPMailer->addOrEnqueueAnAddress('to', [...], 'Usted')
+ 3 APPPATH\MailPhp\envio_correo.php(37): PHPMailer\PHPMailer\PHPMailer->addAddress([...], 'Usted')
+ 4 APPPATH\Controllers\Producto.php(194): App\MailPhp\envio_correo->enviar_correo([...], 'ESTIMADO(A) CLIENTE(A), TENEMOS UNA NUEVA OFERTA ESPECIALMENTE PARA USTED HASTA <strong>\'2023-07-09\' </strong>, TIPO DE LA OFERTA <b>\'Descuento %\'</b>, EL PRODUCTO EN OFERTA ES: <b>\'PLANTA EDITADA - CAPUS EDITADO\'</b>, INGRESA A NUESTRA PAGINA WEB <a href=\'http://localhost:8080/SistemaFrutal/\'> Link de nuestra tienda</a> <br><br><img alt=\'Promocion\' src=\'http://localhost:8080/SistemaFrutal/public/img/producto/IMG85202321507.jpg\' style=\'width: 400px;height: 250px\'>', 'Ofertas disponibles')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Producto->EnviarCorreoOfertas()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

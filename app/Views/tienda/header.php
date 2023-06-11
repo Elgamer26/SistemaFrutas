@@ -28,7 +28,7 @@
         });
     </script>
     <script src="<?php echo base_url(); ?>public/tienda/js/jquery.easydropdown.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 </head>
@@ -44,7 +44,7 @@
                             <a href="<?php echo base_url(); ?>home/login"><span style="color: white;">Iniciar sesión </span> &nbsp; <i style="color: white;" class="fa fa-user"></i></a>
                             &nbsp; &nbsp; &nbsp; &nbsp; <a href="<?php echo base_url(); ?>admin">Admin</a> <i class="fa fa-home"></i>
                         <?php } else { ?>
-                            <span style="color: white;"><i style="color: white;" class="fa fa-user"></i> <?php echo $token; ?> </span> <a href="<?php echo base_url(); ?>cliente/CerraSesionCliente" class="btn btn-danger">Cerra sesion</a>
+                            <a href="<?php echo base_url(); ?>home/Perfil" class="btn btn-success"><i class="fa fa-user"></i> <?php echo $token; ?></a> - <a href="<?php echo base_url(); ?>cliente/CerraSesionCliente" class="btn btn-danger">Cerra sesion</a>
                         <?php } ?>
                         <div class="clearfix"></div>
                     </div>
@@ -53,21 +53,21 @@
 
                 <?php if ($token != "NOTOKEN") { ?>
 
-                <div class="col-md-6 top-header-left">
-                    <div class="cart box_1">
-                        <a href="<?php echo base_url(); ?>home/detallecarrito">
-                            <div class="total">
-                                <span id="totalproducto"> </span>
-                            </div>
-                            <i style="font-size: 20px;" class="fa fa-shopping-cart"></i>
-                        </a>
-                        <!-- <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
-                        <div class="clearfix"> </div>
+                    <div class="col-md-6 top-header-left">
+                        <div class="cart box_1">
+                            <a href="<?php echo base_url(); ?>home/detallecarrito">
+                                <div class="total">
+                                    <span id="totalproducto"> </span>
+                                </div>
+                                <i style="font-size: 20px;" class="fa fa-shopping-cart"></i>
+                            </a>
+                            <!-- <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
+                            <div class="clearfix"> </div>
+                        </div>
                     </div>
-                </div>
 
                 <?php } ?>
-                
+
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -88,14 +88,14 @@
                             </li>
                             <?php if ($token != "NOTOKEN") { ?>
                                 <li class="grid"><a href="<?php echo base_url(); ?>home/detallecarrito">Detalle carrito</a>
-                            <?php } ?>
-                            </li>
-                            <li class="grid"><a href="#">Kids</a>
-                            </li>
-                            <li class="grid"><a href="typo.html">Blog</a>
-                            </li>
-                            <li class="grid"><a href="contact.html">Contact</a>
-                            </li>
+                                <?php } ?>
+                                </li>
+                                <li class="grid"><a href="<?php echo base_url(); ?>home/Nosotros">Nosotros</a>
+                                </li>
+                                <!-- <li class="grid"><a href="typo.html">Blog</a>
+                                </li>
+                                <li class="grid"><a href="contact.html">Contact</a>
+                                </li> -->
                         </ul>
                     </div>
                     <div class="clearfix"> </div>

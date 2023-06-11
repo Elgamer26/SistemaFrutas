@@ -528,6 +528,46 @@ class ModeloTienda
         exit();
     }
 
+    function TraercalificacionProducto($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT COUNT(*) FROM calificarestado WHERE productoid = ? ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraercalificacionProductoOferta($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT COUNT(*) FROM calificarestadooferta WHERE productoid = ? ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     //////////////////////
     function IngresarProductoCarritoNormal($iduser, $id, $precio, $cantidad)
     {
@@ -930,6 +970,238 @@ class ModeloTienda
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $res;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function CalificarProducto($iduser, $estado, $idproducto)
+    {
+        try {
+            $res = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql_a = "call EventoEstado(?,?,?)";
+            $querya = $c->prepare($sql_a);
+            $querya->bindParam(1, $iduser);
+            $querya->bindParam(2, $idproducto);
+            $querya->bindParam(3, $estado);
+            $querya->execute();
+            $res = $querya->fetch();
+
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $res[0];
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerCalificaionCliente($id, $idprod)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT estado FROM calificarestado where clienteid = ? AND productoid = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->bindParam(2, $idprod);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            if (!empty($result)) {
+                return $result[0];
+            } else {
+                return $result;
+            }
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function CalificarProductoOferta($iduser, $estado, $idproducto)
+    {
+        try {
+            $res = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql_a = "call EventoEstadoOferta(?,?,?)";
+            $querya = $c->prepare($sql_a);
+            $querya->bindParam(1, $iduser);
+            $querya->bindParam(2, $idproducto);
+            $querya->bindParam(3, $estado);
+            $querya->execute();
+            $res = $querya->fetch();
+
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $res[0];
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerCalificaionClienteOferta($id, $idprod)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT estado FROM calificarestadooferta where clienteid = ? AND productoid = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->bindParam(2, $idprod);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            if (!empty($result)) {
+                return $result[0];
+            } else {
+                return $result;
+            }
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    //////////// DATOS DEL CLIENTE DASHBOARD
+    function ListarComprasClienteWeb($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            ventaweb.id,
+            CONCAT_WS( ' ', cliente.nombre, cliente.apellidos ) AS cliente,
+            cliente.cedula,
+            ventaweb.direccion,
+            ventaweb.subtotal,
+            ventaweb.impuesto,
+            ventaweb.total,
+            ventaweb.fecha,
+            ventaweb.n_venta,
+            ventaweb.comprobante,
+            ventaweb.iva,
+            ventaweb.estado,
+            ventaweb.fecharegistro,
+            ventaweb.ciudad,
+            ventaweb.referencia 
+            FROM
+            ventaweb INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
+            WHERE ventaweb.comprobante = 'PayPal' AND cliente.id = ?
+            ORDER BY ventaweb.id DESC";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function ListarComprasCliente($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            ventaweb.id,
+            CONCAT_WS( ' ', cliente.nombre, cliente.apellidos ) AS cliente,
+            cliente.cedula,
+            ventaweb.direccion,
+            ventaweb.subtotal,
+            ventaweb.impuesto,
+            ventaweb.total,
+            ventaweb.fecha,
+            ventaweb.n_venta,
+            ventaweb.comprobante,
+            ventaweb.iva,
+            ventaweb.estado,
+            ventaweb.fecharegistro,
+            ventaweb.ciudad,
+            ventaweb.referencia 
+            FROM ventaweb INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
+            WHERE ventaweb.comprobante != 'PayPal' AND cliente.id = ?
+            ORDER BY
+            ventaweb.id DESC";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerDatosCliente($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            cliente.id,
+            cliente.nombre,
+            cliente.apellidos,
+            cliente.correo,
+            cliente.cedula,
+            cliente.sexo,
+            cliente.direccion,
+            cliente.telefono,
+            cliente.`password`,
+            cliente.estado,
+            cliente.createt 
+            FROM
+                cliente 
+            WHERE
+            cliente.id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function EditarPasswordCliente($iduser, $passnew)
+    {
+        try {
+            $result = 0;
+
+            $c = $this->conexion->conexionPDO();
+            $sql = "UPDATE cliente SET password = ? WHERE id = ? ";
+
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $passnew);
+            $query->bindParam(2, $iduser);
+
+            if ($query->execute()) {
+                $result = 1;
+            } else {
+                $result = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
         } catch (\Exception $e) {
             $this->conexion->cerrar_conexion();
             echo "Error: " . $e->getMessage();

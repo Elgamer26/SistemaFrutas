@@ -46,6 +46,11 @@ class Admin extends BaseController
         }
     }
 
+    public function Recuperar()
+    {
+        return view('login/Recuperar.php');
+    }
+
     /////////// ROL
 
     public function rolesuser($valor)
@@ -732,6 +737,14 @@ class Admin extends BaseController
                 $detalle = $this->producto->TraerComentarioProductoCliente($id);
                 echo json_encode($detalle, JSON_UNESCAPED_UNICODE);
                 exit();
+            } else  if ($accion == "califica") {
+
+                $califica = $this->producto->ListCalificaionProducto();
+                $data = [
+                    'califica' => $califica
+                ];
+
+                return view('admin/cliente/ListCalificacion.php', $data);
             }
         }
     }
@@ -742,12 +755,11 @@ class Admin extends BaseController
         if ($this->request->getMethod() == "get") {
             if ($valor == "list") {
 
-                $ListaCompra = $this->proveedor->ListarCompraInsumo();
+                $ListVenta = $this->venta->ListarVentas();
                 $data = [
-                    'ListaCompra' => $ListaCompra
+                    'ListVenta' => $ListVenta
                 ];
                 return view('admin/venta/ListVentaProducto.php', $data);
-
             } else if ($valor == "web") {
 
                 $ListVenta = $this->venta->ListarVentasTiendaWeb();
@@ -755,7 +767,6 @@ class Admin extends BaseController
                     'ListVenta' => $ListVenta
                 ];
                 return view('admin/venta/ListVentasTiendaWeb', $data);
-            
             } else if ($valor == "new") {
 
                 $cliente = $this->venta->SelectCliente();
@@ -765,7 +776,7 @@ class Admin extends BaseController
                 $data = [
                     'titulo' => "Venta de producto <i class='fa fa-shopping-cart'></i>",
                     'texto' => "Registro de venta <i class='fa fa-plus'></i>",
-                    'accion' => "<button onclick='RegistraVenta();' class='btn btn-success'>Guardar</button>",
+                    'accion' => "<button onclick='RegistraVentaproducto();' class='btn btn-success'>Guardar</button>",
                     'color' => "success",
                     'editar' => ['0' => '', '1' => date("YmdHms"), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
                     'comprobante' => ['0' => 'Nota de venta', '1' => 'Factura'],
@@ -774,7 +785,6 @@ class Admin extends BaseController
                     'ofertas' => $ofertas
                 ];
                 return view('admin/venta/FormVentaProducto.php', $data);
-
             }
         }
     }

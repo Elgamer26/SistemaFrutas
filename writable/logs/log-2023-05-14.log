@@ -1,6 +1,0 @@
-CRITICAL - 2023-05-14 22:16:52 --> Class "Mpdf" not found
-in APPPATH\Controllers\Reporte.php on line 9.
- 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteCompraInsumo()
- 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
- 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

@@ -760,7 +760,45 @@ function pagination_oferta(partida, valor) {
   });
 }
 
-//// ENVIAR OFERTA VIA WHATSAPP
+// ENVIAR OFERTA VIA CORREO
+function EnviarCorreoMasivosOfertas(id) {
+  Swal.fire({
+    title: "Enviar ofertas?",
+    text: "Las ofertas se enviaran por correo a los clientes!!",
+    icon: "info",
+    showCancelButton: true,
+    showCancelButton: true,
+    allowOutsideClick: false,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, enviar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      EnviarCorreoOfertas(id);
+    }
+  });
+}
+
+async function EnviarCorreoOfertas(id) {
+  Swal.fire({
+    position: "top-end",
+    icon: "info",
+    title: "Enviando la oferta a los clientes",
+    showConfirmButton: false,
+    timer: 1000,
+  });
+
+  let result = await $.ajax({
+    url: BaseUrl + "Producto/EnviarCorreoOfertas",
+    type: "POST",
+    data: {
+      id: id,
+    },
+  });
+  console.log(result);
+}
+
+// ENVIAR OFERTA VIA WHATSAPP
 async function EnviarOfertasSMS(id) {
   Swal.fire({
     title: "Enviar la oferta",
@@ -773,36 +811,27 @@ async function EnviarOfertasSMS(id) {
     cancelButtonColor: "#d33",
     confirmButtonText: "Si, enviar!!",
   }).then((result) => {
-
     if (result.value) {
-      $.ajax({
-        type: "POST",
-        url: BaseUrl + "producto/EnviarOfertasSMS",
-        data: {
-          id: id,
-        },
-        success: function (resp) {
-
-          return console.log(resp);
-
-          if (resp == 1) {
-            cargar_contenido(
-              "contenido_principal",
-              BaseUrl + "admin/oferta/list/0"
-            );
-
-            return swal.fire(
-              "Oferta eliminada",
-              "La oferta se elimino con exito",
-              "success"
-            );
-          } else {
-            return swal.fire("Error", "Error en la Matrix" + resp, "error");
-          }
-
-        },
-      });
+      EnviarCorreoOfertasWhatsapp(id);
     }
-
   });
+}
+
+async function EnviarCorreoOfertasWhatsapp(id) {
+  Swal.fire({
+    position: "top-end",
+    icon: "info",
+    title: "Enviando la oferta a los clientes",
+    showConfirmButton: false,
+    timer: 1000,
+  });
+
+  let result = await $.ajax({
+    url: BaseUrl + "Producto/EnviarCorreoOfertasWhatsapp",
+    type: "POST",
+    data: {
+      id: id,
+    },
+  });
+  console.log(result);
 }
