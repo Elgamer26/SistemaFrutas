@@ -131,7 +131,7 @@ class ModeloInsumos
     function EstadoIsnumo($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE tipoinsumo SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -236,7 +236,7 @@ class ModeloInsumos
     function EstadoInsumoI($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE insumo SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -433,7 +433,7 @@ class ModeloInsumos
     function EstadoTipoMaterial($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE tipo_material SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -589,7 +589,7 @@ class ModeloInsumos
     function EstadoMaterial($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE material SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);

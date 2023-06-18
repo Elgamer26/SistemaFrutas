@@ -28,7 +28,8 @@ class Producto extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->producto->RegistraTipoProducto($nombrerol);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -38,7 +39,8 @@ class Producto extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EstadoTipo($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 
@@ -48,7 +50,8 @@ class Producto extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EditarTipoProducto($nombrerol, $id);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -89,7 +92,8 @@ class Producto extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EstadoProducto($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 
@@ -159,7 +163,7 @@ class Producto extends BaseController
             $partida = $this->request->getPost('partida');
             $valor = $this->request->getPost('valor');
             $repuesta = $this->producto->Pagination_oferta($partida, $valor);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
         }
         exit();
     }
@@ -223,8 +227,8 @@ class Producto extends BaseController
         // echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
         // exit();
 
-        $url = "http://localhost:8080/whatsapp/vivero.php";
-        //$url = "https://whatsapp.i-sistener.xyz/vivero.php";
+        //$url = "http://localhost:8080/whatsapp/vivero.php";
+        $url = "https://whatsapp.i-sistener.xyz/vivero.php";
 
         // Los datos de formulario
         $datos = [

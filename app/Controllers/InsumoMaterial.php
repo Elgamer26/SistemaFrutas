@@ -19,7 +19,8 @@ class InsumoMaterial extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->InsumoMaterial->RegistraTipoInsumo($nombrerol);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -29,7 +30,8 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoIsnumo($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 
@@ -39,7 +41,8 @@ class InsumoMaterial extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EditarTipoInsumo($nombrerol, $id);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -80,7 +83,8 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoInsumoI($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 
@@ -124,7 +128,7 @@ class InsumoMaterial extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->InsumoMaterial->RegistraTipoMaterial($nombrerol);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
         }
     }
 
@@ -134,7 +138,7 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoTipoMaterial($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
         }
     }
 
@@ -144,7 +148,7 @@ class InsumoMaterial extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EditarTipoMaterial($nombrerol, $id);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
         }
     }
 
@@ -185,7 +189,8 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoMaterial($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 

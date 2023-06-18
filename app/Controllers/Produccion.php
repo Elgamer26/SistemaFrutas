@@ -20,7 +20,7 @@ class Produccion extends BaseController
         if ($this->request->getMethod() == "post") {
             $id = $this->request->getPost('id');
             $repuesta = $this->produccion->TraerCantidadInsumo($id);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
         }
         exit();
     }
@@ -32,7 +32,7 @@ class Produccion extends BaseController
         if ($this->request->getMethod() == "post") {
             $id = $this->request->getPost('id');
             $repuesta = $this->produccion->TraerCantidadMaterial($id);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
         }
         exit();
     }
@@ -52,7 +52,7 @@ class Produccion extends BaseController
             $cantidadprod = $this->request->getPost('cantidadprod');
 
             $repuesta = $this->produccion->RegistrarProduccionPlantas($nombreproduccion, $fechainicio, $fechaFin, $diasproduccion, $producto, $iduser, $cantidadprod);
-            return $repuesta;
+            echo $repuesta;
         }
         exit();
     }
@@ -107,7 +107,7 @@ class Produccion extends BaseController
             $valor = $this->request->getPost('valor');
 
             $repuesta = $this->produccion->PaginadorProduccion($partida, $valor);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
         }
         exit();
     }
@@ -148,7 +148,7 @@ class Produccion extends BaseController
         if ($this->request->getMethod() == "post") {
             $id = $this->request->getPost('id');
             $repuesta = $this->produccion->traerCantidadProduction($id);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
         }
         exit();
     }
@@ -213,7 +213,7 @@ class Produccion extends BaseController
             $valor = $this->request->getPost('valor');
 
             $repuesta = $this->produccion->paginationFinalizado($partida, $valor);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
         }
         exit();
     }

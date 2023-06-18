@@ -29,9 +29,11 @@ class Cliente extends BaseController
 
             $repuesta_create = $this->cliente->CredencialesCliente($cliente, $password);
             if ($repuesta_create) {
-                return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+                echo json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+                exit();
             } else {
-                return json_encode(0, JSON_UNESCAPED_UNICODE);
+                echo 0;
+                exit();
             }
         }
     }
@@ -194,7 +196,8 @@ class Cliente extends BaseController
             $direccion = $this->request->getPost('direccion');
             $telefono = $this->request->getPost('telefono');
             $repuesta_create = $this->cliente->EditarCliente($id, $nombre, $apellidos, $correo, $cedula, $sexo, $direccion, $telefono);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -204,7 +207,8 @@ class Cliente extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->cliente->EstadoCliente($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            echo $repuesta_create;
+            exit();
         }
     }
 

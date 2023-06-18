@@ -652,7 +652,7 @@ class ModeloTienda
     function IngresarProductoCarritoOferta($iduser, $id, $precio, $cantidad)
     {
         try {
-            $res = "";
+            $res = 0;
             $sale = 0;
 
             $c = $this->conexion->conexionPDO();
@@ -957,7 +957,7 @@ class ModeloTienda
     function AnularFacturaVentaWeb($id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE ventaweb SET estado = 0 WHERE id = ?";
             $querya = $c->prepare($sql_a);

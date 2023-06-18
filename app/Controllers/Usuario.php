@@ -28,9 +28,11 @@ class Usuario extends BaseController
 
             $repuesta_create = $this->usuario->Credenciales($usuario, $password);
             if ($repuesta_create) {
-                return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+                echo json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+                exit();
             } else {
-                return json_encode(0, JSON_UNESCAPED_UNICODE);
+                echo json_encode(0, JSON_UNESCAPED_UNICODE);
+                exit();
             }
         }
     }
@@ -58,7 +60,8 @@ class Usuario extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->usuario->RegistraRol($nombrerol);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -68,7 +71,8 @@ class Usuario extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->usuario->ModificarRol($nombrerol, $id);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 
@@ -78,7 +82,8 @@ class Usuario extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->usuario->EstadoRol($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 
@@ -121,7 +126,8 @@ class Usuario extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->usuario->EstadoUsuario($estado, $id);
-            return $repuesta_create;
+            echo $repuesta_create;
+            exit();
         }
     }
 
@@ -138,7 +144,8 @@ class Usuario extends BaseController
             $usuario = $this->request->getPost('usuario');
 
             $repuesta_create = $this->usuario->EditarUsuario($id, $nombres, $apellidos, $correo, $cedula, $tipo_rol, $usuario);
-            return $repuesta_create[0];
+            echo $repuesta_create[0];
+            exit();
         }
     }
 

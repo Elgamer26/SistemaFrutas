@@ -23,7 +23,8 @@ class Tienda extends BaseController
             $valor = $this->request->getPost('valor');
 
             $repuesta = $this->tienda->paginartienda($partida, $valor);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
         }
         exit();
     }
@@ -36,7 +37,8 @@ class Tienda extends BaseController
             $partida = $this->request->getPost('partida');
             $valor = $this->request->getPost('valor');
             $repuesta = $this->tienda->paginartiendaofertas($partida, $valor);
-            return json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
         }
         exit();
     }

@@ -67,7 +67,7 @@ class ModeloProveedor
     function EstadoProveedor($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE proveedor SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -277,7 +277,7 @@ class ModeloProveedor
     function AnularFactura($id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE compra SET estado = 0 WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -388,7 +388,7 @@ class ModeloProveedor
     function AnularFacturaMaterial($id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE compra_material SET estado = 0 WHERE id = ?";
             $querya = $c->prepare($sql_a);

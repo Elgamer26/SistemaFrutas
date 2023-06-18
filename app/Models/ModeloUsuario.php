@@ -143,7 +143,7 @@ class ModeloUsuario
     function EstadoRol($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE rol SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -248,7 +248,7 @@ class ModeloUsuario
     function EstadoUsuario($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE usuario SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -455,7 +455,7 @@ class ModeloUsuario
     function RegistrarEmpresa($id, $nombre, $direccion, $correo_e, $ruc, $telefono, $actividad, $codigowhatsapp)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql = "UPDATE empresa SET nombre = ?, direccion = ?, correo = ?, ruc = ?, telefono = ?, actividad = ?, codigowhatsapp = ? WHERE id = ?";
             $query = $c->prepare($sql);
@@ -528,7 +528,7 @@ class ModeloUsuario
     function UpdatePasswordAdmin($id, $pass)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE usuario SET passwordd = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);

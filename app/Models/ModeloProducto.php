@@ -155,7 +155,7 @@ class ModeloProducto
     function EstadoTipo($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE tipo_producto SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -260,7 +260,7 @@ class ModeloProducto
     function EstadoProducto($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE producto SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);

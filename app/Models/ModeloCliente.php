@@ -164,7 +164,7 @@ class ModeloCliente
     function EstadoCliente($estado, $id)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE cliente SET estado = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
@@ -188,7 +188,7 @@ class ModeloCliente
     function UpdatePasswordClient($id, $pass)
     {
         try {
-            $res = "";
+            $res = 0;
             $c = $this->conexion->conexionPDO();
             $sql_a = "UPDATE cliente SET password = ? WHERE id = ?";
             $querya = $c->prepare($sql_a);
