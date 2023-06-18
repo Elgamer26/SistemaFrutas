@@ -3,20 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\ModeloProducto;
-use App\SmsWhatsapp\Whatsapp;
+use App\Models\ModeloUsuario;
+// use App\SmsWhatsapp\Whatsapp;
 use App\MailPhp\envio_correo;
 
 class Producto extends BaseController
 {
     protected $producto;
-    protected $sms;
+    // protected $sms;
     protected $send_email;
-
+    protected $empresa;
     public function __construct()
     {
         $this->send_email = new envio_correo();
-        $this->sms = new Whatsapp();
+        // $this->sms = new Whatsapp();
         $this->producto = new ModeloProducto();
+        $this->empresa = new ModeloUsuario();
     }
 
     //////////////// TIPO DE PRODUCTO
@@ -26,7 +28,7 @@ class Producto extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->producto->RegistraTipoProducto($nombrerol);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -36,7 +38,7 @@ class Producto extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EstadoTipo($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -46,7 +48,7 @@ class Producto extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EditarTipoProducto($nombrerol, $id);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -87,7 +89,7 @@ class Producto extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EstadoProducto($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -100,7 +102,7 @@ class Producto extends BaseController
         $precio_venta = $this->request->getPost('precio_venta');
         $descripcion = $this->request->getPost('descripcion');
         $valor = $this->producto->EditarProducto($productoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion);
-        echo json_encode($valor[0], JSON_UNESCAPED_UNICODE);
+        echo $valor[0];
         exit();
     }
 
@@ -202,23 +204,56 @@ class Producto extends BaseController
     {
 
         $id = $this->request->getPost('id');
-
         $cliente = $this->producto->ObtenerCorreoClientes();
         $producto = $this->producto->ObtenerProductEnvio($id);
+        $dataempresa = $this->empresa->ListEmpresa();
 
         $sms = [];
         $url = base_url();
-
         for ($i = 0; $i < count($cliente[0]); $i++) {
+            //  if (mb_strlen($cliente[$i]["telefono"]) == 10) {
             $telefono = substr($cliente[$i]["telefono"], 1);
             $postal = "593" . $telefono;
-
             $sms[] = ["numero" => $postal, "mensaje" => "VIVERO DANIELITO LE RECUERDA: ESTIMADO(A) CLIENTE(A): " . $cliente[$i]["nombre"] . " " . $cliente[$i]["apellidos"] . ", TENEMOS UNA OFERTA ESPECIALMENTE PARA TI, HASTA EL: " . $producto["fecha_fin"] . ", NOMBRE DEL PRODUCTO: " . $producto["nombre"] . " - " . $producto["tipo"] . ", EL TIPO DE OFERTA ES: " . $producto["tipo_oferta"] . ", INGRESA A NUESTRA PAGINA WEB " . $url . ", PARA VER MAS DETALLE DE LA OFERTA, GRACIAS POR CONFIAR EN NOSOTROS"];
             $sms[] = ["numero" => $postal, "url" => "" . $url . "public/img/producto/" . $producto["imagen"] . ""];
+            // }
         }
 
-        $mensaje = $this->sms->enviar_mensaje($sms);
-        echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
+        // $mensaje = $this->sms->enviar_mensaje($sms);
+        // echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
+        // exit();
+
+        $url = "http://localhost:8080/whatsapp/vivero.php";
+        //$url = "https://whatsapp.i-sistener.xyz/vivero.php";
+
+        // Los datos de formulario
+        $datos = [
+            "sms" => $sms,
+            "token" => $dataempresa[8],
+        ];
+
+        // Crear opciones de la petición HTTP
+        $opciones = array(
+            "http" => array(
+                "header" => "Content-type: application/x-www-form-urlencoded\r\n",
+                "method" => "POST",
+                "content" => http_build_query($datos), # Agregar el contenido definido antes
+            ),
+        );
+
+        # Preparar petición
+        $contexto = stream_context_create($opciones);
+
+        # Hacerla
+        $resultado = file_get_contents($url, false, $contexto);
+
+        if ($resultado === false) {
+            echo "Error haciendo petición";
+            exit();
+        }
+
+        # si no salimos allá arriba, todo va bien
+        echo print_r($resultado);
         exit();
     }
 }

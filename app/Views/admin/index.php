@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
- 
+
   <link rel="shortcut icon" href="<?php echo base_url(); ?>public/img/logos/load.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/DataTables/datatables.min.css">
@@ -468,9 +468,58 @@
               <ul class="nav nav-treeview">
 
                 <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/new/0');" class="nav-link">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/venta_tienda/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Nueva venta</p>
+                    <p>Reporte venta</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/compra/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte compra insumo</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/compramaterial/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte compra material</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/reporteinsumos/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte de insumos</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/reportematerial/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte de material</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/ReportePlantas/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte de plantas</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/ReporteCliente/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte de clientes</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/reporte/ReporteOfertas/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reporte de ofertas</p>
                   </a>
                 </li>
 
@@ -551,6 +600,8 @@
             </div>
           </div>
 
+          <hr>
+          
           <div class="row">
 
             <div class="col-lg-6">
@@ -589,6 +640,45 @@
 
           </div>
 
+          <hr>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="ibox">
+                <div class="ibox-body">
+                  <div class="flexbox mb-4">
+                    <div>
+                      <h4 style="text-align: center;"><b>10 Clientes con mas compras</b></h4>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="chart_cli">
+                      <canvas id="char_clients"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="ibox">
+                <div class="ibox-body">
+                  <div class="flexbox mb-4">
+                    <div>
+                      <h4 style="text-align: center;"><b>10 productos mas comprados</b></h4>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="chart_compra">
+                      <canvas id="char_comprados"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
     </div>
@@ -610,7 +700,7 @@
   <script src="<?php echo base_url(); ?>public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo base_url(); ?>public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <script src="<?php echo base_url(); ?>public/dist/js/adminlte.js"></script>
- 
+
 
   <!-- //// agregados por mi -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -779,6 +869,8 @@
   TraerDatosUsuario();
   TraerGraficoProductosMasVendidos();
   TraerGraficoProductosMasVendidosOferta();
+  TraerGraficoClientesMasCompras();
+  TraerGraficoProductosMasComprados();
 
   function mostrar_imagenData(input) {
     var filename = document.getElementById("foto_new").value;

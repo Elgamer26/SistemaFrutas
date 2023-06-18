@@ -58,7 +58,7 @@ class Usuario extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->usuario->RegistraRol($nombrerol);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -68,7 +68,7 @@ class Usuario extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->usuario->ModificarRol($nombrerol, $id);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -78,7 +78,7 @@ class Usuario extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->usuario->EstadoRol($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -121,7 +121,7 @@ class Usuario extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->usuario->EstadoUsuario($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -138,7 +138,7 @@ class Usuario extends BaseController
             $usuario = $this->request->getPost('usuario');
 
             $repuesta_create = $this->usuario->EditarUsuario($id, $nombres, $apellidos, $correo, $cedula, $tipo_rol, $usuario);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -225,7 +225,9 @@ class Usuario extends BaseController
             $ruc = $this->request->getPost('ruc');
             $telefono = $this->request->getPost('telefono');
             $actividad = $this->request->getPost('actividad');
-            $repuesta = $this->usuario->RegistrarEmpresa($id, $nombre, $direccion, $correo_e, $ruc, $telefono, $actividad);
+            $codigowhatsapp = $this->request->getPost('codigowhatsapp');
+
+            $repuesta = $this->usuario->RegistrarEmpresa($id, $nombre, $direccion, $correo_e, $ruc, $telefono, $actividad, $codigowhatsapp);
             echo $repuesta;
             exit();
         }
@@ -306,7 +308,8 @@ class Usuario extends BaseController
                     die();
                 }
             } else {
-                return json_encode(0, JSON_UNESCAPED_UNICODE);
+                echo 0;
+                exit();
             }
             exit();
         }

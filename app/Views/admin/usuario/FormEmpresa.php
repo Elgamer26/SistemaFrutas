@@ -48,17 +48,24 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ruc">Rúc</label> <span id="ruc_olbligg" style="color: red;"></span>
                                     <input onkeypress="return soloNumeros(event)" autocomplete="off" value="<?php echo $ListEmpresa[4]; ?>" type="text" name="ruc" class="form-control" id="ruc" placeholder="Ingrese Rúc" maxlength="13">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="telefono">Teléfono</label> <span id="telefono_olbligg" style="color: red;"></span>
                                     <input onkeypress="return soloNumeros(event)" autocomplete="off" value="<?php echo $ListEmpresa[5]; ?>" type="text" name="telefono" class="form-control" id="telefono" placeholder="Ingrese telefono" maxlength="11">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="codigowhatsapp">Código Whatsapp</label> <span id="codigowhatsapp_olbligg" style="color: red;"></span>
+                                    <input value="<?php echo $ListEmpresa[8]; ?>" type="text" name="codigowhatsapp" class="form-control" id="codigowhatsapp" placeholder="Ingrese codigo" maxlength="50">
                                 </div>
                             </div>
 

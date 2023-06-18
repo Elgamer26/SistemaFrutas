@@ -11,7 +11,7 @@
  Target Server Version : 80031 (8.0.31)
  File Encoding         : 65001
 
- Date: 04/06/2023 18:35:19
+ Date: 17/06/2023 20:08:21
 */
 
 SET NAMES utf8mb4;
@@ -40,6 +40,52 @@ CREATE TABLE `aggcarrito`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for calificarestado
+-- ----------------------------
+DROP TABLE IF EXISTS `calificarestado`;
+CREATE TABLE `calificarestado`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `clienteid` int NULL DEFAULT NULL,
+  `productoid` int NULL DEFAULT NULL,
+  `estado` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `clienteid`(`clienteid` ASC) USING BTREE,
+  INDEX `productoid`(`productoid` ASC) USING BTREE,
+  CONSTRAINT `calificarestado_ibfk_1` FOREIGN KEY (`clienteid`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `calificarestado_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of calificarestado
+-- ----------------------------
+INSERT INTO `calificarestado` VALUES (6, 9, 2, 'Nomegusta', '2023-06-09 23:30:19');
+INSERT INTO `calificarestado` VALUES (7, 9, 1, 'Megusta', '2023-06-09 23:39:32');
+
+-- ----------------------------
+-- Table structure for calificarestadooferta
+-- ----------------------------
+DROP TABLE IF EXISTS `calificarestadooferta`;
+CREATE TABLE `calificarestadooferta`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `clienteid` int NULL DEFAULT NULL,
+  `productoid` int NULL DEFAULT NULL,
+  `estado` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `clienteid`(`clienteid` ASC) USING BTREE,
+  INDEX `productoid`(`productoid` ASC) USING BTREE,
+  CONSTRAINT `calificarestadooferta_ibfk_1` FOREIGN KEY (`clienteid`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `calificarestadooferta_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of calificarestadooferta
+-- ----------------------------
+INSERT INTO `calificarestadooferta` VALUES (3, 9, 2, 'Nomegusta', '2023-06-09 23:41:09');
+INSERT INTO `calificarestadooferta` VALUES (4, 9, 1, 'Megusta', '2023-06-09 23:41:16');
+
+-- ----------------------------
 -- Table structure for calificarproducto
 -- ----------------------------
 DROP TABLE IF EXISTS `calificarproducto`;
@@ -56,7 +102,7 @@ CREATE TABLE `calificarproducto`  (
   INDEX `idproducto`(`idproducto` ASC) USING BTREE,
   CONSTRAINT `calificarproducto_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `calificarproducto_ibfk_2` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of calificarproducto
@@ -69,6 +115,11 @@ INSERT INTO `calificarproducto` VALUES (5, 9, 'ok', 'sdsd', '2023-05-21 20:23:05
 INSERT INTO `calificarproducto` VALUES (6, 9, 'ok', 'buen producto', '2023-05-22 11:11:19', 2, 'Sin oferta');
 INSERT INTO `calificarproducto` VALUES (7, 9, 'ok', 'Producto estable y de buen color', '2023-05-22 11:17:03', 2, 'Sin oferta');
 INSERT INTO `calificarproducto` VALUES (8, 9, 'ok', 'ME GUSTO EL PRODUCTO', '2023-05-27 21:25:42', 1, 'oferta');
+INSERT INTO `calificarproducto` VALUES (9, 9, 'ok', 'AA', '2023-06-09 18:11:18', 2, 'Sin oferta');
+INSERT INTO `calificarproducto` VALUES (10, 9, 'ok', 'aa', '2023-06-09 18:13:28', 2, 'Sin oferta');
+INSERT INTO `calificarproducto` VALUES (11, 9, 'ok', 'as', '2023-06-09 18:13:59', 2, 'Sin oferta');
+INSERT INTO `calificarproducto` VALUES (12, 9, 'ok', 'COMENTARIO DEL PRODUCTO', '2023-06-09 18:14:15', 2, 'Sin oferta');
+INSERT INTO `calificarproducto` VALUES (13, 9, 'ok', 'asa', '2023-06-09 21:27:59', 1, 'oferta');
 
 -- ----------------------------
 -- Table structure for cliente
@@ -95,11 +146,11 @@ CREATE TABLE `cliente`  (
 INSERT INTO `cliente` VALUES (1, 'JORGE MOISES', 'RAMIREZ ZAVLA', 'elgamereee@hptmail.com', '121212', 'Masculino', 'milafro', '0985906677', 1, '123', 0);
 INSERT INTO `cliente` VALUES (2, 'editado empresa', 'bbbbbbbbb', 'elgamerrrr@hotmail.com', '132323', 'Masculino', 'ssssssss', '11111111', 1, '098', 1);
 INSERT INTO `cliente` VALUES (3, 'editado tienda', 'fffffff', 'elgamertttt@hotmail.com', '343434', 'Masculino', 'ssssssss', '11111111', 1, '123', 0);
-INSERT INTO `cliente` VALUES (9, 'JORGE JOSE', 'ZAVALA RAMIREZ', 'ELGAMER-26@HOTMAIL.COM', '0940321855', 'Masculino', 'MI CASITA ', '0987654321', 1, '123', 0);
-INSERT INTO `cliente` VALUES (10, 'JOSE ANDRES', 'ALFARO LOOR', 'jorgemoisesramirez201412122@gmail.com', '09403217', 'Masculino', 'MILAGRO', '098765432', 1, 'ym86sr45q.', 1);
-INSERT INTO `cliente` VALUES (11, 'aaaaaaaa', 'bbbbbbbb', 'jorgemoisesramirez201422@gmail.com', '0940321850', 'Femenino', 'milagro', '0987654321', 1, 'kmrs69bpm.', 1);
-INSERT INTO `cliente` VALUES (12, 'NUEVO CLIENTE', 'DE MAS DE UNO', 'elgamer-26@hotmail.com', '0940321851', 'Masculino', 'Mialgro', '0987654321', 1, 'm3lszh270g', 0);
-INSERT INTO `cliente` VALUES (13, 'Paul', 'De la U', 'smartechconsulta@gmail.com', '0940321854', 'Masculino', 'Babahoyo', '1234567890', 1, 'ry7srf7rx6', 0);
+INSERT INTO `cliente` VALUES (9, 'JORGE MOISSES', 'RAMIREZ ZAVALA', 'elgamer-26@hotmail.com', '0940321854', 'Masculino', 'AV. AMAZONAS', '0985906677', 1, '123', 0);
+INSERT INTO `cliente` VALUES (10, 'USER NEW', 'NEW USER', 'jorgemoisesramirez201412122@gmail.com', '09403217', 'Masculino', 'MILAGRO', '0980370752', 1, 'ym86sr45q.', 1);
+INSERT INTO `cliente` VALUES (11, 'USER NUEVO', 'USER NUEVO', 'jorgemoisesramirez201422@gmail.com', '0940321850', 'Femenino', 'milagro', '0969938481', 1, 'kmrs69bpm.', 1);
+INSERT INTO `cliente` VALUES (12, 'NUEVO CLIENTE', 'DE MAS DE UNO', 'elgam123er-26@hotmail.com', '0940321851', 'Masculino', 'Mialgro', '0987654321', 1, 'm3lszh270g', 0);
+INSERT INTO `cliente` VALUES (13, 'Paul', 'De la U', 'smartechconsulta@gmail.com', '0940321821', 'Masculino', 'Babahoyo', '1234567890', 1, 'ry7srf7rx6', 0);
 
 -- ----------------------------
 -- Table structure for compra
@@ -225,7 +276,11 @@ CREATE TABLE `detallecompramaterial`  (
   `cantidad` decimal(10, 2) NULL DEFAULT NULL,
   `descuento` decimal(10, 2) NULL DEFAULT NULL,
   `total` decimal(10, 2) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `compra_id`(`compra_id` ASC) USING BTREE,
+  INDEX `material_id`(`material_id` ASC) USING BTREE,
+  CONSTRAINT `detallecompramaterial_ibfk_1` FOREIGN KEY (`compra_id`) REFERENCES `compra_material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `detallecompramaterial_ibfk_2` FOREIGN KEY (`material_id`) REFERENCES `material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -316,13 +371,14 @@ CREATE TABLE `empresa`  (
   `telefono` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `actividad` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `foto` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `codigowhatsapp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of empresa
 -- ----------------------------
-INSERT INTO `empresa` VALUES (1, 'nombre editado', 'direccion editado', 'correo@hotmail.com', '1245', '09876', 'actividad esto es editado por el usuario wey', 'IMG215202319810.png');
+INSERT INTO `empresa` VALUES (1, 'nombre editado', 'direccion editado', 'correo@hotmail.com', '1245', '09876', 'actividad esto es editado por el usuario wey', 'IMG215202319810.png', 'GA230617114907');
 
 -- ----------------------------
 -- Table structure for fase
@@ -503,13 +559,13 @@ CREATE TABLE `oferta`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `producto_id`(`producto_id` ASC) USING BTREE,
   CONSTRAINT `oferta_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of oferta
 -- ----------------------------
 INSERT INTO `oferta` VALUES (2, 1, '2023-05-20', '2023-07-09', 'Descuento %', 80, '2023-05-20 16:05:00');
-INSERT INTO `oferta` VALUES (3, 2, '2023-05-20', '2023-06-06', '3x1', 0, '2023-05-20 17:16:20');
+INSERT INTO `oferta` VALUES (4, 2, '2023-06-17', '2023-07-01', '2x1', 0, '2023-06-17 10:43:02');
 
 -- ----------------------------
 -- Table structure for perdida_produccion
@@ -598,8 +654,8 @@ CREATE TABLE `producto`  (
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
-INSERT INTO `producto` VALUES (1, '77959826', 'PLANTA EDITADA', 1, 159.00, 'Descripción del producto', 'IMG85202321507.jpg', 1, 99, 1);
-INSERT INTO `producto` VALUES (2, '874084907', 'Nombre', 3, 7453.00, 'ES UNA DESCRIPCION', 'IMG852023214933.jpg', 1, 87, 1);
+INSERT INTO `producto` VALUES (1, '77959826', 'PLANTA EDITADA', 1, 159.00, 'Descripción del producto', 'IMG85202321507.jpg', 1, 89, 1);
+INSERT INTO `producto` VALUES (2, '874084907', 'Nombre', 3, 7453.00, 'ES UNA DESCRIPCION', 'IMG852023214933.jpg', 1, 65, 1);
 
 -- ----------------------------
 -- Table structure for proveedor
@@ -642,7 +698,7 @@ CREATE TABLE `rol`  (
 INSERT INTO `rol` VALUES (1, 'idd', '2023-04-23 18:41:23', 1);
 INSERT INTO `rol` VALUES (2, 'SUPER USER', '2023-04-23 18:42:08', 1);
 INSERT INTO `rol` VALUES (3, 'adminitrador uno', '2023-04-23 19:04:23', 1);
-INSERT INTO `rol` VALUES (4, 'NUEVO TIPO', '2023-05-07 20:21:37', 0);
+INSERT INTO `rol` VALUES (4, 'NUEVO TIPO', '2023-05-07 20:21:37', 1);
 
 -- ----------------------------
 -- Table structure for tipo_material
@@ -747,7 +803,7 @@ CREATE TABLE `ventaweb`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cliente_id`(`cliente_id` ASC) USING BTREE,
   CONSTRAINT `ventaweb_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ventaweb
@@ -756,6 +812,23 @@ INSERT INTO `ventaweb` VALUES (20, 9, 'SD', 14906.00, 1788.72, 16694.72, '2023-0
 INSERT INTO `ventaweb` VALUES (21, 9, 'SD', 14906.00, 1788.72, 16694.72, '2023-06-03', '20230603190656', 'PayPal', 12, 0, '2023-06-03 20:59:34', 'DSSD', 'SD');
 INSERT INTO `ventaweb` VALUES (22, 9, 'bbbbb', 14906.00, 1788.72, 16694.72, '2023-06-03', '20230603190630', 'PayPal', 12, 0, '2023-06-03 20:59:28', 'aaaaa', 'ccccc');
 INSERT INTO `ventaweb` VALUES (23, 9, 'Av. amazonas y eloy alfaro', 7612.00, 913.44, 8525.44, '2023-06-04', '20230604180601', 'PayPal', 12, 1, '2023-06-04 18:28:01', 'Milagro', 'En mi casa');
+INSERT INTO `ventaweb` VALUES (24, 12, NULL, 7484.80, 0.00, 7484.80, '2023-06-09', '20230609120645', 'Nota de venta', 0, 1, '2023-06-09 12:53:21', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (25, 12, NULL, 7612.00, 0.00, 7612.00, '2023-06-09', '20230609120640', 'Nota de venta', 0, 1, '2023-06-09 12:54:52', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (26, 12, NULL, 7612.00, 0.00, 7612.00, '2023-06-09', '20230609120640', 'Nota de venta', 0, 1, '2023-06-09 12:55:37', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (27, 13, NULL, 7453.00, 0.00, 7453.00, '2023-06-09', '20230609120651', 'Nota de venta', 0, 0, '2023-06-09 14:22:27', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (28, 2, NULL, 7612.00, 0.00, 7612.00, '2023-06-09', '20230609140611', 'Nota de venta', 0, 1, '2023-06-09 14:24:25', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (29, 10, NULL, 22836.00, 0.00, 22836.00, '2023-06-09', '20230609140640', 'Nota de venta', 0, 1, '2023-06-09 14:24:56', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (30, 9, NULL, 7612.00, 0.00, 7612.00, '2023-06-10', '20230610090633', 'Nota de venta', 0, 1, '2023-06-10 09:35:42', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (31, 9, 'Exuado', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130636', 'PayPal', 12, 1, '2023-06-10 13:01:36', 'Milagro', 'Mi casa');
+INSERT INTO `ventaweb` VALUES (32, 9, 'a', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130658', 'PayPal', 12, 1, '2023-06-10 13:03:58', 'qa', 'aaa');
+INSERT INTO `ventaweb` VALUES (33, 9, 'asa', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130610', 'PayPal', 12, 1, '2023-06-10 13:08:10', 'as', 'asa');
+INSERT INTO `ventaweb` VALUES (34, 9, 'ddd', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130634', 'PayPal', 12, 1, '2023-06-10 13:09:34', 'dd', 'dd');
+INSERT INTO `ventaweb` VALUES (35, 9, 'aa', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130631', 'PayPal', 12, 1, '2023-06-10 13:11:31', 'aaa', 'aaa');
+INSERT INTO `ventaweb` VALUES (36, 9, 'BBBBBBBB', 159.00, 19.08, 178.08, '2023-06-10', '20230610130634', 'PayPal', 12, 1, '2023-06-10 13:17:34', 'AAAAAAA', 'CCCCCCC');
+INSERT INTO `ventaweb` VALUES (37, 9, 's', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130612', 'PayPal', 12, 1, '2023-06-10 13:20:12', 'a', 'd');
+INSERT INTO `ventaweb` VALUES (38, 9, 'sssss', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130615', 'PayPal', 12, 1, '2023-06-10 13:23:15', 'sss', 'sss');
+INSERT INTO `ventaweb` VALUES (39, 9, 'asas', 159.00, 19.08, 178.08, '2023-06-10', '20230610130636', 'PayPal', 12, 1, '2023-06-10 13:25:36', 'asa', 'asa');
+INSERT INTO `ventaweb` VALUES (40, 9, 'Dirección', 7771.00, 932.52, 8703.52, '2023-06-10', '20230610130630', 'PayPal', 12, 1, '2023-06-10 13:29:30', 'Ciudad', 'Referencia');
 
 -- ----------------------------
 -- Table structure for ventawebdetalle
@@ -771,21 +844,44 @@ CREATE TABLE `ventawebdetalle`  (
   `oferta` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `descuento` decimal(10, 2) NULL DEFAULT NULL,
   `total` decimal(10, 2) NULL DEFAULT NULL,
+  `descuento_moneda` decimal(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `ventaid`(`ventaid` ASC) USING BTREE,
   INDEX `productoid`(`productoid` ASC) USING BTREE,
   CONSTRAINT `ventawebdetalle_ibfk_1` FOREIGN KEY (`ventaid`) REFERENCES `ventaweb` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ventawebdetalle_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ventawebdetalle
 -- ----------------------------
-INSERT INTO `ventawebdetalle` VALUES (7, 20, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00);
-INSERT INTO `ventawebdetalle` VALUES (8, 21, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00);
-INSERT INTO `ventawebdetalle` VALUES (9, 22, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00);
-INSERT INTO `ventawebdetalle` VALUES (10, 23, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00);
-INSERT INTO `ventawebdetalle` VALUES (11, 23, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00);
+INSERT INTO `ventawebdetalle` VALUES (7, 20, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (8, 21, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (9, 22, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (10, 23, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (11, 23, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (12, 25, 2, 1, 3, 7453.00, '3x1', 0.00, 7453.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (13, 25, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (14, 26, 2, 1, 3, 7453.00, '3x1', 0.00, 7453.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (15, 26, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (16, 27, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (17, 28, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (18, 28, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (19, 29, 2, 3, 3, 7453.00, 'No oferta', 0.00, 22359.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (20, 29, 1, 3, 3, 159.00, 'No oferta', 0.00, 477.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (21, 30, 2, 1, 3, 7453.00, '3x1', 0.00, 7453.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (22, 30, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (23, 31, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (24, 32, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (25, 33, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (26, 34, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (27, 35, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (28, 36, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (29, 37, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (30, 38, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (31, 39, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (32, 40, 1, 2, 1, 159.00, 'No oferta', 0.00, 318.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (33, 40, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
 
 -- ----------------------------
 -- Procedure structure for EditarCliente
@@ -989,6 +1085,60 @@ BEGIN
 		ELSE
 				SELECT 3;
 		end if;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for EventoEstado
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `EventoEstado`;
+delimiter ;;
+CREATE PROCEDURE `EventoEstado`(in idcliente int, in idproducto int, in estados char(20))
+BEGIN
+declare statuss int;
+
+	SET @statuss = (select COUNT(*) from calificarestado where clienteid = idcliente and productoid = idproducto);
+
+	IF @statuss > 0 THEN
+	 
+			UPDATE calificarestado SET estado = estados where clienteid = idcliente and productoid = idproducto;
+			SELECT 1;
+			
+	ELSE
+
+			INSERT INTO calificarestado (clienteid, productoid, estado) value (idcliente, idproducto, estados);
+			SELECT 1;
+
+	end if;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for EventoEstadoOferta
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `EventoEstadoOferta`;
+delimiter ;;
+CREATE PROCEDURE `EventoEstadoOferta`(in idcliente int, in idproducto int, in estados char(20))
+BEGIN
+declare statuss int;
+
+	SET @statuss = (select COUNT(*) from calificarestadooferta where clienteid = idcliente and productoid = idproducto);
+
+	IF @statuss > 0 THEN
+	 
+			UPDATE calificarestadooferta SET estado = estados where clienteid = idcliente and productoid = idproducto;
+			SELECT 1;
+			
+	ELSE
+
+			INSERT INTO calificarestadooferta (clienteid, productoid, estado) value (idcliente, idproducto, estados);
+			SELECT 1;
+
+	end if;
+
 END
 ;;
 delimiter ;

@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Models\ModeloGraficos;
+
 class Graficos extends BaseController
 {
     protected $graficos;
@@ -24,6 +27,26 @@ class Graficos extends BaseController
     {
         if ($this->request->getMethod() == "get") {
             $repuesta = $this->graficos->TraerGraficoProductosMasVendidosOferta();
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+    }
+
+    /////////
+    public function TraerGraficoClientesMasCompras()
+    {
+        if ($this->request->getMethod() == "get") {
+            $repuesta = $this->graficos->TraerGraficoClientesMasCompras();
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+    }
+
+    /////////
+    public function TraerGraficoProductosMasComprados()
+    {
+        if ($this->request->getMethod() == "get") {
+            $repuesta = $this->graficos->TraerGraficoProductosMasComprados();
             echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
             exit();
         }

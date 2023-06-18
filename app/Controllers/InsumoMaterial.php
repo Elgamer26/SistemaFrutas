@@ -19,7 +19,7 @@ class InsumoMaterial extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->InsumoMaterial->RegistraTipoInsumo($nombrerol);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -29,7 +29,7 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoIsnumo($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -39,7 +39,7 @@ class InsumoMaterial extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EditarTipoInsumo($nombrerol, $id);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -80,7 +80,7 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoInsumoI($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -93,7 +93,7 @@ class InsumoMaterial extends BaseController
         $precio_venta = $this->request->getPost('precio_venta');
         $descripcion = $this->request->getPost('descripcion');
         $valor = $this->InsumoMaterial->EditarInsumo($insumoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion);
-        echo json_encode($valor[0], JSON_UNESCAPED_UNICODE);
+        echo $valor[0];
         exit();
     }
 
@@ -124,7 +124,7 @@ class InsumoMaterial extends BaseController
         if ($this->request->getMethod() == "post") {
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->InsumoMaterial->RegistraTipoMaterial($nombrerol);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -134,7 +134,7 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoTipoMaterial($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -144,7 +144,7 @@ class InsumoMaterial extends BaseController
             $nombrerol = $this->request->getPost('nombrerol');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EditarTipoMaterial($nombrerol, $id);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -185,7 +185,7 @@ class InsumoMaterial extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->InsumoMaterial->EstadoMaterial($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -198,7 +198,7 @@ class InsumoMaterial extends BaseController
         $precio_venta = $this->request->getPost('precio_venta');
         $descripcion = $this->request->getPost('descripcion');
         $valor = $this->InsumoMaterial->EditarMaterial($insumoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion);
-        echo json_encode($valor[0], JSON_UNESCAPED_UNICODE);
+        echo $valor[0];
         exit();
     }
 

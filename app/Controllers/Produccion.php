@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Modeloproduccion;
+use App\Models\ModeloProduccion;
 
 class Produccion extends BaseController
 {

@@ -225,7 +225,7 @@ class Tienda extends BaseController
         if ($this->request->getMethod() == "post") {
             $id = $this->request->getPost('id');
             $repuesta_create = $this->tienda->AnularFacturaVentaWeb($id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -239,7 +239,7 @@ class Tienda extends BaseController
                 $idproducto = $this->request->getPost('idproducto');
 
                 $repuesta = $this->tienda->CalificarProducto($iduser, $estado, $idproducto);
-                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+                echo $repuesta;
                 exit();
             } else {
 
@@ -275,7 +275,7 @@ class Tienda extends BaseController
                 $idproducto = $this->request->getPost('idproducto');
 
                 $repuesta = $this->tienda->CalificarProductoOferta($iduser, $estado, $idproducto);
-                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+                echo $repuesta;
                 exit();
             } else {
                 echo 0;
@@ -307,7 +307,7 @@ class Tienda extends BaseController
             $passnew = $this->request->getPost('passnew');
 
             $repuesta = $this->tienda->EditarPasswordCliente($iduser, $passnew);
-            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            echo $repuesta;
             exit();
         }
     }

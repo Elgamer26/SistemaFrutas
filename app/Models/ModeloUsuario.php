@@ -452,12 +452,12 @@ class ModeloUsuario
         exit();
     }
 
-    function RegistrarEmpresa($id, $nombre, $direccion, $correo_e, $ruc, $telefono, $actividad)
+    function RegistrarEmpresa($id, $nombre, $direccion, $correo_e, $ruc, $telefono, $actividad, $codigowhatsapp)
     {
         try {
             $res = "";
             $c = $this->conexion->conexionPDO();
-            $sql = "UPDATE empresa SET nombre = ?, direccion = ?, correo = ?, ruc = ?, telefono = ?, actividad = ? WHERE id = ?";
+            $sql = "UPDATE empresa SET nombre = ?, direccion = ?, correo = ?, ruc = ?, telefono = ?, actividad = ?, codigowhatsapp = ? WHERE id = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $nombre);
             $query->bindParam(2, $direccion);
@@ -465,7 +465,8 @@ class ModeloUsuario
             $query->bindParam(4, $ruc);
             $query->bindParam(5, $telefono);
             $query->bindParam(6, $actividad);
-            $query->bindParam(7, $id);
+            $query->bindParam(7, $codigowhatsapp);
+            $query->bindParam(8, $id);
             if ($query->execute()) {
                 $res = 1;
             } else {

@@ -392,4 +392,272 @@ class ModeloReporte
         }
         exit();
     }
+
+
+    ///// MODULO REPORTE DE VENTA
+    function DatosReporteVenta($fi, $ff)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            DATE(ventaweb.fecharegistro) AS fecharegistro,
+            COUNT( ventawebdetalle.cantidad ) AS cantidad,
+            SUM(ventawebdetalle.total) as total,
+            ventaweb.comprobante 
+        FROM
+            ventawebdetalle
+            INNER JOIN ventaweb ON ventawebdetalle.ventaid = ventaweb.id
+            INNER JOIN producto ON ventawebdetalle.productoid = producto.id 
+        WHERE
+            ventaweb.comprobante != 'PayPal' and DATE(ventaweb.fecharegistro) BETWEEN ? and ?
+        GROUP BY
+            ventawebdetalle.productoid ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $fi);
+            $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteCompra($fi, $ff)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            insumo.nombre,
+            compra.fechac,
+            COUNT( detallecompra.insumo_id ) AS cantidad,
+            SUM( detallecompra.total ) AS total 
+            FROM
+                insumo
+                INNER JOIN detallecompra ON insumo.id = detallecompra.insumo_id
+                INNER JOIN compra ON detallecompra.compra_id = compra.id 
+            WHERE
+                compra.fechac BETWEEN ? AND ? 
+            GROUP BY
+            detallecompra.insumo_id";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $fi);
+            $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteCompraMaterial($fi, $ff)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            material.nombre,
+            compra_material.fechac,
+            COUNT(detallecompramaterial.material_id) as cantidad,
+            SUM(detallecompramaterial.total ) as total
+            FROM
+            compra_material
+            INNER JOIN detallecompramaterial ON compra_material.id = detallecompramaterial.compra_id
+            INNER JOIN material ON material.id = detallecompramaterial.material_id 
+            WHERE
+            compra_material.fechac BETWEEN ? AND ? 
+            GROUP BY
+            detallecompramaterial.material_id ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $fi);
+            $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteInsumos($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            nombre,
+            codigo,
+            precio,
+            (cantidad) as cantidad,
+            tipo_id 
+            FROM
+                insumo 
+            WHERE
+            tipo_id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteMaterial($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            material.nombre,
+            material.codigo,
+            material.precio,
+            material.cantidad,
+            material.tipo_id 
+            FROM
+                material 
+            WHERE
+            material.tipo_id =?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReportePlantas($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            producto.codigo,
+            producto.tipo_id,
+            producto.cantidad,
+            producto.precio 
+            FROM
+                producto 
+            WHERE
+            producto.tipo_id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteClientes($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            cliente.nombre,
+            cliente.apellidos,
+            cliente.cedula,
+            cliente.sexo,
+            cliente.createt,
+            cliente.telefono
+            FROM
+                cliente 
+            WHERE
+            cliente.createt = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteClientesALL()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            cliente.nombre,
+            cliente.apellidos,
+            cliente.cedula,
+            cliente.sexo,
+            cliente.createt,
+            cliente.telefono
+            FROM
+            cliente";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteOferta($fi, $ff)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            oferta.fecha_inicio,
+            oferta.fecha_fin,
+            oferta.tipo_oferta,
+            oferta.valor_descuento,
+            oferta.fecha_registro 
+            FROM
+            producto
+            INNER JOIN oferta ON producto.id = oferta.producto_id 
+            WHERE DATE(oferta.fecha_registro) BETWEEN ? AND ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $fi);
+            $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

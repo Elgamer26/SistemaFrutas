@@ -1,14 +1,11 @@
 <?php
-
 namespace App\SmsWhatsapp;
-
 require 'vendor/autoload.php';
-
 class Whatsapp
 {
   function enviar_mensaje($sms)
   {
-    $token =  "GA230610194602";
+    $token =  "GA230611134806";
     $client = new \GuzzleHttp\Client(['verify' => false]);
 
     $payload = array(

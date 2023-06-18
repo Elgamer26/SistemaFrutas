@@ -27,7 +27,7 @@ class Compra extends BaseController
             $descripcion = $this->request->getPost('descripcion');
 
             $repuesta_create = $this->proveedor->RegistrarProveedor($ruc, $razon_social, $correo, $direccion, $telefono, $encargado, $descripcion);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -37,7 +37,7 @@ class Compra extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->proveedor->EstadoProveedor($estado, $id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -55,7 +55,7 @@ class Compra extends BaseController
             $descripcion = $this->request->getPost('descripcion');
 
             $repuesta_create = $this->proveedor->EditarProveedor($id, $ruc, $razon_social, $correo, $direccion, $telefono, $encargado, $descripcion);
-            return json_encode($repuesta_create[0], JSON_UNESCAPED_UNICODE);
+            return $repuesta_create[0];
         }
     }
 
@@ -100,7 +100,7 @@ class Compra extends BaseController
                 $repuesta_create = $this->proveedor->DetalleCompraInsumo($id, $arraglo_ida[$i], $arraglo_precio[$i], $arraglo_cantidad[$i], $arraglo_descuento[$i], $arraglo_total[$i]);
             }
 
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -109,7 +109,7 @@ class Compra extends BaseController
         if ($this->request->getMethod() == "post") {
             $id = $this->request->getPost('id');
             $repuesta_create = $this->proveedor->AnularFactura($id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -154,7 +154,7 @@ class Compra extends BaseController
                 $repuesta_create = $this->proveedor->DetalleCompraMaterial($id, $arraglo_ida[$i], $arraglo_precio[$i], $arraglo_cantidad[$i], $arraglo_descuento[$i], $arraglo_total[$i]);
             }
 
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 
@@ -163,7 +163,7 @@ class Compra extends BaseController
         if ($this->request->getMethod() == "post") {
             $id = $this->request->getPost('id');
             $repuesta_create = $this->proveedor->AnularFacturaMaterial($id);
-            return json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            return $repuesta_create;
         }
     }
 }

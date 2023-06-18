@@ -148,6 +148,9 @@ function RegistraRol() {
     url: BaseUrl + "usuario/CreateRol",
     data: { nombrerol: nombrerol },
     success: function (response) {
+
+      console.log(response);
+
       $(".card").LoadingOverlay("hide");
       if (response == 1) {
         $("#nombrerol").val("");
@@ -190,6 +193,9 @@ function ModificarRol(id) {
     url: BaseUrl + "usuario/ModificarRol",
     data: { nombrerol: nombrerol, id: id },
     success: function (response) {
+
+      console.log(response);
+      
       $(".card").LoadingOverlay("hide");
       if (response == 1) {
         cargar_contenido(
@@ -1085,6 +1091,7 @@ function GuardarDatosHacienda() {
   var ruc = $("#ruc").val();
   var telefono = $("#telefono").val();
   var actividad = $("#actividad").val();
+  var codigowhatsapp = $("#codigowhatsapp").val();
 
   if (
     nombre.length == 0 ||
@@ -1098,7 +1105,10 @@ function GuardarDatosHacienda() {
     telefono.length == 0 ||
     telefono == 0 ||
     actividad.length == 0 ||
-    actividad.trim() == ""
+    actividad.trim() == "" ||
+
+    codigowhatsapp.length == 0 ||
+    codigowhatsapp.trim() == ""
   ) {
     ValidarRegistroEmpresa(
       nombre,
@@ -1106,7 +1116,8 @@ function GuardarDatosHacienda() {
       correo_e,
       ruc,
       telefono,
-      actividad
+      actividad,
+      codigowhatsapp
     );
 
     return swal.fire(
@@ -1121,6 +1132,7 @@ function GuardarDatosHacienda() {
     $("#ruc_olbligg").html("");
     $("#telefono_olbligg").html("");
     $("#actividad_olbligg").html("");
+    $("#codigowhatsapp_olbligg").html("");
   }
 
   if (!correo_empresa) {
@@ -1138,6 +1150,8 @@ function GuardarDatosHacienda() {
   formdata.append("ruc", ruc);
   formdata.append("telefono", telefono);
   formdata.append("actividad", actividad);
+
+  formdata.append("codigowhatsapp", codigowhatsapp.trim());
 
   $(".card").LoadingOverlay("show", {
     text: "Cargando...",
@@ -1187,7 +1201,8 @@ function ValidarRegistroEmpresa(
   correo_e,
   ruc,
   telefono,
-  actividad
+  actividad,
+  codigowhatsapp
 ) {
   if (nombres.length == 0 || nombres.trim() == "") {
     $("#nombre_olbligg").html(" - Ingrese el nombre de la empresa");
@@ -1223,6 +1238,12 @@ function ValidarRegistroEmpresa(
     $("#actividad_olbligg").html(" - Ingrese la actividad de la empresa");
   } else {
     $("#actividad_olbligg").html("");
+  }
+
+  if (codigowhatsapp.length == 0 || codigowhatsapp.trim() == "") {
+    $("#codigowhatsapp_olbligg").html(" - Ingrese un codigo");
+  } else {
+    $("#codigowhatsapp_olbligg").html("");
   }
 }
 

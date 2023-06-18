@@ -788,4 +788,56 @@ class Admin extends BaseController
             }
         }
     }
+
+    /////////// REPORTES
+
+    public function reporte($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            if ($valor == "venta_tienda") {
+                $data = [
+                    'fecha' => date("Y-m-d")
+                ];
+                return view('admin/reporte/ReporteVentaTienda', $data);
+            } else if ($valor == "compra") {
+                $data = [
+                    'fecha' => date("Y-m-d")
+                ];
+                return view('admin/reporte/ReporteCompra', $data);
+            } else if ($valor == "compramaterial") {
+                $data = [
+                    'fecha' => date("Y-m-d")
+                ];
+                return view('admin/reporte/ReporteCompraMaterial', $data);
+            } else if ($valor == "reporteinsumos") {
+                $insumo = $this->insumo->SelectTipoInsumo();
+                $data = [
+                    'fecha' => date("Y-m-d"),
+                    'insumo' => $insumo,
+                ];
+                return view('admin/reporte/ReporteInsumos', $data);
+            } else if ($valor == "reportematerial") {
+                $tipo = $this->insumo->SelectTipoMaterial();
+                $data = [
+                    'fecha' => date("Y-m-d"),
+                    'insumo' => $tipo,
+                ];
+                return view('admin/reporte/ReporteMaterial', $data);
+            } else if ($valor == "ReportePlantas") {
+                $tipo = $this->producto->SelecTipoProducto();
+                $data = [
+                    'fecha' => date("Y-m-d"),
+                    'insumo' => $tipo,
+                ];
+                return view('admin/reporte/ReportePlantas', $data);
+            } else if ($valor == "ReporteCliente") {
+                return view('admin/reporte/ReporteCliente');
+            } else if ($valor == "ReporteOfertas") {
+                $data = [
+                    'fecha' => date("Y-m-d")
+                ];
+                return view('admin/reporte/ReporteOfertas', $data);
+            }
+        }
+    }
 }
