@@ -82,14 +82,48 @@
             <div class="col-md-9 single-main-left">
                 <div class="sngl-top">
                     <div class="col-md-5 single-top-left">
-                        <div class="flexslider">
-                            <ul class="slides">
-                                <li data-thumb="images/s-1.jpg">
-                                    <div class="thumb-image"> <img src="<?php echo base_url(); ?>public/img/producto/<?php echo $producto[4]; ?>" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-                                </li>
 
-                            </ul>
-                        </div>
+                        <?php if (!empty($Imagen)) { ?>
+
+                            <div class="flexslider">
+                                <ul class="slides">
+
+                                    <?php foreach ($Imagen as $rowI) { ?>
+
+                                        <li data-thumb="<?php echo base_url(); ?>public/img/producto/<?php echo $rowI["foto"]; ?>">
+                                            <div class="thumb-image"> <img src="<?php echo base_url(); ?>public/img/producto/<?php echo $rowI["foto"]; ?>" data-imagezoom="true" class="img-responsive zoom-img" alt="Imagen producto" /> </div>
+                                        </li>
+
+                                    <?php } ?>
+                                </ul>
+                            </div>
+
+                            <script src="<?php echo base_url(); ?>public/tienda/js/imagezoom.js"></script>
+                            <script defer src="<?php echo base_url(); ?>public/tienda/js/jquery.flexslider.js"></script>
+                            <link rel="stylesheet" href="<?php echo base_url(); ?>public/tienda/css/flexslider.css" type="text/css" media="screen" />
+
+                            <script>
+                                // Can also be used with $(document).ready()
+                                $(window).load(function() {
+                                    $('.flexslider').flexslider({
+                                        animation: "slide",
+                                        controlNav: "thumbnails"
+                                    });
+                                });
+                            </script>
+
+                        <?php } else {  ?>
+
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li data-thumb="images/s-1.jpg">
+                                        <div class="thumb-image"> <img src="<?php echo base_url(); ?>public/img/producto/producto.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        <?php } ?>
+
                     </div>
 
                     <input type="hidden" id="idproducto" value="<?php echo $producto[0]; ?>">
@@ -369,17 +403,17 @@
             </div>
 
             <div class="col-md-3 single-right text-center">
-				<div class="w_sidebar">
-					<div class="row1" style="height: 50px; overflow: hidden;">
-						<div class="col col-4">
+                <div class="w_sidebar">
+                    <div class="row1" style="height: 50px; overflow: hidden;">
+                        <div class="col col-4">
 
-							<div class="progress" style="padding: 0px; margin: 0px;">
-								<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $countcalificar[0]; ?></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                            <div class="progress" style="padding: 0px; margin: 0px;">
+                                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $countcalificar[0]; ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="clearfix"> </div>
 

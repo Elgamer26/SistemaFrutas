@@ -127,7 +127,7 @@ class ModeloVenta
             tipo_producto.tipo,
             producto.precio,
             producto.descripcion,
-            producto.imagen,
+            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
             producto.estado,
             producto.cantidad 
             FROM
@@ -161,7 +161,7 @@ class ModeloVenta
             producto.nombre,
             tipo_producto.tipo,
             producto.precio,
-            producto.imagen,
+            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
             producto.cantidad,
             oferta.fecha_inicio,
             oferta.fecha_fin,

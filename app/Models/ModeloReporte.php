@@ -660,4 +660,38 @@ class ModeloReporte
         }
         exit();
     }
+
+    function DatosProduccion($fi, $ff)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            tipo_producto.tipo,
+            produccion.fecharegistro,
+            produccion.fechaini,
+            produccion.fechafin,
+            produccion.dias,
+            produccion.estado,
+            produccion.cantidad,
+            produccion.id 
+            FROM
+                produccion
+                INNER JOIN producto ON produccion.productoid = producto.id
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
+            DATE ( produccion.fecharegistro ) BETWEEN ? AND ?  ORDER BY produccion.id DESC";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $fi);
+            $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

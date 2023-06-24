@@ -56,12 +56,14 @@ class Home extends BaseController
             $producto = $this->tienda->TraerProductoTienda($id);
             $comentario = $this->tienda->TraerComentarioProductoNormal($id);
             $countcalificar = $this->tienda->TraercalificacionProducto($id);
+            $Imagen = $this->tienda->TraerImagenProducto($id);
 
             $data = [
                 "token" => $token,
                 "producto" => $producto,
                 "comentario" => $comentario,
                 "countcalificar" => $countcalificar,
+                "Imagen" => $Imagen,
             ];
 
             echo view('tienda/header', $data);
@@ -83,12 +85,14 @@ class Home extends BaseController
             $oferta = $this->tienda->TraerProductoTiendaOferta($id);
             $comentario = $this->tienda->TraerComentarioProducto($id);
             $countcalificar = $this->tienda->TraercalificacionProductoOferta($id);
+            $Imagen = $this->tienda->TraerImagenProducto($id);
 
             $data = [
                 "token" => $token,
                 "producto" => $oferta,
                 "comentario" => $comentario,
                 "countcalificar" => $countcalificar,
+                "Imagen" => $Imagen,
             ];
 
             echo view('tienda/header', $data);

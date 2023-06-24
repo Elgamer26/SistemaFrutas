@@ -66,23 +66,48 @@ class Producto extends BaseController
         $descripcion = $this->request->getPost('descripcion');
 
         $nombrearchivo = $this->request->getPost('nombrearchivo');
-        $imageFile = $this->request->getFile('foto');
 
-        if (!empty($imageFile)) {
-            $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $nombrearchivo);
-            if ($valor[0] == "1") {
-                $imageFile->move(ROOTPATH . 'public/img/producto/', $nombrearchivo);
-                echo $valor[0];
+        if (!empty($_FILES["img_extra"]["tmp_name"])) {
+
+            $imagen = null;
+            $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen);
+
+            if ($valor[0] > 2) {
+
+                $count = 0;
+                foreach ($_FILES["img_extra"]["name"] as $key => $value) {
+
+                    $extra = explode('.', $_FILES["img_extra"]["name"][$key]);
+                    $renombrar = sha1($_FILES["img_extra"]["name"][$key]) . time();
+                    $nombre_final = $renombrar . "" . $count . "." . $extra[1];
+
+                    $valor_img = $this->producto->RegistrarImagen($valor[0], $nombre_final);
+                    if ($valor_img == 1) {
+                        move_uploaded_file($_FILES["img_extra"]["tmp_name"][$key], ROOTPATH . 'public/img/producto/' . $nombre_final);
+                    }
+
+                    $count++;
+                }
+
+                echo $valor_img;
                 exit();
             } else {
                 echo $valor[0];
                 exit();
             }
+            
         } else {
+
             $imagen = "producto.jpg";
             $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen);
-            echo $valor[0];
-            exit();
+            if ($valor[0] > 2) {
+                echo 1;
+                exit();
+            } else {
+                echo $valor[0];
+                exit();
+            }
+
         }
     }
 
@@ -92,6 +117,28 @@ class Producto extends BaseController
             $estado = $this->request->getPost('estado');
             $id = $this->request->getPost('id');
             $repuesta_create = $this->producto->EstadoProducto($estado, $id);
+            echo $repuesta_create;
+            exit();
+        }
+    }
+
+    //ELIMINRA IMAGEN DEL PRODUCTO
+    public function QuitarImagenProyect()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $id = $this->request->getPost('id');
+            $id_producto = $this->request->getPost('id_producto');
+            $foto = $this->request->getPost('foto');
+
+            $repuesta_create = $this->producto->EliminarImagenProducto($id, $id_producto);
+
+            if ($repuesta_create == 1) {
+                if ($foto != "producto.jpg") {
+                    unlink(ROOTPATH . 'public/img/producto/' . $foto);
+                }
+            }
+
             echo $repuesta_create;
             exit();
         }
@@ -113,21 +160,26 @@ class Producto extends BaseController
     public function EditarFotoProducto()
     {
         $id = $this->request->getPost('id');
-        $ruta_actual = $this->request->getPost('ruta_actual');
-        $nombrearchivo = $this->request->getPost('nombrearchivo');
+        $count = 0;
+        if (!empty($_FILES["img_extra"]["tmp_name"])) {
+            foreach ($_FILES["img_extra"]["name"] as $key => $value) {
+                
+                $extra = explode('.', $_FILES["img_extra"]["name"][$key]);
+                $renombrar = sha1($_FILES["img_extra"]["name"][$key]) . time();
+                $nombre_final = $renombrar . "" . $count . "." . $extra[1];
 
-        $imageFile = $this->request->getFile('foto');
-        $valorFile = $this->producto->EditarFotoProducto($id, $nombrearchivo);
-        if ($valorFile == 1) {
-            $imageFile->move(ROOTPATH . 'public/img/producto/', $nombrearchivo);
-            if ($ruta_actual != "producto.jpg") {
-                unlink(ROOTPATH . 'public/img/producto/' . $ruta_actual);
+                $valor_img = $this->producto->RegistrarImagen($id, $nombre_final);
+                if ($valor_img == 1) {
+                    move_uploaded_file($_FILES["img_extra"]["tmp_name"][$key], ROOTPATH . 'public/img/producto/' . $nombre_final);
+                }
+                $count++;
             }
-            echo $valorFile;
+            echo $valor_img;
+            exit();
         } else {
-            echo $valorFile;
+            echo 2;
+            exit();
         }
-        exit();
     }
 
     public function RegistroOferta()

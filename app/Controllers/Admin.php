@@ -315,6 +315,7 @@ class Admin extends BaseController
 
                 $tipo = $this->producto->SelecTipoProducto();
                 $traerProducto = $this->producto->traerProducto($id);
+                $imagenes = $this->producto->TraerImagenProducto($id);
 
                 $data = [
                     'titulo' => "Editar Foto del producto <i class='fa fa-image'></i>",
@@ -324,10 +325,12 @@ class Admin extends BaseController
                     'editar' => $traerProducto,
                     'plus' => true,
                     'tipo' => $tipo,
-                    'image' => false
+                    'image' => false,
+                    'imagenes' => $imagenes
+
                 ];
 
-                return view('admin/producto/FormProducto.php', $data);
+                return view('admin/producto/FrmImagen.php', $data);
             }
         }
     }
@@ -837,6 +840,11 @@ class Admin extends BaseController
                     'fecha' => date("Y-m-d")
                 ];
                 return view('admin/reporte/ReporteOfertas', $data);
+            } else if ($valor == "ReporteProduccion") {
+                $data = [
+                    'fecha' => date("Y-m-d")
+                ];
+                return view('admin/reporte/ReporteProduccion', $data);
             }
         }
     }

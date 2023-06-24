@@ -257,6 +257,31 @@ class ModeloProducto
         exit();
     }
 
+    function RegistrarImagen($valor, $nombre_final)
+    {
+        try {
+            $result = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql = "INSERT INTO imagenproducto (id_producto, foto) VALUE (?,?)";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $valor);
+            $query->bindParam(2, $nombre_final);
+
+            if ($query->execute()) {
+                $result = 1;
+            } else {
+                $result = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function EstadoProducto($estado, $id)
     {
         try {
@@ -305,6 +330,56 @@ class ModeloProducto
             $query->bindParam(1, $id);
             $query->execute();
             $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerImagenProducto($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            imagenproducto.id, 
+            imagenproducto.id_producto, 
+            imagenproducto.foto
+            FROM
+            imagenproducto  WHERE imagenproducto.id_producto = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function EliminarImagenProducto($id, $id_producto)
+    {
+        try {
+            $result = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql = "DELETE FROM imagenproducto WHERE id = ? AND id_producto = ?";
+            $query = $c->prepare($sql);
+
+            $query->bindParam(1, $id);
+            $query->bindParam(2, $id_producto);
+
+            if ($query->execute()) {
+                $result = 1;
+            } else {
+                $result = 0;
+            }
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $result;
@@ -554,7 +629,7 @@ class ModeloProducto
                 tipo_producto.tipo,
                 producto.precio,
                 producto.descripcion,
-                producto.imagen,
+                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
                 producto.cantidad 
                 FROM
                 oferta
@@ -583,7 +658,7 @@ class ModeloProducto
                 tipo_producto.tipo,
                 producto.precio,
                 producto.descripcion,
-                producto.imagen,
+                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
                 producto.cantidad 
                 FROM
                 oferta
@@ -886,7 +961,7 @@ class ModeloProducto
             oferta.id,
             producto.nombre,
             tipo_producto.tipo,
-            producto.imagen,
+            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
             oferta.fecha_fin,
             oferta.tipo_oferta 
             FROM

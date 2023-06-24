@@ -158,6 +158,9 @@ function guardardetalleventa(id) {
 
     if (resp > 0) {
       if (resp == 1) {
+
+        EnviarCorreVenta(parseInt(id));
+
         Swal.fire({
           title: "Campra realizada con exito",
           text: "Desea imprimir la compra??",
@@ -197,6 +200,17 @@ function guardardetalleventa(id) {
       );
     }
   });
+}
+
+async function EnviarCorreVenta(id) {
+  let result = await $.ajax({
+    url: BaseUrl + "Reporte/EnviarCorreVenta",
+    type: "POST",
+    data: {
+      id: id
+    }
+  });
+  console.log(result);
 }
 
 function validarventaproducto(proveedor, numero_compra, iva) {

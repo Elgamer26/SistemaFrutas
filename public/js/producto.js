@@ -1,5 +1,4 @@
-//////MODULOS DE PRODUCTOS
-
+//////MODULOS DE PRODUCTO
 function RegistraTipoProducto() {
   var nombrerol = $("#nombreTipo").val().trim();
 
@@ -154,7 +153,7 @@ function RegistraProducto() {
   var precio_venta = $("#precio_venta").val();
   var descripcion = $("#descripcion").val();
   /// foto
-  var foto = $("#foto").val();
+  // var foto = $("#foto").val();
 
   if (
     codigo.length == 0 ||
@@ -189,38 +188,22 @@ function RegistraProducto() {
     $("#descripcion_olbligg").html("");
   }
 
-  //para scar la fecha para la foto
-  var f = new Date();
-  //este codigo me captura la extenion del archivo
-  var extecion = foto.split(".").pop();
-  //renombramoso el archivo con las hora minutos y segundos
-  var nombrearchivo =
-    "IMG" +
-    f.getDate() +
-    "" +
-    (f.getMonth() + 1) +
-    "" +
-    f.getFullYear() +
-    "" +
-    f.getHours() +
-    "" +
-    f.getMinutes() +
-    "" +
-    f.getSeconds() +
-    "." +
-    extecion;
+  let archivo = document.getElementById("file").files.length;
 
+  var nombrearchivo = "imagen_producto";
   var formdata = new FormData();
-  var foto = $("#foto")[0].files[0];
-  //est valores son como los que van en la data del ajax
+
+  //este for es para obtener las imagenes del del input file[]
+  for (let i = 0; i < archivo; i++) {
+    var img = document.getElementById("file").files[i];
+    formdata.append("img_extra[" + i + "]", img);
+  }
 
   formdata.append("codigo", codigo);
   formdata.append("nombres", nombres);
   formdata.append("tipo_producto", tipo_producto);
   formdata.append("precio_venta", precio_venta);
   formdata.append("descripcion", descripcion);
-
-  formdata.append("foto", foto);
   formdata.append("nombrearchivo", nombrearchivo);
 
   $(".card").LoadingOverlay("show", {
@@ -457,10 +440,12 @@ function EstadoProducto(id, estado) {
 
 function EditarFotoProducto() {
   var id = document.getElementById("productoID").value;
-  var foto = document.getElementById("foto").value;
-  var ruta_actual = document.getElementById("foto_actu").value;
+  // var foto = document.getElementById("foto").value;
+  // var ruta_actual = document.getElementById("foto_actu").value;
 
-  if (foto == "" || ruta_actual.length == 0 || ruta_actual == "") {
+  let archivo = document.getElementById("file").files.length;
+
+  if (archivo == 0) {
     return swal.fire(
       "Mensaje de advertencia",
       "Ingrese una imagen para actualizar",
@@ -468,32 +453,16 @@ function EditarFotoProducto() {
     );
   }
 
-  var f = new Date();
-  //este codigo me captura la extenion del archivo
-  var extecion = foto.split(".").pop();
-  //renombramoso el archivo con las hora minutos y segundos
-  var nombrearchivo =
-    "IMG" +
-    f.getDate() +
-    "" +
-    (f.getMonth() + 1) +
-    "" +
-    f.getFullYear() +
-    "" +
-    f.getHours() +
-    "" +
-    f.getMinutes() +
-    "" +
-    f.getSeconds() +
-    "." +
-    extecion;
-
+  var nombrearchivo = "imagen_producto";
   var formdata = new FormData();
-  var foto = $("#foto")[0].files[0];
+
+  //este for es para obtener las imagenes del del input file[]
+  for (let i = 0; i < archivo; i++) {
+    var img = document.getElementById("file").files[i];
+    formdata.append("img_extra[" + i + "]", img);
+  }
 
   formdata.append("id", id);
-  formdata.append("foto", foto);
-  formdata.append("ruta_actual", ruta_actual);
   formdata.append("nombrearchivo", nombrearchivo);
 
   $(".card").LoadingOverlay("show", {
@@ -529,6 +498,12 @@ function EditarFotoProducto() {
               );
             }
           });
+        } else if (resp == 2) {
+          return swal.fire(
+            "Mensaje de advertencia",
+            "Ingrese una imagen para actualizar",
+            "warning"
+          );
         }
       } else {
         return swal.fire("Error", "Error en la Matrix" + resp, "error");
@@ -834,4 +809,61 @@ async function EnviarCorreoOfertasWhatsapp(id) {
     },
   });
   console.log(result);
+}
+
+// eliminar imagen del producto
+function QuitarImagenProyect(id, id_producto, foto) {
+  Swal.fire({
+    title: "Eliminar imagen de producto?",
+    text: "La imagen del se producto se eliminará!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, eliminar!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $(".card").LoadingOverlay("show", {
+        text: "Cargando...",
+      });
+
+      $.ajax({
+        type: "POST",
+        url: BaseUrl + "Producto/QuitarImagenProyect",
+        data: {
+          id: id,
+          id_producto: id_producto,
+          foto: foto,
+        },
+        success: function (response) {
+          $(".card").LoadingOverlay("hide");
+          if (response == 1) {
+            return Swal.fire({
+              title: "Imagen eliminada",
+              text: "La imagen del producto se elimino con exito",
+              icon: "success",
+              showCancelButton: false,
+              allowOutsideClick: false,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Ok",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                cargar_contenido(
+                  "contenido_principal",
+                  BaseUrl + "admin/Producto/list/0"
+                );
+              }
+            });
+          } else {
+            return swal.fire(
+              "Error",
+              "Error al eliminar la imagen del producto",
+              "error"
+            );
+          }
+        },
+      });
+    }
+  });
 }

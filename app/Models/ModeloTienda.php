@@ -96,19 +96,16 @@ class ModeloTienda
             if (!empty($valor)) {
                 $datos = $valor;
                 $sql_p = "SELECT
-                producto.id, 
-                producto.nombre, 
-                tipo_producto.tipo, 
-                producto.precio, 
-                producto.imagen, 
-                producto.cantidad
-                FROM
+                producto.id,
+                producto.nombre,
+                tipo_producto.tipo,
+                producto.precio,
+                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                producto.cantidad 
+            FROM
                 producto
-                INNER JOIN
-                tipo_producto
-                ON 
-                producto.tipo_id = tipo_producto.id
-                WHERE
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
                 producto.estado = 1 AND
                 producto.nombre LIKE '%" . $datos . "%' OR
                 tipo_producto.tipo LIKE '%" . $datos . "%' OR
@@ -116,19 +113,16 @@ class ModeloTienda
                 ORDER BY producto.id DESC LIMIT $limit, $numlotes";
             } else {
                 $sql_p = "SELECT
-                producto.id, 
-                producto.nombre, 
-                tipo_producto.tipo, 
-                producto.precio, 
-                producto.imagen, 
-                producto.cantidad
-                FROM
+                producto.id,
+                producto.nombre,
+                tipo_producto.tipo,
+                producto.precio,
+                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                producto.cantidad 
+            FROM
                 producto
-                INNER JOIN
-                tipo_producto
-                ON 
-                producto.tipo_id = tipo_producto.id
-                WHERE
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
                 producto.estado = 1 
                 ORDER BY producto.id DESC LIMIT $limit, $numlotes";
             }
@@ -138,15 +132,14 @@ class ModeloTienda
             $result = $query_p->fetchAll();
 
             foreach ($result as $respuesta) {
-                $tabla = $tabla . '	<div class="col-md-3 product-left">
+                $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
                                         <div class="product-main simpleCart_shelfItem" >
                                             <a href="' . base_url() . 'home/Detalle/' . $respuesta[0] . '" class="mask"><img class="img-responsive zoom-img" 
                                             style="width: 200px;
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
                                             <div class="product-bottom">
-                                                <h3>' . $respuesta[1] . '</h3>
-                                                <p>' . $respuesta[2] . '</p>
+                                                <p style="color: black;"> <b>' . $respuesta[2] . '</b> </p>
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 if (!empty($_SESSION["TokenClie"])) {
@@ -252,7 +245,7 @@ class ModeloTienda
                 producto.nombre,
                 tipo_producto.tipo,
                 producto.precio,
-                producto.imagen,
+                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
                 producto.cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
@@ -274,7 +267,7 @@ class ModeloTienda
                 producto.nombre,
                 tipo_producto.tipo,
                 producto.precio,
-                producto.imagen,
+                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
                 producto.cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
@@ -294,15 +287,14 @@ class ModeloTienda
 
             foreach ($result as $respuesta) {
 
-                $tabla = $tabla . '	<div class="col-md-3 product-left">
+                $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
                                         <div class="product-main simpleCart_shelfItem">
                                             <a href="' . base_url() . 'home/DetalleOferta/' . $respuesta[0] . '" class="mask"><img class="img-responsive zoom-img" 
                                             style="width: 200px;
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
-                                            <div class="product-bottom">
-                                                <h3>' . $respuesta[1] . '</h3>
-                                                <p>' . $respuesta[2] . '</p>
+                                            <div class="product-bottom"> 
+                                                <p style="color: black;"> <b>' . $respuesta[2] . '</b> </p>
                                                 <p> Oferta: ' . $respuesta[6] . '</p>
                                                 <p> Fecha fin: ' . $respuesta[7] . '</p>
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
@@ -339,7 +331,7 @@ class ModeloTienda
             producto.nombre, 
             tipo_producto.tipo, 
             producto.precio, 
-            producto.imagen, 
+            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,  
             producto.cantidad, 
             producto.codigo, 
             producto.descripcion
@@ -351,12 +343,39 @@ class ModeloTienda
             producto.tipo_id = tipo_producto.id
             WHERE
             producto.estado = 1 AND
-            producto.cantidad <> 0 AND
+            -- producto.cantidad <> 0 AND
             producto.id = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
             $query->execute();
             $result = $query->fetch();
+
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerImagenProducto($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            imagenproducto.id,
+            imagenproducto.id_producto,
+            imagenproducto.foto 
+            FROM
+                imagenproducto 
+            WHERE
+            imagenproducto.id_producto = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
 
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
