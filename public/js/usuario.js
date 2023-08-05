@@ -20,6 +20,7 @@ $(document).on("click", "#btn_aceptar", function () {
       type: "POST",
       data: { usuario: usuario, password: password },
     }).done(function (responce) {
+
       if (responce == 0) {
         $("#none_usu").hide();
         $("#none_pass").hide();
@@ -27,7 +28,7 @@ $(document).on("click", "#btn_aceptar", function () {
         return false;
       } else {
         var data = JSON.parse(responce);
-        if (data[1] == 0) {
+        if (data['estado'] == 0) {
           return Swal.fire({
             icon: "error",
             title: "Usuario inactivo",
@@ -39,7 +40,7 @@ $(document).on("click", "#btn_aceptar", function () {
             url: BaseUrl + "usuario/CraerToken",
             type: "POST",
             data: {
-              id_usu: data[0],
+              id_usu: data['id'],
             },
           }).done(function (res) {
             RecordaPasswordAdmin();
@@ -148,14 +149,12 @@ function RegistraRol() {
     url: BaseUrl + "usuario/CreateRol",
     data: { nombrerol: nombrerol },
     success: function (response) {
-
-      console.log(response);
-
+      //console.log(response);
       $(".card").LoadingOverlay("hide");
-      if (response == 1) {
-        $("#nombrerol").val("");
-        return Swal.fire("Rol exitoso", "El rol se creo con exito", "success");
-      } else if (response == 2) {
+
+      if (response > 0) {
+        RegistraPermisosRol(parseInt(response));
+      } else if (response == "existe") {
         return Swal.fire(
           "Rol ya existe",
           "El rol '" + nombrerol + "', ya esta creado",
@@ -178,6 +177,207 @@ function RegistraRol() {
   });
 }
 
+function RegistraPermisosRol(id) {
+  var mantenimiento_p = document.getElementById("mantenimiento_p").checked;
+  var producto_tipo_p = document.getElementById("producto_tipo_p").checked;
+  var insumo_tipo_p = document.getElementById("insumo_tipo_p").checked;
+  var material_tipo_p = document.getElementById("material_tipo_p").checked;
+  var proveedor_p = document.getElementById("proveedor_p").checked;
+  var compra_insumo_p = document.getElementById("compra_insumo_p").checked;
+  var compra_material_p = document.getElementById("compra_material_p").checked;
+  var crear_venta_p = document.getElementById("crear_venta_p").checked;
+  var listado_venta_p = document.getElementById("listado_venta_p").checked;
+  var fase_produccion_p = document.getElementById("fase_produccion_p").checked;
+  var produccion_p = document.getElementById("produccion_p").checked;
+  var produccion_finalizadas_p = document.getElementById("produccion_finalizadas_p").checked;
+  var registro_fase_p = document.getElementById("registro_fase_p").checked;
+  var perdidas_produccion_p = document.getElementById("perdidas_produccion_p").checked;
+  var reporters_p = document.getElementById("reporters_p").checked;
+  var ofertas_p = document.getElementById("ofertas_p").checked;
+
+  $.ajax({
+    type: "POST",
+    url: BaseUrl + "usuario/CreatePermisos",
+    data: {
+      id: id,
+      mantenimiento_p: mantenimiento_p,
+      producto_tipo_p: producto_tipo_p,
+      insumo_tipo_p: insumo_tipo_p,
+      material_tipo_p: material_tipo_p,
+      proveedor_p: proveedor_p,
+      compra_insumo_p: compra_insumo_p,
+      compra_material_p: compra_material_p,
+      crear_venta_p: crear_venta_p,
+      listado_venta_p: listado_venta_p,
+      fase_produccion_p: fase_produccion_p,
+      produccion_p: produccion_p,
+      produccion_finalizadas_p: produccion_finalizadas_p,
+      registro_fase_p: registro_fase_p,
+      perdidas_produccion_p: perdidas_produccion_p,
+      reporters_p: reporters_p,
+      ofertas_p: ofertas_p
+    },
+    success: function (response) {
+      // console.log(response);
+
+      if (response == 1) {
+        $("#nombrerol").val("");
+        return Swal.fire("Rol exitoso", "El rol se creo con exito", "success");
+      } else {
+        return Swal.fire(
+          "Error de permisos",
+          "Error al crear el los permisos, falla en la matrix",
+          "error"
+        );
+      }
+    },
+  });
+}
+
+function EditarPermisosRol(id) {
+  $.ajax({
+    type: "POST",
+    url: BaseUrl + "usuario/ObtenerPermisosEditar",
+    data: { id: id },
+    success: function (response) {
+      var data = JSON.parse(response);
+
+      $("#id_rol").val(id);
+
+      data['mantenimiento_p'].toString() == "true"
+        ? ($("#mantenimiento_p")[0].checked = true)
+        : ($("#mantenimiento_p")[0].checked = false);
+
+      data['producto_tipo_p'].toString() == "true"
+        ? ($("#producto_tipo_p")[0].checked = true)
+        : ($("#producto_tipo_p")[0].checked = false);
+
+      data[4].toString() == "true"
+        ? ($("#insumo_tipo_p")[0].checked = true)
+        : ($("#insumo_tipo_p")[0].checked = false);
+
+      data['material_tipo_p'].toString() == "true"
+        ? ($("#material_tipo_p")[0].checked = true)
+        : ($("#material_tipo_p")[0].checked = false);
+
+      data['proveedor_p'].toString() == "true"
+        ? ($("#proveedor_p")[0].checked = true)
+        : ($("#proveedor_p")[0].checked = false);
+
+      data['compra_insumo_p'].toString() == "true"
+        ? ($("#compra_insumo_p")[0].checked = true)
+        : ($("#compra_insumo_p")[0].checked = false);
+
+      data['compra_material_p'].toString() == "true"
+        ? ($("#compra_material_p")[0].checked = true)
+        : ($("#compra_material_p")[0].checked = false);
+
+      data['crear_venta_p'].toString() == "true"
+        ? ($("#crear_venta_p")[0].checked = true)
+        : ($("#crear_venta_p")[0].checked = false);
+
+      data['listado_venta_p'].toString() == "true"
+        ? ($("#listado_venta_p")[0].checked = true)
+        : ($("#listado_venta_p")[0].checked = false);
+
+      data['fase_produccion_p'].toString() == "true"
+        ? ($("#fase_produccion_p")[0].checked = true)
+        : ($("#fase_produccion_p")[0].checked = false);
+
+      data['produccion_p'].toString() == "true"
+        ? ($("#produccion_p")[0].checked = true)
+        : ($("#produccion_p")[0].checked = false);
+
+      data['produccion_finalizadas_p'].toString() == "true"
+        ? ($("#produccion_finalizadas_p")[0].checked = true)
+        : ($("#produccion_finalizadas_p")[0].checked = false);
+
+      data['registro_fase_p'].toString() == "true"
+        ? ($("#registro_fase_p")[0].checked = true)
+        : ($("#registro_fase_p")[0].checked = false);
+
+      data['perdidas_produccion_p'].toString() == "true"
+        ? ($("#perdidas_produccion_p")[0].checked = true)
+        : ($("#perdidas_produccion_p")[0].checked = false);
+
+      data['reporters_p'].toString() == "true"
+        ? ($("#reporters_p")[0].checked = true)
+        : ($("#reporters_p")[0].checked = false);
+
+      data['ofertas_p'].toString() == "true"
+        ? ($("#ofertas_p")[0].checked = true)
+        : ($("#ofertas_p")[0].checked = false);
+
+      $("#modal_editar_usuario").modal({
+        backdrop: "static",
+        keyboard: false,
+      });
+      $("#modal_editar_usuario").modal("show");
+    },
+  });
+}
+
+function editar_permisos(){
+  var id = document.getElementById("id_rol").value;
+  var mantenimiento_p = document.getElementById("mantenimiento_p").checked;
+  var producto_tipo_p = document.getElementById("producto_tipo_p").checked;
+  var insumo_tipo_p = document.getElementById("insumo_tipo_p").checked;
+  var material_tipo_p = document.getElementById("material_tipo_p").checked;
+  var proveedor_p = document.getElementById("proveedor_p").checked;
+  var compra_insumo_p = document.getElementById("compra_insumo_p").checked;
+  var compra_material_p = document.getElementById("compra_material_p").checked;
+  var crear_venta_p = document.getElementById("crear_venta_p").checked;
+  var listado_venta_p = document.getElementById("listado_venta_p").checked;
+  var fase_produccion_p = document.getElementById("fase_produccion_p").checked;
+  var produccion_p = document.getElementById("produccion_p").checked;
+  var produccion_finalizadas_p = document.getElementById("produccion_finalizadas_p").checked;
+  var registro_fase_p = document.getElementById("registro_fase_p").checked;
+  var perdidas_produccion_p = document.getElementById("perdidas_produccion_p").checked;
+  var reporters_p = document.getElementById("reporters_p").checked;
+  var ofertas_p = document.getElementById("ofertas_p").checked;
+
+  $.ajax({
+    type: "POST",
+    url: BaseUrl + "usuario/EditarPermisosRol",
+    data: {
+      id: id,
+      mantenimiento_p: mantenimiento_p,
+      producto_tipo_p: producto_tipo_p,
+      insumo_tipo_p: insumo_tipo_p,
+      material_tipo_p: material_tipo_p,
+      proveedor_p: proveedor_p,
+      compra_insumo_p: compra_insumo_p,
+      compra_material_p: compra_material_p,
+      crear_venta_p: crear_venta_p,
+      listado_venta_p: listado_venta_p,
+      fase_produccion_p: fase_produccion_p,
+      produccion_p: produccion_p,
+      produccion_finalizadas_p: produccion_finalizadas_p,
+      registro_fase_p: registro_fase_p,
+      perdidas_produccion_p: perdidas_produccion_p,
+      reporters_p: reporters_p,
+      ofertas_p: ofertas_p
+    },
+    success: function (response) {
+      
+      console.log(response);
+      
+      $("#modal_editar_usuario").modal("hide");
+      if (response == 1) {
+        return Swal.fire("Permisos exitoso", "Los permisos se modificarón con exito", "success");
+        
+      } else {
+        return Swal.fire(
+          "Error de permisos",
+          "Error al editar los permisos, falla en la matrix",
+          "error"
+        );
+      }
+    },
+  });
+
+}
+
 function ModificarRol(id) {
   var nombrerol = $("#nombrerol").val().trim();
 
@@ -193,9 +393,8 @@ function ModificarRol(id) {
     url: BaseUrl + "usuario/ModificarRol",
     data: { nombrerol: nombrerol, id: id },
     success: function (response) {
+      // console.log(response);
 
-      console.log(response);
-      
       $(".card").LoadingOverlay("hide");
       if (response == 1) {
         cargar_contenido(
@@ -1106,7 +1305,6 @@ function GuardarDatosHacienda() {
     telefono == 0 ||
     actividad.length == 0 ||
     actividad.trim() == "" ||
-
     codigowhatsapp.length == 0 ||
     codigowhatsapp.trim() == ""
   ) {

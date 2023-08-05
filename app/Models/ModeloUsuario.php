@@ -101,6 +101,217 @@ class ModeloUsuario
         exit();
     }
 
+    function CreatePermisos(
+        $id,
+        $mantenimiento_p,
+        $producto_tipo_p,
+        $insumo_tipo_p,
+        $material_tipo_p,
+        $proveedor_p,
+        $compra_insumo_p,
+        $compra_material_p,
+        $crear_venta_p,
+        $listado_venta_p,
+        $fase_produccion_p,
+        $produccion_p,
+        $produccion_finalizadas_p,
+        $registro_fase_p,
+        $perdidas_produccion_p,
+        $reporters_p,
+        $ofertas_p
+    ) {
+        try {
+            $resp = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql = "INSERT INTO  permisos (rol_id,
+            mantenimiento_p,
+            producto_tipo_p,
+            insumo_tipo_p,
+            material_tipo_p,
+            proveedor_p,
+            compra_insumo_p,
+            compra_material_p,
+            crear_venta_p,
+            listado_venta_p,
+            fase_produccion_p,
+            produccion_p,
+            produccion_finalizadas_p,
+            registro_fase_p,
+            perdidas_produccion_p,
+            reporters_p,
+            ofertas_p) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->bindParam(2, $mantenimiento_p);
+            $query->bindParam(3, $producto_tipo_p);
+            $query->bindParam(4, $insumo_tipo_p);
+            $query->bindParam(5, $material_tipo_p);
+            $query->bindParam(6, $proveedor_p);
+            $query->bindParam(7, $compra_insumo_p);
+            $query->bindParam(8, $compra_material_p);
+            $query->bindParam(9, $crear_venta_p);
+            $query->bindParam(10, $listado_venta_p);
+            $query->bindParam(11, $fase_produccion_p);
+            $query->bindParam(12, $produccion_p);
+            $query->bindParam(13, $produccion_finalizadas_p);
+            $query->bindParam(14, $registro_fase_p);
+            $query->bindParam(15, $perdidas_produccion_p);
+            $query->bindParam(16, $reporters_p);
+            $query->bindParam(17, $ofertas_p);
+
+            if ($query->execute()) {
+                $resp = 1;
+            } else {
+                $resp = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $resp;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function EditarPermisosRol(
+        $id,
+        $mantenimiento_p,
+        $producto_tipo_p,
+        $insumo_tipo_p,
+        $material_tipo_p,
+        $proveedor_p,
+        $compra_insumo_p,
+        $compra_material_p,
+        $crear_venta_p,
+        $listado_venta_p,
+        $fase_produccion_p,
+        $produccion_p,
+        $produccion_finalizadas_p,
+        $registro_fase_p,
+        $perdidas_produccion_p,
+        $reporters_p,
+        $ofertas_p
+    ) {
+        try {
+            $resp = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql = "UPDATE permisos SET
+            mantenimiento_p = ?,
+            producto_tipo_p = ?,
+            insumo_tipo_p = ?,
+            material_tipo_p = ?,
+            proveedor_p = ?,
+            compra_insumo_p = ?,
+            compra_material_p = ?,
+            crear_venta_p = ?,
+            listado_venta_p = ?,
+            fase_produccion_p = ?,
+            produccion_p = ?,
+            produccion_finalizadas_p = ?,
+            registro_fase_p = ?,
+            perdidas_produccion_p = ?,
+            reporters_p = ?,
+            ofertas_p = ?
+            WHERE rol_id = ?";
+
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $mantenimiento_p);
+            $query->bindParam(2, $producto_tipo_p);
+            $query->bindParam(3, $insumo_tipo_p);
+            $query->bindParam(4, $material_tipo_p);
+            $query->bindParam(5, $proveedor_p);
+            $query->bindParam(6, $compra_insumo_p);
+            $query->bindParam(7, $compra_material_p);
+            $query->bindParam(8, $crear_venta_p);
+            $query->bindParam(9, $listado_venta_p);
+            $query->bindParam(10, $fase_produccion_p);
+            $query->bindParam(11, $produccion_p);
+            $query->bindParam(12, $produccion_finalizadas_p);
+            $query->bindParam(13, $registro_fase_p);
+            $query->bindParam(14, $perdidas_produccion_p);
+            $query->bindParam(15, $reporters_p);
+            $query->bindParam(16, $ofertas_p);
+            $query->bindParam(17, $id);
+
+            if ($query->execute()) {
+                $resp = 1;
+            } else {
+                $resp = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $resp;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+
+    function ObtenerPermisosEditar($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT * FROM permisos WHERE rol_id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerPermisosDeUsuario($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            permisos.mantenimiento_p,
+            permisos.producto_tipo_p,
+            permisos.insumo_tipo_p,
+            permisos.material_tipo_p,
+            permisos.proveedor_p,
+            permisos.compra_insumo_p,
+            permisos.compra_material_p,
+            permisos.crear_venta_p,
+            permisos.listado_venta_p,
+            permisos.fase_produccion_p,
+            permisos.produccion_p,
+            permisos.produccion_finalizadas_p,
+            permisos.registro_fase_p,
+            permisos.perdidas_produccion_p,
+            permisos.reporters_p,
+            permisos.ofertas_p,
+            usuario.id 
+            FROM
+                permisos
+                INNER JOIN rol ON permisos.rol_id = rol.id
+                INNER JOIN usuario ON rol.id = usuario.rol_id 
+            WHERE
+            usuario.id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+
     function EditarRol($id)
     {
         try {
@@ -548,5 +759,4 @@ class ModeloUsuario
         }
         exit();
     }
-
 }

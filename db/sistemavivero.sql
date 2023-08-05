@@ -11,7 +11,7 @@
  Target Server Version : 80031 (8.0.31)
  File Encoding         : 65001
 
- Date: 24/06/2023 18:55:36
+ Date: 04/08/2023 22:34:14
 */
 
 SET NAMES utf8mb4;
@@ -310,23 +310,14 @@ CREATE TABLE `detalleproduccioninsumo`  (
   INDEX `insumo_id`(`insumo_id` ASC) USING BTREE,
   CONSTRAINT `detalleproduccioninsumo_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detalleproduccioninsumo_ibfk_2` FOREIGN KEY (`insumo_id`) REFERENCES `insumo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of detalleproduccioninsumo
 -- ----------------------------
-INSERT INTO `detalleproduccioninsumo` VALUES (1, 6, 4, 5);
-INSERT INTO `detalleproduccioninsumo` VALUES (2, 6, 3, 10);
-INSERT INTO `detalleproduccioninsumo` VALUES (3, 7, 4, 5);
-INSERT INTO `detalleproduccioninsumo` VALUES (4, 7, 3, 10);
-INSERT INTO `detalleproduccioninsumo` VALUES (5, 8, 4, 12);
-INSERT INTO `detalleproduccioninsumo` VALUES (6, 8, 3, 34);
-INSERT INTO `detalleproduccioninsumo` VALUES (7, 9, 4, 2);
-INSERT INTO `detalleproduccioninsumo` VALUES (8, 9, 3, 5);
-INSERT INTO `detalleproduccioninsumo` VALUES (9, 10, 4, 3);
-INSERT INTO `detalleproduccioninsumo` VALUES (10, 10, 3, 4);
-INSERT INTO `detalleproduccioninsumo` VALUES (11, 11, 4, 5);
-INSERT INTO `detalleproduccioninsumo` VALUES (12, 11, 3, 5);
+INSERT INTO `detalleproduccioninsumo` VALUES (13, 12, 4, 1);
+INSERT INTO `detalleproduccioninsumo` VALUES (15, 14, 3, 1);
+INSERT INTO `detalleproduccioninsumo` VALUES (16, 15, 3, 1);
 
 -- ----------------------------
 -- Table structure for detalleproduccionmaterial
@@ -342,21 +333,14 @@ CREATE TABLE `detalleproduccionmaterial`  (
   INDEX `material_id`(`material_id` ASC) USING BTREE,
   CONSTRAINT `detalleproduccionmaterial_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detalleproduccionmaterial_ibfk_2` FOREIGN KEY (`material_id`) REFERENCES `material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of detalleproduccionmaterial
 -- ----------------------------
-INSERT INTO `detalleproduccionmaterial` VALUES (1, 7, 2, 100);
-INSERT INTO `detalleproduccionmaterial` VALUES (2, 7, 1, 100);
-INSERT INTO `detalleproduccionmaterial` VALUES (3, 8, 2, 2);
-INSERT INTO `detalleproduccionmaterial` VALUES (4, 8, 1, 2);
-INSERT INTO `detalleproduccionmaterial` VALUES (5, 9, 2, 1);
-INSERT INTO `detalleproduccionmaterial` VALUES (6, 9, 1, 2);
-INSERT INTO `detalleproduccionmaterial` VALUES (7, 10, 2, 1);
-INSERT INTO `detalleproduccionmaterial` VALUES (8, 10, 1, 1);
-INSERT INTO `detalleproduccionmaterial` VALUES (9, 11, 2, 1);
-INSERT INTO `detalleproduccionmaterial` VALUES (10, 11, 1, 2);
+INSERT INTO `detalleproduccionmaterial` VALUES (11, 12, 2, 1);
+INSERT INTO `detalleproduccionmaterial` VALUES (13, 14, 2, 1);
+INSERT INTO `detalleproduccionmaterial` VALUES (14, 15, 1, 1);
 
 -- ----------------------------
 -- Table structure for empresa
@@ -420,79 +404,21 @@ CREATE TABLE `faseproduccion`  (
   INDEX `fase_id`(`fase_id` ASC) USING BTREE,
   CONSTRAINT `faseproduccion_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `faseproduccion_ibfk_2` FOREIGN KEY (`fase_id`) REFERENCES `fase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 84 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of faseproduccion
 -- ----------------------------
-INSERT INTO `faseproduccion` VALUES (1, 7, 1, '2023-05-19', 'AA');
-INSERT INTO `faseproduccion` VALUES (2, 7, 2, '2023-05-26', 'bbbbbbb');
-INSERT INTO `faseproduccion` VALUES (3, 7, 3, '2023-05-19', 'detalle de fase');
-INSERT INTO `faseproduccion` VALUES (4, 7, 4, '2023-05-19', 'aaaaa');
-INSERT INTO `faseproduccion` VALUES (5, 7, 5, '2023-05-19', 'aaaaa');
-INSERT INTO `faseproduccion` VALUES (6, 7, 6, '2023-05-19', 'aaaaa');
-INSERT INTO `faseproduccion` VALUES (7, 7, 7, '2023-05-19', 'aaaaaa');
-INSERT INTO `faseproduccion` VALUES (8, 7, 8, '2023-05-19', 'aaaaaa');
-INSERT INTO `faseproduccion` VALUES (9, 7, 9, '2023-05-19', 'aaaa');
-INSERT INTO `faseproduccion` VALUES (10, 7, 10, '2023-05-19', 'aaaa');
-INSERT INTO `faseproduccion` VALUES (11, 6, 1, '2023-05-19', 'aaa');
-INSERT INTO `faseproduccion` VALUES (12, 6, 2, '2023-05-19', 'qwe');
-INSERT INTO `faseproduccion` VALUES (13, 6, 3, '2023-05-19', 'es una porueba');
-INSERT INTO `faseproduccion` VALUES (14, 6, 4, '2023-05-19', 'aaaa');
-INSERT INTO `faseproduccion` VALUES (15, 6, 5, '2023-05-19', 'aaaaaaa');
-INSERT INTO `faseproduccion` VALUES (16, 6, 6, '2023-05-19', 'gg');
-INSERT INTO `faseproduccion` VALUES (17, 6, 7, '2023-05-19', 'edddedf');
-INSERT INTO `faseproduccion` VALUES (18, 6, 8, '2023-05-19', 'FLORES');
-INSERT INTO `faseproduccion` VALUES (19, 6, 9, '2023-05-19', 'aaaaaaa');
-INSERT INTO `faseproduccion` VALUES (20, 6, 10, '2023-05-19', 'asasasssss');
-INSERT INTO `faseproduccion` VALUES (21, 5, 1, '2023-05-19', 'sds');
-INSERT INTO `faseproduccion` VALUES (22, 5, 2, '2023-05-19', 'd');
-INSERT INTO `faseproduccion` VALUES (23, 5, 3, '2023-05-19', 'sdsd');
-INSERT INTO `faseproduccion` VALUES (24, 5, 4, '2023-05-19', 'sdsd');
-INSERT INTO `faseproduccion` VALUES (25, 5, 5, '2023-05-19', 'sdsd');
-INSERT INTO `faseproduccion` VALUES (26, 5, 6, '2023-05-19', 'sdsds');
-INSERT INTO `faseproduccion` VALUES (27, 5, 7, '2023-05-19', 'sdsd');
-INSERT INTO `faseproduccion` VALUES (28, 5, 8, '2023-05-19', 'sdsd');
-INSERT INTO `faseproduccion` VALUES (29, 5, 9, '2023-05-19', 'sdsds');
-INSERT INTO `faseproduccion` VALUES (30, 5, 10, '2023-05-19', 'sdsd');
-INSERT INTO `faseproduccion` VALUES (31, 4, 1, '2023-05-19', 'aaaaaaa');
-INSERT INTO `faseproduccion` VALUES (36, 8, 1, '2023-05-19', 'aaaa');
-INSERT INTO `faseproduccion` VALUES (37, 8, 2, '2023-05-19', 'bbbbb');
-INSERT INTO `faseproduccion` VALUES (38, 8, 3, '2023-05-19', 'cccc');
-INSERT INTO `faseproduccion` VALUES (39, 8, 4, '2023-05-19', 'ddddd');
-INSERT INTO `faseproduccion` VALUES (40, 8, 5, '2023-05-19', 'eeee');
-INSERT INTO `faseproduccion` VALUES (41, 8, 6, '2023-05-19', 'fffff');
-INSERT INTO `faseproduccion` VALUES (42, 8, 7, '2023-05-19', 'hhhhhh');
-INSERT INTO `faseproduccion` VALUES (43, 8, 8, '2023-05-19', 'iiiii');
-INSERT INTO `faseproduccion` VALUES (44, 8, 9, '2023-05-19', 'jjjjjj');
-INSERT INTO `faseproduccion` VALUES (45, 8, 10, '2023-05-19', 'kkkkkkk');
-INSERT INTO `faseproduccion` VALUES (46, 4, 2, '2023-05-20', 'asasa');
-INSERT INTO `faseproduccion` VALUES (47, 4, 3, '2023-05-20', 'aaaaaaa');
-INSERT INTO `faseproduccion` VALUES (48, 4, 4, '2023-05-20', 'asssssssss');
-INSERT INTO `faseproduccion` VALUES (49, 4, 5, '2023-05-20', 'dddddddd');
-INSERT INTO `faseproduccion` VALUES (50, 4, 6, '2023-05-20', '2w2w2w');
-INSERT INTO `faseproduccion` VALUES (51, 4, 7, '2023-05-20', '2w2w2');
-INSERT INTO `faseproduccion` VALUES (52, 4, 8, '2023-05-20', 'sss');
-INSERT INTO `faseproduccion` VALUES (53, 4, 9, '2023-05-20', 'sdsdsd');
-INSERT INTO `faseproduccion` VALUES (54, 4, 10, '2023-05-20', 'sdsdsd');
-INSERT INTO `faseproduccion` VALUES (55, 2, 1, '2023-05-20', 'asasa');
-INSERT INTO `faseproduccion` VALUES (56, 2, 2, '2023-05-20', 'asaasa');
-INSERT INTO `faseproduccion` VALUES (57, 2, 3, '2023-05-20', 'asasa');
-INSERT INTO `faseproduccion` VALUES (58, 2, 4, '2023-05-20', 'asasasas');
-INSERT INTO `faseproduccion` VALUES (59, 2, 5, '2023-05-20', 'sasasas');
-INSERT INTO `faseproduccion` VALUES (60, 2, 6, '2023-05-20', 'asasasa');
-INSERT INTO `faseproduccion` VALUES (61, 2, 7, '2023-05-20', 'asasasasas');
-INSERT INTO `faseproduccion` VALUES (62, 2, 8, '2023-05-20', 'asasas');
-INSERT INTO `faseproduccion` VALUES (63, 2, 9, '2023-05-20', 'asasasas');
-INSERT INTO `faseproduccion` VALUES (64, 2, 10, '2023-05-20', '1212121');
-INSERT INTO `faseproduccion` VALUES (65, 9, 1, '2023-05-21', 'FASE ONE');
-INSERT INTO `faseproduccion` VALUES (66, 9, 2, '2023-05-21', 'FASE TWO');
-INSERT INTO `faseproduccion` VALUES (67, 9, 3, '2023-05-21', 'FASE TREE');
-INSERT INTO `faseproduccion` VALUES (68, 9, 4, '2023-05-21', 'FASE FOUR');
-INSERT INTO `faseproduccion` VALUES (69, 9, 5, '2023-05-21', 'FIVE');
-INSERT INTO `faseproduccion` VALUES (70, 11, 1, '2023-05-27', 'AAAAA');
-INSERT INTO `faseproduccion` VALUES (71, 11, 2, '2023-05-27', 'BBBB');
-INSERT INTO `faseproduccion` VALUES (72, 11, 3, '2023-05-27', 'BBBBB');
+INSERT INTO `faseproduccion` VALUES (73, 12, 1, '2023-08-04', 'AA');
+INSERT INTO `faseproduccion` VALUES (75, 12, 2, '2023-08-04', 'DOS');
+INSERT INTO `faseproduccion` VALUES (76, 12, 3, '2023-08-04', 'EE');
+INSERT INTO `faseproduccion` VALUES (77, 12, 4, '2023-08-04', 'FF');
+INSERT INTO `faseproduccion` VALUES (78, 12, 5, '2023-08-04', 'QQQ');
+INSERT INTO `faseproduccion` VALUES (79, 12, 6, '2023-08-04', 'GGG');
+INSERT INTO `faseproduccion` VALUES (80, 12, 7, '2023-08-04', 'ZZZZ');
+INSERT INTO `faseproduccion` VALUES (81, 12, 8, '2023-08-04', 'EEE');
+INSERT INTO `faseproduccion` VALUES (82, 12, 9, '2023-08-04', 'AAA');
+INSERT INTO `faseproduccion` VALUES (83, 12, 10, '2023-08-04', 'AAA');
 
 -- ----------------------------
 -- Table structure for imagenproducto
@@ -505,7 +431,7 @@ CREATE TABLE `imagenproducto`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id_producto`(`id_producto` ASC) USING BTREE,
   CONSTRAINT `imagenproducto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of imagenproducto
@@ -522,6 +448,11 @@ INSERT INTO `imagenproducto` VALUES (11, 2, 'dc527ef92b2fb4970bd74a85cff5784df33
 INSERT INTO `imagenproducto` VALUES (12, 2, 'c974283113c800c5ba03363d8bda875e0a28ecde16876106301.jpg');
 INSERT INTO `imagenproducto` VALUES (14, 2, '7449e19473d5643326704612203622c8e1466f7216876106303.jpg');
 INSERT INTO `imagenproducto` VALUES (16, 1, '35908150fa7ab691a8182f7c8bed28f371d71e9916876106391.jpg');
+INSERT INTO `imagenproducto` VALUES (17, 6, 'a0e863f44d426e899b1f0ba272c6d2d5dac90ccd16912063250.jpg');
+INSERT INTO `imagenproducto` VALUES (18, 6, '97493ae563a450e741087855a9b6d3c7a99e28ec16912063251.jpg');
+INSERT INTO `imagenproducto` VALUES (19, 8, '0157e46b4a74bf6ab1420283449f9dee3175911316912063580.jpg');
+INSERT INTO `imagenproducto` VALUES (20, 8, 'a0e863f44d426e899b1f0ba272c6d2d5dac90ccd16912063581.jpg');
+INSERT INTO `imagenproducto` VALUES (21, 8, '97493ae563a450e741087855a9b6d3c7a99e28ec16912063582.jpg');
 
 -- ----------------------------
 -- Table structure for insumo
@@ -545,8 +476,8 @@ CREATE TABLE `insumo`  (
 -- ----------------------------
 -- Records of insumo
 -- ----------------------------
-INSERT INTO `insumo` VALUES (3, '18191053', 'Insumo de tierra', 2, 123.00, 'Descripción del insumo', 'insumo.jpg', 1, 55);
-INSERT INTO `insumo` VALUES (4, '535545165', 'INSUMO DE PLANTA', 1, 12.00, 'Descripción del insumo DETALLE', 'IMG1352023144657.jpg', 1, 93);
+INSERT INTO `insumo` VALUES (3, '18191053', 'Insumo de tierra', 2, 123.00, 'Descripción del insumo', 'insumo.jpg', 1, 53);
+INSERT INTO `insumo` VALUES (4, '535545165', 'INSUMO DE PLANTA', 1, 12.00, 'Descripción del insumo DETALLE', 'IMG1352023144657.jpg', 1, 91);
 
 -- ----------------------------
 -- Table structure for material
@@ -570,8 +501,8 @@ CREATE TABLE `material`  (
 -- ----------------------------
 -- Records of material
 -- ----------------------------
-INSERT INTO `material` VALUES (1, '388536903', 'NUEVO MATERILA PALA', 1, 123.00, 'Descripción del material - Ingrese la descripcion del material', 'IMG125202322324.jpg', 1, 14);
-INSERT INTO `material` VALUES (2, '890255674', 'NOMBRE EDITADO', 1, 159.00, 'Descripción del material EDITADO', 'IMG125202322316.jpg', 1, 15);
+INSERT INTO `material` VALUES (1, '388536903', 'NUEVO MATERILA PALA', 1, 123.00, 'Descripción del material - Ingrese la descripcion del material', 'IMG125202322324.jpg', 1, 13);
+INSERT INTO `material` VALUES (2, '890255674', 'NOMBRE EDITADO', 1, 159.00, 'Descripción del material EDITADO', 'IMG125202322316.jpg', 1, 12);
 
 -- ----------------------------
 -- Table structure for oferta
@@ -611,17 +542,45 @@ CREATE TABLE `perdida_produccion`  (
   INDEX `usuario_id`(`usuario_id` ASC) USING BTREE,
   CONSTRAINT `perdida_produccion_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `perdida_produccion_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of perdida_produccion
 -- ----------------------------
-INSERT INTO `perdida_produccion` VALUES (2, 7, 10, 'PERDIDA POR MALA PLANTA', '2023-05-19', 4);
-INSERT INTO `perdida_produccion` VALUES (4, 4, 4, 'aaaaaaa', '2023-05-20', 4);
-INSERT INTO `perdida_produccion` VALUES (5, 3, 2, 'Descripción de la perdida', '2023-05-20', 4);
-INSERT INTO `perdida_produccion` VALUES (6, 3, 1, 'wewewe', '2023-05-20', 4);
-INSERT INTO `perdida_produccion` VALUES (7, 9, 5, 'PERDIDA NUEVA', '2023-05-20', 4);
-INSERT INTO `perdida_produccion` VALUES (8, 9, 5, 'DETALE DE PERDIDA', '2023-05-21', 4);
+
+-- ----------------------------
+-- Table structure for permisos
+-- ----------------------------
+DROP TABLE IF EXISTS `permisos`;
+CREATE TABLE `permisos`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rol_id` int NULL DEFAULT NULL,
+  `mantenimiento_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `producto_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `insumo_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `material_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `proveedor_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `compra_insumo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `compra_material_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `crear_venta_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `listado_venta_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `fase_produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `produccion_finalizadas_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `registro_fase_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `perdidas_produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `reporters_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `ofertas_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `rol_id`(`rol_id` ASC) USING BTREE,
+  CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of permisos
+-- ----------------------------
+INSERT INTO `permisos` VALUES (3, 33, 'false', 'false', 'false', 'false', 'false', 'false', 'true', 'true', 'true', 'false', 'false', 'false', 'false', 'false', 'false', 'false');
+INSERT INTO `permisos` VALUES (4, 1, 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true');
 
 -- ----------------------------
 -- Table structure for produccion
@@ -643,21 +602,14 @@ CREATE TABLE `produccion`  (
   INDEX `usuarioid`(`usuarioid` ASC) USING BTREE,
   CONSTRAINT `produccion_ibfk_1` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `produccion_ibfk_2` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of produccion
 -- ----------------------------
-INSERT INTO `produccion` VALUES (2, 'aaaaaaaaa', '2023-05-16 20:45:59', '2023-05-16', '2023-05-18', 2, 2, 2, 4, 100);
-INSERT INTO `produccion` VALUES (3, 'aaaaaaaaa', '2023-05-16 20:46:15', '2023-05-16', '2023-05-18', 2, 2, 1, 4, 100);
-INSERT INTO `produccion` VALUES (4, 'ss', '2023-05-16 20:48:48', '2023-05-16', '2023-05-31', 15, 2, 2, 4, 100);
-INSERT INTO `produccion` VALUES (5, 'NUEVA PRODUCCION DE PLANTAS', '2023-05-16 21:35:11', '2023-05-16', '2023-06-01', 16, 1, 2, 4, 100);
-INSERT INTO `produccion` VALUES (6, 'PRODUCCION DE CACAO', '2023-05-19 09:36:19', '2023-05-19', '2023-05-22', 3, 1, 2, 4, 100);
-INSERT INTO `produccion` VALUES (7, 'PRODUCCION DE CACAO', '2023-05-19 09:37:27', '2023-05-19', '2023-05-22', 3, 1, 2, 4, 100);
-INSERT INTO `produccion` VALUES (8, 'PRODUCCION DE ARROZ', '2023-05-19 19:14:19', '2023-05-19', '2023-07-01', 43, 2, 2, 4, 100);
-INSERT INTO `produccion` VALUES (9, 'PRODUCCION DE CAPTUS', '2023-05-20 10:32:39', '2023-05-20', '2023-06-11', 22, 1, 1, 4, 100);
-INSERT INTO `produccion` VALUES (10, 'PRODUCCION DE PRUEBA', '2023-05-21 14:47:47', '2023-05-21', '2023-06-10', 20, 2, 1, 4, 100);
-INSERT INTO `produccion` VALUES (11, 'PLANTAS', '2023-05-27 21:43:29', '2023-05-27', '2023-07-01', 35, 2, 1, 4, 100);
+INSERT INTO `produccion` VALUES (12, 'AAA', '2023-08-04 22:21:56', '2023-08-04', '2023-08-05', 1, 7, 2, 5, 1);
+INSERT INTO `produccion` VALUES (14, 'FRUTAL', '2023-08-04 22:29:02', '2023-08-04', '2023-08-31', 27, 6, 1, 5, 100);
+INSERT INTO `produccion` VALUES (15, 'NUEVA FRUTA', '2023-08-04 22:29:40', '2023-08-04', '2023-09-10', 37, 3, 1, 5, 60);
 
 -- ----------------------------
 -- Table structure for producto
@@ -677,7 +629,7 @@ CREATE TABLE `producto`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `tipo_id`(`tipo_id` ASC) USING BTREE,
   CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tipo_producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of producto
@@ -688,7 +640,8 @@ INSERT INTO `producto` VALUES (3, '716412303', 'asasa', 3, 2323.00, 'weweqw', NU
 INSERT INTO `producto` VALUES (4, '878300076', 'sas', 3, 21.00, '12qw', NULL, 1, 0, 0);
 INSERT INTO `producto` VALUES (5, '87830002', 'sas', 3, 21.00, '12qw', NULL, 1, 0, 0);
 INSERT INTO `producto` VALUES (6, '274545739', 'PRODUCTO NUEVO SIN IMAGEN', 1, 123.00, 'NUEVO PRODUCTO SIN IMAGEN', 'producto.jpg', 1, 0, 0);
-INSERT INTO `producto` VALUES (7, '507024069', 'producto planta', 3, 121.00, '1qsas', 'producto.jpg', 1, 0, 0);
+INSERT INTO `producto` VALUES (7, '507024069', 'producto planta', 3, 121.00, '1qsas', 'producto.jpg', 1, 1, 0);
+INSERT INTO `producto` VALUES (8, '505791924', 'Frutal', 1, 123.00, 'Descripción del producto', NULL, 1, 0, 0);
 
 -- ----------------------------
 -- Table structure for proveedor
@@ -723,15 +676,13 @@ CREATE TABLE `rol`  (
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rol
 -- ----------------------------
-INSERT INTO `rol` VALUES (1, 'idd', '2023-04-23 18:41:23', 1);
-INSERT INTO `rol` VALUES (2, 'SUPER USER', '2023-04-23 18:42:08', 1);
-INSERT INTO `rol` VALUES (3, 'adminitrador uno', '2023-04-23 19:04:23', 1);
-INSERT INTO `rol` VALUES (4, 'NUEVO TIPO', '2023-05-07 20:21:37', 1);
+INSERT INTO `rol` VALUES (1, 'Administrador', '2023-04-23 18:41:23', 1);
+INSERT INTO `rol` VALUES (33, 'Vendedor', '2023-07-23 16:46:21', 1);
 
 -- ----------------------------
 -- Table structure for tipo_material
@@ -804,15 +755,13 @@ CREATE TABLE `usuario`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `rol_id`(`rol_id` ASC) USING BTREE,
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES (1, 'NOMBRE EDITADO', 'APELLIDO EDITADO', 'EDITADO@HOTMAIL.COM', '0940321854', 2, 'USUARIOEDITADO', '123', 'admin.jpg', '2023-04-26 20:53:53', 1);
-INSERT INTO `usuario` VALUES (2, 'JORGE MMOISES', 'RAMIREZ ZAVALA', 'ELGAGA@HOTMAIL.COM', '0940321850', 2, 'AAAAAA', '123', 'admin.jpg', '2023-04-28 20:32:36', 1);
-INSERT INTO `usuario` VALUES (3, 'aaaaaaaaaaa', 'bbbbbbbbbb', '1ELGAGA@HOTMAIL.COM', '0940321856', 3, '11111', '123', 'admin.jpg', '2023-04-28 20:38:38', 1);
-INSERT INTO `usuario` VALUES (4, 'JORGE MOISES', 'RAMIREZ ZAVALA', 'elgamer-26@hotmail.com', '0940321851', 3, 'admin', '123', 'IMG1252023223416.jpg', '2023-04-28 20:40:07', 1);
+INSERT INTO `usuario` VALUES (5, 'AAAAAAAAAAA', 'BBBBBBBBB', 'ADMIN@HOTMAIL.COM', '0123654789', 1, 'admin', '123', 'IMG482023223333.jpg', '2023-07-23 16:41:09', 1);
+INSERT INTO `usuario` VALUES (6, 'JOSE CARLOS', 'VILLAMAR', 'correo@gmail.com', '0940321854', 33, 'admin1', 'admin1', 'IMG48202322336.jpg', '2023-07-23 20:46:30', 1);
 
 -- ----------------------------
 -- Table structure for ventaweb
@@ -1415,9 +1364,9 @@ BEGIN
 	set @valor = (select COUNT(*) from rol WHERE BINARY rol = nombre);
 		if @valor = 0 THEN
 				INSERT into rol (rol) VALUES (nombre);
-				SELECT 1;
+				SELECT LAST_INSERT_ID();
 			ELSE
-				SELECT 2;
+				SELECT 'existe';
 		end if;
 END
 ;;

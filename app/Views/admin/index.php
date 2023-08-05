@@ -124,11 +124,11 @@
               </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item Mantenimiento">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
-                  Usuarios
+                  Mantenimiento
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -139,43 +139,37 @@
                     <p>Roles y permisos</p>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/UsuariosAccion/list');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Usuarios</p>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/EmpresaView');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p> Empresa</p>
+                    <p>Información del vivero</p>
                   </a>
                 </li>
 
-              </ul>
-            </li>
+                <hr>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                  Clientes
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ListadoCliente/tienda');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Clientes Tienda</p>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ListadoCliente/empresa');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Clientes Empresa</p>
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/cliente/new/0/valor');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -209,39 +203,60 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
+
+                <li class="nav-item producto_tipo_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/tipoProducto/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tipo</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item producto_tipo_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Producto/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Producto</p>
                   </a>
                 </li>
-              </ul>
-            </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-gift"></i>
-                <p>
-                  Ofertas de productos
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
+                <hr>
 
-                <li class="nav-item">
+                <li class="nav-item insumo_tipo_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/TipoInsumo/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tipo insumo</p>
+                  </a>
+                </li>
+                <li class="nav-item insumo_tipo_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Insumos/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Insumo</p>
+                  </a>
+                </li>
+
+                <hr>
+
+                <li class="nav-item material_tipo_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/TipoMaterial/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tipo de material</p>
+                  </a>
+                </li>
+                <li class="nav-item material_tipo_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Material/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Material</p>
+                  </a>
+                </li>
+
+                <hr>
+
+                <li class="nav-item ofertas_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/oferta/registro/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Registro de ofertas</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item ofertas_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/oferta/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Lista de ofertas</p>
@@ -253,67 +268,54 @@
 
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cube"></i>
-                <p>
-                  Insumos y materiales
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/TipoInsumo/list/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tipo insumo</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Insumos/list/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Insumo</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/TipoMaterial/list/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tipo de material</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Material/list/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Material</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>
-                  Compras
+                  Compras y ventas
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
+
+                <li class="nav-item proveedor_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/proveedor/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Proveedor</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item compra_insumo_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/CompraInsumos/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Compra insumos</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item compra_material_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/CompraMaterial/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Compra material</p>
                   </a>
                 </li>
+
+                <hr>
+
+                <li class="nav-item crear_venta_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/new/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Nueva venta</p>
+                  </a>
+                </li>
+                <li class="nav-item listado_venta_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/list/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Listado de ventas</p>
+                  </a>
+                </li>
+                <li class="nav-item listado_venta_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/web/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ventas tienda Web</p>
+                  </a>
+                </li>
+
               </ul>
             </li>
 
@@ -327,35 +329,35 @@
               </a>
               <ul class="nav nav-treeview">
 
-                <li class="nav-item">
+                <li class="nav-item fase_produccion_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/fases/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Fases de producción</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item produccion_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/list/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Lista de producción</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item produccion_finalizadas_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/finalizado/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Producción finalizadas</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item registro_fase_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/registerFase/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Registrar fase producción</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item perdidas_produccion_p">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/perdida/0');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Perdidas</p>
@@ -365,40 +367,7 @@
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-shopping-cart"></i>
-                <p>
-                  Ventas
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/new/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Nueva venta</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/list/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Listado de ventas</p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ventas/web/0');" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ventas tienda Web</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-
-            <li class="nav-item">
+            <li class="nav-item reporters_p">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-file"></i>
                 <p>
@@ -549,7 +518,7 @@
           </div>
 
           <hr>
-          
+
           <div class="row">
 
             <div class="col-lg-6">
@@ -660,6 +629,7 @@
   <script src="<?php echo base_url(); ?>public/js/numero.min.js"></script>
   <script src="<?php echo base_url(); ?>public/DataTables/datatables.min.js"></script>
   <script src="<?php echo base_url(); ?>public/Chart/chart.min.js"></script>
+  <script src="<?php echo base_url(); ?>public/Chart/moment.min.js"></script>
 
 </body>
 
@@ -819,6 +789,7 @@
   TraerGraficoProductosMasVendidosOferta();
   TraerGraficoClientesMasCompras();
   TraerGraficoProductosMasComprados();
+  TraerPermisosDeUsuario();
 
   function mostrar_imagenData(input) {
     var filename = document.getElementById("foto_new").value;
@@ -871,6 +842,82 @@
         $("#UserRol").html(data[0][5]);
         fotoActual = data[0][8];
         PasswordUser = data[0][7];
+      }
+    });
+  }
+
+  async function TraerPermisosDeUsuario() {
+    $.ajax({
+      type: "Get",
+      url: BaseUrl + "usuario/TraerPermisosDeUsuario",
+      async: true,
+      success: function(response) {
+        var data = JSON.parse(response);
+        // console.log(data);
+
+        data['mantenimiento_p'].toString() == "true" ?
+          ($(".Mantenimiento").show()) :
+          ($(".Mantenimiento").hide());
+
+        data['producto_tipo_p'].toString() == "true" ?
+          ($(".producto_tipo_p").show()) :
+          ($(".producto_tipo_p").hide());
+
+        data['insumo_tipo_p'].toString() == "true" ?
+          ($(".insumo_tipo_p").show()) :
+          ($(".insumo_tipo_p").hide());
+
+        data['material_tipo_p'].toString() == "true" ?
+          ($(".material_tipo_p").show()) :
+          ($(".material_tipo_p").hide());
+
+        data['proveedor_p'].toString() == "true" ?
+          ($(".proveedor_p").show()) :
+          ($(".proveedor_p").hide());
+
+        data['compra_insumo_p'].toString() == "true" ?
+          ($(".compra_insumo_p").show()) :
+          ($(".compra_insumo_p").hide());
+
+        data['compra_material_p'].toString() == "true" ?
+          ($(".compra_material_p").show()) :
+          ($(".compra_material_p").hide());
+
+        data['crear_venta_p'].toString() == "true" ?
+          ($(".crear_venta_p").show()) :
+          ($(".crear_venta_p").hide());
+
+        data['listado_venta_p'].toString() == "true" ?
+          ($(".listado_venta_p").show()) :
+          ($(".listado_venta_p").hide());
+
+        data['fase_produccion_p'].toString() == "true" ?
+          ($(".fase_produccion_p").show()) :
+          ($(".fase_produccion_p").hide());
+
+        data['produccion_p'].toString() == "true" ?
+          ($(".produccion_p").show()) :
+          ($(".produccion_p").hide());
+
+        data['produccion_finalizadas_p'].toString() == "true" ?
+          ($(".produccion_finalizadas_p").show()) :
+          ($(".produccion_finalizadas_p").hide());
+
+        data['registro_fase_p'].toString() == "true" ?
+          ($(".registro_fase_p").show()) :
+          ($(".registro_fase_p").hide());
+
+        data['perdidas_produccion_p'].toString() == "true" ?
+          ($(".perdidas_produccion_p").show()) :
+          ($(".perdidas_produccion_p").hide());
+
+        data['reporters_p'].toString() == "true" ?
+          ($(".reporters_p").show()) :
+          ($(".reporters_p").hide());
+
+        data['ofertas_p'].toString() == "true" ?
+          ($(".ofertas_p").show()) :
+          ($(".ofertas_p").hide());
       }
     });
   }

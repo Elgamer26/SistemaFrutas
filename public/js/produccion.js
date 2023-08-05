@@ -395,14 +395,13 @@ function RegistrarDetalleMaterialProduccion(id) {
     if (resp == 1) {
       Swal.fire({
         title: "La producción se registro con exito",
-        text: "Desea imprimir el reporte de esta producción",
+        text: "Registro con exito",
         icon: "success",
-        showCancelButton: true,
-        showCancelButton: true,
+        showCancelButton: true, 
         allowOutsideClick: false,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Si, imprimir",
+        confirmButtonText: "OK",
       }).then((result) => {
         if (result.isConfirmed) {
           cargar_contenido(

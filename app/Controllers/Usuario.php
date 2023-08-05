@@ -58,9 +58,84 @@ class Usuario extends BaseController
     public function CreateRol()
     {
         if ($this->request->getMethod() == "post") {
+
             $nombrerol = $this->request->getPost('nombrerol');
             $repuesta_create = $this->usuario->RegistraRol($nombrerol);
+
             echo $repuesta_create[0];
+            exit();
+        }
+    }
+
+    public function CreatePermisos()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $id = $this->request->getPost('id');
+            $mantenimiento_p = $this->request->getPost('mantenimiento_p');
+            $producto_tipo_p = $this->request->getPost('producto_tipo_p');
+            $insumo_tipo_p = $this->request->getPost('insumo_tipo_p');
+            $material_tipo_p = $this->request->getPost('material_tipo_p');
+            $proveedor_p = $this->request->getPost('proveedor_p');
+            $compra_insumo_p = $this->request->getPost('compra_insumo_p');
+            $compra_material_p = $this->request->getPost('compra_material_p');
+            $crear_venta_p = $this->request->getPost('crear_venta_p');
+            $listado_venta_p = $this->request->getPost('listado_venta_p');
+            $fase_produccion_p = $this->request->getPost('fase_produccion_p');
+            $produccion_p = $this->request->getPost('produccion_p');
+            $produccion_finalizadas_p = $this->request->getPost('produccion_finalizadas_p');
+            $registro_fase_p = $this->request->getPost('registro_fase_p');
+            $perdidas_produccion_p = $this->request->getPost('perdidas_produccion_p');
+            $reporters_p = $this->request->getPost('reporters_p');
+            $ofertas_p = $this->request->getPost('ofertas_p');
+            
+            $repuesta_create = $this->usuario->CreatePermisos($id, $mantenimiento_p,$producto_tipo_p,$insumo_tipo_p,$material_tipo_p,$proveedor_p,
+            $compra_insumo_p,$compra_material_p,$crear_venta_p,$listado_venta_p,$fase_produccion_p,$produccion_p,$produccion_finalizadas_p,
+            $registro_fase_p,$perdidas_produccion_p,$reporters_p,$ofertas_p);
+
+
+            echo $repuesta_create;
+            exit();
+        }
+    }
+
+    public function ObtenerPermisosEditar()
+    {
+        if ($this->request->getMethod() == "post") {
+            $id = $this->request->getPost('id'); 
+            $repuesta_create = $this->usuario->ObtenerPermisosEditar($id);
+            echo json_encode($repuesta_create, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+    }
+
+    public function EditarPermisosRol()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $id = $this->request->getPost('id');
+            $mantenimiento_p = $this->request->getPost('mantenimiento_p');
+            $producto_tipo_p = $this->request->getPost('producto_tipo_p');
+            $insumo_tipo_p = $this->request->getPost('insumo_tipo_p');
+            $material_tipo_p = $this->request->getPost('material_tipo_p');
+            $proveedor_p = $this->request->getPost('proveedor_p');
+            $compra_insumo_p = $this->request->getPost('compra_insumo_p');
+            $compra_material_p = $this->request->getPost('compra_material_p');
+            $crear_venta_p = $this->request->getPost('crear_venta_p');
+            $listado_venta_p = $this->request->getPost('listado_venta_p');
+            $fase_produccion_p = $this->request->getPost('fase_produccion_p');
+            $produccion_p = $this->request->getPost('produccion_p');
+            $produccion_finalizadas_p = $this->request->getPost('produccion_finalizadas_p');
+            $registro_fase_p = $this->request->getPost('registro_fase_p');
+            $perdidas_produccion_p = $this->request->getPost('perdidas_produccion_p');
+            $reporters_p = $this->request->getPost('reporters_p');
+            $ofertas_p = $this->request->getPost('ofertas_p');
+
+            $repuesta_create = $this->usuario->EditarPermisosRol($id, $mantenimiento_p,$producto_tipo_p,$insumo_tipo_p,$material_tipo_p,$proveedor_p,
+            $compra_insumo_p,$compra_material_p,$crear_venta_p,$listado_venta_p,$fase_produccion_p,$produccion_p,$produccion_finalizadas_p,
+            $registro_fase_p,$perdidas_produccion_p,$reporters_p,$ofertas_p);
+
+            echo $repuesta_create;
             exit();
         }
     }
@@ -173,6 +248,14 @@ class Usuario extends BaseController
     {
         $id =  $_SESSION["id_user"];
         $valorData = $this->usuario->TraerDatosUsuario($id);
+        echo json_encode($valorData, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+
+    public function TraerPermisosDeUsuario()
+    {
+        $id =  $_SESSION["id_user"];
+        $valorData = $this->usuario->TraerPermisosDeUsuario($id);
         echo json_encode($valorData, JSON_UNESCAPED_UNICODE);
         exit();
     }
