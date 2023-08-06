@@ -381,7 +381,7 @@
 						<div class="col col-4">
 
 							<div class="progress" style="padding: 0px; margin: 0px;">
-								<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $countcalificar[0]; ?></div>
+								<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo $countcalificar[0]; ?> </div>
 							</div>
 						</div>
 					</div>

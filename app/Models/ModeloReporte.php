@@ -343,7 +343,8 @@ class ModeloReporte
             ventaweb.ciudad,
             ventaweb.referencia,
             cliente.apellidos,
-            cliente.correo
+            cliente.correo,
+            ventaweb.tipopago
             FROM
                 ventaweb
                 INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 

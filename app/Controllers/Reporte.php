@@ -749,26 +749,28 @@ class Reporte extends BaseController
 
         $pdf->Ln(50);
 
-        $pdf->SetX(15);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        if ($venta[17] != "efectivo") {
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetFillColor(25, 132, 151);
 
-        $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
+            $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
 
-        $pdf->Ln(1);
+            $pdf->Ln(1);
 
-        $pdf->SetX(15);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
-        $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetFillColor(25, 132, 151);
+            $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
 
-        $pdf->Ln(1);
+            $pdf->Ln(1);
 
-        $pdf->SetX(15);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetFillColor(25, 132, 151);
 
-        $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
+            $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
+        }
 
         $pdf->Ln(6);
 

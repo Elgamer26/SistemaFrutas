@@ -130,8 +130,16 @@ class ModeloTienda
             $query_p = $c->prepare($sql_p);
             $query_p->execute();
             $result = $query_p->fetchAll();
-
+            $nombre = "";
+            $punos = "...";
             foreach ($result as $respuesta) {
+
+                if (strlen($respuesta[1]) >= 23) {
+                    $nombre = substr($respuesta[1], 0, 23) .  $punos;
+                } else {
+                    $nombre = $respuesta[1];
+                }
+
                 $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
                                         <div class="product-main simpleCart_shelfItem" >
                                             <a href="' . base_url() . 'home/Detalle/' . $respuesta[0] . '" class="mask"><img class="img-responsive zoom-img" 
@@ -139,7 +147,7 @@ class ModeloTienda
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
                                             <div class="product-bottom">
-                                                <p style="color: black;"> <b>' . $respuesta[2] . '</b> </p>
+                                                <p style="color: black;"> <b>' . $nombre . '</b> </p> 
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 if (!empty($_SESSION["TokenClie"])) {
@@ -285,7 +293,16 @@ class ModeloTienda
             $query_p->execute();
             $result = $query_p->fetchAll();
 
+            $nombre = "";
+            $punos = "...";
+
             foreach ($result as $respuesta) {
+
+                if (strlen($respuesta[1]) >= 23) {
+                    $nombre = substr($respuesta[1], 0, 23) .  $punos;
+                } else {
+                    $nombre = $respuesta[1];
+                }
 
                 $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
                                         <div class="product-main simpleCart_shelfItem">
@@ -294,7 +311,7 @@ class ModeloTienda
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
                                             <div class="product-bottom"> 
-                                                <p style="color: black;"> <b>' . $respuesta[2] . '</b> </p>
+                                                 <p style="color: black;"> <b>' . $nombre . '</b> </p> 
                                                 <p> Oferta: ' . $respuesta[6] . '</p>
                                                 <p> Fecha fin: ' . $respuesta[7] . '</p>
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
@@ -873,16 +890,16 @@ class ModeloTienda
         exit();
     }
 
-    function RegistrarVentaCarrito($id_cli, $direccions, $sub, $impuesto, $total, $ciudad, $referencia)
+    function RegistrarVentaCarrito($id_cli, $direccions, $sub, $impuesto, $total, $ciudad, $referencia, $estado)
     {
         try {
             $result = 0;
             $iva = 12;
-            $comprobante = "PayPal";
+            $comprobante = "efectivo";
 
             $c = $this->conexion->conexionPDO();
-            $sql = "INSERT INTO ventaweb (cliente_id, direccion, subtotal, impuesto, total, fecha, n_venta, comprobante, iva, ciudad, referencia) 
-            VALUE (?,?,?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO ventaweb (cliente_id, direccion, subtotal, impuesto, total, fecha, n_venta, comprobante, iva, ciudad, referencia, tipopago) 
+            VALUE (?,?,?,?,?,?,?,?,?,?,?,?)";
 
             $query = $c->prepare($sql);
             $query->bindParam(1, $id_cli);
@@ -897,6 +914,7 @@ class ModeloTienda
 
             $query->bindParam(10, $ciudad);
             $query->bindParam(11, $referencia);
+            $query->bindParam(12, $estado);
 
             if ($query->execute()) {
                 $result = $c->lastInsertId();

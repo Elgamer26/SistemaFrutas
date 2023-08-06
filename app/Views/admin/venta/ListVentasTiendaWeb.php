@@ -57,7 +57,14 @@
                                                         <td><?= esc($ListVenta_item["cliente"]); ?></td>
                                                         <td><?= esc($ListVenta_item["n_venta"]); ?></td>
                                                         <td><?= esc($ListVenta_item["fecharegistro"]); ?></td>
-                                                        <td> <span class="badge badge-primary"><?= esc($ListVenta_item["comprobante"]); ?></span> </td>
+
+                                                        <?php if ($ListVenta_item["tipopago"] != "efectivo") {     ?>
+                                                            <td> <span class="badge badge-primary"><?= esc(strtoupper($ListVenta_item["comprobante"])); ?></span> </td>
+                                                        <?php   } else {     ?>
+                                                            <td> <span class="badge badge-success"><?= esc(strtoupper($ListVenta_item["tipopago"])); ?></span> </td>
+                                                        <?php   } ?>
+
+
                                                         <td>$ <?= esc($ListVenta_item["total"]); ?></td>
 
                                                         <td>

@@ -57,11 +57,12 @@ class ModeloVenta
             ventaweb.estado,
             ventaweb.fecharegistro,
             ventaweb.ciudad,
-            ventaweb.referencia 
+            ventaweb.referencia,
+            ventaweb.tipopago
             FROM
                 ventaweb
                 INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
-            WHERE ventaweb.comprobante = 'PayPal'
+            WHERE ventaweb.comprobante = 'PayPal' or ventaweb.comprobante = 'efectivo' 
             ORDER BY
             ventaweb.id DESC";
             $query = $c->prepare($sql);

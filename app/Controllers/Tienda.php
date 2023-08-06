@@ -175,8 +175,9 @@ class Tienda extends BaseController
             $sub = $this->request->getPost('sub');
             $impuesto = $this->request->getPost('impuesto');
             $total = $this->request->getPost('totals');
+            $estado = "paypal";
 
-            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia);
+            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado);
 
             if ($repuesta > 0) {
 
@@ -201,23 +202,69 @@ class Tienda extends BaseController
                 }
 
                 if ($repuesta_create > 0) {
-
                     echo $repuesta;
                     exit();
-
                 } else {
-
                     echo $repuesta_create;
                     exit();
-
                 }
             } else {
-
                 echo $repuesta;
-                exit();
-                
+                exit();  
             }
+            exit();
+        }
+    }
 
+    public function RegistrarVentaCarritoEfectivo()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $id_cli = $_SESSION["TokenClie"];
+            $ciudad = $this->request->getPost('ciudad');
+            $direccion = $this->request->getPost('direccion');
+            $referencia = $this->request->getPost('referencia');
+
+            $sub = $this->request->getPost('sub');
+            $impuesto = $this->request->getPost('impuesto');
+            $total = $this->request->getPost('totals');
+            $estado = "efectivo";
+
+            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado);
+
+            if ($repuesta > 0) {
+
+                $id = (string)$this->request->getPost('id');
+                $cantidad = (string)$this->request->getPost('cantidad');
+                $sale = (string)$this->request->getPost('sale');
+                $precio = (string)$this->request->getPost('precio');
+                $oferta = (string)$this->request->getPost('oferta');
+                $descuento = (string)$this->request->getPost('descuento');
+                $totalsub = (string)$this->request->getPost('totalsub');
+
+                $arraglo_id = explode(",", $id); //aqui separo los datos
+                $arraglo_cantidad = explode(",", $cantidad); //aqui separo los datos
+                $arraglo_sale = explode(",", $sale); //aqui separo los datos
+                $arraglo_precio = explode(",", $precio); //aqui separo los datos
+                $arraglo_oferta  = explode(",", $oferta); //aqui separo los datos
+                $arraglo_descuento  = explode(",", $descuento); //aqui separo los datos
+                $arraglo_total = explode(",", $totalsub); //aqui separo los datos  
+
+                for ($i = 0; $i < count($arraglo_id); $i++) {
+                    $repuesta_create = $this->tienda->RegistrarVentaCarritoDetalle($repuesta, $arraglo_id[$i], $arraglo_cantidad[$i], $arraglo_sale[$i], $arraglo_precio[$i], $arraglo_oferta[$i], $arraglo_descuento[$i], $arraglo_total[$i]);
+                }
+
+                if ($repuesta_create > 0) {
+                    echo $repuesta;
+                    exit();
+                } else {
+                    echo $repuesta_create;
+                    exit();
+                }
+            } else {
+                echo $repuesta;
+                exit();  
+            }
             exit();
         }
     }

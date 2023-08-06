@@ -194,7 +194,7 @@
               </ul>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item ModuloProducto">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-cubes"></i>
                 <p>
@@ -266,7 +266,7 @@
               </ul>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item ModuloCompraVenta">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>
@@ -319,7 +319,7 @@
               </ul>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item ModuloProduccion">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-hammer"></i>
                 <p>
@@ -853,12 +853,13 @@
       async: true,
       success: function(response) {
         var data = JSON.parse(response);
-        // console.log(data);
 
         data['mantenimiento_p'].toString() == "true" ?
           ($(".Mantenimiento").show()) :
           ($(".Mantenimiento").hide());
 
+        //////
+        // modulo producto inicio
         data['producto_tipo_p'].toString() == "true" ?
           ($(".producto_tipo_p").show()) :
           ($(".producto_tipo_p").hide());
@@ -870,7 +871,25 @@
         data['material_tipo_p'].toString() == "true" ?
           ($(".material_tipo_p").show()) :
           ($(".material_tipo_p").hide());
+        data['ofertas_p'].toString() == "true" ?
+          ($(".ofertas_p").show()) :
+          ($(".ofertas_p").hide());
+        if (
+          data['producto_tipo_p'].toString() == "true" ||
+          data['insumo_tipo_p'].toString() == "true" ||
+          data['material_tipo_p'].toString() == "true" ||
+          data['ofertas_p'].toString() == "true"
+        ) {
+          $(".ModuloProducto").show();
+        } else {
+          $(".ModuloProducto").hide();
+        }
+        // modulo producto fin
+        ////// 
 
+
+        //////
+        // modulo venta compra inicio
         data['proveedor_p'].toString() == "true" ?
           ($(".proveedor_p").show()) :
           ($(".proveedor_p").hide());
@@ -891,6 +910,23 @@
           ($(".listado_venta_p").show()) :
           ($(".listado_venta_p").hide());
 
+        if (
+          data['proveedor_p'].toString() == "true" ||
+          data['compra_insumo_p'].toString() == "true" ||
+          data['compra_material_p'].toString() == "true" ||
+          data['crear_venta_p'].toString() == "true" ||
+          data['listado_venta_p'].toString() == "true"
+        ) {
+          $(".ModuloCompraVenta").show();
+        } else {
+          $(".ModuloCompraVenta").hide();
+        }
+        // modulo venta compra fin
+        ////// ModuloProduccion
+
+
+        //////
+        // modulo produccion inicio
         data['fase_produccion_p'].toString() == "true" ?
           ($(".fase_produccion_p").show()) :
           ($(".fase_produccion_p").hide());
@@ -910,14 +946,24 @@
         data['perdidas_produccion_p'].toString() == "true" ?
           ($(".perdidas_produccion_p").show()) :
           ($(".perdidas_produccion_p").hide());
+        if (
+          data['fase_produccion_p'].toString() == "true" ||
+          data['produccion_p'].toString() == "true" ||
+          data['produccion_finalizadas_p'].toString() == "true" ||
+          data['registro_fase_p'].toString() == "true" ||
+          data['perdidas_produccion_p'].toString() == "true"
+        ) {
+          $(".ModuloProduccion").show();
+        } else {
+          $(".ModuloProduccion").hide();
+        }
+        // modulo produccion fin
+        ////// 
 
         data['reporters_p'].toString() == "true" ?
           ($(".reporters_p").show()) :
           ($(".reporters_p").hide());
 
-        data['ofertas_p'].toString() == "true" ?
-          ($(".ofertas_p").show()) :
-          ($(".ofertas_p").hide());
       }
     });
   }

@@ -80,18 +80,40 @@
 
 								<div class="col-md-4">
 
+									<section class="sky-form">
+										<h4><b>Metodo de pago</b></h4>
+										<div class="scroll-pane" style="margin: -2px 91px -3px 89px;">
+											<div class="col col-4">
+												<label style="font-size: 15px;" class="radio"><input id="tipoPaypal" type="radio" name="radio" checked=""><i></i><b>Paypal</b></label>
+												<label style="font-size: 15px;" class="radio"><input id="tipoEfectivo" type="radio" name="radio"><i></i><b>Efectivo</b></label>
+											</div>
+										</div>
+									</section>
+
+									<br>
+
 									<div id="procesopago" class="col-lg-12" id="btb_btn_paypa">
-										<h4><b>Pagar servicio</b></h4>
+										<h4><b>Realizar transacción</b></h4>
 										<button class="btn btn-warning" id="procesarpago"> Procesar pago <i class="fa fa-shopping-cart"></i></button>
 									</div>
 
+									<div id="botonefectivo" hidden class="col-lg-12">
+										<h4><b>Realizar transacción</b></h4>
+										<button hidden class="btn btn-success" onclick="ProcesarPagoEfectivo();"> Procesar pago <i class="fa fa-shopping-cart"></i></button>
+									</div>
+
 									<div id="btn_paypal" hidden class="col-lg-12">
-										<h4><b>Pagar servicio</b></h4>
+										<h4><b>Realizar transacción</b></h4>
 										<div class="pago_payal_ser" id="paypal-button-container_ser"></div>
 									</div>
 								</div>
 
-								<div class="col-md-8">
+								<div class="col-md-8" id="pagopaypal">
+									<div class="col-md-12">
+										<section class="sky-form">
+											<h4><b>Los productos pagados por pasarela de pagos Paypal serán enviados en la dirección ingresada</b></h4>
+										</section>
+									</div>
 
 									<div class="col-md-12">
 										<div class="form-group">
@@ -113,7 +135,14 @@
 											<input autocomplete="off" type="text" class="form-control" id="referencia" placeholder="Ingrese referencia de envio" maxlength="150">
 										</div>
 									</div>
+								</div>
 
+								<div class="col-md-8" id="pagoefectivo" hidden>
+									<div class="col-md-12">
+										<section class="sky-form">
+											<h4><b>Estimado Cliente, mediante el pago en efecto usted debera acercarse a la hacienda para realizar el pago en efectivo y retirar su producto</b></h4>
+										</section>
+									</div>
 								</div>
 
 							</div>
@@ -129,6 +158,22 @@
 </div>
 
 <script>
+	$(document).on("change", "#tipoPaypal", function() {
+		$("#pagopaypal").removeAttr("hidden", "hidden");
+		$("#pagoefectivo").attr("hidden", "hidden");
+
+		$("#botonefectivo").attr("hidden", "hidden");
+		$("#procesopago").removeAttr("hidden", "hidden");
+	});
+
+	$(document).on("change", "#tipoEfectivo", function() {
+		$("#pagopaypal").attr("hidden", "hidden");
+		$("#pagoefectivo").removeAttr("hidden", "hidden");
+
+		$("#botonefectivo").removeAttr("hidden", "hidden");
+		$("#procesopago").attr("hidden", "hidden");
+	});
+
 	var count = 0;
 	let arrego_total = new Array();
 	$("#tabledetalle tbody#DetalleProductoCarrito tr").each(function() {
@@ -337,6 +382,7 @@
 								"error");
 						}
 					});
+
 				} else {
 					return alert("Ocurrio un error en el proceso de pago");
 				}
@@ -347,6 +393,117 @@
 			return alert("La compra se canceló, no se compró el o los productos");
 		}
 	}).render('#paypal-button-container_ser');
+
+	function ProcesarPagoEfectivo() {
+		Swal.fire({
+			title: 'Procesar pago en efectivo?',
+			text: "Su pedido se procesará!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, procesar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+
+				let ciudad = $("#ciudad").val();
+				let direccion = $("#direccion").val();
+				let referencia = $("#referencia").val();
+
+				var arrego_id = new Array();
+				var arreglo_cantidad = new Array();
+				var arreglo_sale = new Array();
+				var arreglo_precio = new Array();
+				var arreglo_oferta = new Array();
+				var arreglo_descuento = new Array();
+				var arreglo_total = new Array();
+
+				let cpara = grantotal.split(",")
+				let totals = 0;
+				for (let i = 0; i < cpara.length; i++) {
+					totals += parseFloat(cpara[i]);
+				}
+
+				$("#tabledetalle tbody#DetalleProductoCarrito tr").each(function() {
+					arrego_id.push($(this).find("td").eq(0).text());
+					arreglo_cantidad.push($(this).find("td").eq(2).text());
+					arreglo_sale.push($(this).find("td").eq(3).text());
+					arreglo_precio.push($(this).find("td").eq(4).text());
+					arreglo_oferta.push($(this).find("td").eq(5).text());
+					arreglo_descuento.push($(this).find("td").eq(6).text());
+					arreglo_total.push($(this).find("td").eq(7).text());
+				});
+
+				//aqui combierto el arreglo a un string
+				var id = arrego_id.toString();
+				var cantidad = arreglo_cantidad.toString();
+				var sale = arreglo_sale.toString();
+				var precio = arreglo_precio.toString();
+				var oferta = arreglo_oferta.toString();
+				var descuento = arreglo_descuento.toString();
+				var totalsub = arreglo_total.toString();
+
+				$.LoadingOverlay("show", {
+					text: "Procesando compra...",
+				});
+
+				$.ajax({
+					url: BaseUrl + "Tienda/RegistrarVentaCarritoEfectivo",
+					type: "POST",
+					data: {
+						id: id,
+						cantidad: cantidad,
+						sale: sale,
+						precio: precio,
+						oferta: oferta,
+						descuento: descuento,
+						totalsub: totalsub,
+						ciudad: ciudad,
+						direccion: direccion,
+						referencia: referencia,
+						sub: totals.toFixed(2),
+						impuesto: (totals * 0.12).toFixed(2),
+						totals: (totals + (totals * 0.12)).toFixed(2),
+					},
+				}).done(function(resp) {
+					$.LoadingOverlay("hide");
+					if (resp > 0) {
+						EnviarCorreoWeb(parseInt(resp));
+						Swal.fire({
+							title: "Campra realizada con exito",
+							text: "Desea imprimir la compra??",
+							icon: "warning",
+							showCancelButton: true,
+							showConfirmButton: true,
+							allowOutsideClick: false,
+							confirmButtonColor: "#3085d6",
+							cancelButtonColor: "#d33",
+							confirmButtonText: "Si, Imprimir!!",
+						}).then((result) => {
+							if (result.value) {
+								window.open(
+									BaseUrl + "Reporte/ReporteVentaWeb/" + parseInt(resp),
+									"#zoom=100%",
+									"Factura de venta producto",
+									"scrollbards=No"
+								);
+								location.reload();
+							} else {
+								location.reload();
+							}
+						});
+
+					} else {
+						return swal.fire(
+							"Error al procesar la compra de producto",
+							"Error al procesar su compra de producto" + resp,
+							"error");
+					}
+				});
+
+			}
+		})
+	}
 
 	async function EnviarCorreoWeb(id) {
 		let result = await $.ajax({
