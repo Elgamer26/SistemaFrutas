@@ -928,7 +928,7 @@
         //////
         // modulo produccion inicio
         data['fase_produccion_p'].toString() == "true" ?
-          ($(".fase_produccion_p").show()) :
+          ($(".fase_produccion_p").hide()) :
           ($(".fase_produccion_p").hide());
 
         data['produccion_p'].toString() == "true" ?
@@ -936,15 +936,15 @@
           ($(".produccion_p").hide());
 
         data['produccion_finalizadas_p'].toString() == "true" ?
-          ($(".produccion_finalizadas_p").show()) :
+          ($(".produccion_finalizadas_p").hide()) :
           ($(".produccion_finalizadas_p").hide());
 
         data['registro_fase_p'].toString() == "true" ?
-          ($(".registro_fase_p").show()) :
+          ($(".registro_fase_p").hide()) :
           ($(".registro_fase_p").hide());
 
         data['perdidas_produccion_p'].toString() == "true" ?
-          ($(".perdidas_produccion_p").show()) :
+          ($(".perdidas_produccion_p").hide()) :
           ($(".perdidas_produccion_p").hide());
         if (
           data['fase_produccion_p'].toString() == "true" ||

@@ -51,6 +51,9 @@
                                                         <td>
                                                             <?php if ($token) {   ?>
                                                                 <a target="_blank" href="<?php echo base_url(); ?>Reporte/ReporteVentaWeb/<?php echo $ListVenta_item['id']; ?>" class='btn btn-primary btn-sm' title='Ver compra'><i class='fa fa-file'></i></a>
+                                                                <?php if ($ListVenta_item["servientrega"] == 1) { ?>
+                                                                    <a onclick="DescargarArchivo('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-warning btn-sm' title='ver foto'><i class='fa fa-eye'></i></a>
+                                                                <?php  } ?>
                                                             <?php   } else {     ?>
                                                                 <a target="_blank" href="<?php echo base_url(); ?>Reporte/ReporteVenta/<?php echo $ListVenta_item['id']; ?>" class='btn btn-primary btn-sm' title='Ver compra'><i class='fa fa-file'></i></a>
                                                             <?php   } ?>
@@ -61,11 +64,13 @@
                                                         <td><?= esc($ListVenta_item["fecharegistro"]); ?></td>
 
                                                         <td>
-                                                            <?php if ($ListVenta_item["comprobante"] == "PayPal") {     ?>
-                                                                <span class="badge badge-primary"><?= esc($ListVenta_item["comprobante"]); ?></span>
-                                                            <?php   } else {     ?>
-                                                                <span class="badge badge-warning"><?= esc($ListVenta_item["comprobante"]); ?></span>
-                                                            <?php   } ?>
+                                                            <?php if ($ListVenta_item["comprobante"] == "paypal") {     ?>
+                                                                <span class="badge badge-primary"><?= esc(strtoupper($ListVenta_item["comprobante"])); ?></span>
+                                                            <?php   } elseif ($ListVenta_item["comprobante"] == "efectivo" || $ListVenta_item["comprobante"] == "Factura") {    ?>
+                                                                <span class="badge badge-success"><?= esc(strtoupper($ListVenta_item["comprobante"])); ?></span>
+                                                            <?php   } else { ?>
+                                                                <span class="badge badge-warning"><?= esc(strtoupper($ListVenta_item["comprobante"])); ?></span>
+                                                            <?php } ?>
                                                         </td>
 
                                                         <td>$ <?= esc($ListVenta_item["total"]); ?></td>
@@ -114,6 +119,8 @@
         </div>
     </div>
 </section>
+
+<script src="<?php echo base_url(); ?>public/js/tienda.js"></script>
 
 <script>
     $(document).ready(function() {

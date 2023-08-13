@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\ModeloReporte;
 use App\MailPhp\envio_correo;
-
 use PhpParser\Builder\Function_;
 
 class Reporte extends BaseController
@@ -272,21 +271,28 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(140, 54, $produccion[9]);
 
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
-        $pdf->Text(15, 48, utf8_decode('Fecha incio:'));
-        $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(38, 48,  $produccion[3]);
+        // $pdf->SetFont('Arial', 'B', 10);
+        // $pdf->SetTextColor(255, 255, 255);
+        // $pdf->Text(15, 48, utf8_decode('Fecha incio:'));
+        // $pdf->SetFont('Arial', '', 10);
+        // $pdf->Text(38, 48,  $produccion[3]);
 
         $pdf->Ln(50);
 
-        $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
-        $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
-        $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(38, 54,  $produccion[3]);
+        // $pdf->SetFont('Arial', 'B', 10);
+        // $pdf->SetTextColor(255, 255, 255);
+        // $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
+        // $pdf->SetFont('Arial', '', 10);
+        // $pdf->Text(38, 54,  $produccion[3]);
 
         $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetTextColor(255, 255, 255);
+        $pdf->Text(15, 54, utf8_decode('Fecha:'));
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Text(38, 54,  $produccion[2]);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->SetTextColor(255, 255, 255);
         $pdf->Text(15, 61, utf8_decode('Usuario:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(38, 61, $produccion[10]);
@@ -721,6 +727,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta Web");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -849,6 +856,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -955,6 +963,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta Web");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -983,26 +992,28 @@ class Reporte extends BaseController
 
         $pdf->Ln(50);
 
-        $pdf->SetX(15);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        if ($venta[17] != "efectivo") {
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetFillColor(25, 132, 151);
 
-        $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
+            $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
 
-        $pdf->Ln(1);
+            $pdf->Ln(1);
 
-        $pdf->SetX(15);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
-        $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetFillColor(25, 132, 151);
+            $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
 
-        $pdf->Ln(1);
+            $pdf->Ln(1);
 
-        $pdf->SetX(15);
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetFillColor(25, 132, 151);
 
-        $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
+            $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
+        }
 
         $pdf->Ln(6);
 
@@ -1084,7 +1095,9 @@ class Reporte extends BaseController
         </body>
         </html>';
 
-        $respuesta = $this->send_email->enviar_correo_WEB($venta[16], $html, "Factura de compra", $documento);
+        $xml = $this->CrearXmlFacturacionElkectronica($id, $datoempresa, $venta, $detalle);
+        $respuesta = $this->send_email->enviar_correo_WEB_XML($venta[16], $html, "Factura de compra", $documento, $xml);
+        // $respuesta = $this->send_email->enviar_correo_WEB($venta[16], $html, "Factura de compra", $documento);
         echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
         exit();
     }
@@ -1113,6 +1126,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -1216,12 +1230,136 @@ class Reporte extends BaseController
         </body>
         </html>';
 
-        $respuesta = $this->send_email->enviar_correo_WEB($venta[16], $html, "Factura de venta", $documento);
+        $xml = $this->CrearXmlFacturacionElkectronica($id, $datoempresa, $venta, $detalle);
+        $respuesta = $this->send_email->enviar_correo_WEB_XML($venta[16], $html, "Factura de venta", $documento, $xml);
         echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
         exit();
     }
 
+    function CrearXmlFacturacionElkectronica($id, $datoempresa, $venta, $detallev)
+    {
+        $xml = new \DomDocument('1.0', 'UTF-8');
+        $xml->preserveWhiteSpace = false;
 
+        $Factura = $xml->createElement('Factura');
+        $Factura = $xml->appendChild($Factura);
+
+        // INFORMACION TRIBUTARIA.
+        $infoTributaria = $xml->createElement('infoTributaria');
+        $infoTributaria = $Factura->appendChild($infoTributaria);
+        $cbc = $xml->createElement('ambiente', $id);
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('tipoEmision', $venta[8]);
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('razonSocial', utf8_decode($datoempresa[1]));
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('nombreComercial', utf8_decode($datoempresa[1]));
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('ruc', utf8_decode($datoempresa[4]));
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('claveAcceso', utf8_decode($datoempresa[4]));
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('codDoc', utf8_decode($datoempresa[8]));
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('estab', utf8_decode($venta[12]));
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('ptoEmi', '001');
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('secuencial', '00' . $id);
+        $cbc = $infoTributaria->appendChild($cbc);
+        $cbc = $xml->createElement('dirMatriz', utf8_decode($datoempresa[1]));
+        $cbc = $infoTributaria->appendChild($cbc);
+
+        // INFORMACIOO DE FACTURA.
+        $infoFactura = $xml->createElement('infoFactura');
+        $infoFactura = $Factura->appendChild($infoFactura);
+        $cbc = $xml->createElement('fechaEmision', utf8_decode($venta[12]));
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('dirEstablecimiento', '1');
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('contribuyenteEspecial', utf8_decode($venta[1]));
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('obligadoContabilidad', 'No');
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('tipoIdentificacionComprador', 'Cedula');
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('razonSocialComprador', utf8_decode($venta[1]));
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('identificacionComprador', utf8_decode($venta[2]));
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('totalSinImpuestos', utf8_decode($venta[5]));
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('totalDescuento', '0');
+        $cbc = $infoFactura->appendChild($cbc);
+
+        $totalConImpuestos = $xml->createElement('totalConImpuestos');
+        $totalConImpuestos = $infoFactura->appendChild($totalConImpuestos);
+        $totalImpuesto = $xml->createElement('totalImpuesto');
+        $totalImpuesto = $totalConImpuestos->appendChild($totalImpuesto);
+        $cbc = $xml->createElement('codigo', $id);
+        $cbc = $totalImpuesto->appendChild($cbc);
+        $cbc = $xml->createElement('codigoPorcentaje', '%');
+        $cbc = $totalImpuesto->appendChild($cbc);
+        $cbc = $xml->createElement('descuentoAdicional', '0');
+        $cbc = $totalImpuesto->appendChild($cbc);
+        $cbc = $xml->createElement('baseImponible', utf8_decode($venta[9]));
+        $cbc = $totalImpuesto->appendChild($cbc);
+        $cbc = $xml->createElement('valor', '0');
+        $cbc = $totalImpuesto->appendChild($cbc);
+
+        $cbc = $xml->createElement('propina', '1');
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('importeTotal', '1');
+        $cbc = $infoFactura->appendChild($cbc);
+        $cbc = $xml->createElement('moneda', 'DOLAR');
+        $cbc = $infoFactura->appendChild($cbc);
+
+        //DETALLES DE LA FACTURA.
+        $detalles = $xml->createElement('detalles');
+        $detalles = $Factura->appendChild($detalles);
+
+        for ($i = 0; $i < count($detallev); $i++) {
+
+            $detalle = $xml->createElement('detalle');
+            $detalle = $detalles->appendChild($detalle);
+            $cbc = $xml->createElement('codigoPrincipal', '1');
+            $cbc = $detalle->appendChild($cbc);
+            $cbc = $xml->createElement('codigoAuxiliar', '1');
+            $cbc = $detalle->appendChild($cbc);
+            $cbc = $xml->createElement('descripcion', utf8_decode($detallev[$i]["nombre"]));
+            $cbc = $detalle->appendChild($cbc);
+            $cbc = $xml->createElement('cantidad', utf8_decode($detallev[$i]["cantidad"]));
+            $cbc = $detalle->appendChild($cbc);
+            $cbc = $xml->createElement('precioUnitario', utf8_decode($detallev[$i]["precio"]));
+            $cbc = $detalle->appendChild($cbc);
+            $cbc = $xml->createElement('descuento', utf8_decode($detallev[$i]["descuento"]));
+            $cbc = $detalle->appendChild($cbc);
+            $cbc = $xml->createElement('precioTotalSinImpuesto', utf8_decode($detallev[$i]["total"]));
+            $cbc = $detalle->appendChild($cbc);
+
+            $impuestos = $xml->createElement('impuestos');
+            $impuestos = $detalle->appendChild($impuestos);
+            $impuesto = $xml->createElement('impuesto');
+            $impuesto = $impuestos->appendChild($impuesto);
+            $cbc = $xml->createElement('codigo', $id);
+            $cbc = $impuesto->appendChild($cbc);
+            $cbc = $xml->createElement('codigoPorcentaje', '%');
+            $cbc = $impuesto->appendChild($cbc);
+            $cbc = $xml->createElement('tarifa', utf8_decode($detallev[$i]["oferta"]));
+            $cbc = $impuesto->appendChild($cbc);
+            $cbc = $xml->createElement('baseImponible', '001');
+            $cbc = $impuesto->appendChild($cbc);
+            $cbc = $xml->createElement('valor', '001');
+            $cbc = $impuesto->appendChild($cbc);
+        }
+
+        $xml->formatOutput = true;
+        $strings_xml       = $xml->saveXML();
+        $xml->save(ROOTPATH . 'public/xml/XML_' . Date("Ymdhis", time()) . '_NF_' . $id . '.xml');
+        return $strings_xml;
+        // $xml->save(ROOTPATH . 'public/xml/' . $rucem . '74902020320953.xml');
+        // chmod($rucem . '74902020320953.xml', 0777);
+    }
 
     /////////////// MODULO REPORTES
     public function reporteventaModulo($fi, $ff)

@@ -210,7 +210,7 @@ class Tienda extends BaseController
                 }
             } else {
                 echo $repuesta;
-                exit();  
+                exit();
             }
             exit();
         }
@@ -263,7 +263,7 @@ class Tienda extends BaseController
                 }
             } else {
                 echo $repuesta;
-                exit();  
+                exit();
             }
             exit();
         }
@@ -359,5 +359,40 @@ class Tienda extends BaseController
             echo $repuesta;
             exit();
         }
+    }
+
+    public function RegistrarComprobanteServientrega()
+    {
+        $id = $this->request->getPost('id');
+        $codigo = $this->request->getPost('codigo');
+
+        $count = 0;
+        if (!empty($_FILES["img_extra"]["tmp_name"])) {
+            foreach ($_FILES["img_extra"]["name"] as $key => $value) {
+
+                $extra = explode('.', $_FILES["img_extra"]["name"][$key]);
+                $renombrar = sha1($_FILES["img_extra"]["name"][$key]) . time();
+                $nombre_final = $renombrar . "" . $count . "." . $extra[1];
+
+                $valor_img = $this->tienda->RegistrarComprobanteServientrega($id, $codigo, $nombre_final);
+                if ($valor_img == 1) {
+                    move_uploaded_file($_FILES["img_extra"]["tmp_name"][$key], ROOTPATH . 'public/img/servientrega/' . $nombre_final);
+                }
+                $count++;
+            }
+            echo $valor_img;
+            exit();
+        } else {
+            echo 2;
+            exit();
+        }
+    }
+
+    public function DescargarArchivo()
+    {
+        $id = $this->request->getPost('id');
+        $valor = $this->tienda->DescargarArchivo($id);
+        echo json_encode($valor, JSON_UNESCAPED_UNICODE);
+        exit();
     }
 }

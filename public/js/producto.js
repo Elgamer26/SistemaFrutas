@@ -152,6 +152,7 @@ function RegistraProducto() {
   var tipo_producto = $("#tipo_producto").val();
   var precio_venta = $("#precio_venta").val();
   var descripcion = $("#descripcion").val();
+  var tamaño_producto = $("#tamaño_producto").val();
   /// foto
   // var foto = $("#foto").val();
 
@@ -205,6 +206,7 @@ function RegistraProducto() {
   formdata.append("precio_venta", precio_venta);
   formdata.append("descripcion", descripcion);
   formdata.append("nombrearchivo", nombrearchivo);
+  formdata.append("tamaño_producto", tamaño_producto);
 
   $(".card").LoadingOverlay("show", {
     text: "Cargando...",
@@ -261,6 +263,7 @@ function EditarProducto() {
   var tipo_producto = $("#tipo_producto").val();
   var precio_venta = $("#precio_venta").val();
   var descripcion = $("#descripcion").val();
+  var tamaño_producto = $("#tamaño_producto").val();
 
   if (
     codigo.length == 0 ||
@@ -303,6 +306,7 @@ function EditarProducto() {
   formdata.append("tipo_producto", tipo_producto);
   formdata.append("precio_venta", precio_venta);
   formdata.append("descripcion", descripcion);
+  formdata.append("tamaño_producto", tamaño_producto);
 
   $(".card").LoadingOverlay("show", {
     text: "Cargando...",

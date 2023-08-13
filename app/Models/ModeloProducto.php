@@ -32,7 +32,8 @@ class ModeloProducto
             producto.descripcion, 
             producto.imagen, 
             producto.estado,
-            producto.cantidad
+            producto.cantidad,
+            producto.tamano
             FROM
             producto
             INNER JOIN
@@ -233,11 +234,11 @@ class ModeloProducto
         exit();
     }
 
-    function RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $nombrearchivo)
+    function RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $nombrearchivo, $tamaño_producto)
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "Call RegistraProducto(?,?,?,?,?,?)";
+            $sql = "Call RegistraProducto(?,?,?,?,?,?,?)";
             $query = $c->prepare($sql);
             $query->bindParam(1, $codigo);
             $query->bindParam(2, $nombres);
@@ -245,6 +246,7 @@ class ModeloProducto
             $query->bindParam(4, $precio_venta);
             $query->bindParam(5, $descripcion);
             $query->bindParam(6, $nombrearchivo);
+            $query->bindParam(7, $tamaño_producto);
             $query->execute();
             $result = $query->fetch();
             //cerramos la conexion
@@ -319,7 +321,8 @@ class ModeloProducto
             producto.precio, 
             producto.descripcion, 
             producto.imagen, 
-            producto.estado
+            producto.estado,
+            producto.tamano
             FROM
             producto
             INNER JOIN
@@ -390,11 +393,11 @@ class ModeloProducto
         exit();
     }
 
-    function EditarProducto($productoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion)
+    function EditarProducto($productoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $tamaño_producto)
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "Call EditarProducto(?,?,?,?,?,?)";
+            $sql = "Call EditarProducto(?,?,?,?,?,?,?)";
             $query = $c->prepare($sql);
             $query->bindParam(1, $productoID);
             $query->bindParam(2, $codigo);
@@ -402,6 +405,8 @@ class ModeloProducto
             $query->bindParam(4, $tipo_producto);
             $query->bindParam(5, $precio_venta);
             $query->bindParam(6, $descripcion);
+            $query->bindParam(7, $tamaño_producto);
+
             $query->execute();
             $result = $query->fetch();
             //cerramos la conexion

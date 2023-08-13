@@ -11,7 +11,7 @@
  Target Server Version : 80031 (8.0.31)
  File Encoding         : 65001
 
- Date: 04/08/2023 22:34:14
+ Date: 13/08/2023 15:01:02
 */
 
 SET NAMES utf8mb4;
@@ -25,15 +25,15 @@ CREATE TABLE `aggcarrito`  (
   `cliente_id` int NULL DEFAULT NULL,
   `producto_id` int NULL DEFAULT NULL,
   `cantidad` int NULL DEFAULT NULL,
-  `promocion` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `tipo_promo` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `promocion` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `tipo_promo` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `porcentaje` int NULL DEFAULT NULL,
   `descuento_promo` decimal(10, 2) NULL DEFAULT NULL,
   `precio` decimal(10, 2) NULL DEFAULT NULL,
   `sale` int NULL DEFAULT NULL,
   INDEX `producto_id`(`producto_id` ASC) USING BTREE,
   CONSTRAINT `aggcarrito_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of aggcarrito
@@ -47,14 +47,14 @@ CREATE TABLE `calificarestado`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `clienteid` int NULL DEFAULT NULL,
   `productoid` int NULL DEFAULT NULL,
-  `estado` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `estado` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `clienteid`(`clienteid` ASC) USING BTREE,
   INDEX `productoid`(`productoid` ASC) USING BTREE,
   CONSTRAINT `calificarestado_ibfk_1` FOREIGN KEY (`clienteid`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `calificarestado_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of calificarestado
@@ -70,14 +70,14 @@ CREATE TABLE `calificarestadooferta`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `clienteid` int NULL DEFAULT NULL,
   `productoid` int NULL DEFAULT NULL,
-  `estado` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `estado` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `clienteid`(`clienteid` ASC) USING BTREE,
   INDEX `productoid`(`productoid` ASC) USING BTREE,
   CONSTRAINT `calificarestadooferta_ibfk_1` FOREIGN KEY (`clienteid`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `calificarestadooferta_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of calificarestadooferta
@@ -92,17 +92,17 @@ DROP TABLE IF EXISTS `calificarproducto`;
 CREATE TABLE `calificarproducto`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `idcliente` int NULL DEFAULT NULL,
-  `calificacion` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'ok',
-  `detalle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `calificacion` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT 'ok',
+  `detalle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `idproducto` int NULL DEFAULT NULL,
-  `oferta` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `oferta` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idcliente`(`idcliente` ASC) USING BTREE,
   INDEX `idproducto`(`idproducto` ASC) USING BTREE,
   CONSTRAINT `calificarproducto_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `calificarproducto_ibfk_2` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of calificarproducto
@@ -127,30 +127,30 @@ INSERT INTO `calificarproducto` VALUES (13, 9, 'ok', 'asa', '2023-06-09 21:27:59
 DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE `cliente`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `apellidos` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `correo` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `cedula` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `sexo` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `direccion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `telefono` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `apellidos` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `correo` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `cedula` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `sexo` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `direccion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `telefono` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `createt` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cliente
 -- ----------------------------
-INSERT INTO `cliente` VALUES (1, 'JORGE MOISES', 'RAMIREZ ZAVLA', 'elgamereee@hptmail.com', '121212', 'Masculino', 'milafro', '0985906677', 1, '123', 0);
-INSERT INTO `cliente` VALUES (2, 'editado empresa', 'bbbbbbbbb', 'elgamerrrr@hotmail.com', '132323', 'Masculino', 'ssssssss', '11111111', 1, '098', 1);
-INSERT INTO `cliente` VALUES (3, 'editado tienda', 'fffffff', 'elgamertttt@hotmail.com', '343434', 'Masculino', 'ssssssss', '11111111', 1, '123', 0);
+INSERT INTO `cliente` VALUES (1, 'JORGE MOISES', 'RAMIREZ ZAVLA', 'elgamer-26@hotmail.com', '121212', 'Masculino', 'milafro', '0985906677', 1, '123', 0);
+INSERT INTO `cliente` VALUES (2, 'editado empresa', 'bbbbbbbbb', 'elgamer-26@hotmail.com', '132323', 'Masculino', 'ssssssss', '11111111', 1, '098', 1);
+INSERT INTO `cliente` VALUES (3, 'editado tienda', 'fffffff', 'elgamer-26@hotmail.com', '343434', 'Masculino', 'ssssssss', '11111111', 1, '123', 0);
 INSERT INTO `cliente` VALUES (9, 'JORGE MOISSES', 'RAMIREZ ZAVALA', 'elgamer-26@hotmail.com', '0940321854', 'Masculino', 'AV. AMAZONAS', '0985906677', 1, '123', 0);
-INSERT INTO `cliente` VALUES (10, 'USER NEW', 'NEW USER', 'jorgemoisesramirez201412122@gmail.com', '09403217', 'Masculino', 'MILAGRO', '0980370752', 1, 'ym86sr45q.', 1);
-INSERT INTO `cliente` VALUES (11, 'USER NUEVO', 'USER NUEVO', 'jorgemoisesramirez201422@gmail.com', '0940321850', 'Femenino', 'milagro', '0969938481', 1, 'kmrs69bpm.', 1);
-INSERT INTO `cliente` VALUES (12, 'NUEVO CLIENTE', 'DE MAS DE UNO', 'elgam123er-26@hotmail.com', '0940321851', 'Masculino', 'Mialgro', '0987654321', 1, 'm3lszh270g', 0);
-INSERT INTO `cliente` VALUES (13, 'Paul', 'De la U', 'smartechconsulta@gmail.com', '0940321821', 'Masculino', 'Babahoyo', '1234567890', 1, 'ry7srf7rx6', 0);
+INSERT INTO `cliente` VALUES (10, 'USER NEW', 'NEW USER', 'elgamer-26@hotmail.com', '09403217', 'Masculino', 'MILAGRO', '0980370752', 1, 'ym86sr45q.', 1);
+INSERT INTO `cliente` VALUES (11, 'USER NUEVO', 'USER NUEVO', 'elgamer-26@hotmail.com', '0940321850', 'Femenino', 'milagro', '0969938481', 1, 'kmrs69bpm.', 1);
+INSERT INTO `cliente` VALUES (12, 'NUEVO CLIENTE', 'DE MAS DE UNO', 'elgamer-26@hotmail.com', '0940321851', 'Masculino', 'Mialgro', '0987654321', 1, 'm3lszh270g', 0);
+INSERT INTO `cliente` VALUES (13, 'Paul', 'De la U', 'elgamer-26@hotmail.com', '0940321821', 'Masculino', 'Babahoyo', '1234567890', 1, 'ry7srf7rx6', 0);
 
 -- ----------------------------
 -- Table structure for compra
@@ -160,8 +160,8 @@ CREATE TABLE `compra`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `proveedor_id` int NULL DEFAULT NULL,
   `fechac` date NULL DEFAULT NULL,
-  `n_compra` char(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `comprobante` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `n_compra` char(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `comprobante` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `iva` decimal(10, 2) NULL DEFAULT NULL,
   `subtotal` decimal(10, 2) NULL DEFAULT NULL,
   `impuesto` decimal(10, 2) NULL DEFAULT NULL,
@@ -170,7 +170,7 @@ CREATE TABLE `compra`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `proveedor_id`(`proveedor_id` ASC) USING BTREE,
   CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of compra
@@ -201,8 +201,8 @@ CREATE TABLE `compra_material`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `proveedor_id` int NULL DEFAULT NULL,
   `fechac` date NULL DEFAULT NULL,
-  `n_compra` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `comprobante` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `n_compra` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `comprobante` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `iva` decimal(10, 2) NULL DEFAULT NULL,
   `subtotal` decimal(10, 2) NULL DEFAULT NULL,
   `impuesto` decimal(10, 2) NULL DEFAULT NULL,
@@ -211,7 +211,7 @@ CREATE TABLE `compra_material`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `proveedor_id`(`proveedor_id` ASC) USING BTREE,
   CONSTRAINT `compra_material_ibfk_1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of compra_material
@@ -239,7 +239,7 @@ CREATE TABLE `detallecompra`  (
   INDEX `insumo_id`(`insumo_id` ASC) USING BTREE,
   CONSTRAINT `detallecompra_ibfk_1` FOREIGN KEY (`compra_id`) REFERENCES `compra` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detallecompra_ibfk_2` FOREIGN KEY (`insumo_id`) REFERENCES `insumo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of detallecompra
@@ -281,7 +281,7 @@ CREATE TABLE `detallecompramaterial`  (
   INDEX `material_id`(`material_id` ASC) USING BTREE,
   CONSTRAINT `detallecompramaterial_ibfk_1` FOREIGN KEY (`compra_id`) REFERENCES `compra_material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detallecompramaterial_ibfk_2` FOREIGN KEY (`material_id`) REFERENCES `material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of detallecompramaterial
@@ -310,14 +310,16 @@ CREATE TABLE `detalleproduccioninsumo`  (
   INDEX `insumo_id`(`insumo_id` ASC) USING BTREE,
   CONSTRAINT `detalleproduccioninsumo_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detalleproduccioninsumo_ibfk_2` FOREIGN KEY (`insumo_id`) REFERENCES `insumo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of detalleproduccioninsumo
 -- ----------------------------
 INSERT INTO `detalleproduccioninsumo` VALUES (13, 12, 4, 1);
-INSERT INTO `detalleproduccioninsumo` VALUES (15, 14, 3, 1);
-INSERT INTO `detalleproduccioninsumo` VALUES (16, 15, 3, 1);
+INSERT INTO `detalleproduccioninsumo` VALUES (17, 16, 4, 1);
+INSERT INTO `detalleproduccioninsumo` VALUES (18, 17, 4, 1);
+INSERT INTO `detalleproduccioninsumo` VALUES (19, 17, 3, 1);
+INSERT INTO `detalleproduccioninsumo` VALUES (20, 18, 4, 1);
 
 -- ----------------------------
 -- Table structure for detalleproduccionmaterial
@@ -333,14 +335,15 @@ CREATE TABLE `detalleproduccionmaterial`  (
   INDEX `material_id`(`material_id` ASC) USING BTREE,
   CONSTRAINT `detalleproduccionmaterial_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `detalleproduccionmaterial_ibfk_2` FOREIGN KEY (`material_id`) REFERENCES `material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of detalleproduccionmaterial
 -- ----------------------------
 INSERT INTO `detalleproduccionmaterial` VALUES (11, 12, 2, 1);
-INSERT INTO `detalleproduccionmaterial` VALUES (13, 14, 2, 1);
-INSERT INTO `detalleproduccionmaterial` VALUES (14, 15, 1, 1);
+INSERT INTO `detalleproduccionmaterial` VALUES (15, 16, 2, 1);
+INSERT INTO `detalleproduccionmaterial` VALUES (16, 17, 2, 1);
+INSERT INTO `detalleproduccionmaterial` VALUES (17, 18, 2, 1);
 
 -- ----------------------------
 -- Table structure for empresa
@@ -348,16 +351,16 @@ INSERT INTO `detalleproduccionmaterial` VALUES (14, 15, 1, 1);
 DROP TABLE IF EXISTS `empresa`;
 CREATE TABLE `empresa`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `direccion` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `correo` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `ruc` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `telefono` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `actividad` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `foto` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `codigowhatsapp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `direccion` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `correo` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `ruc` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `telefono` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `actividad` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
+  `foto` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `codigowhatsapp` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of empresa
@@ -370,10 +373,10 @@ INSERT INTO `empresa` VALUES (1, 'nombre editado', 'direccion editado', 'correo@
 DROP TABLE IF EXISTS `fase`;
 CREATE TABLE `fase`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fase` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `fase` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of fase
@@ -398,13 +401,13 @@ CREATE TABLE `faseproduccion`  (
   `produccion_id` int NULL DEFAULT NULL,
   `fase_id` int NULL DEFAULT NULL,
   `fecha` date NULL DEFAULT NULL,
-  `detalle` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `detalle` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `produccion_id`(`produccion_id` ASC) USING BTREE,
   INDEX `fase_id`(`fase_id` ASC) USING BTREE,
   CONSTRAINT `faseproduccion_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `faseproduccion_ibfk_2` FOREIGN KEY (`fase_id`) REFERENCES `fase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 84 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 84 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of faseproduccion
@@ -427,11 +430,11 @@ DROP TABLE IF EXISTS `imagenproducto`;
 CREATE TABLE `imagenproducto`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_producto` int NULL DEFAULT NULL,
-  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id_producto`(`id_producto` ASC) USING BTREE,
   CONSTRAINT `imagenproducto_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of imagenproducto
@@ -460,24 +463,24 @@ INSERT INTO `imagenproducto` VALUES (21, 8, '97493ae563a450e741087855a9b6d3c7a99
 DROP TABLE IF EXISTS `insumo`;
 CREATE TABLE `insumo`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `codigo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `tipo_id` int NULL DEFAULT NULL,
   `precio` decimal(10, 2) NULL DEFAULT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
+  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   `cantidad` int NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `tipo_id`(`tipo_id` ASC) USING BTREE,
   CONSTRAINT `insumo_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tipoinsumo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of insumo
 -- ----------------------------
-INSERT INTO `insumo` VALUES (3, '18191053', 'Insumo de tierra', 2, 123.00, 'Descripción del insumo', 'insumo.jpg', 1, 53);
-INSERT INTO `insumo` VALUES (4, '535545165', 'INSUMO DE PLANTA', 1, 12.00, 'Descripción del insumo DETALLE', 'IMG1352023144657.jpg', 1, 91);
+INSERT INTO `insumo` VALUES (3, '18191053', 'Insumo de tierra', 2, 123.00, 'Descripción del insumo', 'insumo.jpg', 1, 52);
+INSERT INTO `insumo` VALUES (4, '535545165', 'INSUMO DE PLANTA', 1, 12.00, 'Descripción del insumo DETALLE', 'IMG1352023144657.jpg', 1, 88);
 
 -- ----------------------------
 -- Table structure for material
@@ -485,24 +488,24 @@ INSERT INTO `insumo` VALUES (4, '535545165', 'INSUMO DE PLANTA', 1, 12.00, 'Desc
 DROP TABLE IF EXISTS `material`;
 CREATE TABLE `material`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `codigo` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `codigo` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `tipo_id` int NULL DEFAULT NULL,
   `precio` decimal(10, 2) NULL DEFAULT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
+  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   `cantidad` int NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `tipo_id`(`tipo_id` ASC) USING BTREE,
   CONSTRAINT `material_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tipo_material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of material
 -- ----------------------------
 INSERT INTO `material` VALUES (1, '388536903', 'NUEVO MATERILA PALA', 1, 123.00, 'Descripción del material - Ingrese la descripcion del material', 'IMG125202322324.jpg', 1, 13);
-INSERT INTO `material` VALUES (2, '890255674', 'NOMBRE EDITADO', 1, 159.00, 'Descripción del material EDITADO', 'IMG125202322316.jpg', 1, 12);
+INSERT INTO `material` VALUES (2, '890255674', 'NOMBRE EDITADO', 1, 159.00, 'Descripción del material EDITADO', 'IMG125202322316.jpg', 1, 9);
 
 -- ----------------------------
 -- Table structure for oferta
@@ -513,13 +516,13 @@ CREATE TABLE `oferta`  (
   `producto_id` int NULL DEFAULT NULL,
   `fecha_inicio` date NULL DEFAULT NULL,
   `fecha_fin` date NULL DEFAULT NULL,
-  `tipo_oferta` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tipo_oferta` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `valor_descuento` int NULL DEFAULT NULL,
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `producto_id`(`producto_id` ASC) USING BTREE,
   CONSTRAINT `oferta_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of oferta
@@ -534,7 +537,7 @@ CREATE TABLE `perdida_produccion`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `produccion_id` int NULL DEFAULT NULL,
   `cantidad` int NULL DEFAULT NULL,
-  `detalle` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `detalle` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `fecha` date NULL DEFAULT NULL,
   `usuario_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
@@ -542,7 +545,7 @@ CREATE TABLE `perdida_produccion`  (
   INDEX `usuario_id`(`usuario_id` ASC) USING BTREE,
   CONSTRAINT `perdida_produccion_ibfk_1` FOREIGN KEY (`produccion_id`) REFERENCES `produccion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `perdida_produccion_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of perdida_produccion
@@ -555,26 +558,26 @@ DROP TABLE IF EXISTS `permisos`;
 CREATE TABLE `permisos`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `rol_id` int NULL DEFAULT NULL,
-  `mantenimiento_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `producto_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `insumo_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `material_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `proveedor_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `compra_insumo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `compra_material_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `crear_venta_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `listado_venta_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `fase_produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `produccion_finalizadas_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `registro_fase_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `perdidas_produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `reporters_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `ofertas_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `mantenimiento_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `producto_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `insumo_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `material_tipo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `proveedor_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `compra_insumo_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `compra_material_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `crear_venta_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `listado_venta_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `fase_produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `produccion_finalizadas_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `registro_fase_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `perdidas_produccion_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `reporters_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `ofertas_p` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `rol_id`(`rol_id` ASC) USING BTREE,
   CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permisos
@@ -588,7 +591,7 @@ INSERT INTO `permisos` VALUES (4, 1, 'true', 'true', 'true', 'true', 'true', 'tr
 DROP TABLE IF EXISTS `produccion`;
 CREATE TABLE `produccion`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `fecharegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaini` date NULL DEFAULT NULL,
   `fechafin` date NULL DEFAULT NULL,
@@ -602,14 +605,15 @@ CREATE TABLE `produccion`  (
   INDEX `usuarioid`(`usuarioid` ASC) USING BTREE,
   CONSTRAINT `produccion_ibfk_1` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `produccion_ibfk_2` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of produccion
 -- ----------------------------
 INSERT INTO `produccion` VALUES (12, 'AAA', '2023-08-04 22:21:56', '2023-08-04', '2023-08-05', 1, 7, 2, 5, 1);
-INSERT INTO `produccion` VALUES (14, 'FRUTAL', '2023-08-04 22:29:02', '2023-08-04', '2023-08-31', 27, 6, 1, 5, 100);
-INSERT INTO `produccion` VALUES (15, 'NUEVA FRUTA', '2023-08-04 22:29:40', '2023-08-04', '2023-09-10', 37, 3, 1, 5, 60);
+INSERT INTO `produccion` VALUES (16, 'Produccion de prueba', '2023-08-12 17:42:56', '2023-08-12', '2023-08-12', 1, 10, 1, 5, 10);
+INSERT INTO `produccion` VALUES (17, 'one', '2023-08-12 18:04:21', '2023-08-12', '2023-08-12', 1, 10, 1, 5, 10);
+INSERT INTO `produccion` VALUES (18, 'two', '2023-08-12 18:06:38', '2023-08-12', '2023-08-12', 1, 10, 1, 5, 10);
 
 -- ----------------------------
 -- Table structure for producto
@@ -617,31 +621,34 @@ INSERT INTO `produccion` VALUES (15, 'NUEVA FRUTA', '2023-08-04 22:29:40', '2023
 DROP TABLE IF EXISTS `producto`;
 CREATE TABLE `producto`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `codigo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `tipo_id` int NULL DEFAULT NULL,
   `precio` decimal(10, 2) NULL DEFAULT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
+  `imagen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   `cantidad` int NULL DEFAULT 0,
   `oferta` int NULL DEFAULT 0,
+  `tamano` char(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `tipo_id`(`tipo_id` ASC) USING BTREE,
   CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tipo_producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
-INSERT INTO `producto` VALUES (1, '77959826', 'PLANTA EDITADA', 1, 159.00, 'Descripción del producto', NULL, 1, 83, 0);
-INSERT INTO `producto` VALUES (2, '874084907', 'Nombre', 3, 7453.00, 'ES UNA DESCRIPCION', NULL, 1, 53, 1);
-INSERT INTO `producto` VALUES (3, '716412303', 'asasa', 3, 2323.00, 'weweqw', NULL, 1, 0, 0);
-INSERT INTO `producto` VALUES (4, '878300076', 'sas', 3, 21.00, '12qw', NULL, 1, 0, 0);
-INSERT INTO `producto` VALUES (5, '87830002', 'sas', 3, 21.00, '12qw', NULL, 1, 0, 0);
-INSERT INTO `producto` VALUES (6, '274545739', 'PRODUCTO NUEVO SIN IMAGEN', 1, 123.00, 'NUEVO PRODUCTO SIN IMAGEN', 'producto.jpg', 1, 0, 0);
-INSERT INTO `producto` VALUES (7, '507024069', 'producto planta', 3, 121.00, '1qsas', 'producto.jpg', 1, 1, 0);
-INSERT INTO `producto` VALUES (8, '505791924', 'Frutal', 1, 123.00, 'Descripción del producto', NULL, 1, 0, 0);
+INSERT INTO `producto` VALUES (1, '77959826', 'PLANTA EDITADA', 1, 159.00, 'Descripción del producto', 'producto.jpg', 1, 76, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (2, '874084907', 'Nombre', 3, 7453.00, 'ES UNA DESCRIPCION', 'producto.jpg', 1, 26, 1, 'Pequeño');
+INSERT INTO `producto` VALUES (3, '716412303', 'asasa', 3, 2323.00, 'weweqw', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (4, '878300076', 'sas', 3, 21.00, '12qw', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (5, '87830002', 'sas', 3, 21.00, '12qw', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (6, '274545739', 'PRODUCTO NUEVO SIN IMAGEN', 1, 123.00, 'NUEVO PRODUCTO SIN IMAGEN', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (7, '507024069', 'producto planta', 3, 121.00, '1qsas', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (8, '505791924', 'Frutal', 1, 123.00, 'Descripción del producto', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (9, '44175931', 'aaaaaa', 3, 12.00, 'qwqwwq', 'producto.jpg', 1, 0, 0, 'Pequeño');
+INSERT INTO `producto` VALUES (10, '174307550', 'aaa', 3, 2.00, '212', 'producto.jpg', 1, 4, 0, 'Mediano');
 
 -- ----------------------------
 -- Table structure for proveedor
@@ -649,16 +656,16 @@ INSERT INTO `producto` VALUES (8, '505791924', 'Frutal', 1, 123.00, 'Descripció
 DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE `proveedor`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `ruc` char(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `razon_social` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `correo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `direccion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `telefono` char(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `encargado` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `ruc` char(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `razon_social` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `correo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `direccion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `telefono` char(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `encargado` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of proveedor
@@ -672,11 +679,11 @@ INSERT INTO `proveedor` VALUES (2, '0940321854001', 'CALRO SA', 'FARLETZ@HOTMAIL
 DROP TABLE IF EXISTS `rol`;
 CREATE TABLE `rol`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `rol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `rol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rol
@@ -685,15 +692,34 @@ INSERT INTO `rol` VALUES (1, 'Administrador', '2023-04-23 18:41:23', 1);
 INSERT INTO `rol` VALUES (33, 'Vendedor', '2023-07-23 16:46:21', 1);
 
 -- ----------------------------
+-- Table structure for servientrega
+-- ----------------------------
+DROP TABLE IF EXISTS `servientrega`;
+CREATE TABLE `servientrega`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_venta` int NULL DEFAULT NULL,
+  `codigo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `imagen` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `id_venta`(`id_venta` ASC) USING BTREE,
+  CONSTRAINT `servientrega_ibfk_1` FOREIGN KEY (`id_venta`) REFERENCES `ventaweb` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of servientrega
+-- ----------------------------
+INSERT INTO `servientrega` VALUES (3, 72, '1234567890', '8b0fec9da15df2d0385daebdae24666ace39007e16919564210.jpeg');
+
+-- ----------------------------
 -- Table structure for tipo_material
 -- ----------------------------
 DROP TABLE IF EXISTS `tipo_material`;
 CREATE TABLE `tipo_material`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tipo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tipo_material
@@ -707,10 +733,10 @@ INSERT INTO `tipo_material` VALUES (2, 'TIPO DE MATERIAL editado', 1);
 DROP TABLE IF EXISTS `tipo_producto`;
 CREATE TABLE `tipo_producto`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tipo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tipo_producto
@@ -725,10 +751,10 @@ INSERT INTO `tipo_producto` VALUES (3, 'NUEVO TIPO EDITADO', 1);
 DROP TABLE IF EXISTS `tipoinsumo`;
 CREATE TABLE `tipoinsumo`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tipo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tipoinsumo
@@ -742,20 +768,20 @@ INSERT INTO `tipoinsumo` VALUES (2, 'NUEVO TIPO DE INSUMO', 1);
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombres` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `apellidos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `correo` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `cedula` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `nombres` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `apellidos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `correo` varchar(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `cedula` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `rol_id` int NULL DEFAULT NULL,
-  `usuario` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `passwordd` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `foto` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `usuario` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `passwordd` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `foto` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` int NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `rol_id`(`rol_id` ASC) USING BTREE,
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of usuario
@@ -770,49 +796,33 @@ DROP TABLE IF EXISTS `ventaweb`;
 CREATE TABLE `ventaweb`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `cliente_id` int NULL DEFAULT NULL,
-  `direccion` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `direccion` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `subtotal` decimal(10, 2) NULL DEFAULT NULL,
   `impuesto` decimal(10, 2) NULL DEFAULT NULL,
   `total` decimal(10, 2) NULL DEFAULT NULL,
   `fecha` date NULL DEFAULT NULL,
-  `n_venta` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `comprobante` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `n_venta` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `comprobante` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `iva` int NULL DEFAULT NULL,
   `estado` int NULL DEFAULT 1,
   `fecharegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ciudad` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `referencia` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `ciudad` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `referencia` varchar(155) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `tipopago` char(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
+  `servientrega` int NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `cliente_id`(`cliente_id` ASC) USING BTREE,
   CONSTRAINT `ventaweb_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ventaweb
 -- ----------------------------
-INSERT INTO `ventaweb` VALUES (20, 9, 'SD', 14906.00, 1788.72, 16694.72, '2023-06-03', '20230603190642', 'PayPal', 12, 0, '2023-06-03 20:59:37', 'DSSD', 'SD');
-INSERT INTO `ventaweb` VALUES (21, 9, 'SD', 14906.00, 1788.72, 16694.72, '2023-06-03', '20230603190656', 'PayPal', 12, 0, '2023-06-03 20:59:34', 'DSSD', 'SD');
-INSERT INTO `ventaweb` VALUES (22, 9, 'bbbbb', 14906.00, 1788.72, 16694.72, '2023-06-03', '20230603190630', 'PayPal', 12, 0, '2023-06-03 20:59:28', 'aaaaa', 'ccccc');
-INSERT INTO `ventaweb` VALUES (23, 9, 'Av. amazonas y eloy alfaro', 7612.00, 913.44, 8525.44, '2023-06-04', '20230604180601', 'PayPal', 12, 1, '2023-06-04 18:28:01', 'Milagro', 'En mi casa');
-INSERT INTO `ventaweb` VALUES (24, 12, NULL, 7484.80, 0.00, 7484.80, '2023-06-09', '20230609120645', 'Nota de venta', 0, 1, '2023-06-09 12:53:21', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (25, 12, NULL, 7612.00, 0.00, 7612.00, '2023-06-09', '20230609120640', 'Nota de venta', 0, 1, '2023-06-09 12:54:52', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (26, 12, NULL, 7612.00, 0.00, 7612.00, '2023-06-09', '20230609120640', 'Nota de venta', 0, 1, '2023-06-09 12:55:37', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (27, 13, NULL, 7453.00, 0.00, 7453.00, '2023-06-09', '20230609120651', 'Nota de venta', 0, 0, '2023-06-09 14:22:27', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (28, 2, NULL, 7612.00, 0.00, 7612.00, '2023-06-09', '20230609140611', 'Nota de venta', 0, 1, '2023-06-09 14:24:25', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (29, 10, NULL, 22836.00, 0.00, 22836.00, '2023-06-09', '20230609140640', 'Nota de venta', 0, 1, '2023-06-09 14:24:56', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (30, 9, NULL, 7612.00, 0.00, 7612.00, '2023-06-10', '20230610090633', 'Nota de venta', 0, 1, '2023-06-10 09:35:42', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (31, 9, 'Exuado', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130636', 'PayPal', 12, 1, '2023-06-10 13:01:36', 'Milagro', 'Mi casa');
-INSERT INTO `ventaweb` VALUES (32, 9, 'a', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130658', 'PayPal', 12, 1, '2023-06-10 13:03:58', 'qa', 'aaa');
-INSERT INTO `ventaweb` VALUES (33, 9, 'asa', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130610', 'PayPal', 12, 1, '2023-06-10 13:08:10', 'as', 'asa');
-INSERT INTO `ventaweb` VALUES (34, 9, 'ddd', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130634', 'PayPal', 12, 1, '2023-06-10 13:09:34', 'dd', 'dd');
-INSERT INTO `ventaweb` VALUES (35, 9, 'aa', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130631', 'PayPal', 12, 1, '2023-06-10 13:11:31', 'aaa', 'aaa');
-INSERT INTO `ventaweb` VALUES (36, 9, 'BBBBBBBB', 159.00, 19.08, 178.08, '2023-06-10', '20230610130634', 'PayPal', 12, 1, '2023-06-10 13:17:34', 'AAAAAAA', 'CCCCCCC');
-INSERT INTO `ventaweb` VALUES (37, 9, 's', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130612', 'PayPal', 12, 1, '2023-06-10 13:20:12', 'a', 'd');
-INSERT INTO `ventaweb` VALUES (38, 9, 'sssss', 7453.00, 894.36, 8347.36, '2023-06-10', '20230610130615', 'PayPal', 12, 1, '2023-06-10 13:23:15', 'sss', 'sss');
-INSERT INTO `ventaweb` VALUES (39, 9, 'asas', 159.00, 19.08, 178.08, '2023-06-10', '20230610130636', 'PayPal', 12, 1, '2023-06-10 13:25:36', 'asa', 'asa');
-INSERT INTO `ventaweb` VALUES (40, 9, 'Dirección', 7771.00, 932.52, 8703.52, '2023-06-10', '20230610130630', 'PayPal', 12, 1, '2023-06-10 13:29:30', 'Ciudad', 'Referencia');
-INSERT INTO `ventaweb` VALUES (41, 9, NULL, 37980.00, 4557.60, 42537.60, '2023-06-24', '20230624140610', 'Factura', 12, 1, '2023-06-24 14:32:41', NULL, NULL);
-INSERT INTO `ventaweb` VALUES (42, 9, NULL, 7484.80, 0.00, 7484.80, '2023-06-24', '20230624140608', 'Nota de venta', 0, 1, '2023-06-24 14:34:18', NULL, NULL);
+INSERT INTO `ventaweb` VALUES (68, 9, NULL, 2.00, 0.00, 2.00, '2023-08-13', '20230813140853', 'Nota de venta', 0, 1, '2023-08-13 14:42:59', NULL, NULL, NULL, 0);
+INSERT INTO `ventaweb` VALUES (69, 1, NULL, 7453.00, 0.00, 7453.00, '2023-08-13', '20230813140851', 'Nota de venta', 0, 1, '2023-08-13 14:45:07', NULL, NULL, NULL, 0);
+INSERT INTO `ventaweb` VALUES (70, 1, NULL, 159.00, 19.08, 178.08, '2023-08-13', '20230813140812', 'Factura', 12, 1, '2023-08-13 14:45:19', NULL, NULL, NULL, 0);
+INSERT INTO `ventaweb` VALUES (71, 1, '', 161.00, 19.32, 180.32, '2023-08-13', '20230813140818', 'efectivo', 12, 1, '2023-08-13 14:46:18', '', '', 'efectivo', 0);
+INSERT INTO `ventaweb` VALUES (72, 1, 'BBBB', 7614.00, 913.68, 8527.68, '2023-08-13', '20230813140830', 'efectivo', 12, 1, '2023-08-13 14:53:41', 'AAA', 'CCCCC', 'paypal', 1);
 
 -- ----------------------------
 -- Table structure for ventawebdetalle
@@ -825,7 +835,7 @@ CREATE TABLE `ventawebdetalle`  (
   `cantidad` int NULL DEFAULT NULL,
   `sale` int NULL DEFAULT NULL,
   `precio` decimal(10, 2) NULL DEFAULT NULL,
-  `oferta` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `oferta` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NULL DEFAULT NULL,
   `descuento` decimal(10, 2) NULL DEFAULT NULL,
   `total` decimal(10, 2) NULL DEFAULT NULL,
   `descuento_moneda` decimal(10, 2) NULL DEFAULT NULL,
@@ -834,42 +844,19 @@ CREATE TABLE `ventawebdetalle`  (
   INDEX `productoid`(`productoid` ASC) USING BTREE,
   CONSTRAINT `ventawebdetalle_ibfk_1` FOREIGN KEY (`ventaid`) REFERENCES `ventaweb` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ventawebdetalle_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 78 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ventawebdetalle
 -- ----------------------------
-INSERT INTO `ventawebdetalle` VALUES (7, 20, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (8, 21, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (9, 22, 2, 2, 6, 7453.00, '3x1', 0.00, 14906.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (10, 23, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (11, 23, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (12, 25, 2, 1, 3, 7453.00, '3x1', 0.00, 7453.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (13, 25, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (14, 26, 2, 1, 3, 7453.00, '3x1', 0.00, 7453.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (15, 26, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (16, 27, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (17, 28, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (18, 28, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (19, 29, 2, 3, 3, 7453.00, 'No oferta', 0.00, 22359.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (20, 29, 1, 3, 3, 159.00, 'No oferta', 0.00, 477.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (21, 30, 2, 1, 3, 7453.00, '3x1', 0.00, 7453.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (22, 30, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (23, 31, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (24, 32, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (25, 33, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (26, 34, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (27, 35, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (28, 36, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (29, 37, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (30, 38, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (31, 39, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (32, 40, 1, 2, 1, 159.00, 'No oferta', 0.00, 318.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (33, 40, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
-INSERT INTO `ventawebdetalle` VALUES (34, 41, 2, 5, 10, 7453.00, '2x1', 0.00, 37265.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (35, 41, 1, 5, 5, 159.00, 'Descuento %', 80.00, 715.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (36, 42, 2, 1, 2, 7453.00, '2x1', 0.00, 7453.00, 0.00);
-INSERT INTO `ventawebdetalle` VALUES (37, 42, 1, 1, 1, 159.00, 'Descuento %', 80.00, 31.80, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (70, 68, 10, 1, 1, 2.00, 'No oferta', 0.00, 2.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (71, 69, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (72, 70, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, 0.00);
+INSERT INTO `ventawebdetalle` VALUES (73, 71, 10, 1, 1, 2.00, 'No oferta', 0.00, 2.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (74, 71, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (75, 72, 10, 1, 1, 2.00, 'No oferta', 0.00, 2.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (76, 72, 2, 1, 1, 7453.00, 'No oferta', 0.00, 7453.00, NULL);
+INSERT INTO `ventawebdetalle` VALUES (77, 72, 1, 1, 1, 159.00, 'No oferta', 0.00, 159.00, NULL);
 
 -- ----------------------------
 -- Procedure structure for EditarCliente
@@ -949,7 +936,7 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `EditarProducto`;
 delimiter ;;
-CREATE PROCEDURE `EditarProducto`(in idd int, in codigov VARCHAR(15), in nombrev VARCHAR(100), in tipo_productov int, in precio_ventav DECIMAL(10,2), in descripcionv TEXT)
+CREATE PROCEDURE `EditarProducto`(in idd int, in codigov VARCHAR(15), in nombrev VARCHAR(100), in tipo_productov int, in precio_ventav DECIMAL(10,2), in descripcionv TEXT, in tamanov char(20))
 BEGIN
 
 	DECLARE coun_codigo INT; 
@@ -957,7 +944,7 @@ BEGIN
 	set @coun_codigo = (select COUNT(*) from producto WHERE codigo = codigov AND id != idd);
 	
 	if @coun_codigo = 0 THEN
-		UPDATE producto SET codigo = codigov, nombre = nombrev, tipo_id = tipo_productov, precio = precio_ventav, descripcion = descripcionv WHERE id = idd;
+		UPDATE producto SET codigo = codigov, nombre = nombrev, tipo_id = tipo_productov, precio = precio_ventav, descripcion = descripcionv, tamano = tamanov WHERE id = idd;
 		SELECT 1;
 	ELSE
 		SELECT 2;
@@ -1267,7 +1254,7 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `RegistraProducto`;
 delimiter ;;
-CREATE PROCEDURE `RegistraProducto`(in codigov VARCHAR(15), in nombrev VARCHAR(100), in tipo_productov int, in precio_ventav DECIMAL(10,2), in descripcionv TEXT, in imagenv VARCHAR(100))
+CREATE PROCEDURE `RegistraProducto`(in codigov VARCHAR(15), in nombrev VARCHAR(100), in tipo_productov int, in precio_ventav DECIMAL(10,2), in descripcionv TEXT, in imagenv VARCHAR(100), in tamanov char(20))
 BEGIN
 
 	DECLARE coun_codigo INT; 
@@ -1275,7 +1262,7 @@ BEGIN
 	set @coun_codigo = (select COUNT(*) from producto WHERE codigo = codigov);
   
 	if @coun_codigo = 0 THEN
-		INSERT into producto (codigo,nombre,tipo_id,precio,descripcion,imagen) VALUES (codigov,nombrev,tipo_productov,precio_ventav,descripcionv,imagenv);
+		INSERT into producto (codigo,nombre,tipo_id,precio,descripcion,imagen,tamano) VALUES (codigov,nombrev,tipo_productov,precio_ventav,descripcionv,imagenv,tamanov);
 		SELECT LAST_INSERT_ID();
 	ELSE
 		SELECT 2;

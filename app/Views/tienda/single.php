@@ -91,7 +91,7 @@
 									<?php foreach ($Imagen as $rowI) { ?>
 
 										<li data-thumb="<?php echo base_url(); ?>public/img/producto/<?php echo $rowI["foto"]; ?>">
-											<div class="thumb-image"> <img   src="<?php echo base_url(); ?>public/img/producto/<?php echo $rowI["foto"]; ?>" data-imagezoom="true" class="img-responsive zoom-img" alt="Imagen producto" /> </div>
+											<div class="thumb-image"> <img src="<?php echo base_url(); ?>public/img/producto/<?php echo $rowI["foto"]; ?>" data-imagezoom="true" class="img-responsive zoom-img" alt="Imagen producto" /> </div>
 										</li>
 
 									<?php } ?>
@@ -132,11 +132,12 @@
 						<div class="single-para simpleCart_shelfItem">
 							<h2><?php echo $producto[1]; ?> </h2>
 							<div class="star-on">
-								<a> <?php echo $producto[2]; ?> </a>
+								<a><b>Tipo: </b> <?php echo $producto[2]; ?> </a>
 								<div class="clearfix"> </div>
 							</div>
 
 							<h5 class="item_price">$ <?php echo $producto[3]; ?></h5>
+							<p><b>Tamaño: </b> <?php echo ($producto[8]); ?></p>
 							<p><b>Detalle: </b> <?php echo $producto[7]; ?></p>
 
 							<a class="add-cart item_add" onclick="AgregarCarritoNormal('<?php echo $producto[0]; ?>', '<?php echo $producto[3]; ?>');">Agregar a carrito</a>

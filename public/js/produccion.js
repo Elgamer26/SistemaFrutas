@@ -1017,7 +1017,7 @@ function VerReporteproduccionActiva(id) {
     title: "Imprimir reporte de producción",
     text: "Desea imprimir el reporte??",
     icon: "warning",
-    html: `<form>
+    html: `<form hidden>
             <div>
               <input
                 type="checkbox"

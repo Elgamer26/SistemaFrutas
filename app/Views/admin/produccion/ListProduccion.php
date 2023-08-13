@@ -2,7 +2,7 @@
      <div class="container-fluid">
          <div class="row mb-2">
              <div class="col-sm-6">
-                 <h1>Lista de producción iniciado <i class="fa fa-list"></i></h1>
+                 <h1>Lista de producción <i class="fa fa-list"></i></h1>
              </div>
              <div class="col-sm-6">
                  <ol class="breadcrumb float-sm-right">
@@ -23,7 +23,7 @@
                  <div class="col-6 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
                      <div class="col-12 col-sm-6 col-md-8 d-flex align-items-stretch flex-column">
                          <a class="btn btn-success btn-sm" onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/produccion/create/0');">
-                             Nueva producción <i class="fa fa-plus"></i></a>
+                            Registro producción <i class="fa fa-plus"></i></a>
                      </div>
                  </div>
 

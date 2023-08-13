@@ -177,7 +177,7 @@ class ModeloReporte
             $sql = "SELECT
             produccion.id, 
             produccion.nombre, 
-            produccion.fecharegistro, 
+            date(produccion.fecharegistro) as fecha, 
             produccion.fechaini, 
             produccion.fechafin, 
             produccion.dias, 

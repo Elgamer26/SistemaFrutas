@@ -28,21 +28,21 @@
 
                         <div class="row">
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <div class="form-group">
                                     <label for="nombreproduccion">Nombre de la producción</label> <span id="nombree_olbligg" style="color: red;"></span>
                                     <input type="text" class="form-control" id="nombreproduccion" maxlength="80" placeholder="Ingrese nombre de la producción">
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-2" hidden>
                                 <div class="form-group">
                                     <label for="fechainicio">Fecha Inicio</label>
                                     <input value="<?php echo date("Y-m-d"); ?>" type="date" name="fechainicio" class="form-control" id="fechainicio">
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-2" hidden>
                                 <div class="form-group">
                                     <label for="fechaFin">Fecha Fin</label>
                                     <input value="<?php echo date("Y-m-d"); ?>" type="date" name="fechaFin" class="form-control" id="fechaFin">
@@ -51,8 +51,15 @@
 
                             <div class="col-md-2">
                                 <div class="form-group">
+                                    <label>Fecha registro</label>
+                                    <input readonly value="<?php echo date("Y-m-d"); ?>" type="date" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2" hidden>
+                                <div class="form-group">
                                     <label for="diasproduccion">Dias producción</label> <span id="dias_olbligg" style="color: red;"></span>
-                                    <input readonly value="0" type="text" name="diasproduccion" class="form-control" id="diasproduccion">
+                                    <input readonly value="1" type="text" name="diasproduccion" class="form-control" id="diasproduccion">
                                 </div>
                             </div>
 
@@ -76,7 +83,7 @@
 
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="cantidadprod">Cantidad a producir</label> <span id="cantidadprod_olbligg" style="color: red;"></span>
+                                    <label for="cantidadprod">Cantidad</label> <span id="cantidadprod_olbligg" style="color: red;"></span>
                                     <input onkeypress="return soloNumeros(event);" value="0" type="text" name="cantidadprod" class="form-control" id="cantidadprod">
                                 </div>
                             </div>

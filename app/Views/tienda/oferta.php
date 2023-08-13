@@ -142,6 +142,7 @@
                                 <h5 class="item_price">$ <?php echo $producto[3]; ?></h5>
                             <?php } ?>
 
+                            <p><b>Tamaño: </b> <?php echo $producto[12]; ?></p>
                             <p><b>Detalle: </b> <?php echo $producto[7]; ?></p>
                             <h5 class="item_price"></h5>
                             <div class="star-on">

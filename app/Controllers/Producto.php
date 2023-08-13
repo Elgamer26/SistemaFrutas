@@ -64,13 +64,14 @@ class Producto extends BaseController
         $tipo_producto = $this->request->getPost('tipo_producto');
         $precio_venta = $this->request->getPost('precio_venta');
         $descripcion = $this->request->getPost('descripcion');
+        $tamaño_producto = $this->request->getPost('tamaño_producto');
 
         $nombrearchivo = $this->request->getPost('nombrearchivo');
 
         if (!empty($_FILES["img_extra"]["tmp_name"])) {
 
             $imagen = null;
-            $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen);
+            $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen, $tamaño_producto);
 
             if ($valor[0] > 2) {
 
@@ -99,7 +100,7 @@ class Producto extends BaseController
         } else {
 
             $imagen = "producto.jpg";
-            $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen);
+            $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen, $tamaño_producto);
             if ($valor[0] > 2) {
                 echo 1;
                 exit();
@@ -152,7 +153,9 @@ class Producto extends BaseController
         $tipo_producto = $this->request->getPost('tipo_producto');
         $precio_venta = $this->request->getPost('precio_venta');
         $descripcion = $this->request->getPost('descripcion');
-        $valor = $this->producto->EditarProducto($productoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion);
+        $tamaño_producto = $this->request->getPost('tamaño_producto');
+
+        $valor = $this->producto->EditarProducto($productoID, $codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $tamaño_producto);
         echo $valor[0];
         exit();
     }

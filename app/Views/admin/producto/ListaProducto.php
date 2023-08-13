@@ -25,7 +25,7 @@
                                 Nuevo producto <i class="fa fa-plus"></i></a></h3>
                     </div>
                     <div class="card-body">
-                        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"> 
+                        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
                                 <div class="col-sm-12 text-center table-responsive">
 
@@ -36,6 +36,7 @@
                                                 <th>Código</th>
                                                 <th>Nombre</th>
                                                 <th>Tipo producto</th>
+                                                <th>Tamaño producto</th>
                                                 <th>Precio venta</th>
                                                 <th>Foto</th>
                                                 <th>Cantidad</th>
@@ -61,7 +62,8 @@
 
                                                         <td><?= esc($ListarProducto_item["codigo"]); ?></td>
                                                         <td><?= esc($ListarProducto_item["nombre"]); ?></td>
-                                                        <td> <span class="badge badge-warning"><?= esc($ListarProducto_item["tipo"]); ?></span> </td>
+                                                        <td> <span class="badge badge-warning"><?= esc(strtoupper($ListarProducto_item["tipo"])); ?></span> </td>
+                                                        <td> <span class="badge badge-primary"><?= esc(strtoupper($ListarProducto_item["tamano"])); ?></span> </td>
                                                         <td>$ <?= esc($ListarProducto_item["precio"]); ?></td>
                                                         <td><a class="btn btn-success" onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Producto/foto/<?php echo $ListarProducto_item['id']; ?>');" style="border: none; border-radius: 50px;" title="Ver Imagen"> <i class="fa fa-image"></i> Foto </a></td>
                                                         <td><?= esc($ListarProducto_item["cantidad"]); ?></td>
@@ -92,6 +94,7 @@
                                                 <th>Código</th>
                                                 <th>Nombre</th>
                                                 <th>Tipo producto</th>
+                                                <th>Tamaño producto</th>
                                                 <th>Precio venta</th>
                                                 <th>Foto</th>
                                                 <th>Cantidad</th>
@@ -114,7 +117,7 @@
 <script src="<?php echo base_url(); ?>public/js/producto.js"></script>
 
 <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('#example2').DataTable({
             language: {
                 rows: "%d fila seleccionada",

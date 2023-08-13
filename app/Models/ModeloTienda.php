@@ -101,11 +101,12 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
-                producto.cantidad 
-            FROM
+                producto.cantidad,
+                producto.tamano 
+                FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
-            WHERE
+                WHERE
                 producto.estado = 1 AND
                 producto.nombre LIKE '%" . $datos . "%' OR
                 tipo_producto.tipo LIKE '%" . $datos . "%' OR
@@ -118,11 +119,12 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
-                producto.cantidad 
-            FROM
+                producto.cantidad,
+                producto.tamano 
+                FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
-            WHERE
+                WHERE
                 producto.estado = 1 
                 ORDER BY producto.id DESC LIMIT $limit, $numlotes";
             }
@@ -148,6 +150,9 @@ class ModeloTienda
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
                                             <div class="product-bottom">
                                                 <p style="color: black;"> <b>' . $nombre . '</b> </p> 
+                                                <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
+                                                <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
+                                                <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 if (!empty($_SESSION["TokenClie"])) {
@@ -257,7 +262,8 @@ class ModeloTienda
                 producto.cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
-                oferta.valor_descuento
+                oferta.valor_descuento,
+                producto.tamano 
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -279,7 +285,8 @@ class ModeloTienda
                 producto.cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
-                oferta.valor_descuento
+                oferta.valor_descuento,
+                producto.tamano 
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -311,9 +318,11 @@ class ModeloTienda
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
                                             <div class="product-bottom"> 
-                                                 <p style="color: black;"> <b>' . $nombre . '</b> </p> 
-                                                <p> Oferta: ' . $respuesta[6] . '</p>
-                                                <p> Fecha fin: ' . $respuesta[7] . '</p>
+                                                <p style="color: black;"> <b>' . $nombre . '</b> </p> 
+                                                <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
+                                                <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[9]) . ' </p> 
+                                                <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[6] . '</p>
+                                                <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[7] . '</p>
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 if (!empty($_SESSION["TokenClie"])) {
@@ -351,7 +360,8 @@ class ModeloTienda
             IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,  
             producto.cantidad, 
             producto.codigo, 
-            producto.descripcion
+            producto.descripcion,
+            producto.tamano
             FROM
             producto
             INNER JOIN
@@ -420,7 +430,8 @@ class ModeloTienda
             oferta.fecha_inicio,
             oferta.fecha_fin,
             oferta.tipo_oferta,
-            oferta.valor_descuento 
+            oferta.valor_descuento,
+            producto.tamano
             FROM
             producto
             INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -1123,15 +1134,17 @@ class ModeloTienda
             ventaweb.total,
             ventaweb.fecha,
             ventaweb.n_venta,
-            ventaweb.comprobante,
+            ventaweb.comprobante AS tipopago,
             ventaweb.iva,
             ventaweb.estado,
             ventaweb.fecharegistro,
             ventaweb.ciudad,
-            ventaweb.referencia 
+            ventaweb.referencia,
+            ventaweb.tipopago AS comprobante,
+            ventaweb.servientrega
             FROM
             ventaweb INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
-            WHERE ventaweb.comprobante = 'PayPal' AND cliente.id = ?
+            WHERE ventaweb.tipopago = 'PayPal' or ventaweb.tipopago  = 'efectivo' AND cliente.id = ?
             ORDER BY ventaweb.id DESC";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
@@ -1166,9 +1179,11 @@ class ModeloTienda
             ventaweb.estado,
             ventaweb.fecharegistro,
             ventaweb.ciudad,
-            ventaweb.referencia 
+            ventaweb.referencia,
+            ventaweb.tipopago,
+            ventaweb.servientrega
             FROM ventaweb INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
-            WHERE ventaweb.comprobante != 'PayPal' AND cliente.id = ?
+            WHERE ventaweb.comprobante != 'PayPal' AND ventaweb.comprobante != 'efectivo' AND cliente.id = ?
             ORDER BY
             ventaweb.id DESC";
             $query = $c->prepare($sql);
@@ -1239,6 +1254,58 @@ class ModeloTienda
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function RegistrarComprobanteServientrega($id, $codigo, $nombre_final)
+    {
+        try {
+            $result = 0;
+            $c = $this->conexion->conexionPDO();
+            $sql = "INSERT INTO servientrega (id_venta, codigo, imagen) VALUE (?,?,?) ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->bindParam(2, $codigo);
+            $query->bindParam(3, $nombre_final);
+
+            if ($query->execute()) {
+
+                $sqlu = "UPDATE ventaweb SET servientrega = 1 WHERE id = ?";
+                $queryU = $c->prepare($sqlu);
+                $queryU->bindParam(1, $id); 
+                $queryU->execute();
+
+                $result = 1;
+            } else {
+                $result = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DescargarArchivo($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT imagen FROM servientrega WHERE id_venta = ? ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result[0];
         } catch (\Exception $e) {
             $this->conexion->cerrar_conexion();
             echo "Error: " . $e->getMessage();

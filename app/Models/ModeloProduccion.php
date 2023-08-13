@@ -76,6 +76,22 @@ class ModeloProduccion
 
             if ($query->execute()) {
                 $result = $c->lastInsertId();
+
+                $sql_pro = "SELECT cantidad FROM producto WHERE id = ?";
+                $query_pro = $c->prepare($sql_pro);
+                $query_pro->bindParam(1,  $producto);
+                $query_pro->execute();
+                $datapro = $query_pro->fetch();
+                $cantidadpro = $datapro[0];
+
+                $cantidadpro = $cantidadpro + $cantidadprod;
+
+                $sql_m = "UPDATE producto SET cantidad = ? where id = ?";
+                $query_m = $c->prepare($sql_m);
+                $query_m->bindParam(1, $cantidadpro);
+                $query_m->bindParam(2, $producto);
+                $query_m->execute();
+
             } else {
                 $result = 0;
             }
@@ -278,7 +294,7 @@ class ModeloProduccion
                 $sql_p = "SELECT
                 produccion.id,
                 produccion.nombre,
-                produccion.fecharegistro,
+                date(produccion.fecharegistro) AS fecha,
                 produccion.fechaini,
                 produccion.fechafin,
                 produccion.dias,
@@ -303,7 +319,7 @@ class ModeloProduccion
                 $sql_p = "SELECT
                 produccion.id,
                 produccion.nombre,
-                produccion.fecharegistro,
+                date(produccion.fecharegistro) AS fecha,
                 produccion.fechaini,
                 produccion.fechafin,
                 produccion.dias,
@@ -352,12 +368,10 @@ class ModeloProduccion
                                                     <p class="text-muted text-sm"><b>Lote: </b> ' . $respuesta[0] . ' </p>
                                                     <p class="text-muted text-sm"><b>Tipo: </b> ' . $respuesta[8] . ' </p>
                                                     <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar"></i></span> Fecha Inicio: ' . $respuesta[3] . ' </li>
-                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar"></i></span> Fecha Fin: ' . $respuesta[4] . ' </li>
-                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-home"></i></span> Dias: ' . $respuesta[5] . ' </li>
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar"></i></span> Fecha registro: ' . $respuesta[2] . ' </li>
                                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user"></i></span> Usuario: ' . $respuesta[10] . ' </li>
                                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-cube"></i></span> Cantidad: ' . $respuesta[11] . ' </li>
-                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-tags"></i></span> Estado:  <span class="badge badge-warning">' . $estado . '</span></li>
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-tags"></i></span> Estado:  <span class="badge badge-warning">Registrado</span></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-5 text-center">
@@ -367,20 +381,12 @@ class ModeloProduccion
                                         </div>
                                         <div class="card-footer">
                                             <div class="text-right">
-                                                <a title="Ver perdidas" class="btn btn-sm bg-primary" onclick="VerPerdidaProduccion(' . $respuesta[0] . ');">
-                                                    <i class="fa fa-exclamation-triangle"></i>
-                                                </a>
-
-                                                <a title="Ver Fases" class="btn btn-sm bg-warning" onclick="VerFaseProduccion(' . $respuesta[0] . ');">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-
-                                                <a title="Ver Pdf" class="btn btn-sm bg-danger" onclick="VerReporteproduccionActiva(' . $respuesta[0] . ');">
+                                                <a title="Ver Pdf" class="btn btn-sm bg-primary" onclick="VerReporteproduccionActiva(' . $respuesta[0] . ');">
                                                     <i class="fas fa-file"></i>
                                                 </a>
 
-                                                <a title="Ver Eliminar la producción" class="btn btn-sm bg-teal" onclick="EliminarProduccion(' . $respuesta[0] . ');">
-                                                    <i class="fas fa-calendar"></i> Eliminar producción
+                                                <a title="Ver Eliminar la producción" class="btn btn-sm bg-danger" onclick="EliminarProduccion(' . $respuesta[0] . ');">
+                                                    <i class="fas fa-times"></i> Eliminar producción
                                                 </a>
 
                                             </div>
@@ -388,6 +394,14 @@ class ModeloProduccion
                                     </div>
                                 </div>';
             }
+
+            // <a title="Ver perdidas" class="btn btn-sm bg-primary" onclick="VerPerdidaProduccion(' . $respuesta[0] . ');">
+            //                                         <i class="fa fa-exclamation-triangle"></i>
+            //                                     </a>
+
+            //                                     <a title="Ver Fases" class="btn btn-sm bg-warning" onclick="VerFaseProduccion(' . $respuesta[0] . ');">
+            //                                         <i class="fa fa-eye"></i>
+            //                                     </a>
 
             $array = array(0 => $tabla, 1 => $lista);
             //cerramos la conexion

@@ -809,7 +809,6 @@ function EditarPasswordCliente() {
     success: function (resp) {
       $(".card").LoadingOverlay("hide");
       if (resp == 1) {
-        
         $("#passhidden").val(passnew);
         $("#passactual").val("");
         $("#passnew").val("");
@@ -825,4 +824,105 @@ function EditarPasswordCliente() {
     },
   });
   return false;
+}
+
+/// para cargar el comprobante de servientrega
+function CargarFotoServientrega(id) {
+  $("#codigo_servi").val(id);
+  $("#ModalSubirComprobante").modal("show");
+}
+
+function RegistrarComprobanteServientrega() {
+  var id = document.getElementById("codigo_servi").value;
+  var codigo = document.getElementById("codigo").value;
+  let archivo = document.getElementById("file").files.length;
+
+  if (codigo.length == 0 || codigo.trim() == "") {
+    return swal.fire(
+      "Mensaje de advertencia",
+      "Ingrese un código para registrar",
+      "warning"
+    );
+  }
+
+  if (archivo == 0) {
+    return swal.fire(
+      "Mensaje de advertencia",
+      "Ingrese una imagen para registrar",
+      "warning"
+    );
+  }
+
+  var nombrearchivo = "imagen_producto";
+  var formdata = new FormData();
+
+  //este for es para obtener las imagenes del del input file[]
+  for (let i = 0; i < archivo; i++) {
+    var img = document.getElementById("file").files[i];
+    formdata.append("img_extra[" + i + "]", img);
+  }
+
+  formdata.append("id", id);
+  formdata.append("codigo", codigo);
+  formdata.append("nombrearchivo", nombrearchivo);
+
+  $(".modal-dialog").LoadingOverlay("show", {
+    text: "Cargando...",
+  });
+
+  $.ajax({
+    url: BaseUrl + "Tienda/RegistrarComprobanteServientrega",
+    type: "POST",
+    data: formdata,
+    contentType: false,
+    processData: false,
+    success: function (resp) {
+      $(".modal-dialog").LoadingOverlay("hide");
+      if (resp > 0) {
+        if (resp == 1) {
+          $("#ModalSubirComprobante").modal("hide");
+          Swal.fire({
+            title: "",
+            text: "Foto de servientrega se cargo con exito",
+            icon: "success",
+            showCancelButton: true,
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/ventas/web/0"
+              );
+            }
+          });
+        } else if (resp == 2) {
+          return swal.fire(
+            "Mensaje de advertencia",
+            "Ingrese una imagen para subir",
+            "warning"
+          );
+        }
+      } else {
+        return swal.fire("Error", "Error en la Matrix" + resp, "error");
+      }
+    },
+  });
+  return false;
+}
+
+function DescargarArchivo(id) {
+  $.ajax({
+    type: "POST",
+    data: { id: id },
+    url: BaseUrl + "tienda/DescargarArchivo",
+    success: function (resp) {
+      var data = JSON.parse(resp);
+      var url = BaseUrl + "public/img/servientrega/" + data;
+      window.open(url, "Download");
+    },
+  });
 }

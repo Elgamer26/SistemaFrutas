@@ -73,6 +73,23 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="tamaño_producto">Tamaño</label> <span id="tamaño_producto_olbligg" style="color: red;"></span>
+                                        <select name="tamaño_producto" id="tamaño_producto" class="form-control" style="width: 100%;">
+
+                                            <?php if (!empty($tañamo) && is_array($tañamo)) {
+                                                foreach ($tañamo as $tamaño_item) { ?>
+                                                    <option value="<?= esc($tamaño_item); ?>" <?php if ($tamaño_item == $editar[9]) {
+                                                                                                    echo 'selected';
+                                                                                                } ?>><?= esc($tamaño_item); ?></option>
+                                            <?php }
+                                            } ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="descripcion">Descripción del producto</label> <span id="descripcion_olbligg" style="color: red;"></span>

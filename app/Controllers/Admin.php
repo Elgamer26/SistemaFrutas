@@ -291,7 +291,8 @@ class Admin extends BaseController
                     'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
                     'plus' => true,
                     'tipo' => $tipo,
-                    'image' => true
+                    'image' => true,
+                    'tañamo' => ['0' => 'Pequeño', '1' => 'Mediano',  '2' => 'Grande'],
                 ];
                 return view('admin/producto/FormProducto.php', $data);
             } else if ($valor == "edit") {
@@ -307,7 +308,8 @@ class Admin extends BaseController
                     'editar' => $traerProducto,
                     'plus' => false,
                     'tipo' => $tipo,
-                    'image' => true
+                    'image' => true,
+                    'tañamo' => ['0' => 'Pequeño', '1' => 'Mediano',  '2' => 'Grande'],
                 ];
 
                 return view('admin/producto/FormProducto.php', $data);

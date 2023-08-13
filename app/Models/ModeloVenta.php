@@ -58,7 +58,8 @@ class ModeloVenta
             ventaweb.fecharegistro,
             ventaweb.ciudad,
             ventaweb.referencia,
-            ventaweb.tipopago
+            ventaweb.tipopago,
+            ventaweb.servientrega
             FROM
                 ventaweb
                 INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
