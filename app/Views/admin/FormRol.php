@@ -69,6 +69,8 @@
                             <input onkeypress="return soloLetras(event)" autocomplete="off" value="<?php echo $editar[1]; ?>" type="text" name="nombrerol" class="form-control" id="nombrerol" placeholder="Nombre del rol" maxlength="50">
                         </div>
 
+                        <?php if ($color != "primary") {?>
+
                         <div class="col-md-12 p-3">
                             <div class="box-header with-border center" style="text-align: center; background: orange; color:black; padding: -30px;">
                                 <b>
@@ -133,9 +135,9 @@
                                     <input type='checkbox' id='listado_venta_p'><br>
                                 </div>
 
-                                <div class='col-md-2 keyss'>
+                                <div hidden class='col-md-2 keyss'>
                                     <label for='fase_produccion_p'>Fase producción</label><br>
-                                    <input type='checkbox' id='fase_produccion_p'><br>
+                                    <input type='checkbox' id='fase_produccion_p' checked><br>
                                 </div>
 
                                 <div class='col-md-2 keyss'>
@@ -145,19 +147,19 @@
 
                                 <br>
 
-                                <div class='col-md-2 keyss'>
+                                <div hidden class='col-md-2 keyss'>
                                     <label for='produccion_finalizadas_p'>Producción finalizadas</label><br>
-                                    <input type='checkbox' id='produccion_finalizadas_p'><br>
+                                    <input type='checkbox' id='produccion_finalizadas_p' checked><br>
                                 </div>
 
-                                <div class='col-md-2 keyss'>
+                                <div hidden class='col-md-2 keyss'>
                                     <label for='registro_fase_p'>Registro de fases</label><br>
-                                    <input type='checkbox' id='registro_fase_p'><br>
+                                    <input type='checkbox' id='registro_fase_p' checked><br>
                                 </div>
 
-                                <div class='col-md-2 keyss'>
+                                <div hidden class='col-md-2 keyss'>
                                     <label for='perdidas_produccion_p'>Perdidas de producción</label><br>
-                                    <input type='checkbox' id='perdidas_produccion_p'><br>
+                                    <input type='checkbox' id='perdidas_produccion_p' checked><br>
                                 </div>
 
                                 <div class='col-md-2 keyss'>
@@ -170,6 +172,7 @@
 
                         </div>
 
+                        <?php } ?>
                     </div>
                     <div class="card-footer">
                         <?php echo $accion; ?> - <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/rolesuser/list');" class='btn btn-danger'>Volver</a>

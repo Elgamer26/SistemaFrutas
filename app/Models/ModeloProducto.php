@@ -988,4 +988,23 @@ class ModeloProducto
         }
         exit();
     }
+
+    
+    function ListadoTipoProductoNEW()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT tipo FROM tipo_producto ORDER BY id DESC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

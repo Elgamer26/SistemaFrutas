@@ -288,7 +288,7 @@ class Admin extends BaseController
                     'texto' => "Registro de Producto <i class='fa fa-cubes'></i>",
                     'accion' => "<button onclick='RegistraProducto();' class='btn btn-success'>Guardar</button>",
                     'color' => "success",
-                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => ''],
+                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '', '8' => '','9' => ''],
                     'plus' => true,
                     'tipo' => $tipo,
                     'image' => true,

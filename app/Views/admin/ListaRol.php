@@ -208,9 +208,9 @@
                         <input type='checkbox' id='listado_venta_p'><br>
                     </div>
 
-                    <div class='col-md-2 keyss'>
+                    <div hidden class='col-md-2 keyss'>
                         <label for='fase_produccion_p'>Fase producción</label><br>
-                        <input type='checkbox' id='fase_produccion_p'><br>
+                        <input type='checkbox' id='fase_produccion_p' checked><br>
                     </div>
 
                     <div class='col-md-2 keyss'>
@@ -220,19 +220,19 @@
 
                     <br>
 
-                    <div class='col-md-2 keyss'>
+                    <div hidden class='col-md-2 keyss'>
                         <label for='produccion_finalizadas_p'>Producción finalizadas</label><br>
-                        <input type='checkbox' id='produccion_finalizadas_p'><br>
+                        <input type='checkbox' id='produccion_finalizadas_p' checked><br>
                     </div>
 
-                    <div class='col-md-2 keyss'>
+                    <div hidden class='col-md-2 keyss'>
                         <label for='registro_fase_p'>Registro de fases</label><br>
-                        <input type='checkbox' id='registro_fase_p'><br>
+                        <input type='checkbox' id='registro_fase_p' checked><br>
                     </div>
 
-                    <div class='col-md-2 keyss'>
+                    <div hidden class='col-md-2 keyss'>
                         <label for='perdidas_produccion_p'>Perdidas de producción</label><br>
-                        <input type='checkbox' id='perdidas_produccion_p'><br>
+                        <input type='checkbox' id='perdidas_produccion_p' checked><br>
                     </div>
 
                     <div class='col-md-2 keyss'>

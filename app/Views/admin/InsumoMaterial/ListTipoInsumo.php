@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Listado de tipos <i class="fa fa-cube"></i></h1>
+                <h1>Listado de tipo insumo <i class="fa fa-cube"></i></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">

@@ -1,0 +1,11 @@
+CRITICAL - 2023-09-30 14:18:58 --> Undefined array key 9
+in APPPATH\Views\admin\producto\FormProducto.php on line 83.
+ 1 APPPATH\Views\admin\producto\FormProducto.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 9', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\producto\\FormProducto.php', 83)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\SistemaFrutal\\app\\Views\\admin\\producto\\FormProducto.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/producto/FormProducto.php', [], true)
+ 5 APPPATH\Controllers\Admin.php(297): view('admin/producto/FormProducto.php', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin->Producto('create', '0')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

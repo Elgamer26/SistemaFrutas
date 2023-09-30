@@ -1,7 +1,0 @@
- CRITICAL - 2023-08-13 19:07:29 --> Undefined variable $fpdf
-in APPPATH\Controllers\Reporte.php on line 859.
- 1 APPPATH\Controllers\Reporte.php(859): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fpdf', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Reporte.php', 859)
- 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Reporte->ReporteVenta('63')
- 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reporte))
- 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

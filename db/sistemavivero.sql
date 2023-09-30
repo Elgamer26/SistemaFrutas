@@ -11,7 +11,7 @@
  Target Server Version : 80031 (8.0.31)
  File Encoding         : 65001
 
- Date: 13/08/2023 15:01:02
+ Date: 30/09/2023 14:46:11
 */
 
 SET NAMES utf8mb4;
@@ -582,7 +582,7 @@ CREATE TABLE `permisos`  (
 -- ----------------------------
 -- Records of permisos
 -- ----------------------------
-INSERT INTO `permisos` VALUES (3, 33, 'false', 'false', 'false', 'false', 'false', 'false', 'true', 'true', 'true', 'false', 'false', 'false', 'false', 'false', 'false', 'false');
+INSERT INTO `permisos` VALUES (3, 33, 'false', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'false', 'true', 'false', 'false', 'false', 'true', 'true');
 INSERT INTO `permisos` VALUES (4, 1, 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true');
 
 -- ----------------------------
@@ -703,12 +703,11 @@ CREATE TABLE `servientrega`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id_venta`(`id_venta` ASC) USING BTREE,
   CONSTRAINT `servientrega_ibfk_1` FOREIGN KEY (`id_venta`) REFERENCES `ventaweb` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of servientrega
 -- ----------------------------
-INSERT INTO `servientrega` VALUES (3, 72, '1234567890', '8b0fec9da15df2d0385daebdae24666ace39007e16919564210.jpeg');
 
 -- ----------------------------
 -- Table structure for tipo_material
@@ -786,7 +785,7 @@ CREATE TABLE `usuario`  (
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES (5, 'AAAAAAAAAAA', 'BBBBBBBBB', 'ADMIN@HOTMAIL.COM', '0123654789', 1, 'admin', '123', 'IMG482023223333.jpg', '2023-07-23 16:41:09', 1);
+INSERT INTO `usuario` VALUES (5, 'JORGE', 'RAMIREZ', 'elgamer-26@hotmail.com', '0123654789', 1, 'admin', '123', 'IMG482023223333.jpg', '2023-07-23 16:41:09', 1);
 INSERT INTO `usuario` VALUES (6, 'JOSE CARLOS', 'VILLAMAR', 'correo@gmail.com', '0940321854', 33, 'admin1', 'admin1', 'IMG48202322336.jpg', '2023-07-23 20:46:30', 1);
 
 -- ----------------------------
@@ -822,7 +821,7 @@ INSERT INTO `ventaweb` VALUES (68, 9, NULL, 2.00, 0.00, 2.00, '2023-08-13', '202
 INSERT INTO `ventaweb` VALUES (69, 1, NULL, 7453.00, 0.00, 7453.00, '2023-08-13', '20230813140851', 'Nota de venta', 0, 1, '2023-08-13 14:45:07', NULL, NULL, NULL, 0);
 INSERT INTO `ventaweb` VALUES (70, 1, NULL, 159.00, 19.08, 178.08, '2023-08-13', '20230813140812', 'Factura', 12, 1, '2023-08-13 14:45:19', NULL, NULL, NULL, 0);
 INSERT INTO `ventaweb` VALUES (71, 1, '', 161.00, 19.32, 180.32, '2023-08-13', '20230813140818', 'efectivo', 12, 1, '2023-08-13 14:46:18', '', '', 'efectivo', 0);
-INSERT INTO `ventaweb` VALUES (72, 1, 'BBBB', 7614.00, 913.68, 8527.68, '2023-08-13', '20230813140830', 'efectivo', 12, 1, '2023-08-13 14:53:41', 'AAA', 'CCCCC', 'paypal', 1);
+INSERT INTO `ventaweb` VALUES (72, 1, 'BBBB', 7614.00, 913.68, 8527.68, '2023-08-13', '20230813140830', 'efectivo', 12, 1, '2023-08-13 17:52:41', 'AAA', 'CCCCC', 'paypal', 0);
 
 -- ----------------------------
 -- Table structure for ventawebdetalle

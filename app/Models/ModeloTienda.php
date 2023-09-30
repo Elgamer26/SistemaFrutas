@@ -1276,7 +1276,7 @@ class ModeloTienda
 
                 $sqlu = "UPDATE ventaweb SET servientrega = 1 WHERE id = ?";
                 $queryU = $c->prepare($sqlu);
-                $queryU->bindParam(1, $id); 
+                $queryU->bindParam(1, $id);
                 $queryU->execute();
 
                 $result = 1;
@@ -1306,6 +1306,37 @@ class ModeloTienda
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $result[0];
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    // PARA OBTENER LOS DATOS DEL CLIENTE Y SU ENVIO
+    function TraerDatos_De_Imagen_Cliente($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            cliente.nombre,
+            cliente.apellidos,
+            cliente.correo,
+            servientrega.codigo,
+            servientrega.id_venta 
+            FROM
+            servientrega
+            INNER JOIN ventaweb ON servientrega.id_venta = ventaweb.id
+            INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
+            where servientrega.id_venta = ?
+            LIMIT 1";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
         } catch (\Exception $e) {
             $this->conexion->cerrar_conexion();
             echo "Error: " . $e->getMessage();

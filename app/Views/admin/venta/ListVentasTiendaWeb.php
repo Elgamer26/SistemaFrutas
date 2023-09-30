@@ -54,7 +54,7 @@
                                                                     <?php if ($ListVenta_item["servientrega"] == 1) { ?>
                                                                         <a onclick="DescargarArchivo('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-warning btn-sm' title='ver foto'><i class='fa fa-eye'></i></a>
                                                                     <?php  } else { ?>
-                                                                        <a onclick="CargarFotoServientrega('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-success btn-sm' title='Subir foto'><i class='fa fa-image'></i></a>
+                                                                        - <a onclick="CargarFotoServientrega('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-success btn-sm' title='Subir foto'><i class='fa fa-image'></i></a>
                                                                     <?php  }  ?>
 
                                                                 <?php  } ?>

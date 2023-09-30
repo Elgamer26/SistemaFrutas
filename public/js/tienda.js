@@ -832,7 +832,7 @@ function CargarFotoServientrega(id) {
   $("#ModalSubirComprobante").modal("show");
 }
 
-function RegistrarComprobanteServientrega() {
+async function RegistrarComprobanteServientrega() {
   var id = document.getElementById("codigo_servi").value;
   var codigo = document.getElementById("codigo").value;
   let archivo = document.getElementById("file").files.length;
@@ -874,6 +874,7 @@ function RegistrarComprobanteServientrega() {
     url: BaseUrl + "Tienda/RegistrarComprobanteServientrega",
     type: "POST",
     data: formdata,
+    async: true,
     contentType: false,
     processData: false,
     success: function (resp) {

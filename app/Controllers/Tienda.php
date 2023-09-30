@@ -3,13 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\ModeloTienda;
+use App\MailPhp\envio_correo;
 
 class Tienda extends BaseController
 {
     protected $tienda;
+    protected $send_email;
     public function __construct()
     {
         session_start();
+        $this->send_email = new envio_correo();
         $this->tienda = new ModeloTienda();
     }
 
@@ -376,7 +379,41 @@ class Tienda extends BaseController
 
                 $valor_img = $this->tienda->RegistrarComprobanteServientrega($id, $codigo, $nombre_final);
                 if ($valor_img == 1) {
-                    move_uploaded_file($_FILES["img_extra"]["tmp_name"][$key], ROOTPATH . 'public/img/servientrega/' . $nombre_final);
+
+                    $imagen = ROOTPATH . 'public/img/servientrega/' . $nombre_final;
+                    move_uploaded_file($_FILES["img_extra"]["tmp_name"][$key], $imagen);
+
+                    $dataa = $this->tienda->TraerDatos_De_Imagen_Cliente($id);
+                    $correo = $dataa[2];
+                    $location = base_url();
+                    $html = '<!DOCTYPE html>
+                    <html lang="es">
+                    <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    </head>
+                    <body>
+                    <table style="border: 1px solid black; width: 100%; height: 258px;">
+                    <thead>
+                    <tr style="height: 73px;">
+                    <td style="text-align: center; background: blue; color: white; height: 73px;" colspan="2">
+                    <h1><strong>.:Guía de envio:.</strong></h1>
+                    </td>
+                    </tr>
+                    <tr style="height: 188px;">
+                    <td style="height: 134px; text-align: center;" width="20%">Estinado cliente cliente: <b>' . $dataa[0] . ' - ' . $dataa[1] . '</b>, reciba  su guía de servientrega - Código: ' . $dataa[3] . '</td>
+                    <center> <img src="' . base_url() . 'public/img/servientrega/' . $nombre_final . '" width="250px" height="150px" alt="' . $imagen . '" /> </center>
+                    </tr>
+                    <tr style="height: 188px;">
+                    <td style="height: 51px; text-align: center;" width="20%"><a href=' . $location . '>Link de nuestro sistema.</a></td>
+                    </tr>
+                    </thead>
+                    </table>
+                    </body>
+                    </html>';
+                    $sms = "Guía de envio - Servientrega";
+                    $this->send_email->enviar_correo($correo, $html, $sms);
                 }
                 $count++;
             }

@@ -88,13 +88,33 @@
 	</nav>
 </div>
 
-<!-- <script src="<?php echo base_url(); ?>public/js/tienda.js"></script> -->
+<script src="<?php echo base_url(); ?>public/js/tienda.js"></script>
 
 <script>
 	// var BaseUrl;
 	// BaseUrl = "<?php echo base_url(); ?>";
-
 	$(document).ready(function() {
 		paginartienda(1);
+		// console.log(BaseUrl + "Producto/listartipoprodNEW");
+
+		// // Realizar una solicitud HTTP al servicio web
+		// var xhr = new XMLHttpRequest();
+		// xhr.open("GET", BaseUrl + "Producto/listartipoprodNEW", true);
+		// xhr.onreadystatechange = function() {
+		// 	if (xhr.readyState === 4 && xhr.status === 200) {
+		// 		var responseData = JSON.parse(xhr.responseText);
+		// 		console.log(responseData[0]["tipo"])
+		// 	}
+		// };
+		// xhr.send();
+		// var xhr = new XMLHttpRequest();
+		// xhr.open("GET", "http://localhost:8080/SistemaFrutal/Producto/listartipoprodNEW", true);
+		// xhr.onreadystatechange = function() {
+		// 	if (xhr.readyState === 4 && xhr.status === 200) {
+		// 		var responseData = JSON.parse(xhr.responseText);
+		// 		console.log(responseData[0]["tipo"]);
+		// 	}
+		// };
+		// xhr.send();
 	});
 </script>

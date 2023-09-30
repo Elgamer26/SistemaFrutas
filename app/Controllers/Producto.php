@@ -96,7 +96,6 @@ class Producto extends BaseController
                 echo $valor[0];
                 exit();
             }
-            
         } else {
 
             $imagen = "producto.jpg";
@@ -108,7 +107,6 @@ class Producto extends BaseController
                 echo $valor[0];
                 exit();
             }
-
         }
     }
 
@@ -166,7 +164,7 @@ class Producto extends BaseController
         $count = 0;
         if (!empty($_FILES["img_extra"]["tmp_name"])) {
             foreach ($_FILES["img_extra"]["name"] as $key => $value) {
-                
+
                 $extra = explode('.', $_FILES["img_extra"]["name"][$key]);
                 $renombrar = sha1($_FILES["img_extra"]["name"][$key]) . time();
                 $nombre_final = $renombrar . "" . $count . "." . $extra[1];
@@ -314,5 +312,12 @@ class Producto extends BaseController
         # si no salimos allá arriba, todo va bien
         echo print_r($resultado);
         exit();
+    }
+
+
+    public function listartipoprodNEW()
+    {
+        $ListadoTipo = $this->producto->ListadoTipoProductoNEW();
+        echo json_encode($ListadoTipo, JSON_UNESCAPED_UNICODE);
     }
 }
