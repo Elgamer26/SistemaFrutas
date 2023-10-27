@@ -100,7 +100,7 @@ class ModeloTienda
                 producto.nombre,
                 tipo_producto.tipo,
                 producto.precio,
-                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
                 producto.cantidad,
                 producto.tamano 
                 FROM
@@ -118,7 +118,7 @@ class ModeloTienda
                 producto.nombre,
                 tipo_producto.tipo,
                 producto.precio,
-                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
                 producto.cantidad,
                 producto.tamano 
                 FROM
@@ -258,7 +258,7 @@ class ModeloTienda
                 producto.nombre,
                 tipo_producto.tipo,
                 producto.precio,
-                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
                 producto.cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
@@ -281,7 +281,7 @@ class ModeloTienda
                 producto.nombre,
                 tipo_producto.tipo,
                 producto.precio,
-                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
                 producto.cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
@@ -357,7 +357,7 @@ class ModeloTienda
             producto.nombre, 
             tipo_producto.tipo, 
             producto.precio, 
-            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,  
+            IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,  
             producto.cantidad, 
             producto.codigo, 
             producto.descripcion,
@@ -605,6 +605,24 @@ class ModeloTienda
             $query->execute();
             $result = $query->fetch();
 
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function TraerCategoriasTienda()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT * FROM tipo_producto WHERE estado = 1 ORDER BY id DESC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $result;

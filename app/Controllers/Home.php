@@ -20,9 +20,14 @@ class Home extends BaseController
         } else {
             $token = $_SESSION["NombUser"];
         }
+
+        $categorias = $this->tienda->TraerCategoriasTienda();
+
         $data = [
-            "token" => $token
+            "token" => $token,
+            "categorias" => $categorias
         ];
+        
         echo view('tienda/header', $data);
         echo view('tienda/index', $data);
         echo view('tienda/footer');
@@ -35,8 +40,12 @@ class Home extends BaseController
         } else {
             $token = $_SESSION["NombUser"];
         }
+
+        $categorias = $this->tienda->TraerCategoriasTienda();
+
         $data = [
-            "token" => $token
+            "token" => $token,
+            "categorias" => $categorias
         ];
         echo view('tienda/header', $data);
         echo view('tienda/product');
@@ -53,6 +62,7 @@ class Home extends BaseController
                 $token = $_SESSION["NombUser"];
             }
 
+            $categorias = $this->tienda->TraerCategoriasTienda();
             $producto = $this->tienda->TraerProductoTienda($id);
             $comentario = $this->tienda->TraerComentarioProductoNormal($id);
             $countcalificar = $this->tienda->TraercalificacionProducto($id);
@@ -64,6 +74,7 @@ class Home extends BaseController
                 "comentario" => $comentario,
                 "countcalificar" => $countcalificar,
                 "Imagen" => $Imagen,
+                "categorias" => $categorias
             ];
 
             echo view('tienda/header', $data);
@@ -82,6 +93,7 @@ class Home extends BaseController
                 $token = $_SESSION["NombUser"];
             }
 
+            $categorias = $this->tienda->TraerCategoriasTienda();
             $oferta = $this->tienda->TraerProductoTiendaOferta($id);
             $comentario = $this->tienda->TraerComentarioProducto($id);
             $countcalificar = $this->tienda->TraercalificacionProductoOferta($id);
@@ -93,6 +105,7 @@ class Home extends BaseController
                 "comentario" => $comentario,
                 "countcalificar" => $countcalificar,
                 "Imagen" => $Imagen,
+                "categorias" => $categorias
             ];
 
             echo view('tienda/header', $data);
@@ -109,8 +122,12 @@ class Home extends BaseController
         } else {
             $token = $_SESSION["NombUser"];
         }
+
+        $categorias = $this->tienda->TraerCategoriasTienda();
+
         $data = [
-            "token" => $token
+            "token" => $token,
+            "categorias" => $categorias
         ];
 
         echo view('tienda/header', $data);
@@ -143,10 +160,14 @@ class Home extends BaseController
             $detallecompra = $this->tienda->TraerProductosDelCliente($_SESSION["TokenClie"]);
         }
 
+        $categorias = $this->tienda->TraerCategoriasTienda();
+
         $data = [
             "token" => $token,
-            "detallecompra" => $detallecompra
+            "detallecompra" => $detallecompra,
+            "categorias" => $categorias
         ];
+        
         echo view('tienda/header', $data);
         echo view('tienda/detallecarrito');
         echo view('tienda/footer');

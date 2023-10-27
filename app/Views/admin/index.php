@@ -443,6 +443,15 @@
               </ul>
             </li>
 
+            <li class="nav-item reporters_p" style="background: red; color: white;">
+              <a onclick="CerraSesion();" class="nav-link">
+                <i class="nav-icon fa fa-circle" style="color: white"></i>
+                <p style="color: white">
+                  SALIR
+                </p>
+              </a>
+            </li>
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

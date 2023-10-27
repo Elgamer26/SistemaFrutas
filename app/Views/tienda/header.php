@@ -72,9 +72,11 @@
             </div>
         </div>
     </div>
-    <div class="logo">
+    <div class="logo" style="
+                height: 130px;
+                padding: 0;">
         <a href="<?php echo base_url(); ?>">
-            <h1>Tienda Online</h1>
+            <img src="<?php echo base_url(); ?>/public/img/logo.png" width="170" alt="logo.png">
         </a>
     </div>
     <div class="header-bottom">
@@ -92,10 +94,44 @@
                                 </li>
                                 <li class="grid"><a href="<?php echo base_url(); ?>home/Nosotros">Nosotros</a>
                                 </li>
-                                <!-- <li class="grid"><a href="typo.html">Blog</a>
+
+                                <li class="grid"><a href="#">Caterorias</a>
+                                    <div class="mepanel" style="display: none;width: 500px;left: 100px; border-radius: 25px;">
+                                        <div class="row">
+                                            <div class="col5 me-one">
+                                                <ul>
+
+                                                    <?php if (!empty($categorias) && is_array($categorias)) {
+
+                                                        foreach ($categorias as $tipo_item) { ?>
+
+                                                            <li><a href="#"><?= esc($tipo_item["tipo"]); ?></a></li>
+
+                                                    <?php }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <!-- <div class="col1 me-one">
+										<ul>
+											<li><a href="products.html">GIRASOLES</a></li>
+											<li><a href="products.html">COCOTEROS</a></li>
+											<li><a href="products.html">PALMA</a></li>
+											<li><a href="products.html">MEDICINALES</a></li> 
+										</ul>	
+									</div>
+									<div class="col1 me-one">
+										<ul>
+											<li><a href="products.html">ARTIFICIALES</a></li>
+											<li><a href="products.html">PLANTA DE MANGO</a></li>
+											<li><a href="products.html">TROPICALES</a></li>
+											<li><a href="products.html">MANZANOS</a></li> 
+										</ul>	
+									</div> -->
+                                        </div>
+                                    </div>
                                 </li>
-                                <li class="grid"><a href="contact.html">Contact</a>
-                                </li> -->
+
                         </ul>
                     </div>
                     <div class="clearfix"> </div>

@@ -192,8 +192,8 @@ function MostrarClientesMasCompras(
         {
           label: nombre_grafico,
           data: cantidad,
-          backgroundColor: colores,
-          borderColor: colores,
+          backgroundColor: "#008d00",
+          borderColor: "#008d00",
           borderWidth: 1,
         },
       ],
@@ -262,8 +262,8 @@ function MostraProductosMasComprados(
         {
           label: nombre_grafico,
           data: cantidad,
-          backgroundColor: colores,
-          borderColor: colores,
+          backgroundColor: "#008d00",
+          borderColor: "#008d00",
           borderWidth: 1,
         },
       ],

@@ -55,7 +55,7 @@
 
                             <div class="form-group last mb-4">
                                 <label for="password"></label>
-                                <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Ingrese usuario">
+                                <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Ingrese password">
                             </div>
 
                             <div class="alert alert-danger text-center" id="error_logeo" style="color: white; display:none; text-align: center; background: red; border-radius: 15px; padding: 10px;  text-align: center;">

@@ -41,7 +41,20 @@
 </script>
 
 <br>
-<br>
+<div class="about" style="padding: 25px 0 0 0;">
+	<div class="container">
+		<div class="about-top grid-1">
+			<div class="col-md-4 about-left">
+			</div>
+			<div class="col-md-4 about-left" style="text-align: center; font-weight: bold;">
+				<h4 style="font-weight: bold;">PRODUCTOS DISPONIBLES</h4>
+			</div>
+			<div class="col-md-4 about-left">
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
 <br>
 
 <div class="container">
@@ -61,27 +74,12 @@
 	<div class="container">
 		<div class="product-top">
 			<div class="product-one" id="unir_listado_ofertas_">
-
 			</div>
-			<!-- <div class="product-one">
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="<?php echo base_url(); ?>public/tienda/images/p-5.png" alt="" /></a>
-							<div class="product-bottom">
-							<h3>Smart Watches</h3>
-							<p>Explore Now</p>
-							<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-						</div>
-						<div class="srch">
-							<span>-50%</span>
-						</div>
-					</div>
-				</div> -->
 		</div>
 	</div>
 </div>
 
-<div class="container">
+<div class="container" style="text-align: center;">
 	<nav aria-label="...">
 		<ul class="pagination" style="position: relative; left: 15px;" id="unir_paguinador_">
 		</ul>

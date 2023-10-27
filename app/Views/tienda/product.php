@@ -1,4 +1,18 @@
 <br>
+<div class="about" style="padding: 0 0 0 0;">
+	<div class="container">
+		<div class="about-top grid-1">
+			<div class="col-md-4 about-left">
+			</div>
+			<div class="col-md-4 about-left" style="text-align: center; font-weight: bold;">
+				<h4 style="font-weight: bold;">OFERTAS DISPONIBLES</h4>
+			</div>
+			<div class="col-md-4 about-left">
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
 <br>
 
 <div class="container">
@@ -24,7 +38,7 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container" style="text-align: center;">
 	<nav aria-label="...">
 		<ul class="pagination" style="position: relative; left: 15px;" id="unir_paguinador_oferta">
 		</ul>
