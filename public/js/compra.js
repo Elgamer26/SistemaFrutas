@@ -445,7 +445,8 @@ function guardar_detalle_compra_insumo(id) {
   $("#detalle_compra_insumo tbody#tbody_detalle_compra_insumo tr").each(
     function () {
       arrego_alimento.push($(this).find("td").eq(0).text());
-      arreglo_precio.push($(this).find("td").eq(3).text());
+      arreglo_precio.push($(this).find("#precio_a").val());
+      //arreglo_precio.push($(this).find("td").eq(3).text());
       arreglo_cantidad.push($(this).find("#cantida_a").val());
       arreglo_descuento.push($(this).find("#descuento_a").val());
       arreglo_subtotal.push($(this).find("td").eq(5).text());
@@ -719,7 +720,8 @@ function guardar_detalle_compra_material(id) {
   $("#detalle_compra_material tbody#tbody_detalle_compra_material tr").each(
     function () {
       arrego_alimento.push($(this).find("td").eq(0).text());
-      arreglo_precio.push($(this).find("td").eq(3).text());
+      arreglo_precio.push($(this).find("#precio_a").val());
+      //arreglo_precio.push($(this).find("td").eq(3).text());
       arreglo_cantidad.push($(this).find("#cantida_a").val());
       arreglo_descuento.push($(this).find("#descuento_a").val());
       arreglo_subtotal.push($(this).find("td").eq(5).text());

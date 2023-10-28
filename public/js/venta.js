@@ -1,7 +1,7 @@
 // registro de venta de productos
 function RegistraVentaproducto() {
   Swal.fire({
-    title: "Guardar venta de insumo?",
+    title: "Guardar venta de producto?",
     text: "La venta se guardará en el sistema!",
     icon: "warning",
     showCancelButton: true,
@@ -115,7 +115,8 @@ function guardardetalleventa(id) {
       arrego_producto.push($(this).find("td").eq(0).text());
       arreglo_cantidad.push($(this).find("#cantida_a").val());
       arreglo_sale.push($(this).find("td").eq(3).text());
-      arreglo_precio.push($(this).find("td").eq(4).text());
+      arreglo_precio.push($(this).find("#precio_a").val());
+      //arreglo_precio.push($(this).find("td").eq(4).text());
       arreglo_desc_dolar.push($(this).find("#descuento_a").val());
 
       arreglo_oferta.push($(this).find("td").eq(6).text());
@@ -134,6 +135,8 @@ function guardardetalleventa(id) {
   var oferta = arreglo_oferta.toString();
   var desc_oferta = arreglo_desc_oferta.toString();
   var subtotals = arreglo_subtotal.toString();
+
+  console.log(precio);
 
   if (count == 0) {
     return false;
@@ -154,6 +157,9 @@ function guardardetalleventa(id) {
       subtotals: subtotals,
     },
   }).done(function (resp) {
+
+    console.log(resp);
+
     $(".carro").LoadingOverlay("hide");
 
     if (resp > 0) {

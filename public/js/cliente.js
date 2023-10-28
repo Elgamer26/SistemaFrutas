@@ -25,6 +25,23 @@ $(document).on("click", "#btn_aceptar", function () {
         $("#none_usu").hide();
         $("#none_pass").hide();
         $("#error_logeo").show(2000);
+
+        $.ajax({
+          url: BaseUrl + "cliente/BloquearUsuario",
+          type: "POST",
+          data: { usuario: usuario, password: password },
+        }).done(function (log) {
+          console.log(log);
+
+          if (log >= 4) {
+            return Swal.fire({
+              icon: "warning",
+              title: "Usuario bloqueado..",
+              text: "Usuario bloqueado por intentos fallidos!",
+            });
+          }
+        });
+
         return false;
       } else {
         var data = JSON.parse(responce);
@@ -33,6 +50,12 @@ $(document).on("click", "#btn_aceptar", function () {
             icon: "error",
             title: "Usuario inactivo",
             text: "El usuario se encuentra inactivo!",
+          });
+        } else if (data[3] >= 4) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Usuario bloqueado...",
+            text: "Usuario bloqueado por intentos fallidos, puede recuperar el usuario mediante el correo!",
           });
         } else {
           funcion = "session";
@@ -351,7 +374,6 @@ function RegistraClienteTienda() {
     contentType: false,
     processData: false,
     success: function (resp) {
-
       // console.log(resp);
 
       $(".card").LoadingOverlay("hide");

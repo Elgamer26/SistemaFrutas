@@ -727,7 +727,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta Web");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
-        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
+        $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -856,7 +856,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
-        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
+        $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -963,7 +963,7 @@ class Reporte extends BaseController
         $pdf->SetTitle("Venta Web");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
-        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
+        $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
@@ -1122,11 +1122,11 @@ class Reporte extends BaseController
         $venta = $this->reporte->DatosVentaWeb($id);
         $detalle = $this->reporte->DatoDetalleVentaWeb($id);
         /////////
-
+        
         $pdf->SetTitle("Venta");
         $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
-        $pdf->Image('https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=SoyUnDios&.png', 170, 0, 30);
+        $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);

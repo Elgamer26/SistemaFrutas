@@ -29,7 +29,8 @@ class ModeloCliente
             $sql = "SELECT
             cliente.id,
             cliente.estado,
-            cliente.nombre
+            cliente.nombre,
+            cliente.intentos
             FROM
             cliente where BINARY cliente.correo = ? and BINARY cliente.password = ?";
             $query = $c->prepare($sql);
@@ -191,7 +192,7 @@ class ModeloCliente
         try {
             $res = 0;
             $c = $this->conexion->conexionPDO();
-            $sql_a = "UPDATE cliente SET password = ? WHERE id = ?";
+            $sql_a = "UPDATE cliente SET password = ?, intentos = 0 WHERE id = ?";
             $querya = $c->prepare($sql_a);
             $querya->bindParam(1, $pass);
             $querya->bindParam(2, $id);
@@ -227,6 +228,52 @@ class ModeloCliente
             return $result;
             //cerramos la conexion
         } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function BloquearUsuario($correo, $password)
+    {
+        try {
+            $res = 0;
+
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT intentos FROM cliente WHERE correo = ? limit 1";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $correo);
+            $query->execute();
+            $result = $query->fetch();
+
+            if (!empty($result)){
+                $intentos = $result[0] + 1;
+
+                $sql_e = "UPDATE cliente SET intentos = ? WHERE correo = ?";
+                $querya = $c->prepare($sql_e);
+                $querya->bindParam(1, $intentos);
+                $querya->bindParam(2, $correo);
+                
+                if ($querya->execute()) {
+    
+                    $sql_o = "SELECT intentos FROM cliente WHERE correo = ? limit 1";
+                    $query_o = $c->prepare($sql_o);
+                    $query_o->bindParam(1, $correo);
+                    $query_o->execute();
+                    $estado = $query_o->fetch();
+                    $res = $estado[0];
+    
+                } else {
+                    $res = 0;
+                }
+            }else {
+                $res = 0;
+            }
+        
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $res;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
             echo "Error: " . $e->getMessage();
         }
         exit();

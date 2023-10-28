@@ -374,7 +374,6 @@
         $("#ModalBuscarOferta").modal("show");
     }
 
-
     $(".Enviar").on("click", function() {
         var iva = $("#iva").val();
         var id = $(this).parents("tr").find("td")[0].innerHTML;
@@ -408,7 +407,9 @@
         datos_agg += "<td>" + alimento + "</td>";
         datos_agg += "<td><input id='cantida_a' style='width: 100px;' type='number' min='1' class='form-control' value='1' placeholder='cantidad' /></td>";
         datos_agg += "<td>1</td>";
-        datos_agg += "<td>" + precio + "</td>";
+        datos_agg += "<td><input id='precio_a' style='width: 100px;' type='text' class='form-control' value='" + precio + "' placeholder='precio' onkeypress='return filterfloat(event, this);' /></td>";
+
+        // datos_agg += "<td>" + precio + "</td>";
         datos_agg += "<td><input id='descuento_a' style='width: 100px;' type='text' class='form-control' value='0' placeholder='descuento' onkeypress='return soloNumeros(event);' /></td>";
         datos_agg += "<td>No oferta</td>";
         datos_agg += "<td>0</td>";
@@ -470,7 +471,7 @@
         datos_agg += "<td>" + alimento + "</td>";
         datos_agg += "<td><input id='cantida_a' style='width: 100px;' type='number' min='1' class='form-control' value='1' placeholder='cantidad' /></td>";
         datos_agg += "<td>" + sale + "</td>";
-        datos_agg += "<td>" + precio + "</td>";
+        datos_agg += "<td><input id='precio_a' style='width: 100px;' type='text' class='form-control' value='" + precio + "' placeholder='precio' onkeypress='return filterfloat(event, this);' /></td>";
         datos_agg += "<td><input id='descuento_a' style='width: 100px;' type='text' class='form-control' value='0' placeholder='descuento' onkeypress='return soloNumeros(event);' /></td>";
         datos_agg += "<td>" + oferta.toString() + "</td>";
         datos_agg += "<td>" + descuento_oferta + "</td>";
@@ -503,7 +504,7 @@
     $("#tbody_detalle_venta_producto").on("keyup", "#cantida_a", function() {
         var cantidad = $(this).parents("tr").find('input[type="number"]').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
 
         var oferta = $(this).parents("tr").find("td")[6].innerHTML;
         var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;
@@ -546,7 +547,7 @@
     $("#tbody_detalle_venta_producto").on("change", "#cantida_a", function() {
         var cantidad = $(this).parents("tr").find('input[type="number"]').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
 
         var oferta = $(this).parents("tr").find("td")[6].innerHTML;
         var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;
@@ -587,7 +588,50 @@
     $("#tbody_detalle_venta_producto").on("keyup", "#descuento_a", function() {
         var cantidad = $(this).parents("tr").find('#cantida_a').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[4].innerHTML;
+        //var precio = $(this).parents("tr").find("td")[4].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
+
+        var oferta = $(this).parents("tr").find("td")[6].innerHTML;
+        var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;
+
+        if (oferta == "3x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(3);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "2x1") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = parseInt(cantidad) * parseInt(2);
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        } else if (oferta == "Descuento %") {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total - descuento_oferta).toFixed(2);
+            return sumartotalneto();
+
+        } else {
+
+            $(this).parents("tr").find("td")[3].innerHTML = cantidad;
+            var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+            $(this).parents("tr").find("td")[8].innerHTML = parseFloat(total).toFixed(2);
+            return sumartotalneto();
+
+        }
+
+    });
+
+    //para el PRECIO del producto
+    $("#tbody_detalle_venta_producto").on("keyup", "#precio_a", function() {
+        var cantidad = $(this).parents("tr").find('#cantida_a').val();
+        var descuento = $(this).parents("tr").find('#descuento_a').val();
+        //var precio = $(this).parents("tr").find("td")[4].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
 
         var oferta = $(this).parents("tr").find("td")[6].innerHTML;
         var descuento_oferta = $(this).parents("tr").find("td")[7].innerHTML;

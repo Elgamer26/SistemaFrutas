@@ -38,6 +38,19 @@ class Cliente extends BaseController
         }
     }
 
+    public function BloquearUsuario()
+    {
+        if ($this->request->getMethod() == "post") {
+
+            $cliente = $this->request->getPost('usuario');
+            $password = $this->request->getPost('password');
+
+            $repuesta_create = $this->cliente->BloquearUsuario($cliente, $password);
+            echo $repuesta_create;
+            exit();
+        }
+    }
+
     public function CraerTokenCliente()
     {
         if ($this->request->getMethod() == "post") {

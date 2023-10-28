@@ -1,0 +1,70 @@
+CRITICAL - 2023-10-28 22:51:22 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:51:47 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:51:48 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:51:48 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:51:49 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:51:50 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:52:44 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:53:13 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:54:18 --> Cannot use a scalar value as an array
+in APPPATH\Models\ModeloCliente.php on line 260.
+ 1 APPPATH\Controllers\Cliente.php(48): App\Models\ModeloCliente->BloquearUsuario('elgamer-26@hotmail.com', '1233')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-10-28 22:54:30 --> Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 49.
+ 1 APPPATH\Controllers\Cliente.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\SistemaFrutal\\app\\Controllers\\Cliente.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Cliente->BloquearUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

@@ -156,7 +156,7 @@
                     <div class="card-footer">
                         <?php echo $accion; ?> - <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/CompraInsumos/list/0');" class='btn btn-danger'>Volver</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -298,7 +298,8 @@
         datos_agg += "<td hidden for='id'>" + id + "</td>";
         datos_agg += "<td>" + alimento + "</td>";
         datos_agg += "<td><input id='cantida_a' style='width: 100px;' type='number' min='1' class='form-control' value='1' placeholder='cantidad' /></td>";
-        datos_agg += "<td>" + precio + "</td>";
+        // datos_agg += "<td>" + precio + "</td>";
+        datos_agg += "<td><input id='precio_a' style='width: 100px;' type='text' class='form-control' value='" + precio + "' placeholder='precio' onkeypress='return filterfloat(event, this);' /></td>";
         datos_agg += "<td><input id='descuento_a' style='width: 100px;' type='text' class='form-control' value='0' placeholder='descuento' onkeypress='return soloNumeros(event);' /></td>";
         datos_agg += "<td>" + precio + "</td>";
         datos_agg +=
@@ -330,7 +331,7 @@
     $("#tbody_detalle_compra_insumo").on("keyup", "#cantida_a", function() {
         var cantidad = $(this).parents("tr").find('input[type="number"]').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
         var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
         $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
         sumartotalneto();
@@ -339,7 +340,7 @@
     $("#tbody_detalle_compra_insumo").on("change", "#cantida_a", function() {
         var cantidad = $(this).parents("tr").find('input[type="number"]').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
         var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
         $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
         sumartotalneto();
@@ -349,7 +350,18 @@
     $("#tbody_detalle_compra_insumo").on("keyup", "#descuento_a", function() {
         var cantidad = $(this).parents("tr").find('#cantida_a').val();
         var descuento = $(this).parents("tr").find('#descuento_a').val();
-        var precio = $(this).parents("tr").find("td")[3].innerHTML;
+        var precio = $(this).parents("tr").find('#precio_a').val();
+        var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
+        $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
+        sumartotalneto();
+    });
+
+    //para el precio del producto
+    $("#tbody_detalle_compra_insumo").on("keyup", "#precio_a", function() {
+        var cantidad = $(this).parents("tr").find('#cantida_a').val();
+        var descuento = $(this).parents("tr").find('#descuento_a').val();
+        var precio = $(this).parents("tr").find('#precio_a').val();
+        //$(this).parents("tr").find("td")[3].innerHTML;
         var total = parseFloat(precio).toFixed(2) * parseInt(cantidad) - parseInt(descuento);
         $(this).parents("tr").find("td")[5].innerHTML = parseFloat(total).toFixed(2);
         sumartotalneto();
