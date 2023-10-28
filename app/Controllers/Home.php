@@ -262,4 +262,36 @@ class Home extends BaseController
             }
         }
     }
+
+    // CATEGORIAS
+    public function Categoria($id)
+    {
+        if ($this->request->getMethod() == "get") {
+
+            if (!is_numeric($id)){
+                return redirect()->to(base_url() . 'home');
+            }
+
+            if (empty($_SESSION["TokenClie"])) {
+                $token = "NOTOKEN";
+            } else {
+                $token = $_SESSION["NombUser"];
+            }
+    
+            $categorias = $this->tienda->TraerCategoriasTienda();
+            $productos = $this->tienda->TraerProductosCategorias($id);
+    
+            $data = [
+                "token" => $token,
+                "categorias" => $categorias,
+                "productos" => $productos,
+                "id" =>  $id
+            ];
+
+            echo view('tienda/header', $data);
+            echo view('tienda/Categoria');
+            echo view('tienda/footer');
+
+        }
+    }
 }

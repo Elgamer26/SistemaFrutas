@@ -634,7 +634,7 @@ class ModeloProducto
                 tipo_producto.tipo,
                 producto.precio,
                 producto.descripcion,
-                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
                 producto.cantidad 
                 FROM
                 oferta
@@ -663,7 +663,7 @@ class ModeloProducto
                 tipo_producto.tipo,
                 producto.precio,
                 producto.descripcion,
-                IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
                 producto.cantidad 
                 FROM
                 oferta
@@ -966,7 +966,7 @@ class ModeloProducto
             oferta.id,
             producto.nombre,
             tipo_producto.tipo,
-            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+            IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
             oferta.fecha_fin,
             oferta.tipo_oferta 
             FROM
@@ -988,7 +988,6 @@ class ModeloProducto
         }
         exit();
     }
-
     
     function ListadoTipoProductoNEW()
     {
@@ -998,6 +997,26 @@ class ModeloProducto
             $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+
+    function TraerCantidadInsumo($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT cantidad FROM insumo WHERE id = ?";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetch();
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $result;

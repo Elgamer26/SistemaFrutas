@@ -397,12 +397,12 @@ class Tienda extends BaseController
                     <table style="border: 1px solid black; width: 100%; height: 258px;">
                     <thead>
                     <tr style="height: 73px;">
-                    <td style="text-align: center; background: blue; color: white; height: 73px;" colspan="2">
+                    <td style="text-align: center; background: #9bfab0; color: white; height: 73px;" colspan="2">
                     <h1><strong>.:Guía de envio:.</strong></h1>
                     </td>
                     </tr>
                     <tr style="height: 188px;">
-                    <td style="height: 134px; text-align: center;" width="20%">Estinado cliente cliente: <b>' . $dataa[0] . ' - ' . $dataa[1] . '</b>, reciba  su guía de servientrega - Código: ' . $dataa[3] . '</td>
+                    <td style="height: 134px; text-align: center;" width="20%">Estimado cliente cliente: <b>' . $dataa[0] . ' - ' . $dataa[1] . '</b>, reciba  su guía de servientrega - Código: ' . $dataa[3] . '</td>
                     <center> <img src="' . base_url() . 'public/img/servientrega/' . $nombre_final . '" width="250px" height="150px" alt="' . $imagen . '" /> </center>
                     </tr>
                     <tr style="height: 188px;">
@@ -430,6 +430,21 @@ class Tienda extends BaseController
         $id = $this->request->getPost('id');
         $valor = $this->tienda->DescargarArchivo($id);
         echo json_encode($valor, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
+
+    ////////////////
+    public function paginartiendaCategorias()
+    {
+        if ($this->request->getMethod() == "post") {
+            $partida = $this->request->getPost('partida');
+            $valor = $this->request->getPost('valor');
+            $id = $this->request->getPost('id');
+
+            $repuesta = $this->tienda->paginartiendaCategorias($partida, $valor, $id);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
         exit();
     }
 }

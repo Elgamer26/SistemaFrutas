@@ -409,6 +409,7 @@
 				let ciudad = $("#ciudad").val();
 				let direccion = $("#direccion").val();
 				let referencia = $("#referencia").val();
+				var count = 0;
 
 				var arrego_id = new Array();
 				var arreglo_cantidad = new Array();
@@ -432,7 +433,15 @@
 					arreglo_oferta.push($(this).find("td").eq(5).text());
 					arreglo_descuento.push($(this).find("td").eq(6).text());
 					arreglo_total.push($(this).find("td").eq(7).text());
+					count = count + 1;
 				});
+
+				if (count == 0){
+					return  swal.fire(
+							"No hay productos en el detalle",
+							"No hay productos en el detalle",
+							"warning");
+				}
 
 				//aqui combierto el arreglo a un string
 				var id = arrego_id.toString();

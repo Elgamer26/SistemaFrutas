@@ -51,9 +51,10 @@ class ModeloCliente
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "SELECT * FROM cliente WHERE createt = ? ORDER BY id DESC";
+            // $sql = "SELECT * FROM cliente WHERE createt = ? ORDER BY id DESC";
+            $sql = "SELECT * FROM cliente WHERE createt = createt ORDER BY nombre ASC";
             $query = $c->prepare($sql);
-            $query->bindParam(1, $valor);
+            // $query->bindParam(1, $valor);
             $query->execute();
             $result = $query->fetchAll();
             //cerramos la conexion

@@ -1361,4 +1361,194 @@ class ModeloTienda
         }
         exit();
     }
+
+
+    ///
+    function TraerProductosCategorias($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.id,
+            producto.nombre,
+            tipo_producto.tipo,
+            producto.precio,
+            IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
+            producto.cantidad,
+            producto.tamano 
+            FROM
+            producto
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
+            producto.estado = 1 AND
+            tipo_producto.id = ?
+            ORDER BY producto.nombre DESC";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    //////////////
+    function paginartiendaCategorias($partida, $valor, $id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+
+            $paginaactual = htmlspecialchars($partida, ENT_QUOTES, 'UTF-8');
+            if (!empty($valor)) {
+                $datos = $valor;
+                $sql = "SELECT
+                COUNT(*) 
+                FROM
+                producto
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                WHERE
+                producto.estado = 1 
+                AND producto.nombre LIKE '%" . $datos . "%' 
+                OR tipo_producto.tipo LIKE '%" . $datos . "%' 
+                OR producto.precio LIKE '%" . $datos . "%'";
+            } else {
+                $sql = "SELECT
+                COUNT(*) 
+                FROM
+                producto
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                WHERE
+                producto.estado = 1 ";
+            }
+            $query = $c->prepare($sql);
+            $query->execute();
+            $data = $query->fetch();
+            $arreglo = array();
+            //
+            foreach ($data as $respuesta) {
+                $arreglo[] = $respuesta;
+            }
+            //
+            $numlotes = 12;
+            $nropaguinas = ceil($arreglo[0] / $numlotes);
+            $lista = "";
+            $tabla = "";
+            //
+            if ($paginaactual > 1) {
+                $lista = $lista . ' <li class="page-item">
+                                        <a class="page-link" href="javascript:pagination(' . ($paginaactual - 1) . ');" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Anterior</span>
+                                        </a>
+                                    </li>';
+            }
+            //
+            for ($i = 1; $i <= $nropaguinas; $i++) {
+                if ($i == $paginaactual) {
+                    $lista = $lista . '<li class="page-item active"><a class="page-link" href="javascript:pagination(' . ($i) . ');">' . $i . '</a></li>';
+                } else {
+                    $lista = $lista . '<li class="page-item"><a class="page-link" href="javascript:pagination(' . ($i) . ');">' . $i . '</a></li>';
+                }
+            }
+            //
+            if ($paginaactual < $nropaguinas) {
+                $lista = $lista . ' <li class="page-item">
+                                        <a class="page-link" href="javascript:pagination(' . ($paginaactual + 1) . ');" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Próximo</span>
+                                        </a>
+                                    </li>';
+            }
+            //
+            if ($paginaactual <= 1) {
+                $limit = 0;
+            } else {
+                $limit = $numlotes * ($paginaactual - 1);
+            }
+            //
+            if (!empty($valor)) {
+                $datos = $valor;
+                $sql_p = "SELECT
+                producto.id,
+                producto.nombre,
+                tipo_producto.tipo,
+                producto.precio,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
+                producto.cantidad,
+                producto.tamano 
+                FROM
+                producto
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                WHERE
+                producto.estado = 1  AND
+                tipo_producto.id = ". $id ." 
+                ORDER BY producto.id DESC";
+            } else {
+                $sql_p = "SELECT
+                producto.id,
+                producto.nombre,
+                tipo_producto.tipo,
+                producto.precio,
+                IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
+                producto.cantidad,
+                producto.tamano 
+                FROM
+                producto
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                WHERE
+                producto.estado = 1 AND
+                tipo_producto.id = ". $id ." 
+                ORDER BY producto.id DESC";
+            }
+            //
+            $query_p = $c->prepare($sql_p);
+            $query_p->execute();
+            $result = $query_p->fetchAll();
+            $nombre = "";
+            $punos = "...";
+            foreach ($result as $respuesta) {
+
+                if (strlen($respuesta[1]) >= 23) {
+                    $nombre = substr($respuesta[1], 0, 23) .  $punos;
+                } else {
+                    $nombre = $respuesta[1];
+                }
+
+                $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
+                                        <div class="product-main simpleCart_shelfItem" >
+                                            <a href="' . base_url() . 'home/Detalle/' . $respuesta[0] . '" class="mask"><img class="img-responsive zoom-img" 
+                                            style="width: 200px;
+                                            height: 200px;
+                                            object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
+                                            <div class="product-bottom">
+                                                <p style="color: black;"> <b>' . $nombre . '</b> </p> 
+                                                <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
+                                                <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
+                                                <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
+                                                <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
+
+                if (!empty($_SESSION["TokenClie"])) {
+                    $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoNormal(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
+                }
+
+                $tabla = $tabla . '	   </div>
+                                        </div>
+                                    </div>';
+            }
+
+            $array = array(0 => $tabla, 1 => $lista);
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $array;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

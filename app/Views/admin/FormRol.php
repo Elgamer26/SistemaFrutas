@@ -11,7 +11,7 @@
     }
 
     input:checked[type="checkbox"] {
-        background: rgb(0, 123, 255);
+        background: #28a745;
     }
 
     input[type="checkbox"]:before {
@@ -72,7 +72,7 @@
                         <?php if ($color != "primary") {?>
 
                         <div class="col-md-12 p-3">
-                            <div class="box-header with-border center" style="text-align: center; background: orange; color:black; padding: -30px;">
+                            <div class="box-header with-border center" style="text-align: center; background: #28a745; color:black; padding: -30px;">
                                 <b>
                                     <h4 class="box-title"><i class="fa fa-key"></i> <b>Permisos del rol</b></h4>
                                 </b>

@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <div class="card card-warning">
+                                <div class="card card-success">
                                     <div class="card-header">
                                         <h3 class="card-title"><b>Detalle del producto </b> <i class="fa fa-cubes"></i></h3>
                                         <button onclick="BuscarProducto();" class="btn btn-danger btn-sm float-right"> <b>Buscar producto <i class="fa fa-search"></i></b> </button>
@@ -174,7 +174,7 @@
 <div class="modal fade" id="ModalBuscarProducto" tabindex="-1" role="dialog" aria-labelledby="ModalBuscarProductoLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background: #007bff;">
+            <div class="modal-header" style="background: #28a745;">
                 <h5 class="modal-title" id="ModalBuscarProductoLabel" style="color: white;"><b>Productos Disponibles</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -257,7 +257,7 @@
 <div class="modal fade" id="ModalBuscarOferta" tabindex="-1" role="dialog" aria-labelledby="ModalBuscarOfertaLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background: #ffc107;">
+            <div class="modal-header" style="background: #28a745;">
                 <h5 class="modal-title" id="ModalBuscarOfertaLabel" style="color: white;"><b>Ofertas Disponibles</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

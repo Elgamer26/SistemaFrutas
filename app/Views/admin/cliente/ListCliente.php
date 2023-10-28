@@ -39,6 +39,7 @@
                                                 <th>Direccion</th>
                                                 <th>Telefono</th>
                                                 <th>Estado</th>
+                                                <th>Creado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,6 +72,13 @@
                                                                 <span class="badge badge-danger">Inactivo</span>
                                                             <?php   } ?>
                                                         </td>
+                                                        <td>
+                                                            <?php if ($ListaCliente_item["createt"] == "1") {     ?>
+                                                                <span class="badge badge-default">Administración</span>
+                                                            <?php   } else {     ?>
+                                                                <span class="badge badge-default">Tienda</span>
+                                                            <?php   } ?>
+                                                        </td>
                                                     </tr>
 
                                                 <?php }
@@ -95,6 +103,7 @@
                                                 <th>Direccion</th>
                                                 <th>Telefono</th>
                                                 <th>Estado</th>
+                                                <th>Creado</th>
                                             </tr>
                                         </tfoot>
                                     </table>

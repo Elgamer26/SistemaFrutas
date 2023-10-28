@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <div class="card card-warning">
+                                <div class="card card-success">
                                     <div class="card-header">
                                         <h3 class="card-title"><b>Detalle de producción <i class="fa fa-cubes"></i> </b></h3>
                                     </div>
@@ -98,7 +98,7 @@
                                         <div class="row">
 
                                             <div class="col-12 col-sm-12">
-                                                <div class="card card-primary card-tabs">
+                                                <div class="card card-default card-tabs">
 
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">

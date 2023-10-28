@@ -18,6 +18,12 @@
 
 </head>
 
+<style>
+  .select2-selection {
+    height: 37px !important;
+  }
+</style>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 
   <!-- Preloader -->
@@ -84,7 +90,7 @@
           </a>
         </li>
 
-        <li style="background-color: red; border-radius: 50px;" class="nav-item dropdown">
+        <li hidden style="background-color: red; border-radius: 50px;" class="nav-item dropdown">
           <a class="nav-link" style="color: white;" onclick="CerraSesion();">
             <i class="fa fa-times"></i>
           </a>
@@ -159,11 +165,11 @@
                 <li class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ListadoCliente/tienda');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Clientes Tienda</p>
+                    <p>Clientes</p>
                   </a>
                 </li>
 
-                <li class="nav-item">
+                <li hidden class="nav-item">
                   <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/ListadoCliente/empresa');" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Clientes Empresa</p>

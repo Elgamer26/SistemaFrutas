@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <div class="card card-warning">
+                                <div class="card card-success">
                                     <div class="card-header">
                                         <h3 class="card-title"><b>Detalle del material <i class="fa fa-cubes"></i></h3>
                                         <button onclick="BuscarMaterial();" class="btn btn-danger btn-sm float-right"> <b>Buscar Material </b> <i class="fa fa-search"></i></b> </button>
@@ -166,7 +166,7 @@
 <div class="modal fade" id="ModalBuscarMaterial" tabindex="-1" role="dialog" aria-labelledby="ModalBuscarMaterialLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background: #007bff;">
+            <div class="modal-header" style="background: #28a745;">
                 <h5 class="modal-title" id="ModalBuscarMaterialLabel" style="color: white;"><b>Insumos Disponibles</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

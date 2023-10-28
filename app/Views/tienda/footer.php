@@ -74,7 +74,7 @@
 
             </div>
             <div class="col-md-6 footer-right">
-                <p>© 2023 Vovero Danielito. Venta de todo tipos de plantas</p>
+                <p>© 2023 Vivero Danielito. Venta de todo tipos de plantas</p>
             </div>
             <div class="clearfix"></div>
         </div>

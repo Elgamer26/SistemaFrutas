@@ -75,7 +75,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -182,7 +182,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -312,7 +312,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -350,7 +350,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -390,7 +390,7 @@ class Reporte extends BaseController
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->SetFont('Arial', 'B', 10);
             $pdf->Cell(10, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -433,7 +433,7 @@ class Reporte extends BaseController
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->SetFont('Arial', 'B', 10);
             $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -545,7 +545,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -583,7 +583,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -623,7 +623,7 @@ class Reporte extends BaseController
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->SetFont('Arial', 'B', 10);
             $pdf->Cell(10, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -666,7 +666,7 @@ class Reporte extends BaseController
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->SetFont('Arial', 'B', 10);
             $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -759,7 +759,7 @@ class Reporte extends BaseController
         if ($venta[17] != "efectivo") {
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
 
@@ -767,14 +767,14 @@ class Reporte extends BaseController
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
             $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
 
             $pdf->Ln(1);
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
         }
@@ -783,7 +783,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -887,7 +887,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -995,7 +995,7 @@ class Reporte extends BaseController
         if ($venta[17] != "efectivo") {
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->MultiCell(182, 5, utf8_decode("Ciudad : " . $venta[13]), 0, 0, 'R', 1);
 
@@ -1003,14 +1003,14 @@ class Reporte extends BaseController
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
             $pdf->MultiCell(182, 5, utf8_decode("Dirección : " . $venta[3]), 0, 0, 'R', 1);
 
             $pdf->Ln(1);
 
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->SetFillColor(25, 132, 151);
+            $pdf->SetFillColor(181, 217, 119);
 
             $pdf->MultiCell(182, 5, utf8_decode("Referencia : " . $venta[14]), 0, 0, 'R', 1);
         }
@@ -1019,7 +1019,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1157,7 +1157,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1412,7 +1412,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1504,7 +1504,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1596,7 +1596,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1682,7 +1682,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1761,7 +1761,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1840,7 +1840,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -1924,7 +1924,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -2016,7 +2016,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
@@ -2103,7 +2103,7 @@ class Reporte extends BaseController
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFillColor(25, 132, 151);
+        $pdf->SetFillColor(181, 217, 119);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);

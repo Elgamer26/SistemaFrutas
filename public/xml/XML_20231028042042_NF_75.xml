@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Factura>
+  <infoTributaria>
+    <ambiente>75</ambiente>
+    <tipoEmision>20231027231041</tipoEmision>
+    <razonSocial>nombre editado</razonSocial>
+    <nombreComercial>nombre editado</nombreComercial>
+    <ruc>1245</ruc>
+    <claveAcceso>1245</claveAcceso>
+    <codDoc>GA230624141357</codDoc>
+    <estab>2023-10-27 23:20:41</estab>
+    <ptoEmi>001</ptoEmi>
+    <secuencial>0075</secuencial>
+    <dirMatriz>nombre editado</dirMatriz>
+  </infoTributaria>
+  <infoFactura>
+    <fechaEmision>2023-10-27 23:20:41</fechaEmision>
+    <dirEstablecimiento>1</dirEstablecimiento>
+    <contribuyenteEspecial>editado tienda</contribuyenteEspecial>
+    <obligadoContabilidad>No</obligadoContabilidad>
+    <tipoIdentificacionComprador>Cedula</tipoIdentificacionComprador>
+    <razonSocialComprador>editado tienda</razonSocialComprador>
+    <identificacionComprador>343434</identificacionComprador>
+    <totalSinImpuestos>19.32</totalSinImpuestos>
+    <totalDescuento>0</totalDescuento>
+    <totalConImpuestos>
+      <totalImpuesto>
+        <codigo>75</codigo>
+        <codigoPorcentaje>%</codigoPorcentaje>
+        <descuentoAdicional>0</descuentoAdicional>
+        <baseImponible>efectivo</baseImponible>
+        <valor>0</valor>
+      </totalImpuesto>
+    </totalConImpuestos>
+    <propina>1</propina>
+    <importeTotal>1</importeTotal>
+    <moneda>DOLAR</moneda>
+  </infoFactura>
+  <detalles>
+    <detalle>
+      <codigoPrincipal>1</codigoPrincipal>
+      <codigoAuxiliar>1</codigoAuxiliar>
+      <descripcion>PLANTA EDITADA</descripcion>
+      <cantidad>1</cantidad>
+      <precioUnitario>159.00</precioUnitario>
+      <descuento>0.00</descuento>
+      <precioTotalSinImpuesto>159.00</precioTotalSinImpuesto>
+      <impuestos>
+        <impuesto>
+          <codigo>75</codigo>
+          <codigoPorcentaje>%</codigoPorcentaje>
+          <tarifa>No oferta</tarifa>
+          <baseImponible>001</baseImponible>
+          <valor>001</valor>
+        </impuesto>
+      </impuestos>
+    </detalle>
+    <detalle>
+      <codigoPrincipal>1</codigoPrincipal>
+      <codigoAuxiliar>1</codigoAuxiliar>
+      <descripcion>aaa</descripcion>
+      <cantidad>1</cantidad>
+      <precioUnitario>2.00</precioUnitario>
+      <descuento>0.00</descuento>
+      <precioTotalSinImpuesto>2.00</precioTotalSinImpuesto>
+      <impuestos>
+        <impuesto>
+          <codigo>75</codigo>
+          <codigoPorcentaje>%</codigoPorcentaje>
+          <tarifa>No oferta</tarifa>
+          <baseImponible>001</baseImponible>
+          <valor>001</valor>
+        </impuesto>
+      </impuestos>
+    </detalle>
+  </detalles>
+</Factura>

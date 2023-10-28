@@ -1,3 +1,9 @@
+<style>
+  .select2-selection {
+    height: 37px !important;
+  }
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">

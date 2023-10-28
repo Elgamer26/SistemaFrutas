@@ -351,6 +351,9 @@ function RegistraClienteTienda() {
     contentType: false,
     processData: false,
     success: function (resp) {
+
+      // console.log(resp);
+
       $(".card").LoadingOverlay("hide");
       if (resp > 0) {
         if (resp == 1) {
