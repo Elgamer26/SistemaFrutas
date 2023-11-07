@@ -43,7 +43,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Compra insumo");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -60,7 +60,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  $compra[3]);
@@ -150,7 +150,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Compra Material");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -167,7 +167,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  $compra[3]);
@@ -252,7 +252,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Produccion activa");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -272,7 +272,7 @@ class Reporte extends BaseController
         $pdf->Text(140, 54, $produccion[9]);
 
         // $pdf->SetFont('Arial', 'B', 10);
-        // $pdf->SetTextColor(255, 255, 255);
+        //  $pdf->SetTextColor(0, 0, 0);
         // $pdf->Text(15, 48, utf8_decode('Fecha incio:'));
         // $pdf->SetFont('Arial', '', 10);
         // $pdf->Text(38, 48,  $produccion[3]);
@@ -280,19 +280,19 @@ class Reporte extends BaseController
         $pdf->Ln(50);
 
         // $pdf->SetFont('Arial', 'B', 10);
-        // $pdf->SetTextColor(255, 255, 255);
+        //  $pdf->SetTextColor(0, 0, 0);
         // $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         // $pdf->SetFont('Arial', '', 10);
         // $pdf->Text(38, 54,  $produccion[3]);
 
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 54, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(38, 54,  $produccion[2]);
 
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 61, utf8_decode('Usuario:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(38, 61, $produccion[10]);
@@ -492,7 +492,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Produccion activa");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -512,7 +512,7 @@ class Reporte extends BaseController
         $pdf->Text(140, 54, $produccion[9]);
 
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha incio:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(38, 48,  $produccion[3]);
@@ -520,7 +520,7 @@ class Reporte extends BaseController
         $pdf->Ln(50);
 
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(38, 54,  $produccion[3]);
@@ -725,7 +725,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Venta Web");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
@@ -743,7 +743,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  utf8_decode($venta[12]));
@@ -854,7 +854,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Venta");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
@@ -872,7 +872,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  utf8_decode($venta[12]));
@@ -961,7 +961,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Venta Web");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
@@ -979,7 +979,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  utf8_decode($venta[12]));
@@ -1122,9 +1122,9 @@ class Reporte extends BaseController
         $venta = $this->reporte->DatosVentaWeb($id);
         $detalle = $this->reporte->DatoDetalleVentaWeb($id);
         /////////
-        
+
         $pdf->SetTitle("Venta");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->Image(base_url() . 'public/img/empresa/Vivero.png', 170, 0, 30);
         $pdf->SetFont('times', 'B', 13);
@@ -1142,7 +1142,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  utf8_decode($venta[12]));
@@ -1380,7 +1380,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de Venta");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1397,7 +1397,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(40, 48,  utf8_decode($fi));
@@ -1472,7 +1472,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de compra insumo");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1489,7 +1489,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(40, 48,  utf8_decode($fi));
@@ -1564,7 +1564,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de compra material");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1581,7 +1581,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(40, 48,  utf8_decode($fi));
@@ -1656,7 +1656,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de insumos");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1673,7 +1673,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Tipo:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(25, 48,  utf8_decode($valor));
@@ -1735,7 +1735,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de material");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1752,7 +1752,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Tipo:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(25, 48,  utf8_decode($valor));
@@ -1814,7 +1814,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de plantas");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1831,7 +1831,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Tipo:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(25, 48,  utf8_decode($valor));
@@ -1898,7 +1898,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de clientes");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -1915,7 +1915,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Estado:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(30, 48,  utf8_decode($valor));
@@ -1984,7 +1984,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle("Reporte de oferta");
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -2001,7 +2001,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(40, 48,  utf8_decode($fi));
@@ -2071,7 +2071,7 @@ class Reporte extends BaseController
         /////////
 
         $pdf->SetTitle(utf8_decode("Reporte de producción"));
-        $pdf->Image(base_url() . 'public/img/empresa/waves.png', -10, -1, 110);
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
         $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
@@ -2088,7 +2088,7 @@ class Reporte extends BaseController
 
         // Agregamos los datos del cliente
         $pdf->SetFont('Arial', 'B', 10);
-        $pdf->SetTextColor(255, 255, 255);
+        $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(40, 48,  utf8_decode($fi));

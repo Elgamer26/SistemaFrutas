@@ -278,4 +278,19 @@ class ModeloCliente
         }
         exit();
     }
+
+    // REACTIVAR CLIENTE BLOQUEADOS EN 24 HORAS
+    function ReactivarClienteDias()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "UPDATE cliente SET intentos = 0 WHERE estado = 1";
+            $query = $c->prepare($sql);
+            $query->execute();
+            //cerramos la conexion
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

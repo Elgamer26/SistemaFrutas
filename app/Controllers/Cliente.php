@@ -103,7 +103,7 @@ class Cliente extends BaseController
                     <table style="border: 1px solid black; width: 100%; height: 258px;">
                     <thead>
                     <tr style="height: 73px;">
-                    <td style="text-align: center; background: #9bfab0; color: white; height: 73px;" colspan="2">
+                    <td style="text-align: center; background: #9bfab0; color: black; height: 73px;" colspan="2">
                     <h1><strong>.:Password de cliente:.</strong></h1>
                     </td>
                     </tr>
@@ -168,7 +168,7 @@ class Cliente extends BaseController
                     <table style="border: 1px solid black; width: 100%; height: 258px;">
                     <thead>
                     <tr style="height: 73px;">
-                    <td style="text-align: center; background: #9bfab0; color: white; height: 73px;" colspan="2">
+                    <td style="text-align: center; background: #9bfab0; color: black; height: 73px;" colspan="2">
                     <h1><strong>.:Password de cliente:.</strong></h1>
                     </td>
                     </tr>
@@ -257,7 +257,7 @@ class Cliente extends BaseController
                     <table style="border: 1px solid black; width: 100%; height: 258px;">
                     <thead>
                     <tr style="height: 73px;">
-                    <td style="text-align: center; background: #9bfab0; color: white; height: 73px;" colspan="2">
+                    <td style="text-align: center; background: #9bfab0; color: black; height: 73px;" colspan="2">
                     <h1><strong>.:Password de cliente:.</strong></h1>
                     </td>
                     </tr>
@@ -287,5 +287,9 @@ class Cliente extends BaseController
             }
             exit();
         }
+    }
+
+    public function ReactivarClienteDias() {
+        $activar = $this->cliente->ReactivarClienteDias();
     }
 }

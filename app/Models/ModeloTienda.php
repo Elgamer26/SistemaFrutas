@@ -63,7 +63,7 @@ class ModeloTienda
             //
             if ($paginaactual > 1) {
                 $lista = $lista . ' <li class="page-item">
-                                        <a class="page-link" href="javascript:pagination(' . ($paginaactual - 1) . ');" aria-label="Previous">
+                                        <a class="page-link" href="javascript:paginartienda(' . ($paginaactual - 1) . ');" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                             <span class="sr-only">Anterior</span>
                                         </a>
@@ -72,15 +72,15 @@ class ModeloTienda
             //
             for ($i = 1; $i <= $nropaguinas; $i++) {
                 if ($i == $paginaactual) {
-                    $lista = $lista . '<li class="page-item active"><a class="page-link" href="javascript:pagination(' . ($i) . ');">' . $i . '</a></li>';
+                    $lista = $lista . '<li class="page-item active"><a class="page-link" href="javascript:paginartienda(' . ($i) . ');">' . $i . '</a></li>';
                 } else {
-                    $lista = $lista . '<li class="page-item"><a class="page-link" href="javascript:pagination(' . ($i) . ');">' . $i . '</a></li>';
+                    $lista = $lista . '<li class="page-item"><a class="page-link" href="javascript:paginartienda(' . ($i) . ');">' . $i . '</a></li>';
                 }
             }
             //
             if ($paginaactual < $nropaguinas) {
                 $lista = $lista . ' <li class="page-item">
-                                        <a class="page-link" href="javascript:pagination(' . ($paginaactual + 1) . ');" aria-label="Next">
+                                        <a class="page-link" href="javascript:paginartienda(' . ($paginaactual + 1) . ');" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                             <span class="sr-only">Próximo</span>
                                         </a>
@@ -221,7 +221,7 @@ class ModeloTienda
             //
             if ($paginaactual > 1) {
                 $lista = $lista . ' <li class="page-item">
-                                        <a class="page-link" href="javascript:pagination(' . ($paginaactual - 1) . ');" aria-label="Previous">
+                                        <a class="page-link" href="javascript:paginartiendaofertas(' . ($paginaactual - 1) . ');" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                             <span class="sr-only">Anterior</span>
                                         </a>
@@ -230,15 +230,15 @@ class ModeloTienda
             //
             for ($i = 1; $i <= $nropaguinas; $i++) {
                 if ($i == $paginaactual) {
-                    $lista = $lista . '<li class="page-item active"><a class="page-link" href="javascript:pagination(' . ($i) . ');">' . $i . '</a></li>';
+                    $lista = $lista . '<li class="page-item active"><a class="page-link" href="javascript:paginartiendaofertas(' . ($i) . ');">' . $i . '</a></li>';
                 } else {
-                    $lista = $lista . '<li class="page-item"><a class="page-link" href="javascript:pagination(' . ($i) . ');">' . $i . '</a></li>';
+                    $lista = $lista . '<li class="page-item"><a class="page-link" href="javascript:paginartiendaofertas(' . ($i) . ');">' . $i . '</a></li>';
                 }
             }
             //
             if ($paginaactual < $nropaguinas) {
                 $lista = $lista . ' <li class="page-item">
-                                        <a class="page-link" href="javascript:pagination(' . ($paginaactual + 1) . ');" aria-label="Next">
+                                        <a class="page-link" href="javascript:paginartiendaofertas(' . ($paginaactual + 1) . ');" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                             <span class="sr-only">Próximo</span>
                                         </a>

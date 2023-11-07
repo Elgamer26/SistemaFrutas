@@ -15,6 +15,7 @@ $(document).on("click", "#btn_aceptar", function () {
   } else {
     $("#none_usu").hide();
     $("#none_pass").hide();
+    $("#error_logeo").hide();
 
     $.ajax({
       url: BaseUrl + "cliente/CredencialesCliente",
@@ -31,13 +32,13 @@ $(document).on("click", "#btn_aceptar", function () {
           type: "POST",
           data: { usuario: usuario, password: password },
         }).done(function (log) {
-          console.log(log);
+          //console.log(log);
 
           if (log >= 4) {
             return Swal.fire({
               icon: "warning",
               title: "Usuario bloqueado..",
-              text: "Usuario bloqueado por intentos fallidos!",
+              text: "Usuario bloqueado por intentos fallidos!, debe esperar 24 horas para volver a intentar.",
             });
           }
         });
@@ -55,7 +56,7 @@ $(document).on("click", "#btn_aceptar", function () {
           return Swal.fire({
             icon: "warning",
             title: "Usuario bloqueado...",
-            text: "Usuario bloqueado por intentos fallidos, puede recuperar el usuario mediante el correo!",
+            text: "Usuario bloqueado por intentos fallidos, puede recuperar el usuario mediante el correo o esperar 24 horas para volver a intentar!",
           });
         } else {
           funcion = "session";

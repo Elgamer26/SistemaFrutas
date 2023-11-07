@@ -267,7 +267,7 @@ class Producto extends BaseController
 
         $sms = [];
         $url = base_url();
-        for ($i = 0; $i < count($cliente[0]); $i++) {
+        for ($i = 0; $i < count($cliente); $i++) {
             //  if (mb_strlen($cliente[$i]["telefono"]) == 10) {
             $telefono = substr($cliente[$i]["telefono"], 1);
             $postal = "593" . $telefono;

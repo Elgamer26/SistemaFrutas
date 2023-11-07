@@ -225,7 +225,7 @@ class ModeloProveedor
         try {
             $result = 0;
             $c = $this->conexion->conexionPDO();
-            $sql = "INSERT INTO DetalleCompra (compra_id, insumo_id, precio, cantidad, descuento, total) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO detallecompra (compra_id, insumo_id, precio, cantidad, descuento, total) VALUES (?,?,?,?,?,?)";
 
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
@@ -336,7 +336,7 @@ class ModeloProveedor
         try {
             $result = 0;
             $c = $this->conexion->conexionPDO();
-            $sql = "INSERT INTO DetalleCompraMaterial (compra_id, material_id, precio, cantidad, descuento, total) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO detallecompramaterial (compra_id, material_id, precio, cantidad, descuento, total) VALUES (?,?,?,?,?,?)";
 
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);

@@ -154,7 +154,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <?php echo $accion; ?> - <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/CompraInsumos/list/0');" class='btn btn-danger'>Volver</a>
+                        <?php echo $accion; ?> - <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/CompraMaterial/list/0');" class='btn btn-danger'>Volver</a>
                     </div>
 
                 </div>
