@@ -83,20 +83,20 @@
     <div class="header-bottom">
         <div class="container">
             <div class="header">
-                <div class="col-md-9 header-left">
+                <div class="col-md-12 header-left">
                     <div class="top-nav">
                         <ul class="memenu skyblue">
                             <li class="active"><a href="<?php echo base_url(); ?>">Inicio</a></li>
                             <li class="grid"><a href="<?php echo base_url(); ?>home/ofertas">Ofertas</a>
                             </li>
-                                 <?php if ($token != "NOTOKEN") { ?>
+                            <?php if ($token != "NOTOKEN") { ?>
                                 <li class="grid"><a href="<?php echo base_url(); ?>home/detallecarrito">Detalle carrito</a>
                                 <?php } ?>
                                 </li>
                                 <li class="grid"><a href="<?php echo base_url(); ?>home/Nosotros">Nosotros</a>
                                 </li>
 
-                                <li class="grid"><a href="#">Caterorias</a>
+                                <li class="grid"><a href="#">Categorias</a>
                                     <div class="mepanel" style="display: none;width: 500px;left: 100px; border-radius: 25px;">
                                         <div class="row">
                                             <div class="col5 me-one">
@@ -113,7 +113,7 @@
                                                     ?>
                                                 </ul>
                                             </div>
-                                            
+
                                             <!-- <div class="col1 me-one">
 										<ul>
 											<li><a href="products.html">GIRASOLES</a></li>
@@ -130,13 +130,15 @@
 											<li><a href="products.html">MANZANOS</a></li> 
 										</ul>	
 									</div> -->
-
                                         </div>
                                     </div>
                                 </li>
 
                                 <li class="grid"><a target="_blank" href="https://www.servientrega.com/wps/portal/rastreo-envio/!ut/p/z1/jY9PC4JAEMU_SwevzvgvpNtGUEYaBZHNJTS21VhdWU2_flJdglqa2xt-7z0eEKRAddaXIutKVWdy1CeanoMw8lfoO9tlsvBxt5-7ceKwyIsQjk8AfxxDoH_8BoDM8UcgQ4XLYvcNGDLWQEKq_DWX1bkXCiDNr1xzbd_1-C66rmlnFlo4DIMtlBKS2xdVWfjNUqi2g_SThKY6pHgLZL9hkwdwm1Ut/dz/d5/L2dBISEvZ0FBIS9nQSEh/">Rastreo de servientrega</a>
 
+                                <?php if ($token != "NOTOKEN") { ?>
+                                <li class="grid"><a href="<?php echo base_url(); ?>home/EstadoPedidos">Estado de pedidos</a>
+                                <?php } ?>
                         </ul>
                     </div>
                     <div class="clearfix"> </div>

@@ -43,7 +43,7 @@
                     La troncal.
                 </h4>
                 <h5 style="color: white">0989376730</h5>
-                <p><a>ViveroDamielito@hotmail.com</a></p>
+                <p><a>ViveroDanielito@hotmail.com</a></p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -84,7 +84,6 @@
 </body>
 
 </html>
-
 
 <script src="<?php echo base_url(); ?>public/js/tienda.js"></script>
 

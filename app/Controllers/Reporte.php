@@ -1362,7 +1362,7 @@ class Reporte extends BaseController
     }
 
     /////////////// MODULO REPORTES
-    public function reporteventaModulo($fi, $ff)
+    public function reporteventaModulo($fi, $ff, $estado)
     {
         $pdf = new \FPDF('P', 'mm', 'A4');
         $pdf->AliasNbPages();
@@ -1376,7 +1376,15 @@ class Reporte extends BaseController
         $empresa = new Reporte();
         $datoempresa = $empresa->DatosEmpresaLLamer();
 
-        $detalle = $this->reporte->DatosReporteVenta($fi, $ff);
+        $saberCompras = "";
+        if ($estado == 0) {
+            $saberCompras = "Tienda";
+            $detalle = $this->reporte->DatosReporteVenta($fi, $ff);
+        } else {
+            $saberCompras = "Web";
+            $detalle = $this->reporte->DatosReporteVentaWeb($fi, $ff);
+        }
+
         /////////
 
         $pdf->SetTitle("Reporte de Venta");
@@ -1387,7 +1395,7 @@ class Reporte extends BaseController
         $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
         $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
         $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
-        $pdf->Text(90, 39, "Reporte de venta", 1, '', 'C', 1);
+        $pdf->Text(90, 39, "Reporte de venta " . $saberCompras, 1, '', 'C', 1);
 
         //información de # de factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -1652,7 +1660,12 @@ class Reporte extends BaseController
         $empresa = new Reporte();
         $datoempresa = $empresa->DatosEmpresaLLamer();
 
-        $detalle = $this->reporte->DatosReporteInsumos($id);
+        if ($id > 0) {
+            $detalle = $this->reporte->DatosReporteInsumos($id);
+        } else {
+            $detalle = $this->reporte->DatosReporteInsumosTodo();
+        }
+
         /////////
 
         $pdf->SetTitle("Reporte de insumos");
@@ -1731,7 +1744,12 @@ class Reporte extends BaseController
         $empresa = new Reporte();
         $datoempresa = $empresa->DatosEmpresaLLamer();
 
-        $detalle = $this->reporte->DatosReporteMaterial($id);
+        if ($id > 0) {
+            $detalle = $this->reporte->DatosReporteMaterial($id);
+        } else {
+            $detalle = $this->reporte->DatosReporteMaterialTodo();
+        }
+
         /////////
 
         $pdf->SetTitle("Reporte de material");
@@ -1810,7 +1828,12 @@ class Reporte extends BaseController
         $empresa = new Reporte();
         $datoempresa = $empresa->DatosEmpresaLLamer();
 
-        $detalle = $this->reporte->DatosReportePlantas($id);
+        if ($id > 0) {
+            $detalle = $this->reporte->DatosReportePlantas($id);
+        } else {
+            $detalle = $this->reporte->DatosReportePlantasTodo();
+        }
+       
         /////////
 
         $pdf->SetTitle("Reporte de plantas");

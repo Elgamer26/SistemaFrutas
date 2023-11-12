@@ -481,7 +481,7 @@ function guardar_detalle_compra_insumo(id) {
     if (resp > 0) {
       if (resp == 1) {
         Swal.fire({
-          title: "Campra realizada con exito",
+          title: "Compra realizada con exito",
           text: "Desea imprimir la compra??",
           icon: "warning",
           showCancelButton: true,
@@ -756,7 +756,7 @@ function guardar_detalle_compra_material(id) {
     if (resp > 0) {
       if (resp == 1) {
         Swal.fire({
-          title: "Campra realizada con exito",
+          title: "Compra realizada con exito",
           text: "Desea imprimir la compra??",
           icon: "warning",
           showCancelButton: true,

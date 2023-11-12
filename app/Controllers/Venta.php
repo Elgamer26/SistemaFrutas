@@ -64,4 +64,15 @@ class Venta extends BaseController
             exit();
         }
     }
+
+    ///////
+    public function RealizarEntrega()
+    {
+        if ($this->request->getMethod() == "post") {
+            $id = $this->request->getPost('id');
+            $repuesta = $this->venta->RealizarEntrega($id);
+            echo $repuesta;
+            exit();
+        }
+    }
 }

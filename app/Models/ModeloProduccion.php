@@ -385,7 +385,7 @@ class ModeloProduccion
                                                     <i class="fas fa-file"></i>
                                                 </a>
 
-                                                <a title="Ver Eliminar la producción" class="btn btn-sm bg-danger" onclick="EliminarProduccion(' . $respuesta[0] . ');">
+                                                <a title="Ver Eliminar la producción" class="btn btn-sm bg-danger" onclick="EliminarProduccion(' . $respuesta[0] . ', ' . $respuesta[6] . ', ' . $respuesta[11] . ');">
                                                     <i class="fas fa-times"></i> Eliminar producción
                                                 </a>
 
@@ -1032,7 +1032,7 @@ class ModeloProduccion
         exit();
     }
 
-    function EliminarProduccion($id)
+    function EliminarProduccion($id, $productoid, $cantidad)
     {
         try {
             $result = 0;
@@ -1041,7 +1041,41 @@ class ModeloProduccion
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
             if ($query->execute()) {
-                $result = 1;
+
+                $sql_p = "SELECT cantidad FROM producto WHERE id = ?";
+                $query_p = $c->prepare($sql_p);
+                $query_p->bindParam(1,  $productoid);
+                $query_p->execute();
+                $datap = $query_p->fetch();
+                $cantidadstok = $datap[0] - $cantidad;
+
+                $sql_m = "UPDATE producto SET cantidad = ? where id = ?";
+                $query_m = $c->prepare($sql_m);
+                $query_m->bindParam(1, $cantidadstok);
+                $query_m->bindParam(2, $productoid);
+                $query_m->execute();
+
+                if ($query_m->execute()) {
+
+                    $sql_pro = "SELECT cantidad FROM producto WHERE id = ?";
+                    $query_pro = $c->prepare($sql_pro);
+                    $query_pro->bindParam(1,  $productoid);
+                    $query_pro->execute();
+                    $datapro = $query_pro->fetch();
+                    
+                    if ($datapro[0] <= 0){
+                        $sql_n = "UPDATE producto SET cantidad = 0 where id = ?";
+                        $query_n = $c->prepare($sql_n);
+                        $query_n->bindParam(1, $productoid);
+                        $query_n->execute();
+                    }
+
+                    $result = 1;
+
+                } else {
+                    $result = 0;
+                } 
+                               
             } else {
                 $result = 0;
             }

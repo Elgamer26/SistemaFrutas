@@ -38,7 +38,8 @@
                                     <label for="insumo">Tipo material</label> <span id="insumo_olbligg" style="color: red;"></span>
                                     <select name="insumo" id="insumo" class="form-control" style="width: 100%;">
                                         <?php if (!empty($insumo) && is_array($insumo)) { ?>
-                                            <option value="0"> --Seleccione el tipo material--</option>
+                                            <option value=""> --Seleccione el tipo material--</option>
+                                            <option value="0"> TODO </option>
                                             <?php
                                             foreach ($insumo as $insumo_item) { ?>
                                                 <option value="<?= esc($insumo_item["id"]); ?>"><?= esc($insumo_item["tipo"]); ?> </option>
@@ -70,9 +71,10 @@
     $("#insumo").select2();
 
     $("#insumo").change(function() {
+        
         let id = $(this).val();
         let valor = $("#insumo option:selected").text();
-        if (id != 0) {
+        if (id != "") {
             var ifrm = document.getElementById("iframeMaterial");
             ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/ReporteMaterial/" + id + "/" + valor + "");
         }

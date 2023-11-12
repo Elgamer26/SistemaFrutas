@@ -36,11 +36,11 @@ class ModeloGraficos
                 INNER JOIN producto ON ventawebdetalle.productoid = producto.id
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
             WHERE
-                ventaweb.comprobante <> 'PayPal' 
+                ventaweb.comprobante <> 'PayPal' OR ventaweb.comprobante <> 'efectivo'
             GROUP BY
                 ventawebdetalle.productoid 
             ORDER BY
-            SUM( ventawebdetalle.sale ) DESC";
+            SUM( ventawebdetalle.sale ) DESC LIMIT 10";
             $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
@@ -70,11 +70,11 @@ class ModeloGraficos
                 INNER JOIN producto ON ventawebdetalle.productoid = producto.id
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
             WHERE
-                ventaweb.comprobante = 'PayPal' 
+                ventaweb.comprobante = 'PayPal' OR ventaweb.comprobante = 'efectivo'
             GROUP BY
                 ventawebdetalle.productoid 
             ORDER BY
-            SUM( ventawebdetalle.sale ) DESC";
+            SUM( ventawebdetalle.sale ) DESC LIMIT 10";
             $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();

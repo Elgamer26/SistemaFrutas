@@ -322,6 +322,13 @@
                   </a>
                 </li>
 
+                <li class="nav-item listado_venta_p">
+                  <a onclick="cargar_contenido('contenido_principal','<?php echo base_url(); ?>admin/Estado/pedidos/0');" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Estado de pedido</p>
+                  </a>
+                </li>
+
               </ul>
             </li>
 

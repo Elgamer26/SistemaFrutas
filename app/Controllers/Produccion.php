@@ -247,8 +247,12 @@ class Produccion extends BaseController
     public function EliminarProduccion()
     {
         if ($this->request->getMethod() == "post") {
+
             $id = $this->request->getPost('id');
-            $repuesta = $this->produccion->EliminarProduccion($id);
+            $productoid = $this->request->getPost('productoid');
+            $cantidad = $this->request->getPost('cantidad');
+
+            $repuesta = $this->produccion->EliminarProduccion($id, $productoid, $cantidad);
             echo $repuesta;
             exit();
         }

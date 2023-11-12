@@ -216,9 +216,7 @@ function IngresarProductoCarrito(id, precio) {
     } else {
       return Swal.fire(
         "No hay stock suficiente",
-        "No hay stock suficiente para la cantidad ingresada, " +
-          response +
-          "  :(",
+        "No hay stock suficiente para la cantidad ingresada",
         "warning"
       );
     }
@@ -290,9 +288,7 @@ function IngresarProductoCarritoOferta(id, precio) {
     } else {
       return Swal.fire(
         "No hay stock suficiente",
-        "No hay stock suficiente para la cantidad ingresada, " +
-          response +
-          "  :(",
+        "No hay stock suficiente para la cantidad ingresada",
         "warning"
       );
     }

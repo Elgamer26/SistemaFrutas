@@ -173,6 +173,27 @@ class Home extends BaseController
         echo view('tienda/footer');
     }
 
+    public function EstadoPedidos()
+    {
+        if (empty($_SESSION["TokenClie"])) {
+            $token = "NOTOKEN";
+            $detallecompra = [];
+        } else {
+            $token = $_SESSION["NombUser"];
+            $detallecompra = $this->tienda->TraerEstadoPedidos($_SESSION["TokenClie"]);
+        }
+        $categorias = $this->tienda->TraerCategoriasTienda();
+        $data = [
+            "token" => $token,
+            "detallecompra" => $detallecompra,
+            "categorias" => $categorias
+        ];
+        
+        echo view('tienda/header', $data);
+        echo view('tienda/EstadoPedido');
+        echo view('tienda/footer');
+    }
+
     ///////////////////// DASHBOARD DEL CLIENTE
     public function Perfil()
     {

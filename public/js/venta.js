@@ -157,18 +157,16 @@ function guardardetalleventa(id) {
       subtotals: subtotals,
     },
   }).done(function (resp) {
-
     console.log(resp);
 
     $(".carro").LoadingOverlay("hide");
 
     if (resp > 0) {
       if (resp == 1) {
-
         EnviarCorreVenta(parseInt(id));
 
         Swal.fire({
-          title: "Campra realizada con exito",
+          title: "Compra realizada con exito",
           text: "Desea imprimir la compra??",
           icon: "warning",
           showCancelButton: true,
@@ -213,8 +211,8 @@ async function EnviarCorreVenta(id) {
     url: BaseUrl + "Reporte/EnviarCorreVenta",
     type: "POST",
     data: {
-      id: id
-    }
+      id: id,
+    },
   });
   console.log(result);
 }
@@ -296,6 +294,53 @@ function AnularVnetaProducto(id) {
             return Swal.fire(
               "Venta anulada",
               "No se pudo anular la venta, error en la matrix" + response,
+              "error"
+            );
+          }
+        },
+      });
+    }
+  });
+}
+
+//////////////
+function RealizarEntrega(id) {
+  Swal.fire({
+    title: "Entrega de producto",
+    text: "Finalizar entrega de producto??",
+    icon: "warning",
+    showCancelButton: true,
+    showConfirmButton: true,
+    allowOutsideClick: false,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, finalizar!!",
+  }).then((result) => {
+    if (result.value) {
+      $.ajax({
+        type: "POST",
+        url: BaseUrl + "Venta/RealizarEntrega",
+        data: { id: id },
+        success: function (response) {
+
+          // console.log(response);
+
+          if (response > 0) {
+            if (response == 1) {
+              cargar_contenido(
+                "contenido_principal",
+                BaseUrl + "admin/Estado/pedidos/0"
+              );
+              return Swal.fire(
+                "Pedido entregado",
+                "El pedido fue entregado con exito",
+                "success"
+              );
+            }
+          } else {
+            return Swal.fire(
+              "Pedido error",
+              "No se pudo realizar el pedido, error en la matrix" + response,
               "error"
             );
           }

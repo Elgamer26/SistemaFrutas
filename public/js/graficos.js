@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////
 function TraerGraficoProductosMasVendidos() {
-  var tipo_grafico = "pie";
-  var nombre_grafico = "Pastel";
+  var tipo_grafico = "bar";
+  var nombre_grafico = "Barra";
   $.ajax({
     url: BaseUrl + "Graficos/TraerGraficoProductosMasVendidos",
     type: "GET",
@@ -70,8 +70,8 @@ function MostrarProdcutosMasVnedidos(
 
 ////////////////////////////////
 function TraerGraficoProductosMasVendidosOferta() {
-  var tipo_grafico = "doughnut";
-  var nombre_grafico = "Dona";
+  var tipo_grafico = "line";
+  var nombre_grafico = "Linea";
   $.ajax({
     url: BaseUrl + "Graficos/TraerGraficoProductosMasVendidosOferta",
     type: "GET",
@@ -152,7 +152,7 @@ function TraerGraficoClientesMasCompras() {
       var colores = [];
       var data = JSON.parse(response);
       for (var i = 0; i < data.length; i++) {
-        nombre_pr.push(data[i][0] + " " + data[i][1]);
+        nombre_pr.push(data[i][0]);
         cantidad.push(data[i][2]);
         colores.push(colores_rgb());
       }

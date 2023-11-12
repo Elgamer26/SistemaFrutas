@@ -303,4 +303,65 @@ class ModeloVenta
         }
         exit();
     }
+
+    function TraerEstadoPedidos()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            servientrega.id,
+            CONCAT_WS( ' ', cliente.nombre, cliente.apellidos ) AS cliente,
+            cliente.cedula,
+            ventaweb.n_venta,
+            DATE(ventaweb.fecharegistro) as fecha,
+            servientrega.codigo,
+            servientrega.imagen,
+            servientrega.estado
+            FROM
+            ventaweb
+            INNER JOIN cliente ON ventaweb.cliente_id = cliente.id
+            INNER JOIN servientrega ON ventaweb.id = servientrega.id_venta 
+            WHERE
+            ventaweb.comprobante = 'efectivo'
+            ORDER BY
+            servientrega.estado DESC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    ///////////////////
+    function RealizarEntrega($id)
+    {
+        try {
+            $result = 0;
+
+            $c = $this->conexion->conexionPDO();
+            $sql = "UPDATE servientrega SET estado = 1 WHERE id = ?";
+
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id); 
+
+            if ($query->execute()) {
+                $result = 1;
+            } else {
+                $result = 0;
+            }
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

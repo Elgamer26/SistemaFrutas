@@ -33,17 +33,27 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Fecha inicio</label>
                                     <input type="date" value="<?php echo $fecha; ?>" class="form-control" id="fecha_cli_ini">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Fecha fin</label>
                                     <input type="date" value="<?php echo $fecha; ?>" class="form-control" id="fecha_cli_fin">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="estado">Estado</label> <span id="estado_olbligg" style="color: red;"></span>
+                                    <select name="estado" id="estado" class="form-control" style="width: 100%;">
+                                        <option value="0"> -- Tienda --</option>
+                                        <option value="1"> -- Web --</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -53,7 +63,6 @@
                                     <button class="btn btn-danger" onclick="VerReporteVneta();"> <i class="fa fa-eye"></i> Ver</button>
                                 </div>
                             </div>
-
 
                             <div class="col-lg-12">
                                 <center>
@@ -75,6 +84,7 @@
 
         var fecha_inicio = $("#fecha_cli_ini").val();
         var fecha_fin = $("#fecha_cli_fin").val();
+        var estado = $("#estado").val();
 
         if (fecha_inicio > fecha_fin) {
             return Swal.fire(
@@ -89,7 +99,7 @@
         }
 
         var ifrm = document.getElementById("iframe_venta");
-        ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/reporteventaModulo/" + fecha_inicio + "/" + fecha_fin + "");
+        ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/reporteventaModulo/" + fecha_inicio + "/" + fecha_fin + "/" + estado + "");
 
     }
 </script>

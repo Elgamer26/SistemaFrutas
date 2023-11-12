@@ -1551,4 +1551,39 @@ class ModeloTienda
         }
         exit();
     }
+
+    /////////////
+    function TraerEstadoPedidos($id)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            CONCAT_WS( ' ', cliente.nombre, cliente.apellidos ) AS cliente,
+            cliente.cedula,
+            ventaweb.n_venta,
+            DATE(ventaweb.fecharegistro) as fecha,
+            servientrega.codigo,
+            servientrega.imagen,
+            servientrega.estado
+            FROM
+            ventaweb
+            INNER JOIN cliente ON ventaweb.cliente_id = cliente.id
+            INNER JOIN servientrega ON ventaweb.id = servientrega.id_venta 
+            WHERE
+            ventaweb.comprobante = 'efectivo' AND cliente.id = ?
+            ORDER BY
+            servientrega.estado DESC ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

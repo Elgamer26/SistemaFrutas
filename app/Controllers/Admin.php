@@ -288,7 +288,7 @@ class Admin extends BaseController
                     'texto' => "Registro de Producto <i class='fa fa-cubes'></i>",
                     'accion' => "<button onclick='RegistraProducto();' class='btn btn-success'>Guardar</button>",
                     'color' => "success",
-                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '', '8' => '','9' => ''],
+                    'editar' => ['0' => '', '1' => rand(1, 999999999), '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '', '8' => '', '9' => ''],
                     'plus' => true,
                     'tipo' => $tipo,
                     'image' => true,
@@ -848,6 +848,18 @@ class Admin extends BaseController
                 ];
                 return view('admin/reporte/ReporteProduccion', $data);
             }
+        }
+    }
+
+    /////////// ESTADO DE PEDIDOS
+    public function Estado($valor, $id)
+    {
+        if ($this->request->getMethod() == "get") {
+            $ListEstados = $this->venta->TraerEstadoPedidos();
+            $data = [
+                'ListEstado' => $ListEstados
+            ];
+            return view('admin/venta/ListarEstadoPedidos', $data);
         }
     }
 }

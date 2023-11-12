@@ -974,7 +974,13 @@ function EditarFaseTipo() {
 }
 
 ///////ELIMINAR LA PRODUCCION
-function EliminarProduccion(id) {
+function EliminarProduccion(id, productoid, cantidad) {
+
+  // console.log(id);
+  // console.log(productoid);
+  // console.log(cantidad);
+  // return false;
+
   Swal.fire({
     title: "Eliminar la producción",
     text: "Desea eliminar la producción??",
@@ -992,8 +998,13 @@ function EliminarProduccion(id) {
         url: BaseUrl + "Produccion/EliminarProduccion",
         data: {
           id: id,
+          productoid: productoid,
+          cantidad: cantidad
         },
         success: function (response) {
+
+          // console.log(response);
+          
           if (response == 1) {
             pagination(1);
             return swal.fire(

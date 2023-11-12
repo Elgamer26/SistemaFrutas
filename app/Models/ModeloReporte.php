@@ -411,7 +411,42 @@ class ModeloReporte
             INNER JOIN ventaweb ON ventawebdetalle.ventaid = ventaweb.id
             INNER JOIN producto ON ventawebdetalle.productoid = producto.id 
         WHERE
-            ventaweb.comprobante != 'PayPal' and DATE(ventaweb.fecharegistro) BETWEEN ? and ?
+            DATE(ventaweb.fecharegistro) BETWEEN ? and ? 
+            and (ventaweb.comprobante <> 'PayPal' OR ventaweb.comprobante <> 'efectivo')
+        GROUP BY
+            ventawebdetalle.productoid ";
+            $query = $c->prepare($sql);
+            $query->bindParam(1, $fi);
+            $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteVentaWeb($fi, $ff)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            DATE(ventaweb.fecharegistro) AS fecharegistro,
+            COUNT( ventawebdetalle.cantidad ) AS cantidad,
+            SUM(ventawebdetalle.total) as total,
+            ventaweb.comprobante 
+        FROM
+            ventawebdetalle
+            INNER JOIN ventaweb ON ventawebdetalle.ventaid = ventaweb.id
+            INNER JOIN producto ON ventawebdetalle.productoid = producto.id 
+        WHERE
+            DATE(ventaweb.fecharegistro) BETWEEN ? and ? 
+            and (ventaweb.comprobante = 'PayPal' OR ventaweb.comprobante = 'efectivo')
         GROUP BY
             ventawebdetalle.productoid ";
             $query = $c->prepare($sql);
@@ -493,6 +528,32 @@ class ModeloReporte
         exit();
     }
 
+    function DatosReporteInsumosTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            nombre,
+            codigo,
+            precio,
+            (cantidad) as cantidad,
+            tipo_id 
+            FROM
+                insumo 
+            ORDER BY nombre ASC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function DatosReporteInsumos($id)
     {
         try {
@@ -549,6 +610,32 @@ class ModeloReporte
         exit();
     }
 
+    function DatosReporteMaterialTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            material.nombre,
+            material.codigo,
+            material.precio,
+            material.cantidad,
+            material.tipo_id 
+            FROM
+                material 
+            ORDER BY material.nombre ASC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function DatosReportePlantas($id)
     {
         try {
@@ -565,6 +652,32 @@ class ModeloReporte
             producto.tipo_id = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReportePlantasTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            producto.codigo,
+            producto.tipo_id,
+            producto.cantidad,
+            producto.precio 
+            FROM
+                producto 
+            ORDER BY producto.nombre ASC";
+            $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
             //cerramos la conexion
