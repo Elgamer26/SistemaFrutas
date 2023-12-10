@@ -51,4 +51,14 @@ class Graficos extends BaseController
             exit();
         }
     }
+
+    /////////
+    public function TraerGraficoGananciasPormeses()
+    {
+        if ($this->request->getMethod() == "get") {
+            $repuesta = $this->graficos->TraerGraficoGananciasPormeses();
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+    }
 }

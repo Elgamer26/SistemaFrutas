@@ -143,4 +143,25 @@ class ModeloGraficos
         }
         exit();
     }
+
+    function TraerGraficoGananciasPormeses()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT IFNULL(SUM(ventaweb.total),0) as total, tabla_temporal.nombre_mes as meses, tabla_temporal.numero_mes
+            FROM ventaweb 
+            RIGHT JOIN  tabla_temporal ON MONTH(ventaweb.fecha) = tabla_temporal.numero_mes 
+            GROUP BY tabla_temporal.numero_mes ORDER BY tabla_temporal.numero_mes ASC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
 }

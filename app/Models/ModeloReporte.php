@@ -48,7 +48,7 @@ class ModeloReporte
             compra.id,
             proveedor.ruc,
             proveedor.razon_social,
-            compra.fechac,
+            DATE_FORMAT(compra.fechac, '%d/%m/%Y') AS fechac,
             compra.n_compra,
             compra.subtotal,
             compra.impuesto,
@@ -113,7 +113,7 @@ class ModeloReporte
                 compra_material.id,
                 proveedor.ruc,
                 proveedor.razon_social,
-                compra_material.fechac,
+                DATE_FORMAT(compra_material.fechac, '%d/%m/%Y') AS fechac,
                 compra_material.n_compra,
                 compra_material.subtotal,
                 compra_material.impuesto,
@@ -272,7 +272,7 @@ class ModeloReporte
             $sql = "SELECT
             faseproduccion.produccion_id,
             fase.fase,
-            faseproduccion.fecha 
+            DATE_FORMAT(faseproduccion.fecha, '%d/%m/%Y') AS fecha  
             FROM
                 faseproduccion
                 INNER JOIN fase ON faseproduccion.fase_id = fase.id 
@@ -299,7 +299,7 @@ class ModeloReporte
             $sql = "SELECT
             perdida_produccion.produccion_id,
             usuario.nombres,
-            perdida_produccion.fecha,
+            DATE_FORMAT(perdida_produccion.fecha, '%d/%m/%Y') AS fecha,
             perdida_produccion.cantidad 
             FROM
                 perdida_produccion
@@ -334,7 +334,7 @@ class ModeloReporte
             ventaweb.subtotal,
             ventaweb.impuesto,
             ventaweb.total,
-            ventaweb.fecha,
+            DATE_FORMAT(ventaweb.fecha, '%d/%m/%Y') AS fecha,
             ventaweb.n_venta,
             ventaweb.comprobante,
             ventaweb.iva,
@@ -402,7 +402,7 @@ class ModeloReporte
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             producto.nombre,
-            DATE(ventaweb.fecharegistro) AS fecharegistro,
+            DATE_FORMAT(ventaweb.fecharegistro, '%d/%m/%Y') AS fecharegistro,
             COUNT( ventawebdetalle.cantidad ) AS cantidad,
             SUM(ventawebdetalle.total) as total,
             ventaweb.comprobante 
@@ -436,7 +436,7 @@ class ModeloReporte
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             producto.nombre,
-            DATE(ventaweb.fecharegistro) AS fecharegistro,
+            DATE_FORMAT(ventaweb.fecharegistro, '%d/%m/%Y') AS fecharegistro,
             COUNT( ventawebdetalle.cantidad ) AS cantidad,
             SUM(ventawebdetalle.total) as total,
             ventaweb.comprobante 
@@ -470,7 +470,7 @@ class ModeloReporte
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             insumo.nombre,
-            compra.fechac,
+            DATE_FORMAT(compra.fechac, '%d/%m/%Y') AS fechac,
             COUNT( detallecompra.insumo_id ) AS cantidad,
             SUM( detallecompra.total ) AS total 
             FROM
@@ -502,7 +502,7 @@ class ModeloReporte
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             material.nombre,
-            compra_material.fechac,
+            DATE_FORMAT(compra_material.fechac, '%d/%m/%Y') AS fechac,
             COUNT(detallecompramaterial.material_id) as cantidad,
             SUM(detallecompramaterial.total ) as total
             FROM
@@ -751,8 +751,8 @@ class ModeloReporte
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             producto.nombre,
-            oferta.fecha_inicio,
-            oferta.fecha_fin,
+            DATE_FORMAT(oferta.fecha_inicio, '%d/%m/%Y') AS fecha_inicio,
+            DATE_FORMAT(oferta.fecha_fin, '%d/%m/%Y') AS fecha_fin,
             oferta.tipo_oferta,
             oferta.valor_descuento,
             oferta.fecha_registro 
@@ -781,7 +781,7 @@ class ModeloReporte
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             tipo_producto.tipo,
-            produccion.fecharegistro,
+            DATE_FORMAT(produccion.fecharegistro, '%d/%m/%Y') AS fecharegistro,
             produccion.fechaini,
             produccion.fechafin,
             produccion.dias,

@@ -81,8 +81,8 @@ class Reporte extends BaseController
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(80, 12, utf8_decode('Insumo'), 0, 0, 'C', 1);
         $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -100,8 +100,8 @@ class Reporte extends BaseController
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(80, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
             $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -119,13 +119,6 @@ class Reporte extends BaseController
         if ($compra[8] != 1) {
             $pdf->Image(base_url() . 'public/img/anulado.png', 80, 250, 60);
         }
-
-        // $pdf->SetFont('helvetica', 'B', 8);
-        // $pdf->SetY(-10);
-        // $pdf->Cell(95, 5, utf8_decode('Página ') .  $pdf->PageNo() . ' / {nb}', 0, 0, 'L');
-        // $pdf->Cell(95, 5, date('d/m/Y | g:i:a'), 00, 1, 'R');
-        // $pdf->Line(10, 287, 200, 287);
-        // $pdf->Cell(0, 5, utf8_decode("Kodo Sensei © Todos los derechos reservados."), 0, 0, "C");
 
         $this->response->setHeader('Content-Type', 'application/pdf');
         $pdf->Output("compra_pdf.pdf", "I");
@@ -187,9 +180,9 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(80, 12, utf8_decode('Material'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -207,9 +200,9 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(80, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -271,19 +264,7 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(140, 54, $produccion[9]);
 
-        // $pdf->SetFont('Arial', 'B', 10);
-        //  $pdf->SetTextColor(0, 0, 0);
-        // $pdf->Text(15, 48, utf8_decode('Fecha incio:'));
-        // $pdf->SetFont('Arial', '', 10);
-        // $pdf->Text(38, 48,  $produccion[3]);
-
         $pdf->Ln(50);
-
-        // $pdf->SetFont('Arial', 'B', 10);
-        //  $pdf->SetTextColor(0, 0, 0);
-        // $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
-        // $pdf->SetFont('Arial', '', 10);
-        // $pdf->Text(38, 54,  $produccion[3]);
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->SetTextColor(0, 0, 0);
@@ -317,7 +298,7 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(90, 12, utf8_decode('Insumo'), 0, 0, 'C', 1);
-        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -337,7 +318,7 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(90, 8, utf8_decode($detalleinsumo[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(80, 8, utf8_decode($detalleinsumo[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(80, 8, utf8_decode($detalleinsumo[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -355,7 +336,7 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(90, 12, utf8_decode('Material'), 0, 0, 'C', 1);
-        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -375,7 +356,7 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(90, 8, utf8_decode($detallematerial[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(80, 8, utf8_decode($detallematerial[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(80, 8, utf8_decode($detallematerial[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -439,7 +420,7 @@ class Reporte extends BaseController
             $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
             $pdf->Cell(55, 12, utf8_decode('Usuario'), 0, 0, 'C', 1);
             $pdf->Cell(60, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
-            $pdf->Cell(55, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+            $pdf->Cell(55, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
 
             $pdf->SetFont('Arial', '', 10);
 
@@ -462,7 +443,7 @@ class Reporte extends BaseController
                 $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
                 $pdf->Cell(55, 8, utf8_decode($perdidaproduccion[$i]["nombres"]), 'B', 0, 'C', 1);
                 $pdf->Cell(60, 8, utf8_decode($perdidaproduccion[$i]["fecha"]), 'B', 0, 'C', 1);
-                $pdf->Cell(55, 8, utf8_decode($perdidaproduccion[$i]["cantidad"]), 'B', 1, 'C', 1);
+                $pdf->Cell(55, 8, utf8_decode($perdidaproduccion[$i]["cantidad"]), 'B', 1, 'R', 1);
                 $pdf->Ln(0.5);
             }
         }
@@ -550,7 +531,7 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(90, 12, utf8_decode('Insumo'), 0, 0, 'C', 1);
-        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -570,7 +551,7 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(90, 8, utf8_decode($detalleinsumo[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(80, 8, utf8_decode($detalleinsumo[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(80, 8, utf8_decode($detalleinsumo[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -588,7 +569,7 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(90, 12, utf8_decode('Material'), 0, 0, 'C', 1);
-        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+        $pdf->Cell(80, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -608,7 +589,7 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(90, 8, utf8_decode($detallematerial[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(80, 8, utf8_decode($detallematerial[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(80, 8, utf8_decode($detallematerial[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -672,7 +653,7 @@ class Reporte extends BaseController
             $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
             $pdf->Cell(55, 12, utf8_decode('Usuario'), 0, 0, 'C', 1);
             $pdf->Cell(60, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
-            $pdf->Cell(55, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
+            $pdf->Cell(55, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
 
             $pdf->SetFont('Arial', '', 10);
 
@@ -695,7 +676,7 @@ class Reporte extends BaseController
                 $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
                 $pdf->Cell(55, 8, utf8_decode($perdidaproduccion[$i]["nombres"]), 'B', 0, 'C', 1);
                 $pdf->Cell(60, 8, utf8_decode($perdidaproduccion[$i]["fecha"]), 'B', 0, 'C', 1);
-                $pdf->Cell(55, 8, utf8_decode($perdidaproduccion[$i]["cantidad"]), 'B', 1, 'C', 1);
+                $pdf->Cell(55, 8, utf8_decode($perdidaproduccion[$i]["cantidad"]), 'B', 1, 'R', 1);
                 $pdf->Ln(0.5);
             }
         }
@@ -788,10 +769,10 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(60, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -809,10 +790,10 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(60, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -892,10 +873,10 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(60, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -913,10 +894,10 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(60, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1024,10 +1005,10 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(60, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1045,10 +1026,10 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(60, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1162,10 +1143,10 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(60, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Oferta'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1183,10 +1164,10 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(60, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["sale"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["oferta"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, "$ " . utf8_decode($detalle[$i]["total"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1426,8 +1407,8 @@ class Reporte extends BaseController
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(65, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
         $pdf->Cell(35, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1448,8 +1429,8 @@ class Reporte extends BaseController
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(65, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
             $pdf->Cell(35, 8, utf8_decode($detalle[$i]["fecharegistro"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'C', 1);
-            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1518,8 +1499,8 @@ class Reporte extends BaseController
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(65, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
         $pdf->Cell(35, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1540,8 +1521,8 @@ class Reporte extends BaseController
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(65, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
             $pdf->Cell(35, 8, utf8_decode($detalle[$i]["fechac"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'C', 1);
-            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1610,8 +1591,8 @@ class Reporte extends BaseController
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(65, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
         $pdf->Cell(35, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1632,8 +1613,8 @@ class Reporte extends BaseController
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(65, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
             $pdf->Cell(35, 8, utf8_decode($detalle[$i]["fechac"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'C', 1);
-            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1700,9 +1681,9 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(70, 12, utf8_decode('Insumo'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'C', 1);
+        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'R', 1);
+        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1720,9 +1701,9 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(70, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'R', 1);
+            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1784,9 +1765,9 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(70, 12, utf8_decode('Material'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'C', 1);
+        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'R', 1);
+        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1804,9 +1785,9 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(70, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'R', 1);
+            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -1868,9 +1849,9 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(70, 12, utf8_decode('Planta'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'C', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'C', 1);
+        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'R', 1);
+        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1888,9 +1869,9 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(70, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'C', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'C', 1);
+            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'R', 1);
+            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -2046,8 +2027,8 @@ class Reporte extends BaseController
         $pdf->Cell(70, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
         $pdf->Cell(25, 12, utf8_decode('Fecha inicio'), 0, 0, 'C', 1);
         $pdf->Cell(25, 12, utf8_decode('Fecha fin'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Tipo de oferta'), 0, 0, 'C', 1);
-        $pdf->Cell(25, 12, utf8_decode('Descuento %'), 0, 1, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Tipo de oferta'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Descuento %'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -2067,8 +2048,8 @@ class Reporte extends BaseController
             $pdf->Cell(70, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
             $pdf->Cell(25, 8, utf8_decode($detalle[$i]["fecha_inicio"]), 'B', 0, 'C', 1);
             $pdf->Cell(25, 8,  utf8_decode($detalle[$i]["fecha_fin"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8,  utf8_decode($detalle[$i]["tipo_oferta"]), 'B', 0, 'C', 1);
-            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["valor_descuento"]), 'B', 1, 'C', 1);
+            $pdf->Cell(25, 8,  utf8_decode($detalle[$i]["tipo_oferta"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["valor_descuento"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -2130,12 +2111,12 @@ class Reporte extends BaseController
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
-        $pdf->Cell(70, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
-        $pdf->Cell(20, 12, utf8_decode('Fecha inicio'), 0, 0, 'C', 1);
-        $pdf->Cell(20, 12, utf8_decode('Fecha fin'), 0, 0, 'C', 1);
-        $pdf->Cell(20, 12, utf8_decode('Dias'), 0, 0, 'C', 1);
-        $pdf->Cell(20, 12, utf8_decode('Cantidad'), 0, 0, 'C', 1);
-        $pdf->Cell(20, 12, utf8_decode('Estado'), 0, 1, 'C', 1);
+        $pdf->Cell(85, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
+        // $pdf->Cell(25, 12, utf8_decode('Fecha fin'), 0, 0, 'C', 1);
+        // $pdf->Cell(20, 12, utf8_decode('Dias'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Estado'), 0, 1, 'C', 1);
 
         $pdf->SetFont('Arial', '', 10);
         $estado = "";
@@ -2159,12 +2140,12 @@ class Reporte extends BaseController
             }
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
-            $pdf->Cell(70, 8, utf8_decode($detalle[$i]["tipo"]), 'B', 0, 'C', 1);
-            $pdf->Cell(20, 8, utf8_decode($detalle[$i]["fechaini"]), 'B', 0, 'C', 1);
-            $pdf->Cell(20, 8,  utf8_decode($detalle[$i]["fechafin"]), 'B', 0, 'C', 1);
-            $pdf->Cell(20, 8,  utf8_decode($detalle[$i]["dias"]), 'B', 0, 'C', 1);
-            $pdf->Cell(20, 8,  utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'C', 1);
-            $pdf->Cell(20, 8, utf8_decode($estado), 'B', 1, 'C', 1);
+            $pdf->Cell(85, 8, utf8_decode($detalle[$i]["tipo"]), 'B', 0, 'C', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["fecharegistro"]), 'B', 0, 'C', 1);
+            //$pdf->Cell(25, 8,  utf8_decode($detalle[$i]["fechafin"]), 'B', 0, 'C', 1);
+            // $pdf->Cell(20, 8,  utf8_decode($detalle[$i]["dias"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8,  utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode("Producción"), 'B', 1, 'C', 1);
             $pdf->Ln(0.5);
         }
 

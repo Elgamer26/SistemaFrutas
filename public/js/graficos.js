@@ -278,6 +278,80 @@ function MostraProductosMasComprados(
   });
 }
 
+////////////////////////////////////
+function TraerGraficoGananciasPormeses() {
+  var tipo_grafico = "bar";
+  var nombre_grafico = "Barra";
+  $.ajax({
+    url: BaseUrl + "Graficos/TraerGraficoGananciasPormeses",
+    type: "GET",
+  }).done(function (response) {
+    if (response != 0) {
+      var nombre_pr = [];
+      var cantidad = [];
+      var colores = [];
+      var data = JSON.parse(response);
+
+      for (var i = 0; i < data.length; i++) {
+        nombre_pr.push(data[i][1]);
+        cantidad.push(data[i][0]);
+        colores.push(colores_rgb());
+      }
+
+      MostrarVendidosMeses(
+        nombre_pr,
+        cantidad,
+        tipo_grafico,
+        nombre_grafico,
+        colores
+      );
+
+    } else {
+      $("canvas#charc_meses").remove();
+    }
+  });
+}
+
+function MostrarVendidosMeses(
+  nombre_pr,
+  cantidad,
+  tipo_grafico,
+  nombre_grafico,
+  colores
+) {
+  //esto es para desctuir el grafico porque sale un error
+  $("canvas#charc_meses").remove();
+  $("div.chard_meses").append(
+    '<canvas id="charc_meses" width="20" height="20""></canvas>'
+  );
+  ///este es el grafico
+
+  var ctx = document.getElementById("charc_meses").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: tipo_grafico,
+    data: {
+      labels: nombre_pr,
+      datasets: [
+        {
+          label: nombre_grafico,
+          data: cantidad,
+          backgroundColor: colores,
+          borderColor: colores,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+//////////////////////////////////
 /// par los graficos
 function colores_rgb() {
   var coolor =

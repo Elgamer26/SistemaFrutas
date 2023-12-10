@@ -66,7 +66,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="encargado">Encargado</label> <span id="encargado_olbligg" style="color: red;"></span>
+                                    <label for="encargado">Nombre del encargado</label> <span id="encargado_olbligg" style="color: red;"></span>
                                     <input onkeypress="return soloLetras(event)" autocomplete="off" value="<?php echo $editar[6]; ?>" type="text" name="encargado" class="form-control" id="encargado" placeholder="Ingrese encargado" maxlength="100">
                                 </div>
                             </div>
