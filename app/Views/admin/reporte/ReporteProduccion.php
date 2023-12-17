@@ -33,14 +33,14 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Fecha inicio</label>
                                     <input type="date" value="<?php echo $fecha; ?>" class="form-control" id="fecha_cli_ini">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>Fecha fin</label>
                                     <input type="date" value="<?php echo $fecha; ?>" class="form-control" id="fecha_cli_fin">
@@ -54,6 +54,39 @@
                                 </div>
                             </div>
 
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="producto">Producto</label>
+                                    <select name="producto" id="producto" class="form-control" style="width: 100%;">
+                                        <?php if (!empty($producto) && is_array($producto)) { ?>
+                                            <option value=""> --Seleccione el producto --</option>
+                                            <option value="0"> TODO </option>
+                                            <?php
+                                            foreach ($producto as $producto_item) { ?>
+                                                <option value="<?= esc($producto_item["id"]); ?>"><?= esc($producto_item["nombre"]); ?> </option>
+                                            <?php }
+                                        } else { ?>
+                                            <option value="0">No hay producto</option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label>Saldo</label>
+                                    <input type="number" value="0" min="0" max="999" class="form-control" id="saldo_prodcuto">
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label>Buscar</label>
+                                    <button class="btn btn-success" onclick="VerReporteProduccion_Producto();"> <i class="fa fa-eye"></i> Ver</button>
+                                </div>
+                            </div>
 
                             <div class="col-lg-12">
                                 <center>
@@ -90,6 +123,34 @@
 
         var ifrm = document.getElementById("iframe_produccion");
         ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/ReporteProuccionModulo/" + fecha_inicio + "/" + fecha_fin + "");
+
+    }
+
+    function VerReporteProduccion_Producto() {
+
+        var producto = $("#producto").val();
+        var saldo_prodcuto = $("#saldo_prodcuto").val();
+        var saldo = 0
+
+        if (producto == "") {
+            return Swal.fire(
+                "Mensaje de advertencia",
+                "Seleccione un producto",
+                "warning"
+            );
+        }
+
+        if (saldo_prodcuto == ""){
+            saldo = 0
+        }else{
+            saldo = saldo_prodcuto
+        }
+
+        console.log(saldo);
+        console.log(producto);
+
+        var ifrm = document.getElementById("iframe_produccion");
+        ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/ReporteProduccionModulo_Producto/" + producto + "/" + saldo + "");
 
     }
 </script>

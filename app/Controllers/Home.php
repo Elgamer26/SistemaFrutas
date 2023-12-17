@@ -154,11 +154,16 @@ class Home extends BaseController
     {
         if (empty($_SESSION["TokenClie"])) {
             $token = "NOTOKEN";
-            $detallecompra = [];
+            // $detallecompra = [];
         } else {
             $token = $_SESSION["NombUser"];
-            $detallecompra = $this->tienda->TraerProductosDelCliente($_SESSION["TokenClie"]);
+            // $detallecompra = $this->tienda->TraerProductosDelCliente($_SESSION["TokenClie"]);
         }
+
+        $nombreHost = gethostname();
+        $direccionIP = $_SERVER['SERVER_ADDR'];
+        $usecomprador = $nombreHost . "-" . $direccionIP;
+        $detallecompra = $this->tienda->TraerProductosDelCliente($usecomprador);
 
         $categorias = $this->tienda->TraerCategoriasTienda();
 

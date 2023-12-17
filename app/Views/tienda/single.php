@@ -376,8 +376,7 @@
 						</section>
 					</section>
 
-					<?php if ($token != "NOTOKEN") { ?>
-
+		
 						<article class="msg-container msg-self" id="msg-0">
 							<div class="msg-box" style="width: 100%;  background: #1d1d1d; border-radius: 10px;">
 								<div class="flr">
@@ -400,13 +399,9 @@
 									<span style="color: white;" class="timestamp"><span class="username"> </span></span>
 								</div>
 							</div>
-
 						</article>
-
-					<?php } ?>
-
+				 
 				</body>
-
 			</div>
 		</div>
 	</div>

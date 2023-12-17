@@ -247,6 +247,12 @@ function RegistraProducto() {
             "La código ingresado " + codigo + " ya existe",
             "warning"
           );
+        }else{
+          return swal.fire(
+            "Producto ya existe",
+            "El producto ingresado ya existe",
+            "warning"
+          );
         }
       } else {
         return swal.fire("Error", "Error en la Matrix" + resp, "error");
@@ -345,6 +351,12 @@ function EditarProducto() {
           return swal.fire(
             "Código ya existe",
             "La código ingresado " + codigo + " ya existe",
+            "warning"
+          );
+        }else{
+          return swal.fire(
+            "Producto ya existe",
+            "El producto ingresado ya existe",
             "warning"
           );
         }

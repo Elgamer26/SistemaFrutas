@@ -50,12 +50,12 @@
 
                             <div class="form-group first">
                                 <label for="cedula"></label>
-                                <input type="text" class="form-control" id="cedula" autocomplete="off" placeholder="Ingrese correo">
+                                <input type="text" class="form-control" id="cedula" autocomplete="off" placeholder="Ingrese correo" onkeypress="handleKeyPress(event)">
                             </div>
 
                             <div class="form-group last mb-4">
                                 <label for="password"></label>
-                                <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Ingrese password">
+                                <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Ingrese password" onkeypress="handleKeyPress(event)">
                             </div>
 
                             <div class="alert alert-danger text-center" id="error_logeo" style="color: white; display:none; text-align: center; background: red; border-radius: 15px; padding: 10px;  text-align: center;">
@@ -138,4 +138,12 @@
         }
 
     })
+
+    function handleKeyPress(event) {
+        // Verifica si la tecla presionada es 'Enter' (código 13)
+        if (event.keyCode === 13) {
+            // Llama a la función o realiza la acción que desees al presionar Enter
+            ValidarCredencialesUsuarioCliente();
+        }
+    }
 </script>

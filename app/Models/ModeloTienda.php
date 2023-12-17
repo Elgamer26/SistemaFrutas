@@ -155,9 +155,9 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
-                if (!empty($_SESSION["TokenClie"])) {
+                // if (!empty($_SESSION["TokenClie"])) {
                     $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoNormal(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
-                }
+                // }
 
                 $tabla = $tabla . '	   </div>
                                         </div>
@@ -325,9 +325,9 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[7] . '</p>
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
-                if (!empty($_SESSION["TokenClie"])) {
+                // if (!empty($_SESSION["TokenClie"])) {
                     $tabla = $tabla . '<h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
-                }
+                // }
 
                 $tabla = $tabla . '    </div>
                                             <div class="srch">
@@ -634,14 +634,14 @@ class ModeloTienda
     }
 
     //////////////////////
-    function IngresarProductoCarritoNormal($iduser, $id, $precio, $cantidad)
+    function IngresarProductoCarritoNormal($iduser, $id, $precio, $cantidad, $usecomprador)
     {
         try {
             $res = 0;
             $c = $this->conexion->conexionPDO();
-            $sql_a = "SELECT * FROM aggcarrito where cliente_id = ? AND producto_id = ?";
+            $sql_a = "SELECT * FROM aggcarrito where usuario_maquina = ? AND producto_id = ?";
             $query_a = $c->prepare($sql_a);
-            $query_a->bindParam(1, $iduser);
+            $query_a->bindParam(1, $usecomprador);
             $query_a->bindParam(2, $id);
             $query_a->execute();
             $data_a = $query_a->fetch();
@@ -659,18 +659,20 @@ class ModeloTienda
                     return $res = "Stock " . $stock_actual[0];
                 }
 
-                $sql_c = "INSERT INTO aggcarrito (cliente_id, producto_id, precio, cantidad, sale, promocion, tipo_promo, porcentaje, descuento_promo) VALUES (?,?,?,?,?,'No oferta','0','0','0')";
+                $sql_c = "INSERT INTO aggcarrito (usuario_maquina, cliente_id, producto_id, precio, cantidad, sale, promocion, tipo_promo, porcentaje, descuento_promo) VALUES (?,?,?,?,?,?,'No oferta','0','0','0')";
                 $query_c = $c->prepare($sql_c);
-                $query_c->bindParam(1, $iduser);
-                $query_c->bindParam(2, $id);
-                $query_c->bindParam(3, $precio);
-                $query_c->bindParam(4, $cantidad);
+                $query_c->bindParam(1, $usecomprador);
+                $query_c->bindParam(2, $iduser);
+                $query_c->bindParam(3, $id);
+                $query_c->bindParam(4, $precio);
                 $query_c->bindParam(5, $cantidad);
+                $query_c->bindParam(6, $cantidad);
                 if ($query_c->execute()) {
                     $res = 1; // registro exitoso
                 } else {
                     $res = 0; // error en la inserccion
                 }
+
             } else {
 
                 $cant = "";
@@ -689,11 +691,11 @@ class ModeloTienda
                 if ($cant > $stock) {
                     $res = "Stock " . $stock;
                 } else {
-                    $sql_d = "UPDATE aggcarrito SET cantidad = ? WHERE producto_id = ? AND cliente_id = ?";
+                    $sql_d = "UPDATE aggcarrito SET cantidad = ? WHERE producto_id = ? AND usuario_maquina = ?";
                     $query_d = $c->prepare($sql_d);
                     $query_d->bindParam(1, $cant);
                     $query_d->bindParam(2, $id);
-                    $query_d->bindParam(3, $iduser);
+                    $query_d->bindParam(3, $usecomprador);
                     if ($query_d->execute()) {
                         $res = 2; // exito atualizacion
                     } else {
@@ -714,16 +716,16 @@ class ModeloTienda
     }
 
     //////////////////////
-    function IngresarProductoCarritoOferta($iduser, $id, $precio, $cantidad)
+    function IngresarProductoCarritoOferta($iduser, $id, $precio, $cantidad, $usecomprador)
     {
         try {
             $res = 0;
             $sale = 0;
 
             $c = $this->conexion->conexionPDO();
-            $sql_a = "SELECT * FROM aggcarrito where cliente_id = ? AND producto_id = ?";
+            $sql_a = "SELECT * FROM aggcarrito where usuario_maquina = ? AND producto_id = ?";
             $query_a = $c->prepare($sql_a);
-            $query_a->bindParam(1, $iduser);
+            $query_a->bindParam(1, $usecomprador);
             $query_a->bindParam(2, $id);
             $query_a->execute();
             $data_a = $query_a->fetch();
@@ -772,17 +774,18 @@ class ModeloTienda
                     return $res = "Es una oferta del: " . $tipo_promocion . " - Stock " . $stock_actual[0];
                 }
 
-                $sql_c = "INSERT INTO aggcarrito (cliente_id, producto_id, tipo_promo, porcentaje, descuento_promo, promocion, cantidad, precio, sale) VALUES (?,?,?,?,?,?,?,?,?)";
+                $sql_c = "INSERT INTO aggcarrito (usuario_maquina, cliente_id, producto_id, tipo_promo, porcentaje, descuento_promo, promocion, cantidad, precio, sale) VALUES (?,?,?,?,?,?,?,?,?,?)";
                 $query_c = $c->prepare($sql_c);
-                $query_c->bindParam(1, $iduser);
-                $query_c->bindParam(2, $id);
-                $query_c->bindParam(3, $tipo_promocion);
-                $query_c->bindParam(4, $porcentaje);
-                $query_c->bindParam(5, $descuento);
-                $query_c->bindParam(6, $tipo_promocion);
-                $query_c->bindParam(7, $cantidad);
-                $query_c->bindParam(8, $valor);
-                $query_c->bindParam(9, $sale);
+                $query_c->bindParam(1, $usecomprador);
+                $query_c->bindParam(2, $iduser);
+                $query_c->bindParam(3, $id);
+                $query_c->bindParam(4, $tipo_promocion);
+                $query_c->bindParam(5, $porcentaje);
+                $query_c->bindParam(6, $descuento);
+                $query_c->bindParam(7, $tipo_promocion);
+                $query_c->bindParam(8, $cantidad);
+                $query_c->bindParam(9, $valor);
+                $query_c->bindParam(10, $sale);
 
                 if ($query_c->execute()) {
                     $res = 1; // registro exitoso
@@ -815,12 +818,12 @@ class ModeloTienda
                 if ($sale > $stock) {
                     $res = "Es una oferta del: " . $data_a[4] . " - Stock " . $stock;
                 } else {
-                    $sql_d = "UPDATE aggcarrito SET cantidad = ?, sale = ? WHERE producto_id = ? AND cliente_id = ?";
+                    $sql_d = "UPDATE aggcarrito SET cantidad = ?, sale = ? WHERE producto_id = ? AND usuario_maquina = ?";
                     $query_d = $c->prepare($sql_d);
                     $query_d->bindParam(1, $cant);
                     $query_d->bindParam(2, $sale);
                     $query_d->bindParam(3, $id);
-                    $query_d->bindParam(4, $iduser);
+                    $query_d->bindParam(4, $usecomprador);
                     if ($query_d->execute()) {
                         $res = 2; // exito atualizacion
                     } else {
@@ -843,7 +846,7 @@ class ModeloTienda
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "SELECT COUNT(*) as contar FROM aggcarrito where cliente_id = ?";
+            $sql = "SELECT COUNT(*) as contar FROM aggcarrito where usuario_maquina = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
             $query->execute();
@@ -880,7 +883,7 @@ class ModeloTienda
             INNER JOIN producto ON aggcarrito.producto_id = producto.id
             INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
             WHERE
-            aggcarrito.cliente_id = ?";
+            aggcarrito.usuario_maquina = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
             $query->execute();
@@ -900,7 +903,7 @@ class ModeloTienda
         try {
             $rep = 0;
             $c = $this->conexion->conexionPDO();
-            $sql = "DELETE FROM aggcarrito WHERE producto_id = ? AND cliente_id = ?";
+            $sql = "DELETE FROM aggcarrito WHERE producto_id = ? AND usuario_maquina = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id_pro);
             $query->bindParam(2, $id_cli);
@@ -919,7 +922,7 @@ class ModeloTienda
         exit();
     }
 
-    function RegistrarVentaCarrito($id_cli, $direccions, $sub, $impuesto, $total, $ciudad, $referencia, $estado)
+    function RegistrarVentaCarrito($id_cli, $direccions, $sub, $impuesto, $total, $ciudad, $referencia, $estado, $usecomprador)
     {
         try {
             $result = 0;
@@ -947,12 +950,11 @@ class ModeloTienda
 
             if ($query->execute()) {
                 $result = $c->lastInsertId();
-
-                $sql_d = "DELETE FROM aggcarrito WHERE cliente_id = ?";
+                $sql_d = "DELETE FROM aggcarrito WHERE usuario_maquina = ?";
                 $query_d = $c->prepare($sql_d);
-                $query_d->bindParam(1, $id_cli);
+                $query_d->bindParam(1, $usecomprador);
                 $query_d->execute();
-            } else {
+            } else {                
                 $result = 0;
             }
             //cerramos la conexion
@@ -1070,7 +1072,7 @@ class ModeloTienda
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "SELECT estado FROM calificarestado where clienteid = ? AND productoid = ?";
+            $sql = "SELECT estado FROM calificarestado where usuario_maquina = ? AND productoid = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
             $query->bindParam(2, $idprod);
@@ -1117,7 +1119,7 @@ class ModeloTienda
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "SELECT estado FROM calificarestadooferta where clienteid = ? AND productoid = ?";
+            $sql = "SELECT estado FROM calificarestadooferta where usuario_maquina = ? AND productoid = ?";
             $query = $c->prepare($sql);
             $query->bindParam(1, $id);
             $query->bindParam(2, $idprod);
@@ -1532,9 +1534,7 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
-                if (!empty($_SESSION["TokenClie"])) {
                     $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoNormal(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
-                }
 
                 $tabla = $tabla . '	   </div>
                                         </div>

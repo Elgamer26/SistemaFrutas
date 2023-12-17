@@ -352,8 +352,6 @@
 
                         </section>
 
-                        <?php if ($token != "NOTOKEN") { ?>
-
                             <article class="msg-container msg-self" id="msg-0">
                                 <div class="msg-box" style="width: 100%;  background: #1d1d1d; border-radius: 10px;">
                                     <div class="flr">
@@ -378,8 +376,6 @@
                                 </div>
 
                             </article>
-
-                        <?php } ?>
 
                     </body>
                 </div>

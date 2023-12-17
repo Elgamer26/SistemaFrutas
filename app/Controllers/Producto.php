@@ -73,7 +73,7 @@ class Producto extends BaseController
             $imagen = null;
             $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen, $tamaño_producto);
 
-            if ($valor[0] > 2) {
+            if ($valor[0] > 3) {
 
                 $count = 0;
                 foreach ($_FILES["img_extra"]["name"] as $key => $value) {
@@ -100,7 +100,7 @@ class Producto extends BaseController
 
             $imagen = "producto.jpg";
             $valor = $this->producto->RegistraProducto($codigo, $nombres, $tipo_producto, $precio_venta, $descripcion, $imagen, $tamaño_producto);
-            if ($valor[0] > 2) {
+            if ($valor[0] > 3) {
                 echo 1;
                 exit();
             } else {

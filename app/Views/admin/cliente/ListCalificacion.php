@@ -32,7 +32,6 @@
                                     <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" style="width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Cliente</th>
                                                 <th>Producto</th>
                                                 <th>Fecha</th>
                                                 <th>Estado</th>
@@ -47,7 +46,6 @@
 
                                                     <tr class="odd">
 
-                                                        <td><?= esc($califica_item["nombre"]); ?> - <?= esc($califica_item["apellidos"]); ?></td>
                                                         <td><?= esc($califica_item["producto"]); ?></td>
                                                         <td><?= esc($califica_item["fecha"]); ?> </td>
 
@@ -82,7 +80,6 @@
 
                                         <tfoot>
                                             <tr>
-                                                <th>Cliente</th>
                                                 <th>Producto</th>
                                                 <th>Fecha</th>
                                                 <th>Estado</th>

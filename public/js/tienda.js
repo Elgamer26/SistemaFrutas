@@ -188,6 +188,9 @@ function IngresarProductoCarrito(id, precio) {
       cantidad: cantidad,
     },
   }).done(function (response) {
+
+    // console.log(response);
+
     if (response == "100") {
       return Swal.fire(
         "Inicie sesión",

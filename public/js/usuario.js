@@ -1,4 +1,8 @@
 $(document).on("click", "#btn_aceptar", function () {
+  ValidarCredencialesUsuario();
+});
+
+function ValidarCredencialesUsuario() {
   var usuario = $("#username").val();
   var password = $("#password").val();
 
@@ -20,7 +24,6 @@ $(document).on("click", "#btn_aceptar", function () {
       type: "POST",
       data: { usuario: usuario, password: password },
     }).done(function (responce) {
-
       if (responce == 0) {
         $("#none_usu").hide();
         $("#none_pass").hide();
@@ -28,7 +31,7 @@ $(document).on("click", "#btn_aceptar", function () {
         return false;
       } else {
         var data = JSON.parse(responce);
-        if (data['estado'] == 0) {
+        if (data["estado"] == 0) {
           return Swal.fire({
             icon: "error",
             title: "Usuario inactivo",
@@ -40,7 +43,7 @@ $(document).on("click", "#btn_aceptar", function () {
             url: BaseUrl + "usuario/CraerToken",
             type: "POST",
             data: {
-              id_usu: data['id'],
+              id_usu: data["id"],
             },
           }).done(function (res) {
             RecordaPasswordAdmin();
@@ -75,7 +78,7 @@ $(document).on("click", "#btn_aceptar", function () {
       }
     });
   }
-});
+}
 
 $(document).on("click", "#btn_tienda", function () {
   location.href = BaseUrl;
@@ -189,9 +192,13 @@ function RegistraPermisosRol(id) {
   var listado_venta_p = document.getElementById("listado_venta_p").checked;
   var fase_produccion_p = document.getElementById("fase_produccion_p").checked;
   var produccion_p = document.getElementById("produccion_p").checked;
-  var produccion_finalizadas_p = document.getElementById("produccion_finalizadas_p").checked;
+  var produccion_finalizadas_p = document.getElementById(
+    "produccion_finalizadas_p"
+  ).checked;
   var registro_fase_p = document.getElementById("registro_fase_p").checked;
-  var perdidas_produccion_p = document.getElementById("perdidas_produccion_p").checked;
+  var perdidas_produccion_p = document.getElementById(
+    "perdidas_produccion_p"
+  ).checked;
   var reporters_p = document.getElementById("reporters_p").checked;
   var ofertas_p = document.getElementById("ofertas_p").checked;
 
@@ -215,7 +222,7 @@ function RegistraPermisosRol(id) {
       registro_fase_p: registro_fase_p,
       perdidas_produccion_p: perdidas_produccion_p,
       reporters_p: reporters_p,
-      ofertas_p: ofertas_p
+      ofertas_p: ofertas_p,
     },
     success: function (response) {
       // console.log(response);
@@ -244,11 +251,11 @@ function EditarPermisosRol(id) {
 
       $("#id_rol").val(id);
 
-      data['mantenimiento_p'].toString() == "true"
+      data["mantenimiento_p"].toString() == "true"
         ? ($("#mantenimiento_p")[0].checked = true)
         : ($("#mantenimiento_p")[0].checked = false);
 
-      data['producto_tipo_p'].toString() == "true"
+      data["producto_tipo_p"].toString() == "true"
         ? ($("#producto_tipo_p")[0].checked = true)
         : ($("#producto_tipo_p")[0].checked = false);
 
@@ -256,55 +263,55 @@ function EditarPermisosRol(id) {
         ? ($("#insumo_tipo_p")[0].checked = true)
         : ($("#insumo_tipo_p")[0].checked = false);
 
-      data['material_tipo_p'].toString() == "true"
+      data["material_tipo_p"].toString() == "true"
         ? ($("#material_tipo_p")[0].checked = true)
         : ($("#material_tipo_p")[0].checked = false);
 
-      data['proveedor_p'].toString() == "true"
+      data["proveedor_p"].toString() == "true"
         ? ($("#proveedor_p")[0].checked = true)
         : ($("#proveedor_p")[0].checked = false);
 
-      data['compra_insumo_p'].toString() == "true"
+      data["compra_insumo_p"].toString() == "true"
         ? ($("#compra_insumo_p")[0].checked = true)
         : ($("#compra_insumo_p")[0].checked = false);
 
-      data['compra_material_p'].toString() == "true"
+      data["compra_material_p"].toString() == "true"
         ? ($("#compra_material_p")[0].checked = true)
         : ($("#compra_material_p")[0].checked = false);
 
-      data['crear_venta_p'].toString() == "true"
+      data["crear_venta_p"].toString() == "true"
         ? ($("#crear_venta_p")[0].checked = true)
         : ($("#crear_venta_p")[0].checked = false);
 
-      data['listado_venta_p'].toString() == "true"
+      data["listado_venta_p"].toString() == "true"
         ? ($("#listado_venta_p")[0].checked = true)
         : ($("#listado_venta_p")[0].checked = false);
 
-      data['fase_produccion_p'].toString() == "true"
+      data["fase_produccion_p"].toString() == "true"
         ? ($("#fase_produccion_p")[0].checked = true)
         : ($("#fase_produccion_p")[0].checked = false);
 
-      data['produccion_p'].toString() == "true"
+      data["produccion_p"].toString() == "true"
         ? ($("#produccion_p")[0].checked = true)
         : ($("#produccion_p")[0].checked = false);
 
-      data['produccion_finalizadas_p'].toString() == "true"
+      data["produccion_finalizadas_p"].toString() == "true"
         ? ($("#produccion_finalizadas_p")[0].checked = true)
         : ($("#produccion_finalizadas_p")[0].checked = false);
 
-      data['registro_fase_p'].toString() == "true"
+      data["registro_fase_p"].toString() == "true"
         ? ($("#registro_fase_p")[0].checked = true)
         : ($("#registro_fase_p")[0].checked = false);
 
-      data['perdidas_produccion_p'].toString() == "true"
+      data["perdidas_produccion_p"].toString() == "true"
         ? ($("#perdidas_produccion_p")[0].checked = true)
         : ($("#perdidas_produccion_p")[0].checked = false);
 
-      data['reporters_p'].toString() == "true"
+      data["reporters_p"].toString() == "true"
         ? ($("#reporters_p")[0].checked = true)
         : ($("#reporters_p")[0].checked = false);
 
-      data['ofertas_p'].toString() == "true"
+      data["ofertas_p"].toString() == "true"
         ? ($("#ofertas_p")[0].checked = true)
         : ($("#ofertas_p")[0].checked = false);
 
@@ -317,7 +324,7 @@ function EditarPermisosRol(id) {
   });
 }
 
-function editar_permisos(){
+function editar_permisos() {
   var id = document.getElementById("id_rol").value;
   var mantenimiento_p = document.getElementById("mantenimiento_p").checked;
   var producto_tipo_p = document.getElementById("producto_tipo_p").checked;
@@ -330,9 +337,13 @@ function editar_permisos(){
   var listado_venta_p = document.getElementById("listado_venta_p").checked;
   var fase_produccion_p = document.getElementById("fase_produccion_p").checked;
   var produccion_p = document.getElementById("produccion_p").checked;
-  var produccion_finalizadas_p = document.getElementById("produccion_finalizadas_p").checked;
+  var produccion_finalizadas_p = document.getElementById(
+    "produccion_finalizadas_p"
+  ).checked;
   var registro_fase_p = document.getElementById("registro_fase_p").checked;
-  var perdidas_produccion_p = document.getElementById("perdidas_produccion_p").checked;
+  var perdidas_produccion_p = document.getElementById(
+    "perdidas_produccion_p"
+  ).checked;
   var reporters_p = document.getElementById("reporters_p").checked;
   var ofertas_p = document.getElementById("ofertas_p").checked;
 
@@ -356,16 +367,18 @@ function editar_permisos(){
       registro_fase_p: registro_fase_p,
       perdidas_produccion_p: perdidas_produccion_p,
       reporters_p: reporters_p,
-      ofertas_p: ofertas_p
+      ofertas_p: ofertas_p,
     },
     success: function (response) {
-      
       console.log(response);
-      
+
       $("#modal_editar_usuario").modal("hide");
       if (response == 1) {
-        return Swal.fire("Permisos exitoso", "Los permisos se modificarón con exito", "success");
-        
+        return Swal.fire(
+          "Permisos exitoso",
+          "Los permisos se modificarón con exito",
+          "success"
+        );
       } else {
         return Swal.fire(
           "Error de permisos",
@@ -375,7 +388,6 @@ function editar_permisos(){
       }
     },
   });
-
 }
 
 function ModificarRol(id) {

@@ -843,8 +843,11 @@ class Admin extends BaseController
                 ];
                 return view('admin/reporte/ReporteOfertas', $data);
             } else if ($valor == "ReporteProduccion") {
+
+                $producto = $this->producto->ListProductoProduccion();              
                 $data = [
-                    'fecha' => date("Y-m-d")
+                    'fecha' => date("Y-m-d"),
+                    'producto' => $producto
                 ];
                 return view('admin/reporte/ReporteProduccion', $data);
             }

@@ -895,27 +895,22 @@ class ModeloProducto
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
             calificarestado.id,
-            cliente.nombre,
-            cliente.apellidos,
             producto.nombre AS producto,
             calificarestado.estado,
             calificarestado.fecha,
             'Sin oferta' AS oferta 
             FROM
             calificarestado
-            INNER JOIN producto ON calificarestado.productoid = producto.id
-            INNER JOIN cliente ON calificarestado.clienteid = cliente.id UNION ALL
+            INNER JOIN producto ON calificarestado.productoid = producto.id            
+            UNION ALL            
             SELECT
             calificarestadooferta.id,
-            cliente.nombre,
-            cliente.apellidos,
             producto.nombre AS producto,
             calificarestadooferta.estado,
             calificarestadooferta.fecha,
             oferta.tipo_oferta AS oferta 
             FROM
             calificarestadooferta
-            INNER JOIN cliente ON calificarestadooferta.clienteid = cliente.id
             INNER JOIN producto ON calificarestadooferta.productoid = producto.id
             INNER JOIN oferta ON producto.id = oferta.producto_id 
             ORDER BY id DESC";

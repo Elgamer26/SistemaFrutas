@@ -1,6 +1,11 @@
 ///// LOGIN DE CLIENTES
 
 $(document).on("click", "#btn_aceptar", function () {
+  ValidarCredencialesUsuarioCliente();
+});
+
+function ValidarCredencialesUsuarioCliente(){
+
   var usuario = $("#cedula").val();
   var password = $("#password").val();
 
@@ -100,7 +105,9 @@ $(document).on("click", "#btn_aceptar", function () {
       }
     });
   }
-});
+
+
+}
 
 $(document).on("click", "#btn_atras", function () {
   location.href = BaseUrl;
@@ -250,7 +257,7 @@ function RegistraCliente() {
         if (resp == 1) {
           Swal.fire({
             title: "El cliente se registro con exito",
-            text: "Se envio el password al correo ingresado",
+            text: "Se envio el contraseña al correo ingresado",
             icon: "success",
             showCancelButton: true,
             showCancelButton: false,
@@ -382,7 +389,7 @@ function RegistraClienteTienda() {
         if (resp == 1) {
           Swal.fire({
             title: "El cliente se registro con exito",
-            text: "Se envio el password a su correo ingresado",
+            text: "Se envio el contraseña a su correo ingresado",
             icon: "success",
             showCancelButton: true,
             showCancelButton: false,
@@ -392,7 +399,7 @@ function RegistraClienteTienda() {
             confirmButtonText: "Ok",
           }).then((result) => {
             if (result.isConfirmed) {
-              location.reload();
+              location.href = BaseUrl + "home/login";
             }
           });
         } else if (resp == 2) {

@@ -115,10 +115,83 @@
 										</section>
 									</div>
 
-									<div class="col-md-12">
+									<!-- <div class="col-md-12">
 										<div class="form-group">
 											<label for="ciudad">Ciudad</label> <span id="ciudad_olbligg" style="color: red;"></span>
 											<input autocomplete="off" type="text" class="form-control" id="ciudad" placeholder="Ingrese la ciudad" maxlength="150">
+										</div>
+									</div> -->
+									<?php
+
+									$ciudades = array(
+										"Quito",
+										"Guayaquil",
+										"Milagro",
+										"Duran",
+										"La troncal",
+										"Naranjito",
+										"Naranjal",
+										"Yaguachi",
+										"Cuenca",
+										"Ambato",
+										"Santo Domingo de los Tsáchilas",
+										"Machala",
+										"Loja",
+										"Riobamba",
+										"Portoviejo",
+										"Manta",
+										"Esmeraldas",
+										"Ibarra",
+										"Quevedo",
+										"Tulcán",
+										"Babahoyo",
+										"Azogues",
+										"Guaranda",
+										"Machachi",
+										"Latacunga",
+										"Salinas",
+										"Santa Elena",
+										"Otavalo",
+										"Tena",
+										"Puyo",
+										"La Libertad",
+										"Montecristi",
+										"Vinces",
+										"Jipijapa",
+										"La Concordia",
+										"Calceta",
+										"Catamayo",
+										"Chone",
+										"Nueva Loja (Lago Agrio)",
+										"Zamora",
+										"Puerto Francisco de Orellana (El Coca)",
+										"Quevedo",
+										"Santo Domingo de los Colorados",
+										"Huaquillas",
+										"Yantzaza",
+										"Pasaje",
+										"San Gabriel",
+										"Pelileo",
+										"Pedro Carbo",
+										"Sucre (Bahía de Caráquez)",
+										"Archidona",
+										"Pelileo",
+										"Pujilí",
+										"Cayambe",
+										"Otavalo",
+										"La Mana"
+									);
+
+									?>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="ciudad">Ciudad</label> <span id="ciudad_olbligg" style="color: red;"></span>
+											<select id="ciudad" style="width: 100%;">
+												<option value="">-- Seleccione la ciudad --</option>
+												<?php foreach ($ciudades as $indice => $ciudad) { ?>
+													<option value="<?php echo $ciudad ?>"><?php echo $ciudad ?></option>
+												<?php } ?>
+											</select>
 										</div>
 									</div>
 
@@ -176,6 +249,7 @@
 
 	var count = 0;
 	let arrego_total = new Array();
+
 	$("#tabledetalle tbody#DetalleProductoCarrito tr").each(function() {
 		arrego_total.push($(this).find("td").eq(7).text());
 		count++;
@@ -184,78 +258,37 @@
 	let grantotal = arrego_total.toString();
 
 	$("#procesarpago").click(function() {
-		let ciudad = $("#ciudad").val();
-		let direccion = $("#direccion").val();
-		let referencia = $("#referencia").val();
 
-		// var arrego_id = new Array();
-		// var arreglo_cantidad = new Array();
-		// var arreglo_sale = new Array();
-		// var arreglo_precio = new Array();
-		// var arreglo_oferta = new Array();
-		// var arreglo_descuento = new Array();
-		// var arreglo_total = new Array();
+		// VALIDAR SI SI EL CLIENTE ESTA LOGEADO
+		$.ajax({
+			url: BaseUrl + "Tienda/ValidarUsuariExiste",
+			type: "GET",
+		}).done(function(resp) {
+			if (resp == 0) {
+				return Swal.fire(
+					"Inicie sesión",
+					"Para poder comprar debe inicar sesión",
+					"info"
+				);
+			} else {
+				let ciudad = $("#ciudad").val();
+				let direccion = $("#direccion").val();
+				let referencia = $("#referencia").val();
 
-		// let cpara = grantotal.split(",")
-		// let totals = 0;
-		// for (let i = 0; i < cpara.length; i++) {
-		// 	totals += parseFloat(cpara[i]);
-		// }
+				if (count == 0) {
+					return swal.fire("No hay productos", "No tiene productos ingresados en el detalle", "error");
+				}
 
-		// $("#tabledetalle tbody#DetalleProductoCarrito tr").each(function() {
-		// 	arrego_id.push($(this).find("td").eq(0).text());
-		// 	arreglo_cantidad.push($(this).find("td").eq(2).text());
-		// 	arreglo_sale.push($(this).find("td").eq(3).text());
-		// 	arreglo_precio.push($(this).find("td").eq(4).text());
-		// 	arreglo_oferta.push($(this).find("td").eq(5).text());
-		// 	arreglo_descuento.push($(this).find("td").eq(6).text());
-		// 	arreglo_total.push($(this).find("td").eq(7).text());
-		// });
+				if (direccion.length == 0 || direccion.trim() == "" ||
+					ciudad.length == 0 || ciudad.trim() == "" ||
+					referencia.length == 0 || referencia.trim() == "") {
+					return swal.fire("No hay datos de envio", "Ingrese los datos de envio para continuar", "warning");
+				}
 
-		// //aqui combierto el arreglo a un string
-		// var id = arrego_id.toString();
-		// var cantidad = arreglo_cantidad.toString();
-		// var sale = arreglo_sale.toString();
-		// var precio = arreglo_precio.toString();
-		// var oferta = arreglo_oferta.toString();
-		// var descuento = arreglo_descuento.toString();
-		// var totalsub = arreglo_total.toString();
-
-		// $.ajax({
-		// 	url: BaseUrl + "Tienda/RegistrarVentaCarrito",
-		// 	type: "POST",
-		// 	data: {
-		// 		id: id,
-		// 		cantidad: cantidad,
-		// 		sale: sale,
-		// 		precio: precio,
-		// 		oferta: oferta,
-		// 		descuento: descuento,
-		// 		totalsub: totalsub,
-
-		// 		ciudad: ciudad,
-		// 		direccion: direccion,
-		// 		referencia: referencia,
-		// 		sub: totals.toFixed(2),
-		// 		impuesto: (totals * 0.12).toFixed(2),
-		// 		totals: (totals + (totals * 0.12)).toFixed(2),
-		// 	},
-		// }).done(function(resp) {
-		// 	console.log(resp);
-		// });
-
-		if (count == 0) {
-			return swal.fire("No hay productos", "No tiene productos ingresados en el detalle", "error");
-		}
-
-		if (direccion.length == 0 || direccion.trim() == "" ||
-			ciudad.length == 0 || ciudad.trim() == "" ||
-			referencia.length == 0 || referencia.trim() == "") {
-			return swal.fire("No hay datos de envio", "Ingrese los datos de envio para continuar", "warning");
-		}
-
-		$("#btn_paypal").removeAttr("hidden", "hidden");
-		$("#procesopago").attr("hidden", "hidden");
+				$("#btn_paypal").removeAttr("hidden", "hidden");
+				$("#procesopago").attr("hidden", "hidden");
+			}
+		});
 	});
 
 	paypal.Buttons({
@@ -395,123 +428,137 @@
 	}).render('#paypal-button-container_ser');
 
 	function ProcesarPagoEfectivo() {
-		Swal.fire({
-			title: 'Procesar pago en efectivo?',
-			text: "Su pedido se procesará!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si, procesar!'
-		}).then((result) => {
-			if (result.isConfirmed) {
+		$.ajax({
+			url: BaseUrl + "Tienda/ValidarUsuariExiste",
+			type: "GET",
+		}).done(function(resp) {
+			if (resp == 0) {
+				return Swal.fire(
+					"Inicie sesión",
+					"Para poder comprar debe inicar sesión",
+					"info"
+				);
+			} else {
+				Swal.fire({
+					title: 'Procesar pago en efectivo?',
+					text: "Su pedido se procesará!",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Si, procesar!'
+				}).then((result) => {
+					if (result.isConfirmed) {
 
-				let ciudad = $("#ciudad").val();
-				let direccion = $("#direccion").val();
-				let referencia = $("#referencia").val();
-				var count = 0;
+						let ciudad = $("#ciudad").val();
+						let direccion = $("#direccion").val();
+						let referencia = $("#referencia").val();
+						var count = 0;
 
-				var arrego_id = new Array();
-				var arreglo_cantidad = new Array();
-				var arreglo_sale = new Array();
-				var arreglo_precio = new Array();
-				var arreglo_oferta = new Array();
-				var arreglo_descuento = new Array();
-				var arreglo_total = new Array();
+						var arrego_id = new Array();
+						var arreglo_cantidad = new Array();
+						var arreglo_sale = new Array();
+						var arreglo_precio = new Array();
+						var arreglo_oferta = new Array();
+						var arreglo_descuento = new Array();
+						var arreglo_total = new Array();
 
-				let cpara = grantotal.split(",")
-				let totals = 0;
-				for (let i = 0; i < cpara.length; i++) {
-					totals += parseFloat(cpara[i]);
-				}
+						let cpara = grantotal.split(",")
+						let totals = 0;
 
-				$("#tabledetalle tbody#DetalleProductoCarrito tr").each(function() {
-					arrego_id.push($(this).find("td").eq(0).text());
-					arreglo_cantidad.push($(this).find("td").eq(2).text());
-					arreglo_sale.push($(this).find("td").eq(3).text());
-					arreglo_precio.push($(this).find("td").eq(4).text());
-					arreglo_oferta.push($(this).find("td").eq(5).text());
-					arreglo_descuento.push($(this).find("td").eq(6).text());
-					arreglo_total.push($(this).find("td").eq(7).text());
-					count = count + 1;
-				});
+						for (let i = 0; i < cpara.length; i++) {
+							totals += parseFloat(cpara[i]);
+						}
 
-				if (count == 0){
-					return  swal.fire(
-							"No hay productos en el detalle",
-							"No hay productos en el detalle",
-							"warning");
-				}
+						$("#tabledetalle tbody#DetalleProductoCarrito tr").each(function() {
+							arrego_id.push($(this).find("td").eq(0).text());
+							arreglo_cantidad.push($(this).find("td").eq(2).text());
+							arreglo_sale.push($(this).find("td").eq(3).text());
+							arreglo_precio.push($(this).find("td").eq(4).text());
+							arreglo_oferta.push($(this).find("td").eq(5).text());
+							arreglo_descuento.push($(this).find("td").eq(6).text());
+							arreglo_total.push($(this).find("td").eq(7).text());
+							count = count + 1;
+						});
 
-				//aqui combierto el arreglo a un string
-				var id = arrego_id.toString();
-				var cantidad = arreglo_cantidad.toString();
-				var sale = arreglo_sale.toString();
-				var precio = arreglo_precio.toString();
-				var oferta = arreglo_oferta.toString();
-				var descuento = arreglo_descuento.toString();
-				var totalsub = arreglo_total.toString();
+						if (count == 0) {
+							return swal.fire(
+								"No hay productos en el detalle",
+								"No hay productos en el detalle",
+								"warning");
+						}
 
-				$.LoadingOverlay("show", {
-					text: "Procesando compra...",
-				});
+						//aqui combierto el arreglo a un string
+						var id = arrego_id.toString();
+						var cantidad = arreglo_cantidad.toString();
+						var sale = arreglo_sale.toString();
+						var precio = arreglo_precio.toString();
+						var oferta = arreglo_oferta.toString();
+						var descuento = arreglo_descuento.toString();
+						var totalsub = arreglo_total.toString();
 
-				$.ajax({
-					url: BaseUrl + "Tienda/RegistrarVentaCarritoEfectivo",
-					type: "POST",
-					data: {
-						id: id,
-						cantidad: cantidad,
-						sale: sale,
-						precio: precio,
-						oferta: oferta,
-						descuento: descuento,
-						totalsub: totalsub,
-						ciudad: ciudad,
-						direccion: direccion,
-						referencia: referencia,
-						sub: totals.toFixed(2),
-						impuesto: (totals * 0.12).toFixed(2),
-						totals: (totals + (totals * 0.12)).toFixed(2),
-					},
-				}).done(function(resp) {
-					$.LoadingOverlay("hide");
-					if (resp > 0) {
-						EnviarCorreoWeb(parseInt(resp));
-						Swal.fire({
-							title: "Campra realizada con exito",
-							text: "Desea imprimir la compra??",
-							icon: "warning",
-							showCancelButton: true,
-							showConfirmButton: true,
-							allowOutsideClick: false,
-							confirmButtonColor: "#3085d6",
-							cancelButtonColor: "#d33",
-							confirmButtonText: "Si, Imprimir!!",
-						}).then((result) => {
-							if (result.value) {
-								window.open(
-									BaseUrl + "Reporte/ReporteVentaWeb/" + parseInt(resp),
-									"#zoom=100%",
-									"Factura de venta producto",
-									"scrollbards=No"
-								);
-								location.reload();
+						$.LoadingOverlay("show", {
+							text: "Procesando compra...",
+						});
+
+						$.ajax({
+							url: BaseUrl + "Tienda/RegistrarVentaCarritoEfectivo",
+							type: "POST",
+							data: {
+								id: id,
+								cantidad: cantidad,
+								sale: sale,
+								precio: precio,
+								oferta: oferta,
+								descuento: descuento,
+								totalsub: totalsub,
+								ciudad: ciudad,
+								direccion: direccion,
+								referencia: referencia,
+								sub: totals.toFixed(2),
+								impuesto: (totals * 0.12).toFixed(2),
+								totals: (totals + (totals * 0.12)).toFixed(2),
+							},
+						}).done(function(resp) {
+							$.LoadingOverlay("hide");
+							if (resp > 0) {
+								EnviarCorreoWeb(parseInt(resp));
+								Swal.fire({
+									title: "Campra realizada con exito",
+									text: "Desea imprimir la compra??",
+									icon: "warning",
+									showCancelButton: true,
+									showConfirmButton: true,
+									allowOutsideClick: false,
+									confirmButtonColor: "#3085d6",
+									cancelButtonColor: "#d33",
+									confirmButtonText: "Si, Imprimir!!",
+								}).then((result) => {
+									if (result.value) {
+										window.open(
+											BaseUrl + "Reporte/ReporteVentaWeb/" + parseInt(resp),
+											"#zoom=100%",
+											"Factura de venta producto",
+											"scrollbards=No"
+										);
+										location.reload();
+									} else {
+										location.reload();
+									}
+								});
+
 							} else {
-								location.reload();
+								return swal.fire(
+									"Error al procesar la compra de producto",
+									"Error al procesar su compra de producto" + resp,
+									"error");
 							}
 						});
 
-					} else {
-						return swal.fire(
-							"Error al procesar la compra de producto",
-							"Error al procesar su compra de producto" + resp,
-							"error");
 					}
-				});
-
+				})
 			}
-		})
+		});
 	}
 
 	async function EnviarCorreoWeb(id) {

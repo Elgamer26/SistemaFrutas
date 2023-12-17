@@ -75,7 +75,6 @@ class Tienda extends BaseController
                 $iduser = $_SESSION["TokenClie"];
                 $id = $this->request->getPost('id');
                 $comentario_oferta = $this->request->getPost('comentario_oferta');
-
                 $repuesta = $this->tienda->RegistraCalificacion($id, $comentario_oferta, $iduser);
                 echo $repuesta;
             } else {
@@ -91,22 +90,18 @@ class Tienda extends BaseController
     public function IngresarProductoCarritoNormal()
     {
         if ($this->request->getMethod() == "post") {
-
-            if (!empty($_SESSION["TokenClie"])) {
-
-                $iduser = $_SESSION["TokenClie"];
-                $id = $this->request->getPost('id');
-                $precio = $this->request->getPost('precio');
-                $cantidad = $this->request->getPost('cantidad');
-
-                $repuesta = $this->tienda->IngresarProductoCarritoNormal($iduser, $id, $precio, $cantidad);
-                echo $repuesta;
-                exit();
-            } else {
-
-                echo "100";
-                exit();
-            }
+            // Obtener el nombre del host (ID de la máquina)
+            $nombreHost = gethostname();
+            // Obtener la dirección IP del servidor
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            // $iduser = $_SESSION["TokenClie"];
+            $id = $this->request->getPost('id');
+            $precio = $this->request->getPost('precio');
+            $cantidad = $this->request->getPost('cantidad');
+            $repuesta = $this->tienda->IngresarProductoCarritoNormal(0, $id, $precio, $cantidad, $usecomprador);
+            echo $repuesta;
+            exit();
         }
     }
 
@@ -115,22 +110,15 @@ class Tienda extends BaseController
     public function IngresarProductoCarritoOferta()
     {
         if ($this->request->getMethod() == "post") {
-
-            if (!empty($_SESSION["TokenClie"])) {
-
-                $iduser = $_SESSION["TokenClie"];
-                $id = $this->request->getPost('id');
-                $precio = $this->request->getPost('precio');
-                $cantidad = $this->request->getPost('cantidad');
-
-                $repuesta = $this->tienda->IngresarProductoCarritoOferta($iduser, $id, $precio, $cantidad);
-                echo $repuesta;
-                exit();
-            } else {
-
-                echo "100";
-                exit();
-            }
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $id = $this->request->getPost('id');
+            $precio = $this->request->getPost('precio');
+            $cantidad = $this->request->getPost('cantidad');
+            $repuesta = $this->tienda->IngresarProductoCarritoOferta(0, $id, $precio, $cantidad, $usecomprador);
+            echo $repuesta;
+            exit();
         }
     }
 
@@ -139,15 +127,12 @@ class Tienda extends BaseController
     public function ContarCantidadCarrito()
     {
         if ($this->request->getMethod() == "get") {
-            if (!empty($_SESSION["TokenClie"])) {
-                $iduser = $_SESSION["TokenClie"];
-                $repuesta = $this->tienda->ContarCantidadCarrito($iduser);
-                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
-                exit();
-            } else {
-                echo json_encode("0", JSON_UNESCAPED_UNICODE);
-                exit();
-            }
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $repuesta = $this->tienda->ContarCantidadCarrito($usecomprador);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
         }
     }
 
@@ -157,8 +142,10 @@ class Tienda extends BaseController
     {
         if ($this->request->getMethod() == "post") {
             $id_pro = $this->request->getPost('id_pro');
-            $id_cli = $_SESSION["TokenClie"];
-            $repuesta = $this->tienda->EliminarProductoDetalle($id_pro, $id_cli);
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $repuesta = $this->tienda->EliminarProductoDetalle($id_pro, $usecomprador);
             echo $repuesta;
             exit();
         }
@@ -169,7 +156,6 @@ class Tienda extends BaseController
     public function RegistrarVentaCarrito()
     {
         if ($this->request->getMethod() == "post") {
-
             $id_cli = $_SESSION["TokenClie"];
             $ciudad = $this->request->getPost('ciudad');
             $direccion = $this->request->getPost('direccion');
@@ -179,11 +165,11 @@ class Tienda extends BaseController
             $impuesto = $this->request->getPost('impuesto');
             $total = $this->request->getPost('totals');
             $estado = "paypal";
-
-            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado);
-
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado, $usecomprador);
             if ($repuesta > 0) {
-
                 $id = (string)$this->request->getPost('id');
                 $cantidad = (string)$this->request->getPost('cantidad');
                 $sale = (string)$this->request->getPost('sale');
@@ -191,7 +177,6 @@ class Tienda extends BaseController
                 $oferta = (string)$this->request->getPost('oferta');
                 $descuento = (string)$this->request->getPost('descuento');
                 $totalsub = (string)$this->request->getPost('totalsub');
-
                 $arraglo_id = explode(",", $id); //aqui separo los datos
                 $arraglo_cantidad = explode(",", $cantidad); //aqui separo los datos
                 $arraglo_sale = explode(",", $sale); //aqui separo los datos
@@ -199,11 +184,9 @@ class Tienda extends BaseController
                 $arraglo_oferta  = explode(",", $oferta); //aqui separo los datos
                 $arraglo_descuento  = explode(",", $descuento); //aqui separo los datos
                 $arraglo_total = explode(",", $totalsub); //aqui separo los datos  
-
                 for ($i = 0; $i < count($arraglo_id); $i++) {
                     $repuesta_create = $this->tienda->RegistrarVentaCarritoDetalle($repuesta, $arraglo_id[$i], $arraglo_cantidad[$i], $arraglo_sale[$i], $arraglo_precio[$i], $arraglo_oferta[$i], $arraglo_descuento[$i], $arraglo_total[$i]);
                 }
-
                 if ($repuesta_create > 0) {
                     echo $repuesta;
                     exit();
@@ -222,21 +205,19 @@ class Tienda extends BaseController
     public function RegistrarVentaCarritoEfectivo()
     {
         if ($this->request->getMethod() == "post") {
-
             $id_cli = $_SESSION["TokenClie"];
             $ciudad = $this->request->getPost('ciudad');
             $direccion = $this->request->getPost('direccion');
             $referencia = $this->request->getPost('referencia');
-
             $sub = $this->request->getPost('sub');
             $impuesto = $this->request->getPost('impuesto');
             $total = $this->request->getPost('totals');
             $estado = "efectivo";
-
-            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado);
-
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado, $usecomprador);
             if ($repuesta > 0) {
-
                 $id = (string)$this->request->getPost('id');
                 $cantidad = (string)$this->request->getPost('cantidad');
                 $sale = (string)$this->request->getPost('sale');
@@ -244,7 +225,6 @@ class Tienda extends BaseController
                 $oferta = (string)$this->request->getPost('oferta');
                 $descuento = (string)$this->request->getPost('descuento');
                 $totalsub = (string)$this->request->getPost('totalsub');
-
                 $arraglo_id = explode(",", $id); //aqui separo los datos
                 $arraglo_cantidad = explode(",", $cantidad); //aqui separo los datos
                 $arraglo_sale = explode(",", $sale); //aqui separo los datos
@@ -252,11 +232,9 @@ class Tienda extends BaseController
                 $arraglo_oferta  = explode(",", $oferta); //aqui separo los datos
                 $arraglo_descuento  = explode(",", $descuento); //aqui separo los datos
                 $arraglo_total = explode(",", $totalsub); //aqui separo los datos  
-
                 for ($i = 0; $i < count($arraglo_id); $i++) {
                     $repuesta_create = $this->tienda->RegistrarVentaCarritoDetalle($repuesta, $arraglo_id[$i], $arraglo_cantidad[$i], $arraglo_sale[$i], $arraglo_precio[$i], $arraglo_oferta[$i], $arraglo_descuento[$i], $arraglo_total[$i]);
                 }
-
                 if ($repuesta_create > 0) {
                     echo $repuesta;
                     exit();
@@ -284,71 +262,54 @@ class Tienda extends BaseController
     public function CalificarProducto()
     {
         if ($this->request->getMethod() == "post") {
-            if (!empty($_SESSION["TokenClie"])) {
-
-                $iduser = $_SESSION["TokenClie"];
-                $estado = $this->request->getPost('estado');
-                $idproducto = $this->request->getPost('idproducto');
-
-                $repuesta = $this->tienda->CalificarProducto($iduser, $estado, $idproducto);
-                echo $repuesta;
-                exit();
-            } else {
-
-                echo 0;
-                exit();
-            }
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $estado = $this->request->getPost('estado');
+            $idproducto = $this->request->getPost('idproducto');
+            $repuesta = $this->tienda->CalificarProducto($usecomprador, $estado, $idproducto);
+            echo $repuesta;
+            exit();
         }
     }
 
     public function TraerCalificaionCliente()
     {
         if ($this->request->getMethod() == "post") {
-            if (!empty($_SESSION["TokenClie"])) {
-                $iduser = $_SESSION["TokenClie"];
-                $idproducto = $this->request->getPost('idproducto');
-                $repuesta = $this->tienda->TraerCalificaionCliente($iduser, $idproducto);
-                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
-                exit();
-            } else {
-                echo 0;
-                exit();
-            }
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $idproducto = $this->request->getPost('idproducto');
+            $repuesta = $this->tienda->TraerCalificaionCliente($usecomprador, $idproducto);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
         }
     }
 
     public function CalificarProductoOferta()
     {
         if ($this->request->getMethod() == "post") {
-            if (!empty($_SESSION["TokenClie"])) {
-
-                $iduser = $_SESSION["TokenClie"];
-                $estado = $this->request->getPost('estado');
-                $idproducto = $this->request->getPost('idproducto');
-
-                $repuesta = $this->tienda->CalificarProductoOferta($iduser, $estado, $idproducto);
-                echo $repuesta;
-                exit();
-            } else {
-                echo 0;
-                exit();
-            }
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $estado = $this->request->getPost('estado');
+            $idproducto = $this->request->getPost('idproducto');
+            $repuesta = $this->tienda->CalificarProductoOferta($usecomprador, $estado, $idproducto);
+            echo $repuesta;
+            exit();
         }
     }
 
     public function TraerCalificaionClienteOferta()
     {
         if ($this->request->getMethod() == "post") {
-            if (!empty($_SESSION["TokenClie"])) {
-                $iduser = $_SESSION["TokenClie"];
-                $idproducto = $this->request->getPost('idproducto');
-                $repuesta = $this->tienda->TraerCalificaionClienteOferta($iduser, $idproducto);
-                echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
-                exit();
-            } else {
-                echo 0;
-                exit();
-            }
+            $nombreHost = gethostname();
+            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $usecomprador = $nombreHost . "-" . $direccionIP;
+            $idproducto = $this->request->getPost('idproducto');
+            $repuesta = $this->tienda->TraerCalificaionClienteOferta($usecomprador, $idproducto);
+            echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
+            exit();
         }
     }
 
@@ -357,7 +318,6 @@ class Tienda extends BaseController
         if ($this->request->getMethod() == "post") {
             $iduser = $_SESSION["TokenClie"];
             $passnew = $this->request->getPost('passnew');
-
             $repuesta = $this->tienda->EditarPasswordCliente($iduser, $passnew);
             echo $repuesta;
             exit();
@@ -440,11 +400,24 @@ class Tienda extends BaseController
             $partida = $this->request->getPost('partida');
             $valor = $this->request->getPost('valor');
             $id = $this->request->getPost('id');
-
             $repuesta = $this->tienda->paginartiendaCategorias($partida, $valor, $id);
             echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
             exit();
         }
         exit();
+    }
+
+    // validar si el cliente esta logeado y si esta que pueda comprar
+    public function ValidarUsuariExiste()
+    {
+        if ($this->request->getMethod() == "get") {
+            if (!empty($_SESSION["TokenClie"])) {
+                echo 1;
+                exit();
+            } else {
+                echo 0;
+                exit();
+            }
+        }
     }
 }

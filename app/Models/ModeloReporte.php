@@ -645,7 +645,8 @@ class ModeloReporte
             producto.codigo,
             producto.tipo_id,
             producto.cantidad,
-            producto.precio 
+            producto.precio,
+            producto.tamano
             FROM
                 producto 
             WHERE
@@ -673,7 +674,8 @@ class ModeloReporte
             producto.codigo,
             producto.tipo_id,
             producto.cantidad,
-            producto.precio 
+            producto.precio,
+            producto.tamano
             FROM
                 producto 
             ORDER BY producto.nombre ASC";
@@ -797,6 +799,46 @@ class ModeloReporte
             $query = $c->prepare($sql);
             $query->bindParam(1, $fi);
             $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosProduccion_Producto($producto, $saldo)
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            tipo_producto.tipo,
+            DATE_FORMAT(produccion.fecharegistro, '%d/%m/%Y') AS fecharegistro,
+            produccion.fechaini,
+            produccion.fechafin,
+            produccion.dias,
+            produccion.estado,
+            produccion.cantidad,
+            produccion.id 
+            FROM
+            produccion
+            INNER JOIN producto ON produccion.productoid = producto.id
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            WHERE
+            CASE
+                WHEN '". $producto ."' = 0 THEN produccion.id = produccion.id
+                ELSE produccion.id = '". $producto ."'
+            END = 1            
+                AND            
+            CASE
+                WHEN '" . $saldo . "' = 0 THEN produccion.cantidad = produccion.cantidad
+                ELSE produccion.cantidad >= 1 and produccion.cantidad <= '" . $saldo . "'
+            END = 1";
+            $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
             //cerramos la conexion

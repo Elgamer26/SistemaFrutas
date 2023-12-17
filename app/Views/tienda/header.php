@@ -49,9 +49,7 @@
                         <div class="clearfix"></div>
                     </div>
 
-                </div>
-
-                <?php if ($token != "NOTOKEN") { ?>
+                </div>             
 
                     <div class="col-md-6 top-header-left">
                         <div class="cart box_1">
@@ -64,9 +62,7 @@
                             <!-- <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
                             <div class="clearfix"> </div>
                         </div>
-                    </div>
-
-                <?php } ?>
+                    </div>                
 
                 <div class="clearfix"></div>
             </div>
@@ -89,9 +85,8 @@
                             <li class="active"><a href="<?php echo base_url(); ?>">Inicio</a></li>
                             <li class="grid"><a href="<?php echo base_url(); ?>home/ofertas">Ofertas</a>
                             </li>
-                            <?php if ($token != "NOTOKEN") { ?>
-                                <li class="grid"><a href="<?php echo base_url(); ?>home/detallecarrito">Detalle carrito</a>
-                                <?php } ?>
+                           
+                                <li class="grid"><a href="<?php echo base_url(); ?>home/detallecarrito">Detalle carrito</a>                            
                                 </li>
                                 <li class="grid"><a href="<?php echo base_url(); ?>home/Nosotros">Nosotros</a>
                                 </li>

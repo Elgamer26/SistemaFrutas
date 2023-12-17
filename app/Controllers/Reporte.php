@@ -1849,9 +1849,10 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(70, 12, utf8_decode('Planta'), 0, 0, 'C', 1);
-        $pdf->Cell(35, 12, utf8_decode('Codigo'), 0, 0, 'R', 1);
-        $pdf->Cell(35, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
-        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 1, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Tamaño'), 0, 0, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Codigo'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Precio'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Cantidad'), 0, 1, 'R', 1);
 
         $pdf->SetFont('Arial', '', 10);
 
@@ -1869,9 +1870,10 @@ class Reporte extends BaseController
 
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(70, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
-            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'R', 1);
-            $pdf->Cell(35, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
-            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["tamano"]), 'B', 0, 'C', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["codigo"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, "$ " . utf8_decode($detalle[$i]["precio"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 1, 'R', 1);
             $pdf->Ln(0.5);
         }
 
@@ -2102,6 +2104,102 @@ class Reporte extends BaseController
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(40, 54, utf8_decode($ff));
+
+        $pdf->Ln(50);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(181, 217, 119);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
+        $pdf->Cell(85, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
+        // $pdf->Cell(25, 12, utf8_decode('Fecha fin'), 0, 0, 'C', 1);
+        // $pdf->Cell(20, 12, utf8_decode('Dias'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Estado'), 0, 1, 'C', 1);
+
+        $pdf->SetFont('Arial', '', 10);
+        $estado = "";
+
+        for ($i = 0; $i < count($detalle); $i++) {
+
+            if ($detalle[$i]["estado"] == 1) {
+                $estado = "Iniciado";
+            } else {
+                $estado = "Finalizado";
+            }
+
+            $pdf->SetX(15); //posicionamos en x
+
+            if ($i % 2 == 0) {
+                $pdf->SetFillColor(232, 232, 232);
+                $pdf->SetDrawColor(65, 61, 61);
+            } else {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetDrawColor(65, 61, 61);
+            }
+
+            $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
+            $pdf->Cell(85, 8, utf8_decode($detalle[$i]["tipo"]), 'B', 0, 'C', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["fecharegistro"]), 'B', 0, 'C', 1);
+            //$pdf->Cell(25, 8,  utf8_decode($detalle[$i]["fechafin"]), 'B', 0, 'C', 1);
+            // $pdf->Cell(20, 8,  utf8_decode($detalle[$i]["dias"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8,  utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode("Producción"), 'B', 1, 'C', 1);
+            $pdf->Ln(0.5);
+        }
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output("reporte produccion.pdf", "I");
+    }
+
+    public function ReporteProduccionModulo_Producto($producto, $saldo)
+    {
+        $pdf = new \FPDF('P', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetTopMargin(15);
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+
+        ///llamo a los datos de la empresa
+        $empresa = new Reporte();
+        $datoempresa = $empresa->DatosEmpresaLLamer();
+        $detalle = $this->reporte->DatosProduccion_Producto($producto, $saldo);
+
+        /////////
+
+        $pdf->SetTitle(utf8_decode("Reporte de producción"));
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
+        $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
+        $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
+        $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
+        $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
+        $pdf->Text(90, 39, utf8_decode("Reporte de producción"), 1, '', 'C', 1);
+
+        //información de # de factura
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Text(140, 48, utf8_decode(""));
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Text(166, 48, utf8_decode(""));
+
+        // Agregamos los datos del cliente
+        // $pdf->SetFont('Arial', 'B', 10);
+        // $pdf->SetTextColor(0, 0, 0);
+        // $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
+        // $pdf->SetFont('Arial', '', 10);
+        // $pdf->Text(40, 48,  utf8_decode($fi));
+
+        // Agregamos los datos de la factura
+        // $pdf->SetFont('Arial', 'B', 10);
+        // $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
+        // $pdf->SetFont('Arial', '', 10);
+        // $pdf->Text(40, 54, utf8_decode($ff));
 
         $pdf->Ln(50);
 
