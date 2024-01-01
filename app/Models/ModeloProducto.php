@@ -474,6 +474,35 @@ class ModeloProducto
         exit();
     }
 
+    function ListProductoProduccionLista()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.id, 
+            producto.codigo, 
+            producto.nombre, 
+            tipo_producto.tipo, 
+            producto.estado
+            FROM
+            producto
+            INNER JOIN
+            tipo_producto
+            ON 
+            producto.tipo_id = tipo_producto.id WHERE producto.estado = 1 ORDER BY producto.id DESC";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function RegistroOferta($producto, $fechainicio, $fechafin, $tipooferta, $valordescuento)
     {
         try {

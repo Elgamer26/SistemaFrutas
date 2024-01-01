@@ -632,7 +632,7 @@ class Admin extends BaseController
             if ($valor == "list") {
                 return view('admin/produccion/ListProduccion');
             } else if ($valor == "create") {
-                $producto = $this->producto->ListProductoProduccion();
+                $producto = $this->producto->ListProductoProduccionLista();
                 $insumo = $this->insumo->ListarInsumoComprar();
                 $material = $this->insumo->ListarMaterialComprar();
                 $data = [
