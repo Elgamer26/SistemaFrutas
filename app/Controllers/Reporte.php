@@ -2188,19 +2188,6 @@ class Reporte extends BaseController
         $pdf->SetFont('Arial', '', 10);
         $pdf->Text(166, 48, utf8_decode(""));
 
-        // Agregamos los datos del cliente
-        // $pdf->SetFont('Arial', 'B', 10);
-        // $pdf->SetTextColor(0, 0, 0);
-        // $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
-        // $pdf->SetFont('Arial', '', 10);
-        // $pdf->Text(40, 48,  utf8_decode($fi));
-
-        // Agregamos los datos de la factura
-        // $pdf->SetFont('Arial', 'B', 10);
-        // $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
-        // $pdf->SetFont('Arial', '', 10);
-        // $pdf->Text(40, 54, utf8_decode($ff));
-
         $pdf->Ln(50);
 
         $pdf->SetX(15);
@@ -2211,8 +2198,6 @@ class Reporte extends BaseController
         $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
         $pdf->Cell(85, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
         $pdf->Cell(25, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
-        // $pdf->Cell(25, 12, utf8_decode('Fecha fin'), 0, 0, 'C', 1);
-        // $pdf->Cell(20, 12, utf8_decode('Dias'), 0, 0, 'C', 1);
         $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
         $pdf->Cell(25, 12, utf8_decode('Estado'), 0, 1, 'C', 1);
 
@@ -2240,8 +2225,6 @@ class Reporte extends BaseController
             $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
             $pdf->Cell(85, 8, utf8_decode($detalle[$i]["tipo"]), 'B', 0, 'C', 1);
             $pdf->Cell(25, 8, utf8_decode($detalle[$i]["fecharegistro"]), 'B', 0, 'C', 1);
-            //$pdf->Cell(25, 8,  utf8_decode($detalle[$i]["fechafin"]), 'B', 0, 'C', 1);
-            // $pdf->Cell(20, 8,  utf8_decode($detalle[$i]["dias"]), 'B', 0, 'C', 1);
             $pdf->Cell(30, 8,  utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
             $pdf->Cell(25, 8, utf8_decode("Producción"), 'B', 1, 'C', 1);
             $pdf->Ln(0.5);

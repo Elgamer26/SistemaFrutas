@@ -644,7 +644,8 @@ class ModeloReporte
             producto.nombre,
             producto.codigo,
             producto.tipo_id,
-            producto.cantidad,
+            IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+            AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
             producto.precio,
             producto.tamano
             FROM
@@ -673,7 +674,8 @@ class ModeloReporte
             producto.nombre,
             producto.codigo,
             producto.tipo_id,
-            producto.cantidad,
+            IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+            AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
             producto.precio,
             producto.tamano
             FROM
@@ -782,7 +784,7 @@ class ModeloReporte
         try {
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
-            tipo_producto.tipo,
+            producto.nombre as tipo,
             DATE_FORMAT(produccion.fecharegistro, '%d/%m/%Y') AS fecharegistro,
             produccion.fechaini,
             produccion.fechafin,
@@ -816,7 +818,7 @@ class ModeloReporte
         try {
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
-            tipo_producto.tipo,
+            producto.nombre as tipo,
             DATE_FORMAT(produccion.fecharegistro, '%d/%m/%Y') AS fecharegistro,
             produccion.fechaini,
             produccion.fechafin,
@@ -830,8 +832,8 @@ class ModeloReporte
             INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
             WHERE
             CASE
-                WHEN '". $producto ."' = 0 THEN produccion.id = produccion.id
-                ELSE produccion.id = '". $producto ."'
+                WHEN '". $producto ."' = 0 THEN produccion.productoid = produccion.productoid
+                ELSE produccion.productoid = '". $producto ."'
             END = 1            
                 AND            
             CASE
