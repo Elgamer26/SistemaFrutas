@@ -227,11 +227,12 @@ class ModeloProduccion
                 WHERE 
                 produccion.estado = 1 
                 AND
-                produccion.nombre LIKE '%" . $datos . "%'
+                (produccion.nombre LIKE '%" . $datos . "%'
                 OR
                 producto.nombre LIKE '%" . $datos . "%'
                 OR
-                produccion.dias LIKE '%" . $datos . "%'";
+                produccion.dias LIKE '%" . $datos . "%')
+                AND produccion.cantidad > 0";
             } else {
                 $sql = "SELECT
                 COUNT(*)
@@ -241,7 +242,8 @@ class ModeloProduccion
                 producto
                 ON 
                 produccion.productoid = producto.id
-                WHERE produccion.estado = 1 ";
+                WHERE produccion.estado = 1 
+                AND produccion.cantidad > 0";
             }
             $query = $c->prepare($sql);
             $query->execute();
@@ -311,9 +313,10 @@ class ModeloProduccion
                 INNER JOIN usuario ON produccion.usuarioid = usuario.id 
                 WHERE
                 produccion.estado = 1 AND
-                produccion.nombre LIKE '%" . $datos . "%' 
+                (produccion.nombre LIKE '%" . $datos . "%' 
                 OR producto.nombre LIKE '%" . $datos . "%' 
-                OR produccion.dias LIKE '%" . $datos . "%' 
+                OR produccion.dias LIKE '%" . $datos . "%')
+                AND produccion.cantidad > 0
                 ORDER BY produccion.id DESC LIMIT $limit, $numlotes";
             } else {
                 $sql_p = "SELECT
@@ -336,6 +339,7 @@ class ModeloProduccion
                 INNER JOIN usuario ON produccion.usuarioid = usuario.id 
                 WHERE
                 produccion.estado = 1 
+                AND produccion.cantidad > 0
                 ORDER BY
                 produccion.id DESC LIMIT $limit, $numlotes";
             }

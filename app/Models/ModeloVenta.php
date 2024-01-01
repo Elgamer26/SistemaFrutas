@@ -129,15 +129,21 @@ class ModeloVenta
             tipo_producto.tipo,
             producto.precio,
             producto.descripcion,
-            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+            IFNULL(
+            producto.imagen,
+            ( SELECT foto FROM imagenproducto WHERE imagenproducto.id_producto = producto.id LIMIT 1 )) AS imagen,
             producto.estado,
-            producto.cantidad 
+            producto.cantidad,
+            produccion.id AS cod_lote,
+            produccion.cantidad AS cant_lote 
             FROM
-                producto
-                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            producto
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
+            INNER JOIN produccion ON producto.id = produccion.productoid 
             WHERE
-                producto.estado = 1 
-                AND producto.cantidad != 0 
+            producto.estado = 1 
+            AND produccion.cantidad > 0 
+            AND produccion.estado = 1 
             ORDER BY
             producto.id DESC";
             $query = $c->prepare($sql);
@@ -163,19 +169,25 @@ class ModeloVenta
             producto.nombre,
             tipo_producto.tipo,
             producto.precio,
-            IFNULL(producto.imagen, (select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1)) as imagen,
+            IFNULL(
+                producto.imagen,
+            ( SELECT foto FROM imagenproducto WHERE imagenproducto.id_producto = producto.id LIMIT 1 )) AS imagen,
             producto.cantidad,
             oferta.fecha_inicio,
             oferta.fecha_fin,
             oferta.tipo_oferta,
-            oferta.valor_descuento
+            oferta.valor_descuento,
+            produccion.id AS cod_lote,
+            produccion.cantidad AS cant_lote 
             FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
-                INNER JOIN oferta ON producto.id = oferta.producto_id 
+                INNER JOIN oferta ON producto.id = oferta.producto_id
+                INNER JOIN produccion ON producto.id = produccion.productoid 
             WHERE
                 producto.estado = 1 
-                AND producto.cantidad <> 0 
+                AND produccion.cantidad > 0 
+                AND produccion.estado = 1 
             ORDER BY
             producto.id DESC";
             $query = $c->prepare($sql);
@@ -225,7 +237,8 @@ class ModeloVenta
         exit();
     }
 
-    function RegistrarVentaDetalle($id, $arraglo_idp, $arraglo_cantidad, $arraglo_sale, $arraglo_precio, $arraglo_desc_dolar, $arraglo_oferta, $arraglo_desc_oferta, $arraglo_subtotals)
+    function RegistrarVentaDetalle($id, $arraglo_idp, $arraglo_cantidad, $arraglo_sale, $arraglo_precio, $arraglo_desc_dolar, 
+    $arraglo_oferta, $arraglo_desc_oferta, $arraglo_subtotals, $arraglo_cod_lote)
     {
         try {
             $result = 0;
@@ -244,9 +257,9 @@ class ModeloVenta
 
             if ($query->execute()) {
 
-                $sql_p = "SELECT cantidad FROM producto where id = ?";
+                $sql_p = "SELECT cantidad FROM produccion where id = ?";
                 $query_p = $c->prepare($sql_p);
-                $query_p->bindParam(1, $arraglo_idp);
+                $query_p->bindParam(1, $arraglo_cod_lote);
                 $query_p->execute();
                 $data = $query_p->fetch();
 
@@ -257,10 +270,10 @@ class ModeloVenta
 
                 $stock = $stock - $arraglo_sale;
 
-                $sql_m = "UPDATE producto SET cantidad = ? where id = ?";
+                $sql_m = "UPDATE produccion SET cantidad = ? where id = ?";
                 $query_m = $c->prepare($sql_m);
                 $query_m->bindParam(1, $stock);
-                $query_m->bindParam(2, $arraglo_idp);
+                $query_m->bindParam(2, $arraglo_cod_lote);
 
                 if ($query_m->execute()) {
                     $result = 1;

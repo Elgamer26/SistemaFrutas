@@ -175,7 +175,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header" style="background: #28a745;">
-                <h5 class="modal-title" id="ModalBuscarProductoLabel" style="color: white;"><b>Productos Disponibles</b></h5>
+                <h5 class="modal-title" id="ModalBuscarProductoLabel" style="color: white;"><b>Lotes Disponibles</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -189,13 +189,15 @@
                                 <thead>
                                     <tr>
                                         <th hidden>Id</th>
-                                        <th>Código</th>
+                                        <th>Lote</th>
                                         <th>Producto</th>
                                         <th>Tipo</th>
                                         <th>Precio</th>
                                         <th>Imagen</th>
-                                        <th>Cantidad</th>
+                                        <th>Cantidad lote</th>
                                         <th>Enviar</th>
+                                        <th hidden>lote</th>
+                                        <th hidden>cant</th>
                                     </tr>
                                 </thead>
 
@@ -207,16 +209,17 @@
                                             <tr class="odd">
 
                                                 <td hidden><?= esc($producto_item["id"]); ?></td>
-                                                <td><?= esc($producto_item["codigo"]); ?></td>
+                                                <td><?= esc($producto_item["cod_lote"]); ?></td>
                                                 <td><?= esc($producto_item["nombre"]); ?></td>
                                                 <td> <span class="badge badge-warning"><?= esc($producto_item["tipo"]); ?></span> </td>
                                                 <td><?= esc($producto_item["precio"]); ?></td>
                                                 <td><a style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/producto/<?= esc($producto_item["imagen"]); ?>' width='45px' /></a></td>
-                                                <td><?= esc($producto_item["cantidad"]); ?></td>
-
+                                                <td><?= esc($producto_item["cant_lote"]); ?></td>
                                                 <td>
                                                     <a class='Enviar btn btn-success btn-sm' title='Enviar el producto'><i class='fa fa-plus'></i></a>
                                                 </td>
+                                                <td hidden><?= esc($producto_item["cod_lote"]); ?></td>
+                                                <td hidden><?= esc($producto_item["cant_lote"]); ?></td>
                                             </tr>
 
                                         <?php }
@@ -232,13 +235,15 @@
                                 <tfoot>
                                     <tr>
                                         <th hidden>Id</th>
-                                        <th>Código</th>
+                                        <th>Lote</th>
                                         <th>Producto</th>
                                         <th>Tipo</th>
                                         <th>Precio</th>
                                         <th>Imagen</th>
-                                        <th>Cantidad</th>
+                                        <th>Cantidad lote</th>
                                         <th>Enviar</th>
+                                        <th hidden>lote</th>
+                                        <th hidden>cant</th>
                                     </tr>
                                 </tfoot>
 
@@ -272,7 +277,7 @@
                                 <thead>
                                     <tr>
                                         <th hidden>Id</th>
-                                        <th>Código</th>
+                                        <th>Lote</th>
                                         <th>Producto</th>
                                         <th>Tipo</th>
                                         <th>Precio</th>
@@ -280,36 +285,33 @@
                                         <th>Fecha fin</th>
                                         <th>Oferta</th>
                                         <th>Descuento %</th>
-                                        <th>Cantidad</th>
+                                        <th>Cantidad lote</th>
                                         <th>Enviar</th>
+                                        <th hidden>lote</th>
+                                        <th hidden>cant</th>
                                     </tr>
                                 </thead>
 
                                 <tbody id="DetalleTablaOfertas">
-
                                     <?php if (!empty($ofertas) && is_array($ofertas)) {
                                         foreach ($ofertas as $ofertas_item) { ?>
-
                                             <tr class="odd">
-
                                                 <td hidden><?= esc($ofertas_item["id"]); ?></td>
-                                                <td><?= esc($ofertas_item["codigo"]); ?></td>
+                                                <td><?= esc($ofertas_item["cod_lote"]); ?></td>
                                                 <td><?= esc($ofertas_item["nombre"]); ?></td>
                                                 <td> <span class="badge badge-warning"><?= esc($ofertas_item["tipo"]); ?></span> </td>
                                                 <td><?= esc($ofertas_item["precio"]); ?></td>
                                                 <td><a style="border: none; border-radius: 50px;" title="Ver Imagen"><img style='border-radius: 50px;' src='<?php echo base_url(); ?>public/img/producto/<?= esc($ofertas_item["imagen"]); ?>' width='45px' /></a></td>
-
                                                 <td><span class="badge badge-primary"><?= esc($ofertas_item["fecha_fin"]); ?></span> </td>
                                                 <td><?= esc($ofertas_item["tipo_oferta"]); ?></td>
                                                 <td><?= esc($ofertas_item["valor_descuento"]); ?></td>
-
-                                                <td><?= esc($ofertas_item["cantidad"]); ?></td>
-
+                                                <td><?= esc($ofertas_item["cant_lote"]); ?></td>
                                                 <td>
                                                     <a class='Enviar_oferta btn btn-success btn-sm' title='Enviar el ofertas'><i class='fa fa-plus'></i></a>
                                                 </td>
+                                                <td hidden><?= esc($producto_item["cod_lote"]); ?></td>
+                                                <td hidden><?= esc($producto_item["cant_lote"]); ?></td>
                                             </tr>
-
                                         <?php }
                                     } else { ?>
                                         <tr class="odd">
@@ -323,7 +325,7 @@
                                 <tfoot>
                                     <tr>
                                         <th hidden>Id</th>
-                                        <th>Código</th>
+                                        <th>Lote</th>
                                         <th>Producto</th>
                                         <th>Tipo</th>
                                         <th>Precio</th>
@@ -331,8 +333,10 @@
                                         <th>Fecha fin</th>
                                         <th>Oferta</th>
                                         <th>Descuento %</th>
-                                        <th>Cantidad</th>
+                                        <th>Cantidad lote</th>
                                         <th>Enviar</th>
+                                        <th hidden>lote</th>
+                                        <th hidden>cant</th>
                                     </tr>
                                 </tfoot>
 
@@ -379,6 +383,8 @@
         var id = $(this).parents("tr").find("td")[0].innerHTML;
         var alimento = $(this).parents("tr").find("td")[2].innerHTML;
         var precio = $(this).parents("tr").find("td")[4].innerHTML;
+        var cod_lote = $(this).parents("tr").find("td")[8].innerHTML;
+        var cant_lote = $(this).parents("tr").find("td")[9].innerHTML;
 
         if (iva.trim() == "" || iva.length == 0) {
             $("#iva_olbligg").html("Ingrese iva");
@@ -414,8 +420,9 @@
         datos_agg += "<td>No oferta</td>";
         datos_agg += "<td>0</td>";
         datos_agg += "<td>" + precio + "</td>";
-        datos_agg +=
-            "<td> <button class='remover btn btn-danger'><i class='fa fa-trash'></i></button></td>";
+        datos_agg += "<td> <button class='remover btn btn-danger'><i class='fa fa-trash'></i></button></td>";
+        datos_agg += "<td hidden>" + cod_lote + "</td>";
+        datos_agg += "<td hidden>" + cant_lote + "</td>";
         datos_agg += "</tr>";
 
         //esto me ayuda a enviar los datos a la tabla
@@ -429,9 +436,11 @@
         var id = $(this).parents("tr").find("td")[0].innerHTML;
         var alimento = $(this).parents("tr").find("td")[2].innerHTML;
         var precio = $(this).parents("tr").find("td")[4].innerHTML;
-
         var oferta = $(this).parents("tr").find("td")[7].innerHTML;
         var descuento_oferta = $(this).parents("tr").find("td")[8].innerHTML;
+
+        var cod_lote = $(this).parents("tr").find("td")[11].innerHTML;
+        var cant_lote = $(this).parents("tr").find("td")[12].innerHTML;
 
         if (iva.trim() == "" || iva.length == 0) {
             $("#iva_olbligg").html("Ingrese iva");
@@ -477,6 +486,8 @@
         datos_agg += "<td>" + descuento_oferta + "</td>";
         datos_agg += "<td>" + parseFloat(precio - descoferta).toFixed(2) + "</td>";
         datos_agg += "<td> <button class='remover btn btn-danger'><i class='fa fa-trash'></i></button></td>";
+        datos_agg += "<td hidden>" + cod_lote + "</td>";
+        datos_agg += "<td hidden>" + cant_lote + "</td>";
         datos_agg += "</tr>";
 
         //esto me ayuda a enviar los datos a la tabla

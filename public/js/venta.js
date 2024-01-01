@@ -60,6 +60,24 @@ function guardarventaproducto() {
     );
   }
 
+  var validarcantidad = false
+  $("#detalle_venta_producto tbody#tbody_detalle_venta_producto tr").each(
+    function () {
+      if (parseInt($(this).find("td").eq(3).text()) > parseInt($(this).find("td").eq(11).text()))
+      {
+        validarcantidad = true
+      }
+    }
+  );
+  
+  if (validarcantidad == true){
+    return swal.fire(
+      "Cantidad no disponible",
+      "Se ha detectado una cantidad ingresado que supera lo disponible del lote",
+      "warning"
+    );
+  }
+
   var formdata = new FormData();
   formdata.append("cliente", proveedor);
   formdata.append("fecha_c", fecha_c);
@@ -109,6 +127,7 @@ function guardardetalleventa(id) {
   var arreglo_oferta = new Array();
   var arreglo_desc_oferta = new Array();
   var arreglo_subtotal = new Array();
+  var arreglo_cod_lote = new Array();
 
   $("#detalle_venta_producto tbody#tbody_detalle_venta_producto tr").each(
     function () {
@@ -116,15 +135,18 @@ function guardardetalleventa(id) {
       arreglo_cantidad.push($(this).find("#cantida_a").val());
       arreglo_sale.push($(this).find("td").eq(3).text());
       arreglo_precio.push($(this).find("#precio_a").val());
-      //arreglo_precio.push($(this).find("td").eq(4).text());
       arreglo_desc_dolar.push($(this).find("#descuento_a").val());
-
       arreglo_oferta.push($(this).find("td").eq(6).text());
       arreglo_desc_oferta.push($(this).find("td").eq(7).text());
       arreglo_subtotal.push($(this).find("td").eq(8).text());
+      arreglo_cod_lote.push($(this).find("td").eq(10).text());
       count++;
     }
   );
+
+  if (count == 0) {
+    return false;
+  }
 
   //aqui combierto el arreglo a un string
   var idp = arrego_producto.toString();
@@ -135,13 +157,7 @@ function guardardetalleventa(id) {
   var oferta = arreglo_oferta.toString();
   var desc_oferta = arreglo_desc_oferta.toString();
   var subtotals = arreglo_subtotal.toString();
-
-  console.log(precio);
-
-  if (count == 0) {
-    return false;
-  }
-
+  var cod_lote = arreglo_cod_lote.toString();
   $.ajax({
     url: BaseUrl + "Venta/DetalleCompraMaterial",
     type: "POST",
@@ -155,16 +171,13 @@ function guardardetalleventa(id) {
       oferta: oferta,
       desc_oferta: desc_oferta,
       subtotals: subtotals,
+      cod_lote: cod_lote
     },
   }).done(function (resp) {
-    console.log(resp);
-
     $(".carro").LoadingOverlay("hide");
-
     if (resp > 0) {
       if (resp == 1) {
         EnviarCorreVenta(parseInt(id));
-
         Swal.fire({
           title: "Compra realizada con exito",
           text: "Desea imprimir la compra??",

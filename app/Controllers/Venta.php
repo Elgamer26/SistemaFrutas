@@ -45,6 +45,7 @@ class Venta extends BaseController
             $oferta = (string)$this->request->getPost('oferta');
             $desc_oferta = (string)$this->request->getPost('desc_oferta');
             $subtotals = (string)$this->request->getPost('subtotals');
+            $cod_lote = (string)$this->request->getPost('cod_lote');
 
 
             $arraglo_idp = explode(",", $idp); //aqui separo los datos
@@ -55,9 +56,20 @@ class Venta extends BaseController
             $arraglo_oferta = explode(",", $oferta); //aqui separo los datos
             $arraglo_desc_oferta  = explode(",", $desc_oferta); //aqui separo los datos
             $arraglo_subtotals = explode(",", $subtotals); //aqui separo los datos  
+            $arraglo_cod_lote = explode(",", $cod_lote); //aqui separo los datos  
 
             for ($i = 0; $i < count($arraglo_idp); $i++) {
-                $repuesta_create = $this->venta->RegistrarVentaDetalle($id, $arraglo_idp[$i], $arraglo_cantidad[$i], $arraglo_sale[$i], $arraglo_precio[$i], $arraglo_desc_dolar[$i], $arraglo_oferta[$i], $arraglo_desc_oferta[$i], $arraglo_subtotals[$i]);
+                $repuesta_create = $this->venta->RegistrarVentaDetalle(
+                $id, $arraglo_idp[$i], 
+                $arraglo_cantidad[$i], 
+                $arraglo_sale[$i], 
+                $arraglo_precio[$i], 
+                $arraglo_desc_dolar[$i], 
+                $arraglo_oferta[$i], 
+                $arraglo_desc_oferta[$i], 
+                $arraglo_subtotals[$i],
+                $arraglo_cod_lote[$i]
+            );
             }
 
             echo $repuesta_create;
