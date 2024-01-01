@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Factura>
+  <infoTributaria>
+    <ambiente>92</ambiente>
+    <tipoEmision>20231231231219</tipoEmision>
+    <razonSocial>nombre editado</razonSocial>
+    <nombreComercial>nombre editado</nombreComercial>
+    <ruc>1245</ruc>
+    <claveAcceso>1245</claveAcceso>
+    <codDoc>GA230624141357</codDoc>
+    <estab>2023-12-31 23:15:19</estab>
+    <ptoEmi>001</ptoEmi>
+    <secuencial>0092</secuencial>
+    <dirMatriz>nombre editado</dirMatriz>
+  </infoTributaria>
+  <infoFactura>
+    <fechaEmision>2023-12-31 23:15:19</fechaEmision>
+    <dirEstablecimiento>1</dirEstablecimiento>
+    <contribuyenteEspecial>aaaa</contribuyenteEspecial>
+    <obligadoContabilidad>No</obligadoContabilidad>
+    <tipoIdentificacionComprador>Cedula</tipoIdentificacionComprador>
+    <razonSocialComprador>aaaa</razonSocialComprador>
+    <identificacionComprador>0940321854</identificacionComprador>
+    <totalSinImpuestos>0.24</totalSinImpuestos>
+    <totalDescuento>0</totalDescuento>
+    <totalConImpuestos>
+      <totalImpuesto>
+        <codigo>92</codigo>
+        <codigoPorcentaje>%</codigoPorcentaje>
+        <descuentoAdicional>0</descuentoAdicional>
+        <baseImponible>efectivo</baseImponible>
+        <valor>0</valor>
+      </totalImpuesto>
+    </totalConImpuestos>
+    <propina>1</propina>
+    <importeTotal>1</importeTotal>
+    <moneda>DOLAR</moneda>
+  </infoFactura>
+  <detalles>
+    <detalle>
+      <codigoPrincipal>1</codigoPrincipal>
+      <codigoAuxiliar>1</codigoAuxiliar>
+      <descripcion>aaa</descripcion>
+      <cantidad>1</cantidad>
+      <precioUnitario>2.00</precioUnitario>
+      <descuento>0.00</descuento>
+      <precioTotalSinImpuesto>2.00</precioTotalSinImpuesto>
+      <impuestos>
+        <impuesto>
+          <codigo>92</codigo>
+          <codigoPorcentaje>%</codigoPorcentaje>
+          <tarifa>2x1</tarifa>
+          <baseImponible>001</baseImponible>
+          <valor>001</valor>
+        </impuesto>
+      </impuestos>
+    </detalle>
+  </detalles>
+</Factura>

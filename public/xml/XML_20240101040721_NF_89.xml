@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Factura>
+  <infoTributaria>
+    <ambiente>89</ambiente>
+    <tipoEmision>20231231231220</tipoEmision>
+    <razonSocial>nombre editado</razonSocial>
+    <nombreComercial>nombre editado</nombreComercial>
+    <ruc>1245</ruc>
+    <claveAcceso>1245</claveAcceso>
+    <codDoc>GA230624141357</codDoc>
+    <estab>2023-12-31 23:07:20</estab>
+    <ptoEmi>001</ptoEmi>
+    <secuencial>0089</secuencial>
+    <dirMatriz>nombre editado</dirMatriz>
+  </infoTributaria>
+  <infoFactura>
+    <fechaEmision>2023-12-31 23:07:20</fechaEmision>
+    <dirEstablecimiento>1</dirEstablecimiento>
+    <contribuyenteEspecial>aaaa</contribuyenteEspecial>
+    <obligadoContabilidad>No</obligadoContabilidad>
+    <tipoIdentificacionComprador>Cedula</tipoIdentificacionComprador>
+    <razonSocialComprador>aaaa</razonSocialComprador>
+    <identificacionComprador>0940321854</identificacionComprador>
+    <totalSinImpuestos>0.24</totalSinImpuestos>
+    <totalDescuento>0</totalDescuento>
+    <totalConImpuestos>
+      <totalImpuesto>
+        <codigo>89</codigo>
+        <codigoPorcentaje>%</codigoPorcentaje>
+        <descuentoAdicional>0</descuentoAdicional>
+        <baseImponible>efectivo</baseImponible>
+        <valor>0</valor>
+      </totalImpuesto>
+    </totalConImpuestos>
+    <propina>1</propina>
+    <importeTotal>1</importeTotal>
+    <moneda>DOLAR</moneda>
+  </infoFactura>
+  <detalles>
+    <detalle>
+      <codigoPrincipal>1</codigoPrincipal>
+      <codigoAuxiliar>1</codigoAuxiliar>
+      <descripcion>aaa</descripcion>
+      <cantidad>1</cantidad>
+      <precioUnitario>2.00</precioUnitario>
+      <descuento>0.00</descuento>
+      <precioTotalSinImpuesto>2.00</precioTotalSinImpuesto>
+      <impuestos>
+        <impuesto>
+          <codigo>89</codigo>
+          <codigoPorcentaje>%</codigoPorcentaje>
+          <tarifa>No oferta</tarifa>
+          <baseImponible>001</baseImponible>
+          <valor>001</valor>
+        </impuesto>
+      </impuestos>
+    </detalle>
+  </detalles>
+</Factura>

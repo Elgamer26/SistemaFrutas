@@ -101,8 +101,10 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-                producto.cantidad,
-                producto.tamano 
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
+                producto.tamano,
+                producto.cantidad as canti_pord
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
@@ -119,8 +121,10 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-                producto.cantidad,
-                producto.tamano 
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,              
+                producto.tamano,
+                producto.cantidad as canti_pord
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
@@ -259,11 +263,13 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-                producto.cantidad,
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,                 
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
                 oferta.valor_descuento,
-                producto.tamano 
+                producto.tamano,
+                producto.cantidad as cant_prod,
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -282,11 +288,13 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-                producto.cantidad,
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
                 oferta.tipo_oferta,
                 oferta.fecha_fin,
                 oferta.valor_descuento,
-                producto.tamano 
+                producto.tamano,
+                producto.cantidad as cant_prod
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -358,10 +366,12 @@ class ModeloTienda
             tipo_producto.tipo, 
             producto.precio, 
             IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,  
-            producto.cantidad, 
+            IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+            AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,            
             producto.codigo, 
             producto.descripcion,
-            producto.tamano
+            producto.tamano,
+            producto.cantidad as cant_prod
             FROM
             producto
             INNER JOIN
@@ -424,14 +434,16 @@ class ModeloTienda
             tipo_producto.tipo,
             producto.precio,
             producto.imagen,
-            producto.cantidad,
+            IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+            AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,            
             producto.codigo,
             producto.descripcion,
             oferta.fecha_inicio,
             oferta.fecha_fin,
             oferta.tipo_oferta,
             oferta.valor_descuento,
-            producto.tamano
+            producto.tamano,
+            producto.cantidad as cant_prod
             FROM
             producto
             INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -649,7 +661,7 @@ class ModeloTienda
             if (empty($data_a)) {
 
                 //////////////////// saber si hay stock
-                $sql_stock = "SELECT cantidad FROM producto WHERE id = ?";
+                $sql_stock = "SELECT IFNULL(MAX(produccion.cantidad), 0) as cantidad FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 AND produccion.productoid = ?";
                 $q_stock_a = $c->prepare($sql_stock);
                 $q_stock_a->bindParam(1, $id);
                 $q_stock_a->execute();
@@ -679,7 +691,7 @@ class ModeloTienda
                 $cant = $data_a[2] + $cantidad;
 
                 $stock = 0;
-                $sql_p = "SELECT cantidad FROM producto WHERE id = ?";
+                $sql_p = "SELECT IFNULL(MAX(produccion.cantidad), 0) as cantidad FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 AND produccion.productoid = ?";
                 $query_p = $c->prepare($sql_p);
                 $query_p->bindParam(1, $id);
                 $query_p->execute();
@@ -764,7 +776,7 @@ class ModeloTienda
                 }
 
                 //////////////////// saber si hay stock
-                $sql_stock = "SELECT cantidad FROM producto WHERE id = ?";
+                $sql_stock = "SELECT IFNULL(MAX(produccion.cantidad), 0) as cantidad FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 AND produccion.productoid = ?";
                 $q_stock_a = $c->prepare($sql_stock);
                 $q_stock_a->bindParam(1, $id);
                 $q_stock_a->execute();
@@ -806,7 +818,7 @@ class ModeloTienda
                 }
 
                 $stock = 0;
-                $sql_p = "SELECT cantidad FROM producto WHERE id = ?";
+                $sql_p = "SELECT IFNULL(MAX(produccion.cantidad), 0) as cantidad FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 AND produccion.productoid = ?";
                 $query_p = $c->prepare($sql_p);
                 $query_p->bindParam(1, $id);
                 $query_p->execute();
@@ -985,23 +997,27 @@ class ModeloTienda
 
             if ($query->execute()) {
 
-                $sql_p = "SELECT cantidad FROM producto where id = ?";
+                $sql_p = "SELECT IFNULL(MAX(produccion.cantidad), 0) as cantidad, produccion.id FROM produccion WHERE produccion.productoid = ?";
                 $query_p = $c->prepare($sql_p);
                 $query_p->bindParam(1, $arraglo_id);
                 $query_p->execute();
                 $data = $query_p->fetch();
 
                 $stock = $data[0];
+                $produccionid = $data[1];
+
                 if ($stock == "" || $stock == 0) {
                     $stock = 0;
                 }
 
                 $stock = $stock - $arraglo_sale;
 
-                $sql_m = "UPDATE producto SET cantidad = ? where id = ?";
+                // $sql_m = "UPDATE producto SET cantidad = ? where id = ?";
+                $sql_m = "UPDATE produccion SET cantidad = ? WHERE produccion.id = ?";
                 $query_m = $c->prepare($sql_m);
                 $query_m->bindParam(1, $stock);
-                $query_m->bindParam(2, $arraglo_id);
+                // $query_m->bindParam(2, $arraglo_id);
+                $query_m->bindParam(2, $produccionid);
 
                 if ($query_m->execute()) {
                     $result = 1;
@@ -1376,8 +1392,10 @@ class ModeloTienda
             tipo_producto.tipo,
             producto.precio,
             IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-            producto.cantidad,
-            producto.tamano 
+            IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+            AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,            
+            producto.tamano,
+            producto.cantidad as cant_prod
             FROM
             producto
             INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
@@ -1481,8 +1499,10 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-                producto.cantidad,
-                producto.tamano 
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+                AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,                 
+                producto.tamano,
+                producto.cantidad as cant_prod
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
@@ -1497,8 +1517,10 @@ class ModeloTienda
                 tipo_producto.tipo,
                 producto.precio,
                 IFNULL((select foto from imagenproducto where imagenproducto.id_producto = producto.id LIMIT 1), producto.imagen) as imagen,
-                producto.cantidad,
-                producto.tamano 
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
+                AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,                 
+                producto.tamano,
+                producto.cantidad as cant_prod
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 

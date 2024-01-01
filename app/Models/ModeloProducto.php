@@ -23,23 +23,23 @@ class ModeloProducto
         try {
             $c = $this->conexion->conexionPDO();
             $sql = "SELECT
-            producto.id, 
-            producto.codigo, 
-            producto.nombre, 
-            producto.tipo_id, 
-            tipo_producto.tipo, 
-            producto.precio, 
-            producto.descripcion, 
-            producto.imagen, 
+            producto.id,
+            producto.codigo,
+            producto.nombre,
+            producto.tipo_id,
+            tipo_producto.tipo,
+            producto.precio,
+            producto.descripcion,
+            producto.imagen,
             producto.estado,
-            producto.cantidad,
-            producto.tamano
+            IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
+            producto.tamano,	
+            producto.cantidad as canti_pord
             FROM
             producto
-            INNER JOIN
-            tipo_producto
-            ON 
-            producto.tipo_id = tipo_producto.id ORDER BY producto.id DESC";
+            INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+            ORDER BY
+            producto.id DESC";
             $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
