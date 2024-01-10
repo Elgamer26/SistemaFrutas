@@ -397,7 +397,7 @@ function RegistrarDetalleMaterialProduccion(id) {
         title: "La producción se registro con exito",
         text: "Registro con exito",
         icon: "success",
-        showCancelButton: true, 
+        showCancelButton: false, 
         allowOutsideClick: false,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",

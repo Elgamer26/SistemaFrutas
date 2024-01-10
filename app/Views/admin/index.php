@@ -595,7 +595,7 @@
                 <div class="ibox-body">
                   <div class="flexbox mb-4">
                     <div>
-                      <h4 style="text-align: center;"><b>Ganancias de ventas por meses</b></h4>
+                      <h4 style="text-align: center;"><b>Ventas en los ultimos meses</b></h4>
                     </div>
                   </div>
                   <div>

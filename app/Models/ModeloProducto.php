@@ -460,7 +460,7 @@ class ModeloProducto
             ON 
             producto.tipo_id = tipo_producto.id WHERE producto.estado = 1 
             AND producto.id = (SELECT produccion.productoid FROM produccion 
-            WHERE produccion.cantidad > 0 AND produccion.estado = 1 GROUP BY produccion.productoid) ORDER BY producto.id DESC";
+            WHERE produccion.cantidad > 0 AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid ) ORDER BY producto.id DESC";
             $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
