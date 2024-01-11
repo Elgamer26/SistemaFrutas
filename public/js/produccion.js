@@ -1,4 +1,4 @@
-$("#insumo").change(function () {
+$("#insumo").change(function () {$("#materialDisponible").val("");
   let data = $(this).val();
   if (data > 0) {
     $.ajax({
@@ -11,9 +11,9 @@ $("#insumo").change(function () {
       },
     });
   } else {
-    $("#insumodisponible").val("0");
+    $("#insumodisponible").val("");
   }
-  $("#cantidadInsumo").val("0");
+  $("#cantidadInsumo").val("");
 });
 
 $("#material").change(function () {
@@ -29,9 +29,9 @@ $("#material").change(function () {
       },
     });
   } else {
-    $("#materialDisponible").val("0");
+    $("#materialDisponible").val("");
   }
-  $("#cantidadMaterial").val("0");
+  $("#cantidadMaterial").val("");
 });
 
 $(".traerCantidadProduction").change(function () {
@@ -47,7 +47,7 @@ $(".traerCantidadProduction").change(function () {
       },
     });
   } else {
-    $("#disponibleprod").val("0");
+    $("#disponibleprod").val("");
   }
 });
 
@@ -119,7 +119,7 @@ function AggInsumoDetalle() {
 
   //esto me ayuda a enviar los datos a la tabla
   $("#tbody_detalleInsumo").append(datos_agg);
-  $("#cantidadInsumo").val("0");
+  $("#cantidadInsumo").val("");
 }
 
 function ValidarDetalleInsumo(id) {
@@ -207,7 +207,7 @@ function AggMaterialDetalle() {
 
   //esto me ayuda a enviar los datos a la tabla
   $("#tbody_detalleMaterial").append(datos_agg);
-  $("#cantidadMaterial").val("0");
+  $("#cantidadMaterial").val("");
 }
 
 function ValidarDetalleMaterial(id) {
@@ -829,7 +829,7 @@ function TraerNumeroFase(id) {
       },
     });
   } else {
-    $("#diasproduccion").val("0");
+    $("#diasproduccion").val("");
   }
 }
 

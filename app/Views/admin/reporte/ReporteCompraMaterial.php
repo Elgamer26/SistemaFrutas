@@ -54,6 +54,12 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label>Todo</label>
+                                    <button class="btn btn-success" onclick="VerReporteVnetaTodo();"> <i class="fa fa-file"></i> Ver</button>
+                                </div>
+                            </div>
 
                             <div class="col-lg-12">
                                 <center>
@@ -90,6 +96,13 @@
 
         var ifrm = document.getElementById("iframeCompraMaterial");
         ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/reportecompraMaterialModulo/" + fecha_inicio + "/" + fecha_fin + "");
+
+    }
+
+    function VerReporteVnetaTodo() {
+
+        var ifrm = document.getElementById("iframeCompraMaterial");
+        ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/reportecompraMaterialModuloTodo/");
 
     }
 </script>

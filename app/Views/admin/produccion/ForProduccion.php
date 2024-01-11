@@ -84,7 +84,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="cantidadprod">Cantidad</label> <span id="cantidadprod_olbligg" style="color: red;"></span>
-                                    <input onkeypress="return soloNumeros(event);" value="0" type="text" name="cantidadprod" class="form-control" id="cantidadprod">
+                                    <input onkeypress="return soloNumeros(event);" value="" type="text" name="cantidadprod" class="form-control" id="cantidadprod" placeholder="0">
                                 </div>
                             </div>
 
@@ -145,7 +145,7 @@
                                                                     <div class="col-md-2">
                                                                         <div class="form-group">
                                                                             <label for="cantidadInsumo">Cantidad</label> <span id="cantidadInsumo_olbligg" style="color: red;"></span>
-                                                                            <input onkeypress="return soloNumeros(event);" value="0" type="text" name="cantidadInsumo" class="form-control" id="cantidadInsumo" maxlength="7">
+                                                                            <input onkeypress="return soloNumeros(event);" value="" type="text" name="cantidadInsumo" class="form-control" id="cantidadInsumo" maxlength="7"  placeholder="0">
                                                                         </div>
                                                                     </div>
 
@@ -209,7 +209,7 @@
                                                                     <div class="col-md-2">
                                                                         <div class="form-group">
                                                                             <label for="cantidadMaterial">Cantidad</label> <span id="cantidadMaterial_olbligg" style="color: red;"></span>
-                                                                            <input onkeypress="return soloNumeros(event);" value="0" type="text" name="cantidadMaterial" class="form-control" id="cantidadMaterial" maxlength="7">
+                                                                            <input onkeypress="return soloNumeros(event);" value="" type="text" name="cantidadMaterial" class="form-control" id="cantidadMaterial" maxlength="7"  placeholder="0">
                                                                         </div>
                                                                     </div>
 

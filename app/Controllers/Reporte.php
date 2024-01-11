@@ -63,7 +63,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(30, 48,  $compra[3]);
+        $pdf->Text(30, 48,  date('d/m/Y', strtotime($compra[3])));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -163,7 +163,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(30, 48,  $compra[3]);
+        $pdf->Text(30, 48,  date('d/m/Y', strtotime($compra[3])));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -270,7 +270,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 54, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(38, 54,  $produccion[2]);
+        $pdf->Text(38, 54,  date('d/m/Y', strtotime($produccion[2])));
 
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->SetTextColor(0, 0, 0);
@@ -727,7 +727,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(30, 48,  utf8_decode($venta[12]));
+        $pdf->Text(30, 48,  utf8_decode(date('d/m/Y', strtotime($venta[12]))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -856,7 +856,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(30, 48,  utf8_decode($venta[12]));
+        $pdf->Text(30, 48,  utf8_decode(date('d/m/Y', strtotime($venta[12]))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -963,7 +963,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(30, 48,  utf8_decode($venta[12]));
+        $pdf->Text(30, 48,  utf8_decode(date('d/m/Y', strtotime($venta[12]))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -1126,7 +1126,7 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(30, 48,  utf8_decode($venta[12]));
+        $pdf->Text(30, 48,  utf8_decode(date('d/m/Y', strtotime($venta[12]))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
@@ -1389,13 +1389,13 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 48,  utf8_decode($fi));
+        $pdf->Text(40, 48,  utf8_decode(date('d/m/Y', strtotime($fi))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 54, utf8_decode($ff));
+        $pdf->Text(40, 54, utf8_decode(date('d/m/Y', strtotime($ff))));
 
         $pdf->Ln(50);
 
@@ -1443,6 +1443,82 @@ class Reporte extends BaseController
         $pdf->Output("reporte venta.pdf", "I");
     }
 
+    public function reporteventaModuloTodo()
+    {
+        $pdf = new \FPDF('P', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetTopMargin(15);
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+
+        ///llamo a los datos de la empresa
+        $empresa = new Reporte();
+        $datoempresa = $empresa->DatosEmpresaLLamer();
+
+        $saberCompras = "Todo";
+        $detalle = $this->reporte->DatosReporteVentaTodo();
+        /////////
+
+        $pdf->SetTitle("Reporte de Venta");
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
+        $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
+        $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
+        $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
+        $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
+        $pdf->Text(90, 39, "Reporte de venta " . $saberCompras, 1, '', 'C', 1);
+
+        //información de # de factura
+        $pdf->Ln(40);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(181, 217, 119);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
+        $pdf->Cell(65, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(35, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'R', 1);
+
+        $pdf->SetFont('Arial', '', 10);
+
+        $totalss = 0;
+        for ($i = 0; $i < count($detalle); $i++) {
+
+            $totalss = $totalss + $detalle[$i]["total"];
+            $pdf->SetX(15); //posicionamos en x
+
+            if ($i % 2 == 0) {
+                $pdf->SetFillColor(232, 232, 232);
+                $pdf->SetDrawColor(65, 61, 61);
+            } else {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetDrawColor(65, 61, 61);
+            }
+
+            $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
+            $pdf->Cell(65, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
+            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["fecharegistro"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'R', 1);
+            $pdf->Ln(0.5);
+        }
+
+        $pdf->Ln(5);
+        $pdf->setX(95);
+        $pdf->Cell(40, 6, 'Total de venta', 1, 0);
+        $pdf->Cell(60, 6, "$ " . number_format($totalss, 2, ',', '.'), '1', 1, 'R');
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output("reporte venta.pdf", "I");
+    }
+
+
     public function reportecompraModulo($fi, $ff)
     {
         $pdf = new \FPDF('P', 'mm', 'A4');
@@ -1481,13 +1557,13 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 48,  utf8_decode($fi));
+        $pdf->Text(40, 48,  utf8_decode(date('d/m/Y', strtotime($fi))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 54, utf8_decode($ff));
+        $pdf->Text(40, 54, utf8_decode(date('d/m/Y', strtotime($ff))));
 
         $pdf->Ln(50);
 
@@ -1535,6 +1611,80 @@ class Reporte extends BaseController
         $pdf->Output("reporte compra.pdf", "I");
     }
 
+    public function reportecompraModuloTodo()
+    {
+        $pdf = new \FPDF('P', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetTopMargin(15);
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+
+        ///llamo a los datos de la empresa
+        $empresa = new Reporte();
+        $datoempresa = $empresa->DatosEmpresaLLamer();
+        $detalle = $this->reporte->DatosReporteCompraTodo();
+        /////////
+
+        $pdf->SetTitle("Reporte de compra insumo");
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
+        $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
+        $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
+        $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
+        $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
+        $pdf->Text(90, 39, "Reporte de compra insumo", 1, '', 'C', 1);
+
+        //información de # de factura
+        $pdf->Ln(40);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(181, 217, 119);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
+        $pdf->Cell(65, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(35, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'R', 1);
+
+        $pdf->SetFont('Arial', '', 10);
+
+        $totalss = 0;
+        for ($i = 0; $i < count($detalle); $i++) {
+
+            $totalss = $totalss + $detalle[$i]["total"];
+            $pdf->SetX(15); //posicionamos en x
+
+            if ($i % 2 == 0) {
+                $pdf->SetFillColor(232, 232, 232);
+                $pdf->SetDrawColor(65, 61, 61);
+            } else {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetDrawColor(65, 61, 61);
+            }
+
+            $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
+            $pdf->Cell(65, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
+            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["fechac"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'R', 1);
+            $pdf->Ln(0.5);
+        }
+
+        $pdf->Ln(5);
+        $pdf->setX(95);
+        $pdf->Cell(40, 6, 'Total de compra insumo', 1, 0);
+        $pdf->Cell(60, 6, "$ " . number_format($totalss, 2, ',', '.'), '1', 1, 'R');
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output("reporte compra.pdf", "I");
+    }
+
+
     public function reportecompraMaterialModulo($fi, $ff)
     {
         $pdf = new \FPDF('P', 'mm', 'A4');
@@ -1573,15 +1723,89 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 48,  utf8_decode($fi));
+        $pdf->Text(40, 48,  utf8_decode(date('d/m/Y', strtotime($fi))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 54, utf8_decode($ff));
+        $pdf->Text(40, 54, utf8_decode(date('d/m/Y', strtotime($ff))));
 
         $pdf->Ln(50);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(181, 217, 119);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
+        $pdf->Cell(65, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(35, 12, utf8_decode('Fecha'), 0, 0, 'C', 1);
+        $pdf->Cell(30, 12, utf8_decode('Cantidad'), 0, 0, 'R', 1);
+        $pdf->Cell(40, 12, utf8_decode('Total'), 0, 1, 'R', 1);
+
+        $pdf->SetFont('Arial', '', 10);
+
+        $totalss = 0;
+        for ($i = 0; $i < count($detalle); $i++) {
+
+            $totalss = $totalss + $detalle[$i]["total"];
+            $pdf->SetX(15); //posicionamos en x
+
+            if ($i % 2 == 0) {
+                $pdf->SetFillColor(232, 232, 232);
+                $pdf->SetDrawColor(65, 61, 61);
+            } else {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetDrawColor(65, 61, 61);
+            }
+
+            $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
+            $pdf->Cell(65, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
+            $pdf->Cell(35, 8, utf8_decode($detalle[$i]["fechac"]), 'B', 0, 'C', 1);
+            $pdf->Cell(30, 8, utf8_decode($detalle[$i]["cantidad"]), 'B', 0, 'R', 1);
+            $pdf->Cell(40, 8, "$ " . utf8_decode(number_format($detalle[$i]["total"], 2, ',', '.')), 'B', 1, 'R', 1);
+            $pdf->Ln(0.5);
+        }
+
+        $pdf->Ln(5);
+        $pdf->setX(95);
+        $pdf->Cell(40, 6, 'Total de compra material', 1, 0);
+        $pdf->Cell(60, 6, "$ " . number_format($totalss, 2, ',', '.'), '1', 1, 'R');
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output("reporte compra.pdf", "I");
+    }
+
+    public function reportecompraMaterialModuloTodo()
+    {
+        $pdf = new \FPDF('P', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetTopMargin(15);
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+
+        ///llamo a los datos de la empresa
+        $empresa = new Reporte();
+        $datoempresa = $empresa->DatosEmpresaLLamer();
+
+        $detalle = $this->reporte->DatosReporteCompraMaterialTodo();
+        /////////
+
+        $pdf->SetTitle("Reporte de compra material");
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
+        $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
+        $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
+        $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
+        $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
+        $pdf->Text(90, 39, "Reporte de compra material", 1, '', 'C', 1);
+
+        //información de # de factura
+        $pdf->Ln(40);
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
@@ -1814,7 +2038,7 @@ class Reporte extends BaseController
         } else {
             $detalle = $this->reporte->DatosReportePlantasTodo();
         }
-       
+
         /////////
 
         $pdf->SetTitle("Reporte de plantas");
@@ -2010,15 +2234,84 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 48,  utf8_decode($fi));
+        $pdf->Text(40, 48,  utf8_decode(date('d/m/Y', strtotime($fi))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 54, utf8_decode($ff));
+        $pdf->Text(40, 54, utf8_decode(date('d/m/Y', strtotime($ff))));
 
         $pdf->Ln(50);
+
+        $pdf->SetX(15);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFillColor(181, 217, 119);
+
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(12, 12, utf8_decode('N°'), 0, 0, 'C', 1);
+        $pdf->Cell(70, 12, utf8_decode('Producto'), 0, 0, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Fecha inicio'), 0, 0, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Fecha fin'), 0, 0, 'C', 1);
+        $pdf->Cell(25, 12, utf8_decode('Tipo de oferta'), 0, 0, 'R', 1);
+        $pdf->Cell(25, 12, utf8_decode('Descuento %'), 0, 1, 'R', 1);
+
+        $pdf->SetFont('Arial', '', 10);
+
+        for ($i = 0; $i < count($detalle); $i++) {
+
+            $pdf->SetX(15); //posicionamos en x
+
+            if ($i % 2 == 0) {
+                $pdf->SetFillColor(232, 232, 232);
+                $pdf->SetDrawColor(65, 61, 61);
+            } else {
+                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetDrawColor(65, 61, 61);
+            }
+
+            $pdf->Cell(12, 8, $i + 1, 'B', 0, 'C', 1);
+            $pdf->Cell(70, 8, utf8_decode($detalle[$i]["nombre"]), 'B', 0, 'C', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["fecha_inicio"]), 'B', 0, 'C', 1);
+            $pdf->Cell(25, 8,  utf8_decode($detalle[$i]["fecha_fin"]), 'B', 0, 'C', 1);
+            $pdf->Cell(25, 8,  utf8_decode($detalle[$i]["tipo_oferta"]), 'B', 0, 'R', 1);
+            $pdf->Cell(25, 8, utf8_decode($detalle[$i]["valor_descuento"]), 'B', 1, 'R', 1);
+            $pdf->Ln(0.5);
+        }
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output("reporte oferta.pdf", "I");
+    }
+
+    public function ReporteOfertaTodo()
+    {
+        $pdf = new \FPDF('P', 'mm', 'A4');
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetTopMargin(15);
+        $pdf->SetLeftMargin(10);
+        $pdf->SetRightMargin(10);
+
+        ///llamo a los datos de la empresa
+        $empresa = new Reporte();
+        $datoempresa = $empresa->DatosEmpresaLLamer();
+        $detalle = $this->reporte->DatosReporteOfertaTodo();
+
+        /////////
+
+        $pdf->SetTitle("Reporte de oferta");
+        //$pdf->Image(base_url() . 'public/img/empresa/borde.png', 0, 0, 210, 300);
+        $pdf->Image(base_url() . 'public/img/empresa/' . $datoempresa[7], 15, 0, 50);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->Text(90, 15, "Empresa: " . utf8_decode($datoempresa[1]), 1, '', 'C', 1);
+        $pdf->Text(90, 21, "Direc: " . utf8_decode($datoempresa[2]), 1, '', 'C', 1);
+        $pdf->Text(90, 27, "Telf: : " . utf8_decode($datoempresa[5]), 1, '', 'C', 1);
+        $pdf->Text(90, 33, "Correo: " . utf8_decode($datoempresa[3]), 1, '', 'C', 1);
+        $pdf->Text(90, 39, "Reporte de oferta", 1, '', 'C', 1);
+
+        //información de # de factura
+        $pdf->Ln(40);
 
         $pdf->SetX(15);
         $pdf->SetTextColor(0, 0, 0);
@@ -2097,13 +2390,13 @@ class Reporte extends BaseController
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Text(15, 48, utf8_decode('Fecha inicio:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 48,  utf8_decode($fi));
+        $pdf->Text(40, 48,  utf8_decode(date('d/m/Y', strtotime($fi))));
 
         // Agregamos los datos de la factura
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Text(15, 54, utf8_decode('Fecha fin:'));
         $pdf->SetFont('Arial', '', 10);
-        $pdf->Text(40, 54, utf8_decode($ff));
+        $pdf->Text(40, 54, utf8_decode(date('d/m/Y', strtotime($ff))));
 
         $pdf->Ln(50);
 

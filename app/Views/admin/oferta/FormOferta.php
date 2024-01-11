@@ -84,7 +84,7 @@
                                     <label for="valordescuento">Valor descuento</label> <span id="valordescuento_olbligg" style="color: red;"></span>
                                     <input type="text" maxlength="2" <?php if ($editar[4] != "Descuento %") {
                                                                             echo 'readonly';
-                                                                        } ?> name="valordescuento" class="form-control" id="valordescuento" value="<?php echo $editar[5]; ?>" onkeypress="return soloNumeros(event);">
+                                                                        } ?> name="valordescuento" class="form-control" id="valordescuento" value="<?php echo $editar[5]; ?>" onkeypress="return soloNumeros(event);" placeholder="0">
                                 </div>
                             </div>
 
@@ -112,6 +112,7 @@
 
         if (data == "Descuento %") {
             $("#valordescuento").removeAttr("readonly", "readonly");
+            $("#valordescuento").val("")
         } else {
             $("#valordescuento").attr("readonly", "readonly")
             $("#valordescuento").val("0")

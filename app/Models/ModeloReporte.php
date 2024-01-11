@@ -430,6 +430,35 @@ class ModeloReporte
         exit();
     }
 
+    function DatosReporteVentaTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            DATE_FORMAT(ventaweb.fecharegistro, '%d/%m/%Y') AS fecharegistro,
+            COUNT( ventawebdetalle.cantidad ) AS cantidad,
+            SUM(ventawebdetalle.total) as total,
+            ventaweb.comprobante 
+        FROM
+            ventawebdetalle
+            INNER JOIN ventaweb ON ventawebdetalle.ventaid = ventaweb.id
+            INNER JOIN producto ON ventawebdetalle.productoid = producto.id 
+        GROUP BY
+            ventawebdetalle.productoid ";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function DatosReporteVentaWeb($fi, $ff)
     {
         try {
@@ -496,6 +525,34 @@ class ModeloReporte
         exit();
     }
 
+    function DatosReporteCompraTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            insumo.nombre,
+            DATE_FORMAT(compra.fechac, '%d/%m/%Y') AS fechac,
+            COUNT( detallecompra.insumo_id ) AS cantidad,
+            SUM( detallecompra.total ) AS total 
+            FROM
+                insumo
+                INNER JOIN detallecompra ON insumo.id = detallecompra.insumo_id
+                INNER JOIN compra ON detallecompra.compra_id = compra.id 
+            GROUP BY
+            detallecompra.insumo_id";
+            $query = $c->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
     function DatosReporteCompraMaterial($fi, $ff)
     {
         try {
@@ -516,6 +573,34 @@ class ModeloReporte
             $query = $c->prepare($sql);
             $query->bindParam(1, $fi);
             $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteCompraMaterialTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            material.nombre,
+            DATE_FORMAT(compra_material.fechac, '%d/%m/%Y') AS fechac,
+            COUNT(detallecompramaterial.material_id) as cantidad,
+            SUM(detallecompramaterial.total ) as total
+            FROM
+            compra_material
+            INNER JOIN detallecompramaterial ON compra_material.id = detallecompramaterial.compra_id
+            INNER JOIN material ON material.id = detallecompramaterial.material_id 
+            GROUP BY
+            detallecompramaterial.material_id ";
+            $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
             //cerramos la conexion
@@ -767,6 +852,33 @@ class ModeloReporte
             $query = $c->prepare($sql);
             $query->bindParam(1, $fi);
             $query->bindParam(2, $ff);
+            $query->execute();
+            $result = $query->fetchAll();
+            //cerramos la conexion
+            $this->conexion->cerrar_conexion();
+            return $result;
+        } catch (\Exception $e) {
+            $this->conexion->cerrar_conexion();
+            echo "Error: " . $e->getMessage();
+        }
+        exit();
+    }
+
+    function DatosReporteOfertaTodo()
+    {
+        try {
+            $c = $this->conexion->conexionPDO();
+            $sql = "SELECT
+            producto.nombre,
+            DATE_FORMAT(oferta.fecha_inicio, '%d/%m/%Y') AS fecha_inicio,
+            DATE_FORMAT(oferta.fecha_fin, '%d/%m/%Y') AS fecha_fin,
+            oferta.tipo_oferta,
+            oferta.valor_descuento,
+            oferta.fecha_registro 
+            FROM
+            producto
+            INNER JOIN oferta ON producto.id = oferta.producto_id";
+            $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
             //cerramos la conexion

@@ -71,7 +71,7 @@ class ModeloProducto
             FROM producto
             INNER JOIN tipo_producto 
             ON producto.tipo_id = tipo_producto.id 
-            WHERE producto.cantidad != 0 AND producto.estado = 1 AND producto.oferta = 0
+            WHERE producto.estado = 1 AND producto.oferta = 0
             ORDER BY producto.id DESC";
             $query = $c->prepare($sql);
             $query->execute();

@@ -64,6 +64,13 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label>Todo</label>
+                                    <button class="btn btn-success" onclick="VerReporteVnetaTodo();"> <i class="fa fa-file"></i> Ver</button>
+                                </div>
+                            </div>
+
                             <div class="col-lg-12">
                                 <center>
                                     <iframe width="100%" height="100%" class="contennidor" id="iframe_venta"></iframe>
@@ -100,6 +107,13 @@
 
         var ifrm = document.getElementById("iframe_venta");
         ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/reporteventaModulo/" + fecha_inicio + "/" + fecha_fin + "/" + estado + "");
+
+    }
+
+    function VerReporteVnetaTodo() {
+
+        var ifrm = document.getElementById("iframe_venta");
+        ifrm.setAttribute("src", "<?php echo base_url(); ?>Reporte/reporteventaModuloTodo/");
 
     }
 </script>
