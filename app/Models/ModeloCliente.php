@@ -245,30 +245,29 @@ class ModeloCliente
             $query->execute();
             $result = $query->fetch();
 
-            if (!empty($result)){
+            if (!empty($result)) {
                 $intentos = $result[0] + 1;
 
                 $sql_e = "UPDATE cliente SET intentos = ? WHERE correo = ?";
                 $querya = $c->prepare($sql_e);
                 $querya->bindParam(1, $intentos);
                 $querya->bindParam(2, $correo);
-                
+
                 if ($querya->execute()) {
-    
+
                     $sql_o = "SELECT intentos FROM cliente WHERE correo = ? limit 1";
                     $query_o = $c->prepare($sql_o);
                     $query_o->bindParam(1, $correo);
                     $query_o->execute();
                     $estado = $query_o->fetch();
                     $res = $estado[0];
-    
                 } else {
                     $res = 0;
                 }
-            }else {
+            } else {
                 $res = 0;
             }
-        
+
             //cerramos la conexion
             $this->conexion->cerrar_conexion();
             return $res;
@@ -282,15 +281,22 @@ class ModeloCliente
     // REACTIVAR CLIENTE BLOQUEADOS EN 24 HORAS
     function ReactivarClienteDias()
     {
-        try {
-            $c = $this->conexion->conexionPDO();
-            $sql = "UPDATE cliente SET intentos = 0 WHERE estado = 1";
-            $query = $c->prepare($sql);
-            $query->execute();
-            //cerramos la conexion
-        } catch (\Exception $e) {
-            echo "Error: " . $e->getMessage();
-        }
+        $c = $this->conexion->conexionPDO();
+
+        $sql = "UPDATE cliente SET intentos = 0 WHERE estado = 1";
+        $query = $c->prepare($sql);
+        $query->execute();
+
+        $sql1 = "UPDATE producto JOIN oferta ON producto.id = oferta.producto_id SET producto.oferta = 0 WHERE	oferta.fecha_fin <= CURDATE()";
+        $query1 = $c->prepare($sql1);
+        $query1->execute();
+
+        $sql2 = "DELETE oferta FROM oferta	INNER JOIN producto ON oferta.producto_id = producto.id WHERE	oferta.fecha_fin <= CURDATE()";
+        $query2 = $c->prepare($sql2);
+        $query2->execute();
+        //cerramos la conexion
+        $this->conexion->cerrar_conexion();
+
         exit();
     }
 }
