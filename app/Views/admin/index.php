@@ -23,39 +23,28 @@
     height: 37px !important;
   }
 </style>
-
 <body class="hold-transition sidebar-mini layout-fixed">
-
-  <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="<?php echo base_url(); ?>public/img/logos/load.png" style="border-radius: 100px;" alt="AdminLTELogo" height="350" width="350">
   </div>
-
   <div class="wrapper">
-    <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
       </ul>
-
-      <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
-
         <li class="nav-item dropdown" style="background-color: #007bff; border-radius: 50px; color: white;">
           <a href="<?php echo base_url(); ?>" target="_blank" class="nav-link">
             <i class="fa fa-shopping-cart" style="color: white;"></i>
           </a>
         </li>
-
         <li class="nav-item dropdown" style="background-color: green; border-radius: 50px; color: white;">
           <a onclick="ModalDatoUsuario();" class="nav-link" data-toggle="dropdown">
             <i class="far fa-user" style="color: white;"></i>
