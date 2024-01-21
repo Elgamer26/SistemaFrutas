@@ -28,24 +28,53 @@ class ModeloTienda
             $paginaactual = htmlspecialchars($partida, ENT_QUOTES, 'UTF-8');
             if (!empty($valor)) {
                 $datos = $valor;
-                $sql = "SELECT
-                COUNT(*) 
+                $sql = "SELECT SUM(cantidad_id_unicos) as total_ids_unicos
+                FROM (
+                SELECT
+                COUNT(DISTINCT producto.id) AS cantidad_id_unicos
                 FROM
                 producto
-                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1 
                 AND producto.nombre LIKE '%" . $datos . "%' 
                 OR tipo_producto.tipo LIKE '%" . $datos . "%' 
-                OR producto.precio LIKE '%" . $datos . "%'";
+                OR producto.precio LIKE '%" . $datos . "%'
+                GROUP BY
+                producto.id
+                ) as subconsulta";
+                // $sql = "SELECT
+                // COUNT(*) 
+                // FROM
+                // producto
+                // INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                // WHERE
+                // producto.estado = 1 
+                // AND producto.nombre LIKE '%" . $datos . "%' 
+                // OR tipo_producto.tipo LIKE '%" . $datos . "%' 
+                // OR producto.precio LIKE '%" . $datos . "%'";
             } else {
-                $sql = "SELECT
-                COUNT(*) 
+                $sql = " SELECT SUM(cantidad_id_unicos) as total_ids_unicos
+                FROM (
+                SELECT
+                COUNT(DISTINCT producto.id) AS cantidad_id_unicos
                 FROM
                 producto
-                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
-                producto.estado = 1 ";
+                producto.estado = 1 
+                GROUP BY
+                producto.id
+                ) as subconsulta";
+                // $sql = "SELECT
+                // COUNT(*) 
+                // FROM
+                // producto
+                // INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                // WHERE
+                // producto.estado = 1 ";
             }
             $query = $c->prepare($sql);
             $query->execute();
@@ -111,11 +140,13 @@ class ModeloTienda
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1 AND
                 producto.nombre LIKE '%" . $datos . "%' OR
                 tipo_producto.tipo LIKE '%" . $datos . "%' OR
                 producto.precio LIKE '%" . $datos . "%'
+                GROUP BY producto.id
                 ORDER BY producto.id DESC LIMIT $limit, $numlotes";
             } else {
                 $sql_p = "SELECT
@@ -134,8 +165,10 @@ class ModeloTienda
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1 
+                GROUP BY producto.id
                 ORDER BY producto.id DESC LIMIT $limit, $numlotes";
             }
             //
@@ -144,6 +177,7 @@ class ModeloTienda
             $result = $query_p->fetchAll();
             $nombre = "";
             $punos = "...";
+            $DireccionDetalle = "";
             foreach ($result as $respuesta) {
 
                 if (strtoupper($respuesta[5]) <= 0) {
@@ -156,9 +190,15 @@ class ModeloTienda
                     $nombre = $respuesta[1];
                 }
 
+                if ($respuesta[9] <> 'NO') {
+                    $DireccionDetalle =  base_url() . 'home/DetalleOferta/' . $respuesta[0] . '';
+                } else {
+                    $DireccionDetalle =  base_url() . 'home/Detalle/' . $respuesta[0] . '';                   
+                }
+
                 $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
                                         <div class="product-main simpleCart_shelfItem" >
-                                            <a href="' . base_url() . 'home/Detalle/' . $respuesta[0] . '" class="mask"><img class="img-responsive zoom-img" 
+                                            <a href="' . $DireccionDetalle . '" class="mask"><img class="img-responsive zoom-img" 
                                             style="width: 200px;
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
@@ -209,27 +249,39 @@ class ModeloTienda
             $paginaactual = htmlspecialchars($partida, ENT_QUOTES, 'UTF-8');
             if (!empty($valor)) {
                 $datos = $valor;
-                $sql = "SELECT
-                COUNT(*)
+                $sql = "SELECT SUM(cantidad_id_unicos) as total_ids_unicos
+                FROM (
+                SELECT
+                COUNT(DISTINCT producto.id) AS cantidad_id_unicos
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 INNER JOIN oferta ON producto.id = oferta.producto_id 
                 WHERE
                 producto.estado = 1
                 AND producto.nombre LIKE '%" . $datos . "%' 
                 OR tipo_producto.tipo LIKE '%" . $datos . "%' 
                 OR producto.precio LIKE '%" . $datos . "%'
-                OR oferta.tipo_oferta LIKE '%" . $datos . "%'";
+                OR oferta.tipo_oferta LIKE '%" . $datos . "%' 
+                GROUP BY
+                producto.id
+                ) as subconsulta";
             } else {
-                $sql = "SELECT
-                COUNT(*)
+                $sql = "SELECT SUM(cantidad_id_unicos) as total_ids_unicos
+                FROM (
+                SELECT
+                COUNT(DISTINCT producto.id) AS cantidad_id_unicos
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 INNER JOIN oferta ON producto.id = oferta.producto_id 
                 WHERE
-                producto.estado = 1";
+                producto.estado = 1
+                GROUP BY
+                producto.id
+                ) as subconsulta";
             }
             $query = $c->prepare($sql);
             $query->execute();
@@ -292,20 +344,20 @@ class ModeloTienda
                 oferta.valor_descuento,
                 producto.tamano,
                 producto.cantidad as cant_prod,
-
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
-                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad   
-
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad 
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
                 INNER JOIN oferta ON producto.id = oferta.producto_id 
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1 AND
                 producto.nombre LIKE '%" . $datos . "%' OR
                 tipo_producto.tipo LIKE '%" . $datos . "%' OR
                 producto.precio LIKE '%" . $datos . "%'
                 OR oferta.tipo_oferta LIKE '%" . $datos . "%'
+                GROUP BY producto.id
                 ORDER BY oferta.id DESC LIMIT $limit, $numlotes";
             } else {
                 $sql_p = "SELECT
@@ -321,16 +373,16 @@ class ModeloTienda
                 oferta.valor_descuento,
                 producto.tamano,
                 producto.cantidad as cant_prod,
-
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
                 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad
-
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
                 INNER JOIN oferta ON producto.id = oferta.producto_id 
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1
+                GROUP BY producto.id
                 ORDER BY oferta.id DESC LIMIT $limit, $numlotes";
             }
             //
@@ -367,9 +419,7 @@ class ModeloTienda
 
                                                 <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[6] . '</p>
                                                 <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[8] . ' %</p>
-                                                <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[7] . '</p>
-
-                                               
+                                                <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[7] . '</p>                                             
 
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
@@ -1465,24 +1515,38 @@ class ModeloTienda
             $paginaactual = htmlspecialchars($partida, ENT_QUOTES, 'UTF-8');
             if (!empty($valor)) {
                 $datos = $valor;
-                $sql = "SELECT
-                COUNT(*) 
+                $sql = "SELECT SUM(cantidad_id_unicos) as total_ids_unicos
+                FROM (
+                SELECT
+                COUNT(DISTINCT producto.id) AS cantidad_id_unicos
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN produccion ON producto.id = produccion.productoid
                 WHERE
                 producto.estado = 1 
                 AND producto.nombre LIKE '%" . $datos . "%' 
+                AND tipo_producto.id = " . $id . "
                 OR tipo_producto.tipo LIKE '%" . $datos . "%' 
-                OR producto.precio LIKE '%" . $datos . "%'";
+                OR producto.precio LIKE '%" . $datos . "%'
+                GROUP BY
+                producto.id
+                ) as subconsulta";
             } else {
-                $sql = "SELECT
-                COUNT(*) 
+                $sql = "SELECT SUM(cantidad_id_unicos) as total_ids_unicos
+                FROM (
+                SELECT
+                COUNT(DISTINCT producto.id) AS cantidad_id_unicos
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN produccion ON producto.id = produccion.productoid
                 WHERE
-                producto.estado = 1 ";
+                producto.estado = 1 
+                AND tipo_producto.id = " . $id . "
+                GROUP BY
+                producto.id
+                ) as subconsulta";
             }
             $query = $c->prepare($sql);
             $query->execute();
@@ -1548,9 +1612,11 @@ class ModeloTienda
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1  AND
                 tipo_producto.id = " . $id . " 
+                GROUP BY producto.id
                 ORDER BY producto.id DESC";
             } else {
                 $sql_p = "SELECT
@@ -1569,9 +1635,11 @@ class ModeloTienda
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
+                INNER JOIN produccion ON producto.id = produccion.productoid 
                 WHERE
                 producto.estado = 1 AND
                 tipo_producto.id = " . $id . " 
+                GROUP BY producto.id
                 ORDER BY producto.id DESC";
             }
             //
@@ -1580,6 +1648,7 @@ class ModeloTienda
             $result = $query_p->fetchAll();
             $nombre = "";
             $punos = "...";
+            $DireccionDetalle = "";
             foreach ($result as $respuesta) {
 
                 if (strtoupper($respuesta[5]) <= 0) {
@@ -1592,9 +1661,15 @@ class ModeloTienda
                     $nombre = $respuesta[1];
                 }
 
+                if ($respuesta[9] <> 'NO') {
+                    $DireccionDetalle =  base_url() . 'home/DetalleOferta/' . $respuesta[0] . '';
+                } else {
+                    $DireccionDetalle =  base_url() . 'home/Detalle/' . $respuesta[0] . '';                   
+                }
+
                 $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
                                         <div class="product-main simpleCart_shelfItem" >
-                                            <a href="' . base_url() . 'home/Detalle/' . $respuesta[0] . '" class="mask"><img class="img-responsive zoom-img" 
+                                            <a href="' . $DireccionDetalle . '" class="mask"><img class="img-responsive zoom-img" 
                                             style="width: 200px;
                                             height: 200px;
                                             object-fit: cover;" src="' . base_url() . 'public/img/producto/' . $respuesta[4] . '" alt="Imagen producto" /></a>
@@ -1603,11 +1678,9 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
-
                                                 <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[9] . '</p>                                               
                                                 <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[10] . ' %</p>
                                                 <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[8] . '</p>
-
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 if ($respuesta[9] <> 'NO') {
