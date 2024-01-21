@@ -37,6 +37,7 @@
                                                 <th>Pago</th>
                                                 <th>Total</th>
                                                 <th>Estado</th>
+                                                <th>Pedido</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -50,7 +51,7 @@
                                                                 <a onclick="AnularFacturaVentaWeb(<?php echo $ListVenta_item['id']; ?>);" class='btn btn-danger btn-sm' title='Anular la factura'><i class='fa fa-times'></i></a>-
                                                                 <a onclick="VerFacturaVentaWeb('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-primary btn-sm' title='Ver reporte'><i class='fa fa-file'></i></a>
 
-                                                                <?php if (strtoupper($ListVenta_item["tipopago"]) == "EFECTIVO" || strtoupper($ListVenta_item["tipopago"]) == "PAYPAL"   ) {  ?>
+                                                                <?php if (strtoupper($ListVenta_item["tipopago"]) == "EFECTIVO" || strtoupper($ListVenta_item["tipopago"]) == "PAYPAL") {  ?>
 
                                                                     <?php if ($ListVenta_item["servientrega"] == 1) { ?>
                                                                         - <a onclick="DescargarArchivo('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-warning btn-sm' title='ver foto'><i class='fa fa-eye'></i></a>
@@ -63,10 +64,10 @@
                                                             <?php   } else {     ?>
 
                                                                 <a onclick="VerFacturaVentaWeb('<?php echo $ListVenta_item['id']; ?>')" class='btn btn-primary btn-sm' title='Ver reporte'><i class='fa fa-file'></i></a>
-                                                           
+
                                                             <?php   } ?>
 
-                                                        </td> 
+                                                        </td>
 
                                                         <td><?= esc($ListVenta_item["cliente"]); ?></td>
                                                         <td><?= esc($ListVenta_item["n_venta"]); ?></td>
@@ -88,6 +89,17 @@
                                                                 <span class="badge badge-danger">Anulado</span>
                                                             <?php   } ?>
                                                         </td>
+
+                                                        <td>
+                                                            <?php if ($ListVenta_item["estado_servientrega"] == "10") {     ?>
+                                                                <span class="badge badge-primary">Prendiente</span>
+                                                            <?php   } elseif ($ListVenta_item["estado_servientrega"] == "0") {     ?>
+                                                                <span class="badge badge-warning">En proceso</span>
+                                                            <?php   } elseif ($ListVenta_item["estado_servientrega"] == "1") {     ?>
+                                                                <span class="badge badge-success">Entregado</span>
+                                                            <?php   } ?>
+                                                        </td>
+
                                                     </tr>
 
                                                 <?php }
@@ -109,6 +121,7 @@
                                                 <th>Pago</th>
                                                 <th>Total</th>
                                                 <th>Estado</th>
+                                                <th>Pedido</th>
                                             </tr>
                                         </tfoot>
                                     </table>

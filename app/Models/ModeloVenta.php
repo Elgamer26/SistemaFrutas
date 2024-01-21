@@ -59,7 +59,8 @@ class ModeloVenta
             ventaweb.ciudad,
             ventaweb.referencia,
             ventaweb.tipopago,
-            ventaweb.servientrega
+            ventaweb.servientrega,
+            IFNULL((SELECT s.estado FROM servientrega AS s where s.id_venta = ventaweb.id LIMIT 1), '10') AS estado_servientrega
             FROM
                 ventaweb
                 INNER JOIN cliente ON ventaweb.cliente_id = cliente.id 
