@@ -104,7 +104,10 @@ class ModeloTienda
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
                 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
                 producto.tamano,
-                producto.cantidad as canti_pord
+                producto.cantidad as canti_pord,
+                IFNULL((select DATE_FORMAT(o.fecha_fin, '%d/%m/%Y')from oferta as o where o.producto_id = producto.id LIMIT 1), '---') as fecha_oferta,
+                IFNULL((select o.tipo_oferta from oferta as o where o.producto_id = producto.id LIMIT 1), 'NO') as tipo_oferta,
+                IFNULL((select o.valor_descuento from oferta as o where o.producto_id = producto.id LIMIT 1), 0) as descuento
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
@@ -124,7 +127,10 @@ class ModeloTienda
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
                 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,              
                 producto.tamano,
-                producto.cantidad as canti_pord
+                producto.cantidad as canti_pord,
+                IFNULL((select DATE_FORMAT(o.fecha_fin, '%d/%m/%Y')from oferta as o where o.producto_id = producto.id LIMIT 1), '---') as fecha_oferta,
+                IFNULL((select o.tipo_oferta from oferta as o where o.producto_id = producto.id LIMIT 1), 'NO') as tipo_oferta,
+                IFNULL((select o.valor_descuento from oferta as o where o.producto_id = producto.id LIMIT 1), 0) as descuento
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
@@ -139,6 +145,10 @@ class ModeloTienda
             $nombre = "";
             $punos = "...";
             foreach ($result as $respuesta) {
+
+                if (strtoupper($respuesta[5]) <= 0) {
+                    continue;
+                }
 
                 if (strlen($respuesta[1]) >= 23) {
                     $nombre = substr($respuesta[1], 0, 23) .  $punos;
@@ -157,13 +167,25 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
+
+                                                <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[9] . '</p>                                               
+                                                <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[10] . ' %</p>
+                                                <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[8] . '</p>
+
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 // if (!empty($_SESSION["TokenClie"])) {
+                if ($respuesta[9] <> 'NO') {
+                    $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-star" aria-hidden="true"></i></button></h4>';
+                } else {
                     $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoNormal(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
+                }
                 // }
 
-                $tabla = $tabla . '	   </div>
+                $tabla = $tabla . '    </div>
+                                            <div class="srch">
+                                                <span> ' . $respuesta[10] . ' %</span>
+                                            </div>
                                         </div>
                                     </div>';
             }
@@ -266,10 +288,14 @@ class ModeloTienda
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
                 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,                 
                 oferta.tipo_oferta,
-                oferta.fecha_fin,
+                DATE_FORMAT(oferta.fecha_fin, '%d/%m/%Y') AS fecha_fin,
                 oferta.valor_descuento,
                 producto.tamano,
                 producto.cantidad as cant_prod,
+
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad   
+
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -291,10 +317,14 @@ class ModeloTienda
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
                 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,
                 oferta.tipo_oferta,
-                oferta.fecha_fin,
+                DATE_FORMAT(oferta.fecha_fin, '%d/%m/%Y') AS fecha_fin,
                 oferta.valor_descuento,
                 producto.tamano,
-                producto.cantidad as cant_prod
+                producto.cantidad as cant_prod,
+
+                IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 AND produccion.estado = 1 
+                AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad
+
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id
@@ -313,6 +343,10 @@ class ModeloTienda
 
             foreach ($result as $respuesta) {
 
+                if (strtoupper($respuesta[11]) <= 0) {
+                    continue;
+                }
+
                 if (strlen($respuesta[1]) >= 23) {
                     $nombre = substr($respuesta[1], 0, 23) .  $punos;
                 } else {
@@ -329,12 +363,18 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>' . $nombre . '</b> </p> 
                                                 <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[9]) . ' </p> 
+                                                <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[11]) . ' </p>
+
                                                 <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[6] . '</p>
+                                                <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[8] . ' %</p>
                                                 <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[7] . '</p>
+
+                                               
+
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 // if (!empty($_SESSION["TokenClie"])) {
-                    $tabla = $tabla . '<h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
+                $tabla = $tabla . '<h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
                 // }
 
                 $tabla = $tabla . '    </div>
@@ -684,7 +724,6 @@ class ModeloTienda
                 } else {
                     $res = 0; // error en la inserccion
                 }
-
             } else {
 
                 $cant = "";
@@ -966,7 +1005,7 @@ class ModeloTienda
                 $query_d = $c->prepare($sql_d);
                 $query_d->bindParam(1, $usecomprador);
                 $query_d->execute();
-            } else {                
+            } else {
                 $result = 0;
             }
             //cerramos la conexion
@@ -1168,12 +1207,12 @@ class ModeloTienda
             ventaweb.subtotal,
             ventaweb.impuesto,
             ventaweb.total,
-            ventaweb.fecha,
+            DATE_FORMAT(ventaweb.fecha, '%d/%m/%Y') as fecha,    
             ventaweb.n_venta,
             ventaweb.comprobante AS tipopago,
             ventaweb.iva,
             ventaweb.estado,
-            ventaweb.fecharegistro,
+            DATE_FORMAT(ventaweb.fecharegistro, '%d/%m/%Y') as fecharegistro,    
             ventaweb.ciudad,
             ventaweb.referencia,
             ventaweb.tipopago AS comprobante,
@@ -1208,12 +1247,12 @@ class ModeloTienda
             ventaweb.subtotal,
             ventaweb.impuesto,
             ventaweb.total,
-            ventaweb.fecha,
+            DATE_FORMAT(ventaweb.fecha, '%d/%m/%Y') as fecha, 
             ventaweb.n_venta,
             ventaweb.comprobante,
             ventaweb.iva,
             ventaweb.estado,
-            ventaweb.fecharegistro,
+            DATE_FORMAT(ventaweb.fecharegistro, '%d/%m/%Y') as fecharegistro, 
             ventaweb.ciudad,
             ventaweb.referencia,
             ventaweb.tipopago,
@@ -1502,13 +1541,16 @@ class ModeloTienda
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
                 AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,                 
                 producto.tamano,
-                producto.cantidad as cant_prod
+                producto.cantidad as cant_prod,
+                IFNULL((select DATE_FORMAT(o.fecha_fin, '%d/%m/%Y')from oferta as o where o.producto_id = producto.id LIMIT 1), '---') as fecha_oferta,
+                IFNULL((select o.tipo_oferta from oferta as o where o.producto_id = producto.id LIMIT 1), 'NO') as tipo_oferta,
+                IFNULL((select o.valor_descuento from oferta as o where o.producto_id = producto.id LIMIT 1), 0) as descuento
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
                 WHERE
                 producto.estado = 1  AND
-                tipo_producto.id = ". $id ." 
+                tipo_producto.id = " . $id . " 
                 ORDER BY producto.id DESC";
             } else {
                 $sql_p = "SELECT
@@ -1520,13 +1562,16 @@ class ModeloTienda
                 IFNULL( (SELECT SUM(produccion.cantidad) FROM produccion WHERE produccion.cantidad > 0 
                 AND produccion.estado = 1 AND produccion.productoid = producto.id GROUP BY produccion.productoid), 0) as cantidad,                 
                 producto.tamano,
-                producto.cantidad as cant_prod
+                producto.cantidad as cant_prod,
+                IFNULL((select DATE_FORMAT(o.fecha_fin, '%d/%m/%Y')from oferta as o where o.producto_id = producto.id LIMIT 1), '---') as fecha_oferta,
+                IFNULL((select o.tipo_oferta from oferta as o where o.producto_id = producto.id LIMIT 1), 'NO') as tipo_oferta,
+                IFNULL((select o.valor_descuento from oferta as o where o.producto_id = producto.id LIMIT 1), 0) as descuento
                 FROM
                 producto
                 INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
                 WHERE
                 producto.estado = 1 AND
-                tipo_producto.id = ". $id ." 
+                tipo_producto.id = " . $id . " 
                 ORDER BY producto.id DESC";
             }
             //
@@ -1536,6 +1581,10 @@ class ModeloTienda
             $nombre = "";
             $punos = "...";
             foreach ($result as $respuesta) {
+
+                if (strtoupper($respuesta[5]) <= 0) {
+                    continue;
+                }
 
                 if (strlen($respuesta[1]) >= 23) {
                     $nombre = substr($respuesta[1], 0, 23) .  $punos;
@@ -1554,11 +1603,23 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
+
+                                                <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[9] . '</p>                                               
+                                                <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[10] . ' %</p>
+                                                <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[8] . '</p>
+
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
+                if ($respuesta[9] <> 'NO') {
+                    $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-star" aria-hidden="true"></i></button></h4>';
+                } else {
                     $tabla = $tabla . '     <h4><button class="btn btn-success" onclick="AgregarCarritoNormal(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
+                }
 
-                $tabla = $tabla . '	   </div>
+                $tabla = $tabla . '    </div>
+                                            <div class="srch">
+                                                <span> ' . $respuesta[10] . ' %</span>
+                                            </div>
                                         </div>
                                     </div>';
             }

@@ -296,7 +296,7 @@ class ModeloProduccion
                 $sql_p = "SELECT
                 produccion.id,
                 produccion.nombre,
-                date(produccion.fecharegistro) AS fecha,
+                DATE_FORMAT(produccion.fecharegistro, '%d/%m/%Y') as fecha,    
                 produccion.fechaini,
                 produccion.fechafin,
                 produccion.dias,
@@ -322,7 +322,7 @@ class ModeloProduccion
                 $sql_p = "SELECT
                 produccion.id,
                 produccion.nombre,
-                date(produccion.fecharegistro) AS fecha,
+                DATE_FORMAT(produccion.fecharegistro, '%d/%m/%Y') as fecha,    
                 produccion.fechaini,
                 produccion.fechafin,
                 produccion.dias,

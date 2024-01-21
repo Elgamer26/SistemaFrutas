@@ -68,7 +68,7 @@ class ModeloUsuario
     {
         try {
             $c = $this->conexion->conexionPDO();
-            $sql = "SELECT * FROM rol ORDER BY id DESC";
+            $sql = "SELECT id, rol, DATE_FORMAT(fecha, '%d/%m/%Y') as fecha, estado FROM rol ORDER BY id DESC";
             $query = $c->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();

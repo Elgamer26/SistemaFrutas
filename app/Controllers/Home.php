@@ -161,7 +161,7 @@ class Home extends BaseController
         }
 
         $nombreHost = gethostname();
-        $direccionIP = $_SERVER['SERVER_ADDR'];
+        $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
         $usecomprador = $nombreHost . "-" . $direccionIP;
         $detallecompra = $this->tienda->TraerProductosDelCliente($usecomprador);
 

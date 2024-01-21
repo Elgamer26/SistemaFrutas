@@ -90,10 +90,12 @@ class Tienda extends BaseController
     public function IngresarProductoCarritoNormal()
     {
         if ($this->request->getMethod() == "post") {
+
             // Obtener el nombre del host (ID de la máquina)
             $nombreHost = gethostname();
             // Obtener la dirección IP del servidor
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             // $iduser = $_SESSION["TokenClie"];
             $id = $this->request->getPost('id');
@@ -110,8 +112,10 @@ class Tienda extends BaseController
     public function IngresarProductoCarritoOferta()
     {
         if ($this->request->getMethod() == "post") {
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; // $_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $id = $this->request->getPost('id');
             $precio = $this->request->getPost('precio');
@@ -127,8 +131,10 @@ class Tienda extends BaseController
     public function ContarCantidadCarrito()
     {
         if ($this->request->getMethod() == "get") {
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $repuesta = $this->tienda->ContarCantidadCarrito($usecomprador);
             echo json_encode($repuesta, JSON_UNESCAPED_UNICODE);
@@ -142,8 +148,10 @@ class Tienda extends BaseController
     {
         if ($this->request->getMethod() == "post") {
             $id_pro = $this->request->getPost('id_pro');
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $repuesta = $this->tienda->EliminarProductoDetalle($id_pro, $usecomprador);
             echo $repuesta;
@@ -165,8 +173,10 @@ class Tienda extends BaseController
             $impuesto = $this->request->getPost('impuesto');
             $total = $this->request->getPost('totals');
             $estado = "paypal";
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado, $usecomprador);
             if ($repuesta > 0) {
@@ -213,8 +223,10 @@ class Tienda extends BaseController
             $impuesto = $this->request->getPost('impuesto');
             $total = $this->request->getPost('totals');
             $estado = "efectivo";
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; // $_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $repuesta = $this->tienda->RegistrarVentaCarrito($id_cli, $direccion, $sub, $impuesto, $total, $ciudad, $referencia, $estado, $usecomprador);
             if ($repuesta > 0) {
@@ -262,8 +274,10 @@ class Tienda extends BaseController
     public function CalificarProducto()
     {
         if ($this->request->getMethod() == "post") {
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $estado = $this->request->getPost('estado');
             $idproducto = $this->request->getPost('idproducto');
@@ -276,8 +290,10 @@ class Tienda extends BaseController
     public function TraerCalificaionCliente()
     {
         if ($this->request->getMethod() == "post") {
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $idproducto = $this->request->getPost('idproducto');
             $repuesta = $this->tienda->TraerCalificaionCliente($usecomprador, $idproducto);
@@ -289,8 +305,10 @@ class Tienda extends BaseController
     public function CalificarProductoOferta()
     {
         if ($this->request->getMethod() == "post") {
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; // $_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $estado = $this->request->getPost('estado');
             $idproducto = $this->request->getPost('idproducto');
@@ -303,8 +321,10 @@ class Tienda extends BaseController
     public function TraerCalificaionClienteOferta()
     {
         if ($this->request->getMethod() == "post") {
+
             $nombreHost = gethostname();
-            $direccionIP = $_SERVER['SERVER_ADDR'];
+            $direccionIP = $_SERVER['REMOTE_ADDR']; // $_SERVER['SERVER_ADDR'];
+
             $usecomprador = $nombreHost . "-" . $direccionIP;
             $idproducto = $this->request->getPost('idproducto');
             $repuesta = $this->tienda->TraerCalificaionClienteOferta($usecomprador, $idproducto);

@@ -655,8 +655,8 @@ class ModeloProducto
                 $sql_p = "SELECT
                 oferta.id,
                 oferta.producto_id,
-                oferta.fecha_inicio,
-                oferta.fecha_fin,
+                DATE_FORMAT(oferta.fecha_inicio, '%d/%m/%Y') as fecha_inicio,
+                DATE_FORMAT(oferta.fecha_fin, '%d/%m/%Y') as fecha_fin,  
                 oferta.tipo_oferta,
                 oferta.valor_descuento,
                 oferta.fecha_registro,
@@ -684,8 +684,8 @@ class ModeloProducto
                 $sql_p = "SELECT
                 oferta.id,
                 oferta.producto_id,
-                oferta.fecha_inicio,
-                oferta.fecha_fin,
+                DATE_FORMAT(oferta.fecha_inicio, '%d/%m/%Y') as fecha_inicio,
+                DATE_FORMAT(oferta.fecha_fin, '%d/%m/%Y') as fecha_fin,  
                 oferta.tipo_oferta,
                 oferta.valor_descuento,
                 oferta.fecha_registro,
@@ -891,7 +891,7 @@ class ModeloProducto
             calificarproducto.id,
             calificarproducto.calificacion,
             calificarproducto.detalle,
-            calificarproducto.fecha,
+            DATE_FORMAT(calificarproducto.fecha, '%d/%m/%Y - %H:%i:%s') as fecha,
             calificarproducto.idproducto,
             calificarproducto.oferta,
             calificarproducto.idcliente,
@@ -928,7 +928,7 @@ class ModeloProducto
             calificarestado.id,
             producto.nombre AS producto,
             calificarestado.estado,
-            calificarestado.fecha,
+            DATE_FORMAT(calificarestado.fecha, '%d/%m/%Y - %H:%i:%s') as fecha,
             'Sin oferta' AS oferta 
             FROM
             calificarestado
