@@ -1,3 +1,7 @@
+var id_grobal = 0;
+var precio_grobal = 0;
+var oferta_normal = false;
+
 $(document).on("keyup", "#buscar_producto", function () {
   let valor = $(this).val();
   if (valor != "") {
@@ -153,22 +157,38 @@ function RegistraCalificacion() {
 
 //////AGREGAR PRODUCTO A LA TIENDA
 function AgregarCarritoNormal(id, precio) {
-  Swal.fire({
-    title: "<strong>Ingrese cantidad de producto</strong>",
-    html: `
-    <div class="col-sm-12">
-      <input type="number" value="1" min="1" max="20" class="form-control" id="cantidadnomral" placeholder="Ingrese cantidad">
-    </div>`,
-    showConfirmButton: true,
-    showCloseButton: false,
-    showCancelButton: true,
-    focusConfirm: false,
-    confirmButtonText:
-      '<button style="color: white; background: #7066e0; border: 0;" onclick="IngresarProductoCarrito(' +
-      id +
-      "," +
-      precio +
-      ');"><i class="fa fa-download"></i> Ingresar!</button>',
+  id_grobal = id;
+  precio_grobal = precio;
+  oferta_normal = false;
+
+  $.ajax({
+    type: "GET",
+    url: BaseUrl + "tienda/VerificarCLienteLogeado",
+    success: function (response) {
+      console.log(response);
+      if (response == 0) {
+        openModal();
+        return false;
+      } else {
+        Swal.fire({
+          title: "<strong>Ingrese cantidad de producto</strong>",
+          html: `
+          <div class="col-sm-12">
+            <input type="number" value="1" min="1" max="20" class="form-control" id="cantidadnomral" placeholder="Ingrese cantidad">
+          </div>`,
+          showConfirmButton: true,
+          showCloseButton: false,
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText:
+            '<button style="color: white; background: #7066e0; border: 0;" onclick="IngresarProductoCarrito(' +
+            id +
+            "," +
+            precio +
+            ');"><i class="fa fa-download"></i> Ingresar!</button>',
+        });
+      }
+    },
   });
 }
 
@@ -188,7 +208,6 @@ function IngresarProductoCarrito(id, precio) {
       cantidad: cantidad,
     },
   }).done(function (response) {
-
     // console.log(response);
 
     if (response == "100") {
@@ -228,22 +247,38 @@ function IngresarProductoCarrito(id, precio) {
 
 //////AGREGAR OFERTA PRODUCTO A LA TIENDA
 function AgregarCarritoOferta(id, precio) {
-  Swal.fire({
-    title: "<strong>Ingrese cantidad de producto</strong>",
-    html: `
-    <div class="col-sm-12">
-      <input type="number" value="1" min="1" max="20" class="form-control" id="cantidadpferta" placeholder="Ingrese cantidad">
-    </div>`,
-    showConfirmButton: true,
-    showCloseButton: false,
-    showCancelButton: true,
-    focusConfirm: false,
-    confirmButtonText:
-      '<button style="color: white; background: #7066e0; border: 0;" onclick="IngresarProductoCarritoOferta(' +
-      id +
-      "," +
-      precio +
-      ');"><i class="fa fa-download"></i> Ingresar!</button>',
+  id_grobal = id;
+  precio_grobal = precio;
+  oferta_normal = true;
+
+  $.ajax({
+    type: "GET",
+    url: BaseUrl + "tienda/VerificarCLienteLogeado",
+    success: function (response) {
+      console.log(response);
+      if (response == 0) {
+        openModal();
+        return false;
+      } else {
+        Swal.fire({
+          title: "<strong>Ingrese cantidad de producto</strong>",
+          html: `
+          <div class="col-sm-12">
+            <input type="number" value="1" min="1" max="20" class="form-control" id="cantidadpferta" placeholder="Ingrese cantidad">
+          </div>`,
+          showConfirmButton: true,
+          showCloseButton: false,
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText:
+            '<button style="color: white; background: #7066e0; border: 0;" onclick="IngresarProductoCarritoOferta(' +
+            id +
+            "," +
+            precio +
+            ');"><i class="fa fa-download"></i> Ingresar!</button>',
+        });
+      }
+    },
   });
 }
 
@@ -928,4 +963,98 @@ function DescargarArchivo(id) {
 }
 
 //////////////////////
-
+function ValidarClienteDeTienda(usuario, password) {
+  $.ajax({
+    url: BaseUrl + "cliente/CredencialesCliente",
+    type: "POST",
+    data: { usuario: usuario, password: password },
+  }).done(function (responce) {
+    if (responce == 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "Usuario Incorrecto.",
+        text: "Usuario incorrecto..",
+      });
+      $.ajax({
+        url: BaseUrl + "cliente/BloquearUsuario",
+        type: "POST",
+        data: { usuario: usuario, password: password },
+      }).done(function (log) {
+        if (log >= 4) {
+          return Swal.fire({
+            icon: "warning",
+            title: "Usuario bloqueado..",
+            text: "Usuario bloqueado por intentos fallidos!, debe esperar 24 horas para volver a intentar.",
+          });
+        }
+      });
+      return false;
+    } else {
+      var data = JSON.parse(responce);
+      if (data[1] == 0) {
+        return Swal.fire({
+          icon: "error",
+          title: "Usuario inactivo",
+          text: "El usuario se encuentra inactivo!",
+        });
+      } else if (data[3] >= 4) {
+        return Swal.fire({
+          icon: "warning",
+          title: "Usuario bloqueado...",
+          text: "Usuario bloqueado por intentos fallidos, puede recuperar el usuario mediante el correo o esperar 24 horas para volver a intentar!",
+        });
+      } else {
+        funcion = "session";
+        $.ajax({
+          url: BaseUrl + "cliente/CraerTokenCliente",
+          type: "POST",
+          data: {
+            id_usu: data[0],
+            user: data[2],
+          },
+        }).done(function (res) {
+          closeModal();
+          if (res == 1) {
+            if (!oferta_normal) {
+              Swal.fire({
+                title: "<strong>Ingrese cantidad de producto</strong>",
+                html: `
+                <div class="col-sm-12">
+                  <input type="number" value="1" min="1" max="20" class="form-control" id="cantidadnomral" placeholder="Ingrese cantidad">
+                </div>`,
+                showConfirmButton: true,
+                showCloseButton: false,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                  '<button style="color: white; background: #7066e0; border: 0;" onclick="IngresarProductoCarrito(' +
+                  id_grobal +
+                  "," +
+                  precio_grobal +
+                  ');"><i class="fa fa-download"></i> Ingresar!</button>',
+              });
+            } else {
+              Swal.fire({
+                title: "<strong>Ingrese cantidad de producto</strong>",
+                html: `
+                <div class="col-sm-12">
+                  <input type="number" value="1" min="1" max="20" class="form-control" id="cantidadpferta" placeholder="Ingrese cantidad">
+                </div>`,
+                showConfirmButton: true,
+                showCloseButton: false,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                  '<button style="color: white; background: #7066e0; border: 0;" onclick="IngresarProductoCarritoOferta(' +
+                  id_grobal +
+                  "," +
+                  precio_grobal +
+                  ');"><i class="fa fa-download"></i> Ingresar!</button>',
+              });
+            }
+          }
+        });
+      }
+    }
+  });
+}

@@ -49,7 +49,6 @@
         </div>
     </div>
 </div>
-
 <!-- <div class="footer">
     <div class="container">
         <div class="footer-top">
@@ -66,7 +65,6 @@
     </div>
 
 </div> -->
-
 <div class="footer">
     <div class="container">
         <div class="footer-top">
@@ -80,7 +78,6 @@
         </div>
     </div>
 </div>
-
 </body>
 
 </html>
@@ -91,4 +88,172 @@
     var BaseUrl;
     BaseUrl = "<?php echo base_url(); ?>";
     ContarCantidadCarrito();
+</script>
+
+
+<!-- ///////////////////////////////////////// -->
+
+<style>
+    /* Estilos para o modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        overflow: auto;
+    }
+
+    /* Estilos para o conteúdo do modal */
+    .modal-content {
+        text-align: center;
+        background-color: #fefefe;
+        padding: 10px;
+        border: 1px solid #888;
+        width: 80%;
+        /* Largura do conteúdo do modal */
+        max-width: 400px;
+        /* Largura máxima para garantir responsividade */
+        margin: 10% auto;
+        /* Centralizar verticalmente e alinhar horizontalmente */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilos para o botão fechar */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Estilos para o formulário de login */
+    .input-group {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+        width: calc(100% - 12px);
+        /* Calculando a largura do campo de entrada */
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<!-- Botão para abrir o modal -->
+<button style="display: none !important;" id="openModalBtn">Login</button>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Inicie sesión</h2>
+        <br>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="submit" placeholder="Inicie sesión">
+        </form>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById("modal");
+    var openModalBtn = document.getElementById("openModalBtn");
+    var closeBtn = document.querySelector(".close");
+    var loginForm = document.getElementById("loginForm");
+
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    openModalBtn.addEventListener("click", openModal);
+
+    closeBtn.addEventListener("click", closeModal);
+
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
+
+    loginForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(loginForm);
+        var username = formData.get("username");
+        var password = formData.get("password");
+        ValidarClienteDeTienda(username, password)
+    });
+
+    function RecordaPasswordUserTienda() {
+        const rmcheck = true;
+        const password = document.getElementById("password");
+        const usuario = document.getElementById("username");
+
+        if (rmcheck.checkedc || usuario.value != "" || password.value != "") {
+            localStorage.usuarioc = usuario.value;
+            localStorage.passwordc = password.value;
+            localStorage.checkboxc = rmcheck.checked;
+        }
+    }
+
+    $(document).ready(function() {
+        const rmcheck = true;
+        const password = document.getElementById("password");
+        const usuario = document.getElementById("username");
+        if (localStorage.checkboxc && localStorage.checkboxc != "") {
+            password.value = localStorage.passwordc;
+            usuario.value = localStorage.usuarioc;
+        } else {
+            password.value = "";
+            usuario.value = "";
+        }
+    })
 </script>

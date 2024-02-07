@@ -90,20 +90,23 @@ class Tienda extends BaseController
     public function IngresarProductoCarritoNormal()
     {
         if ($this->request->getMethod() == "post") {
-
-            // Obtener el nombre del host (ID de la máquina)
-            $nombreHost = gethostname();
-            // Obtener la dirección IP del servidor
-            $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
-
-            $usecomprador = $nombreHost . "-" . $direccionIP;
-            // $iduser = $_SESSION["TokenClie"];
-            $id = $this->request->getPost('id');
-            $precio = $this->request->getPost('precio');
-            $cantidad = $this->request->getPost('cantidad');
-            $repuesta = $this->tienda->IngresarProductoCarritoNormal(0, $id, $precio, $cantidad, $usecomprador);
-            echo $repuesta;
-            exit();
+            if (!empty($_SESSION["TokenClie"])) {
+                // Obtener el nombre del host (ID de la máquina)
+                $nombreHost = gethostname();
+                // Obtener la dirección IP del servidor
+                $direccionIP = $_SERVER['REMOTE_ADDR']; //$_SERVER['SERVER_ADDR'];
+                $usecomprador = $nombreHost . "-" . $direccionIP;
+                // $iduser = $_SESSION["TokenClie"];
+                $id = $this->request->getPost('id');
+                $precio = $this->request->getPost('precio');
+                $cantidad = $this->request->getPost('cantidad');
+                $repuesta = $this->tienda->IngresarProductoCarritoNormal(0, $id, $precio, $cantidad, $usecomprador);
+                echo $repuesta;
+                exit();
+            } else {
+                echo "100";
+                exit();
+            }
         }
     }
 
@@ -438,6 +441,18 @@ class Tienda extends BaseController
                 echo 0;
                 exit();
             }
+        }
+    }
+
+    public function VerificarCLienteLogeado()
+    {
+
+        if (!empty($_SESSION["TokenClie"])) {
+            echo 1;
+            exit();
+        } else {
+            echo 0;
+            exit();
         }
     }
 }

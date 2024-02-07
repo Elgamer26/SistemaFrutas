@@ -385,7 +385,7 @@
 							EnviarCorreoWeb(parseInt(resp));
 
 							Swal.fire({
-								title: "Campra realizada con exito",
+								title: "Compra realizada con éxito",
 								text: "Desea imprimir la compra??",
 								icon: "warning",
 								showCancelButton: true,
@@ -524,7 +524,7 @@
 							if (resp > 0) {
 								EnviarCorreoWeb(parseInt(resp));
 								Swal.fire({
-									title: "Campra realizada con exito",
+									title: "Compra realizada con éxito",
 									text: "Desea imprimir la compra??",
 									icon: "warning",
 									showCancelButton: true,

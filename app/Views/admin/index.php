@@ -630,9 +630,9 @@
   <script src="<?php echo base_url(); ?>public/js/graficos.js"></script>
   <script src="<?php echo base_url(); ?>public/js/numero.min.js"></script>
   <script src="<?php echo base_url(); ?>public/DataTables/datatables.min.js"></script>
-  <script src="<?php echo base_url(); ?>public/Chart/chart.min.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>public/Chart/chart.min.js"></script> -->
   <script src="<?php echo base_url(); ?>public/Chart/moment.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </body>
 
 </html>

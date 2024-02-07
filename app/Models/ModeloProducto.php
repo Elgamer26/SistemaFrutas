@@ -903,11 +903,18 @@ class ModeloProducto
             INNER JOIN producto ON calificarproducto.idproducto = producto.id
             INNER JOIN tipo_producto ON producto.tipo_id = tipo_producto.id 
             WHERE
-            calificarproducto.idproducto = ?
-            ORDER BY
+            CASE
+                WHEN '". $id ."' = 0 THEN calificarproducto.idproducto = calificarproducto.idproducto
+                ELSE calificarproducto.idproducto = '". $id ."'
+            END = 1 
+                ORDER BY
             calificarproducto.id DESC";
+
+            // WHERE
+            // calificarproducto.idproducto = ?
+            // ORDER BY
+            // calificarproducto.id DESC";
             $query = $c->prepare($sql);
-            $query->bindParam(1, $id);
             $query->execute();
             $result = $query->fetchAll();
             //cerramos la conexion

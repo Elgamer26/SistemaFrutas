@@ -178,6 +178,7 @@ class ModeloTienda
             $nombre = "";
             $punos = "...";
             $DireccionDetalle = "";
+            $colorbg = "";
             foreach ($result as $respuesta) {
 
                 if (strtoupper($respuesta[5]) <= 0) {
@@ -192,8 +193,10 @@ class ModeloTienda
 
                 if ($respuesta[9] <> 'NO') {
                     $DireccionDetalle =  base_url() . 'home/DetalleOferta/' . $respuesta[0] . '';
+                    $colorbg = 'style="background: yellow; color: black;"';
                 } else {
-                    $DireccionDetalle =  base_url() . 'home/Detalle/' . $respuesta[0] . '';                   
+                    $DireccionDetalle =  base_url() . 'home/Detalle/' . $respuesta[0] . '';
+                    $colorbg = 'style="background: #777; color: white;"';
                 }
 
                 $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
@@ -207,8 +210,8 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
-
-                                                <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[9] . '</p>                                               
+                                                
+                                                <p style="color: black;"> <span class="badge badge-warning" ' . $colorbg . ' > <b> Oferta: </b> ' . $respuesta[9] . ' </span>  </p>                                               
                                                 <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[10] . ' %</p>
                                                 <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[8] . '</p>
 
@@ -417,14 +420,14 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[9]) . ' </p> 
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[11]) . ' </p>
 
-                                                <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[6] . '</p>
+                                                <p style="color: black;"> <span class="badge badge-warning" style="background: yellow; color: black;" > <b> Oferta: </b> ' . $respuesta[6] . ' </span>  </p>                                               
                                                 <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[8] . ' %</p>
                                                 <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[7] . '</p>                                             
 
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
 
                 // if (!empty($_SESSION["TokenClie"])) {
-                $tabla = $tabla . '<h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-shopping-basket" aria-hidden="true"></i></button></h4>';
+                $tabla = $tabla . '<h4><button class="btn btn-success" onclick="AgregarCarritoOferta(' . $respuesta[0] . ', ' . $respuesta[3] . ')">Agregar al carrito<i class="fa fa-star" aria-hidden="true"></i></button></h4>';
                 // }
 
                 $tabla = $tabla . '    </div>
@@ -1663,8 +1666,10 @@ class ModeloTienda
 
                 if ($respuesta[9] <> 'NO') {
                     $DireccionDetalle =  base_url() . 'home/DetalleOferta/' . $respuesta[0] . '';
+                    $colorbg = 'style="background: yellow; color: black;"';
                 } else {
-                    $DireccionDetalle =  base_url() . 'home/Detalle/' . $respuesta[0] . '';                   
+                    $DireccionDetalle =  base_url() . 'home/Detalle/' . $respuesta[0] . '';
+                    $colorbg = 'style="background: #777; color: white;"';
                 }
 
                 $tabla = $tabla . '	<div class="col-md-3 product-left" style="margin: 10px 0 0 0;">
@@ -1678,7 +1683,9 @@ class ModeloTienda
                                                 <p style="color: black;"> <b>Tipo: </b> ' . $respuesta[2] . ' </p> 
                                                 <p style="color: black;"> <b>Tamaño: </b> ' . strtoupper($respuesta[6]) . ' </p> 
                                                 <p style="color: black;"> <b>Disponible: </b> ' . strtoupper($respuesta[5]) . ' </p> 
-                                                <p style="color: black;"> <b>Oferta: </b> ' . $respuesta[9] . '</p>                                               
+
+                                                <p style="color: black;"> <span class="badge badge-warning" ' . $colorbg . ' > <b> Oferta: </b> ' . $respuesta[9] . ' </span>  </p>                                               
+
                                                 <p style="color: black;"> <b>Descuento: </b> ' . $respuesta[10] . ' %</p>
                                                 <p style="color: black;"> <b>Fecha fin: </b> ' . $respuesta[8] . '</p>
                                                 <h4><i class="fa fa-shopping-cart"></i> <a class="item_add" href="#"></a> <span class=" item_price">$ ' . $respuesta[3] . '</span></h4>';
